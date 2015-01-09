@@ -18,13 +18,17 @@
 		<div class="container">
 			<nav>
 				<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
-				<ul>
-					<li><a href="{{ url('about') }}" {% if craft.request.firstSegment == 'avout' %}class="active"{% endif %}>About</a></li>
-					<li><a href="{{ url('philosophy') }}" {% if craft.request.firstSegment == 'philosophy' %}class="active"{% endif %}>Philosophy</a></li>
-					<li><a href="{{ url('vineyard') }}" {% if craft.request.firstSegment == 'vineyard' %}class="active"{% endif %}>Vineyard</a></li>
-					<li><a href="{{ url('olive-oil') }}" {% if craft.request.firstSegment == 'olive-oil' %}class="active"{% endif %}>Olive Oil</a></li>
-					<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
-					<li><a href="{{ url('contact') }}" {% if craft.request.firstSegment == 'contact' %}class="active"{% endif %}>Contact</a></li>
+				<ul class="navigation">
+					<li><a href="{{ url('about') }}" {% if craft.request.getSegment(2) == 'avout' %}class="active"{% endif %}>About</a></li>
+					<li><a href="{{ url('philosophy') }}" {% if craft.request.getSegment(2) == 'philosophy' %}class="active"{% endif %}>Philosophy</a></li>
+					<li><a href="{{ url('vineyard') }}" {% if craft.request.getSegment(2) == 'vineyard' %}class="active"{% endif %}>Vineyard</a></li>
+					<li><a href="{{ url('olive-oil') }}" {% if craft.request.getSegment(2) == 'olive-oil' %}class="active"{% endif %}>Olive Oil</a></li>
+					<li><a href="{{ url('news') }}" {% if craft.request.getSegment(2) == 'news' %}class="active"{% endif %}>News</a></li>
+					<li><a href="{{ url('contact') }}" {% if craft.request.getSegment(2) == 'contact' %}class="active"{% endif %}>Contact</a></li>
+				</ul>
+				<ul class="localization">
+					<li><a href="{{ url('/en') }}" {% if craft.request.firstSegment == 'en' %}class="active"{% endif %}>en</a></li>
+					<li><a href="{{ url('/it') }}" {% if craft.request.firstSegment == 'it' %}class="active"{% endif %}>it</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -43,10 +47,9 @@
 		<div class="container">
 			<ul>
 				<li>{{ siteName }}</li>
-				<li>{{ contactInformation.address }}</li>
-				<li>{{ contactInformation.primaryPhone }}</li>
-				<li>{{ contactInformation.primaryEmail }}</li>
-				<li></li>
+				<li>{{ contactinformation.primaryAddress }}</li>
+				<li>{{ contactinformation.primaryPhone }}</li>
+				<li>{{ contactinformation.primaryEmail }}</li>
 			</ul>
 			<p>© {{ now.year }} {{ siteName }}. All rights reserved.</p>
 		</div>

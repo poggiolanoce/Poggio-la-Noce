@@ -1,10 +1,7 @@
 <?php
 
 // Path to your craft/ folder
-$craftPath = '../../craft';
-
-// Tell Craft to serve the italian content
-define('CRAFT_LOCALE', 'it');
+$craftPath = '../craft';
 
 // Do not edit below this line
 $path = rtrim($craftPath, '/').'/app/index.php';
