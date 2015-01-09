@@ -1,0 +1,1446 @@
+@import "compass/reset"
+@import "compass/css3"
+@import "compass/utilities"
+@import "mixins"
+
+// Variables
+
+$source : 'Source Sans Pro', sans-serif
+$main-width: 900px
+$medium-width: 900px
+$large-width: 1160px
+$main-padding: 45px
+
+$new-red: #7C1F19
+$new-cyan: #3897A6
+$new-brown: #F1DDBE
+
+$main-brown: #E5DFBB
+$text-brown: #6E5A42
+$salmon: $new-red
+$red: $new-red
+$light-salmon: $new-red
+
+$standard-max-width: 720px
+
+$negative-offset: 200px
+
+$iPad-width: 1024px
+$iPad-portrait-width: 850px
+$iPhone-width: 400px
+
+$level1: 20
+$level2: 40
+$level3: 60
+
+$social: twitter instagram facebook
+$nav-section: phone email address fax
+
+.standard-background
+  background-color: $new-brown
+  // @include hr-image('../images/site/bg-tile.png', '../images/site/bg-tile@2x.png')
+
+.standard-background-overlay
+  background-color: $new-brown
+  // @include hr-image('../images/site/bg-tile-overlay.png', '../images/site/bg-tile-overlay@2x.png')
+
+.background-with-flowers
+  @extend .standard-background
+  @include background(image-url('site/grunge.png') no-repeat center center)
+  background-size: cover
+  background-color: transparent
+
+.background-with-flowers-and-grunge
+  @extend .standard-background
+  @include background(image-url('site/grunge.png') no-repeat center center)
+  background-size: cover
+  background-color: transparent
+
+.background-with-grunge-fade
+  @extend .standard-background
+  @include background(image-url('site/grunge-fade.png') no-repeat top center)
+  background-color: rgba(#F7E3CB, 0.85)
+
+.standard-shadow
+  @include text-shadow(rgba(black, 0.5) 0 2px 6px)
+
+.standard-box-shadow
+  @include box-shadow(rgba(black, 0.3) 0 0 12px)
+
+.standard-full-image
+  @media screen and (max-width: $iPad-width)
+    background-attachment: inherit
+    background-position: top center
+    background-size: auto $iPad-width !important
+  @media-screen and (max-width: $iPad-portrait-width)
+    background-size: auto $iPad-portrait-width !important
+  @media screen and (max-width: $iPhone-width)
+    background-size: auto $iPhone-width !important
+  background-size: cover
+  background-position: center top
+  background-attachment: fixed
+
+.standard-heading
+  @media screen and (max-width: $iPhone-width)
+    font-size: 36px
+    padding-bottom: 70px
+  font-size: 64px
+  font-weight: 400
+  color: $new-red
+  padding-bottom: 60px
+  margin-bottom: 10px
+  background: image-url('site/marker-brown.png') no-repeat bottom center
+  background-size: 49px 51px
+
+%green-circle-list
+  display: inline-block
+  text-align: center
+  vertical-align: top
+  position: relative
+  padding-top: 6px
+  &:before
+    @extend %green-circle
+
+%green-circle-block
+  display: block
+  margin: 0 auto
+  position: relative
+  padding-top: 6px
+  height: 148px
+  width: 148px
+  &:before
+    @extend %green-circle
+
+%green-circle
+  content: ""
+  height: 148px
+  width: 148px
+  background: image-url("site/ring-green.png") no-repeat center center
+  background-size: 148px 148px
+  display: block
+  position: absolute
+  left: 0
+  top: 0
+  z-index: 2
+  pointer-events: none
+
+%green-circle-image
+  @include border-radius(50%)
+  position: relative
+  height: 135px
+  width: 135px
+  overflow: hidden
+  margin: 0 auto
+
+body
+  background-color: #fff
+  text-align: center
+  font-family: $source
+  position: relative
+
+h1, h2, h3, h4
+  color: $new-red
+
+header
+  &.open
+    nav
+      pointer-events: inherit
+    .nav-open
+      display: none
+    .nav-close
+      display: block
+    nav
+      height: 350px
+      @include transform(scaleY(1))
+  @media screen and (max-width: $iPad-width)
+    top: 0
+    bottom: inherit
+    width: 100%
+    nav
+      pointer-events: none
+      height: 0
+      background-color: rgba(#342A1B,0.9)
+      @include transition-property(all)
+      @include transition-duration(0.2s)
+      @include transform(scaleY(0))
+      @include transform-origin(0,0)
+  position: fixed
+  bottom: 4%
+  right: 0
+  z-index: 10000
+  text-align: left
+  .nav-close
+    z-index: 5
+    cursor: pointer
+    position: absolute
+    right: 20px
+    top: 20px
+    display: none
+    height: 20px
+    width: 20px
+    background: image-url('site/menu-close.png') no-repeat center center
+    background-size: 20px 20px
+  .nav-open
+    @media screen and (max-width: $iPad-width)
+      display: block
+    z-index: 5
+    cursor: pointer
+    position: absolute
+    right: 10px
+    top: 10px
+    display: none
+    height: 40px
+    width: 40px
+    background: image-url('site/menu.png') no-repeat center center
+    background-size: 40px 40px
+    overflow: hidden
+  nav
+    &:after
+      content: ""
+      display: block
+      clear: right
+    ul
+      width: 170px
+      @media screen and (max-width: $iPad-width)
+        width: 100%
+      li
+        @include transition-property(all)
+        @include transition-duration(0.25s)
+        @include box-shadow(rgba(black, 0.1) 0 0 6px)
+        font-weight: bold
+        text-align: right
+        float: right
+        position: relative
+        padding-right: 0
+        margin-bottom: 2px
+        height: 45px
+        width: 160px
+        display: block
+        text-align: center
+        background-color: $new-red
+        background-size: 172px 54px
+        @media screen and (max-width: $iPad-width)
+          @include box-shadow(none)
+          float: none
+          background-color: transparent
+          background-image: none
+          &:first-child
+            display: none
+        &:hover
+          padding-right: 10px
+        &.active
+          background-color: transparent
+          background-image: image-url('site/nav-tab-selected.png')
+          color: $new-cyan
+          a
+            color: $new-cyan
+        a
+          text-align: center
+          @media screen and (max-width: $iPad-width)
+            text-align: left
+          display: block
+          text-decoration: none
+          font-size: 16px
+          color: #fff
+          line-height: 45px
+        a img
+          width: 120px
+          margin-top: 6px
+      @media screen and (max-width: $iPad-width)
+        text-align: left
+        padding: 20px
+        & > li
+          right: 0
+          margin-bottom: 0
+          padding: 10px 20px
+          height: auto
+          width: auto
+          text-align: left
+          background-image: none
+          &:hover
+            a
+              color: rgba(white, 0.5)
+          &.active
+            width: 100%
+            background-image: none
+            a
+              width: 100%
+              color: rgba(white, 0.5)
+          a
+            color: #fff
+            line-height: 24px
+            width: 100%
+  .social-buttons
+    @media screen and (max-width: $iPad-width)
+      display: none
+    text-align: center
+    width: 160px
+    float: right
+    & > a
+      text-align: left
+      display: inline-block
+      width: 30px
+      height: 30px
+      background-size: 30px 30px
+      text-indent: -100000px
+      margin: 20px 7px 0 7px
+    @each $social-item in $social
+      a.#{$social-item}
+        background-image: image-url("site/social-#{$social-item}.png")
+
+footer
+  display: none
+
+main
+  overflow: hidden
+  height: calc(100% - $negative-offset)
+
+content
+  width: 100%
+
+.section-content-wide
+  @extend .standard-background
+  @extend .standard-box-shadow
+  width: 100%
+  padding-bottom: 45px
+  & > .section-content
+    background: transparent
+
+.section-content
+  @media screen and (max-width: $iPad-portrait-width)
+    width: 90%
+  @extend .standard-background-overlay
+  @include box-sizing('border-box')
+  width: $main-width
+  padding: $main-padding/2
+  padding-bottom: $main-padding - 10
+  margin: 0 auto
+  text-align: left
+  h2, h3
+    text-align: center
+  &.section-content-expanded
+    max-width: $large-width
+    width: 90%
+    
+.section-content, .section-content-wide
+  h3
+    @media screen and (max-width: $iPad-width)
+      width: 90%
+    @media screen and (max-width: $iPhone-width)
+      font-size: 24px
+    font-family: $source
+    font-size: 30px
+    line-height: 36px
+    width: 650px
+    margin: 15px auto 30px
+
+.standard-section
+  padding: 30px 0
+  p
+    font-weight: 400
+    font-size: 18px
+    line-height: 26px
+    color: $new-red
+    max-width: $standard-max-width
+    margin: 0 auto
+    margin-bottom: 30px
+  h2
+    @extend .standard-heading
+  h3, h4, h5
+    color: $new-red
+  ul
+    font-weight: 400
+    color: $new-red
+  strong
+    font-weight: 700
+  a
+    color: $new-cyan
+    text-decoration: none
+  & .section-content-wide
+    padding: 30px 0
+
+.section-content-blue
+  background-color: $new-cyan
+  padding: 0
+  margin: 0
+  .section-content
+    padding: 0
+
+.section-with-border
+  position: relative
+  &:before
+    content: ""
+    position: absolute
+    display: block
+    height: 20px
+    max-width: $main-width
+    width: 100%
+    top: -4px
+    left: 0
+    background: image-url('site/border-top-new.png') repeat-x center top
+    background-size: 1300px 20px
+  &:after
+    content: ""
+    position: absolute
+    display: block
+    height: 46px
+    max-width: $main-width
+    width: 100%
+    bottom: -2px
+    left: 0
+    background: image-url('site/border-bottom-new.png') repeat-x center top
+    background-size: 1252px 46px
+.section-with-border-wide
+  position: relative
+  &:before
+    content: ""
+    position: absolute
+    display: block
+    height: 20px
+    width: 100%
+    top: 0
+    left: 0
+    background: image-url('site/border-top-new.png') repeat-x center top
+    background-size: 1300px 20px
+  &:after
+    content: ""
+    position: absolute
+    display: block
+    height: 46px
+    width: 100%
+    bottom: -3px
+    left: 0
+    background: image-url('site/border-bottom-new.png') repeat-x center top
+    background-size: 1252px 46px
+.scroll
+  @media screen and (max-width: $iPad-width)
+    padding-top: 800px
+  @media screen and (max-width: $iPad-portrait-width)
+    padding-top: 600px
+  @media screen and (max-width: $iPhone-width)
+    padding-top: 400px
+    padding-bottom: 0 !important
+    margin-bottom: 0
+  position: relative
+
+// Home
+
+#opening
+  @media screen and (max-width: $iPad-width)
+    padding-top: 50px
+    height: 685px
+  @media screen and (max-width: $iPhone-width)
+    height: 310px
+    background-size: auto 100% !important
+  @media screen and (min-width: 1344px)
+    background-size: cover !important
+  @extend .standard-full-image
+  background-size: auto 100%
+  padding-top: 40px
+  height: 1000px
+  @include hr-image("../images/backgrounds/team-casual.jpg", "../images/backgrounds/team-casual@2x.jpg")
+
+.welcome-heading
+  @media screen and (max-width: $large-width)
+    width: 80%
+    font-size: 60px
+  @media screen and (max-width: $iPad-width)
+    font-size: 54px
+    position: relative
+    top: -10px
+    max-width: 520px
+  @media screen and (max-width: 660px)
+    font-size: 38px
+  @media screen and (max-width: $iPhone-width)
+    font-size: 26px
+    top: 110px
+  @extend .standard-shadow
+  font-weight: 900
+  font-size: 64px
+  color: #fff
+  width: 1160px
+  margin: 0 auto
+
+
+#home h1
+  @media screen and (max-width: $iPad-portrait-width)
+    position: relative
+    top: 0
+  @media screen and (max-width: $iPhone-width)
+    top: 30px
+    width: 217px
+    height: 57px
+    background-size: 217px 57px
+  width: 272px
+  height: 72px
+  margin: 0 auto
+  text-indent: -100000px
+  margin-bottom: 20px
+  background: image-url('site/logo.svg') no-repeat center center
+
+
+// Our Story
+
+%wide-content
+  @media screen and (min-width: $iPad-width)
+    .section-content
+      width: 650px
+      p
+        max-width: 650px
+  @media screen and (min-width: 1200px)
+    .section-content
+      width: 860px
+      p
+        max-width: 860px
+  @media screen and (min-width: 1400px)
+    .section-content
+      width: 1060px
+      p
+        max-width: 1060px
+
+#our-story
+  @extend .standard-box-shadow
+  @extend .background-with-flowers-and-grunge
+  @extend %wide-content
+  h2
+    display: inline-block
+    margin: 0 auto
+    position: relative
+    margin-bottom: 50px
+    margin-top: 20px
+  .buddha-badge
+    margin-left: 20px
+    margin-right: 30px
+    position: absolute
+    right: -350px
+    top: -20px
+    font-size: 16px
+    font-weight: bold
+  @media screen and (max-width: $iPad-width)
+    .buddha-badge
+      position: relative
+      display: block
+      left: 0
+      top: 0
+      margin-right: 0
+      margin-left: 0
+      float: none
+      margin: 0 auto
+      margin-bottom: 0
+      margin-top: 20px
+
+h2.h2-with-badge
+  display: inline-block
+  margin: 0 auto
+  position: relative
+  margin-top: 20px
+  margin-bottom: 40px
+  .buddha-badge
+    margin-left: 20px
+    margin-right: 30px
+    position: absolute
+    right: -350px
+    top: -20px
+    font-size: 16px
+
+.buddha-badge
+  width: 200px
+  height: 200px
+  background: image-url('site/buddha-circle.png') no-repeat center center
+  background-size: cover
+  display: block
+  color: $new-cyan
+  .badge-interior
+    width: 200px
+    height: 200px
+    display: table
+    .badge-content
+      position: relative
+      top: -3px
+      left: 2px
+      display: table-cell
+      vertical-align: middle
+      text-align: center
+
+#awards-list
+  .award-border
+    @media screen and (max-width: $iPhone-width)
+      display: none
+    width: 40px
+    height: 178px
+    background-size: cover
+    position: absolute
+    display: block
+    top: 0
+  #award-left
+    left: -24px
+    background-image: image-url('site/awards-left.png')
+  #award-right
+    right: -24px
+    background-image: image-url('site/awards-right.png')
+  @media screen and (max-width: $iPhone-width)
+    width: 90%
+    margin: 0 auto
+  position: relative
+  width: calc(100% - 400px)
+
+  margin: 0 auto
+  padding: 20px 0
+  #awards-list-container
+    overflow: hidden
+    width: 100%
+  #awards-list-container-interior
+    width: 10000px
+  &:after
+    clear: both
+    content: ""
+    display: block
+    width: 100%
+    height: 1px
+  .awards-list
+    width: 1435px
+    display: block
+    float: left
+    p
+      margin-bottom: 0
+    li
+      @media screen and (max-width: $iPhone-width)
+        text-align: center
+        width: 90%
+        min-width: 0
+        padding-left: 0
+        &:before
+          left: 50%
+          margin-left: -74px
+      width: 315px
+      float: left
+      padding-left: 162px
+      text-align: left
+      .award-description
+        font-size: 17px
+        line-height: 24px
+        margin-top: 20px
+        strong
+          font-size: 20px
+          font-weight: 700
+          display: block
+      .award-year
+        font-weight: 200
+        font-size: 42px
+        line-height: 52px
+      .award-image
+        @media screen and (max-width: $iPhone-width)
+          margin-left: 0
+          float: none
+          display: block
+          margin: 0 auto
+        margin: 0
+        margin-left: -148px
+        float: left
+        img
+          width: 135px
+          height: 135px
+
+// Our Culture
+
+#our-culture
+  @extend .standard-full-image
+  @include hr-image('../images/backgrounds/culture.jpg', '../images/backgrounds/culture@2x.jpg')
+  @extend %wide-content
+  padding-bottom: 0
+  ul
+    margin: 30px auto
+    max-width: $standard-max-width
+    text-align: left
+    li
+      background: image-url('site/marker-brown-small.png') no-repeat left center
+      background-size: 17px 18px
+      padding: 7px 0 7px 28px
+      strong
+        font-weight: 700
+  .section-content-wide
+    @extend .background-with-flowers-and-grunge
+    position: relative
+    z-index: $level1
+  // Repeated from our story
+  .buddha-badge
+    margin-left: 20px
+    margin-right: 30px
+    position: absolute
+    right: -350px
+    top: -20px
+    font-size: 16px
+    font-weight: bold
+  @media screen and (max-width: $iPad-width)
+    .buddha-badge
+      position: relative
+      display: block
+      left: 0
+      top: 0
+      margin-right: 0
+      margin-left: 0
+      float: none
+      margin: 0 auto
+      margin-bottom: 0
+      margin-top: 20px
+
+// Community
+
+#community
+  @extend .standard-full-image
+  @include hr-image('../images/backgrounds/community.jpg', '../images/backgrounds/community@2x.jpg')
+  padding-bottom: 0
+  .section-content
+    padding-bottom: 0
+    position: relative
+    z-index: $level1
+  .section-content-wide
+    @extend .background-with-flowers-and-grunge
+    padding-bottom: 0
+    &:after
+      content: ""
+      display: block
+      clear: both
+    position: relative
+    z-index: $level2
+
+#community-team-photos
+  // background: image-url('site/logo-dark.svg') no-repeat left center
+  width: 500px
+  // height: 130px
+  height: 5px
+  margin: 40px auto 20px
+  display: block
+  background-size: cover
+  @media screen and (max-width: $iPad-portrait-width)
+    $width: 350px
+    width: $width
+    height: $width * 0.25  
+  @media screen and (max-width: $iPhone-width)
+    $width: 300px
+    width: $width
+    height: 0 
+
+#community-links-container
+  width: $medium-width
+  @media screen and (max-width: $iPad-portrait-width)
+    width: 100%
+  padding: 50px 0
+  margin: 0 auto
+  text-align: left
+  min-height: 285px
+  & > div, & > ul
+    @media screen and (max-width: $iPad-portrait-width)
+      display: block
+    display: inline-block
+    vertical-align: top
+  .community-links
+    width: 250px
+    @media screen and (max-width: $iPad-portrait-width)
+      width: 570px
+      margin: 0 auto
+    @media screen and (max-width: $iPhone-width)
+      width: 235px
+    li
+      &.active
+        color: $new-cyan
+        background-image: image-url('site/tab-bg-selected.png')
+        font-weight: 700
+      @media screen and (max-width: $iPad-portrait-width)
+        width: 265px
+        display: inline-block
+      @media screen and (max-width: $iPhone-width)
+        width: 235px
+      font-size: 16px
+      color: #fff
+      cursor: pointer
+      font-weight: 500
+      padding: 8px 0 8px 15px
+      margin-bottom: 2px
+      background-image: image-url('site/tab-bg.png')
+      background-size: 100% auto
+  .community-link-content
+    @media screen and (max-width: $iPad-portrait-width)
+      width: 90%
+      margin: 0 auto
+    @include box-sizing('border-box')
+    padding: 20px 40px
+    width: $medium-width - 260px
+    & > div
+      &:first-child
+        display: block
+      display: none
+    h4
+      color: $new-cyan
+      font-family: $source
+      font-size: 34px
+      & + p
+        margin-bottom: 20px
+    a
+      text-decoration: none
+      color: $salmon
+      font-weight: 700
+      font-size: 18px
+
+// Our People
+
+#our-people
+  @extend .standard-full-image
+  @include hr-image("../images/backgrounds/team.jpg", "../images/backgrounds/team@2x.jpg")
+  @media screen and (max-width: $iPad-width)
+    background-position: -170px -275px
+    padding-top: 420px
+  @media screen and (max-width: $iPad-portrait-width)
+    padding-top: 300px
+  @media screen and (max-width: $iPhone-width)
+    background-position: -152px -90px
+    padding-top: 200px    
+  background-size: 100% auto
+  background-position: center 0
+  padding-bottom: 0
+  .section-content-wide:first-child
+    @extend .background-with-flowers-and-grunge
+    padding-top: 40px
+    padding-bottom: 0
+    @media screen and (max-width: $iPhone-width)
+      padding-bottom: 40px
+    & > .section-content
+      text-align: center
+      @media screen and (max-width: $iPhone-width)
+        padding: 0
+
+.person-list
+  margin-top: 10px
+  @media screen and (max-width: $iPhone-width)
+    margin: 0 auto
+    position: relative
+  a
+    text-decoration: none
+    color: $new-red
+    display: block
+    position: relative
+    z-index: 10
+    height: 203px
+    width: 150px
+    &:hover
+      color: #fff
+      background: image-url('site/person-border.png') no-repeat 0 0
+      background-size: 150px 203px
+  li
+    display: inline-block
+    vertical-align: top
+    width: 150px
+    margin: 0 5px
+    padding-bottom: 28px
+    color: $text-brown
+    text-align: center
+    .person-image
+      display: inline-block
+      margin-top: 14px
+      width: 150px
+      height: 175px
+      margin-bottom: 18px
+    @media screen and (max-width: $iPhone-width)
+      margin: 0 10px
+      width: 120px
+      a
+        width: 120px
+      .person-image
+        width: 120px
+        height: 141px  
+        img  
+          width: 120px
+
+#people-quote
+  padding-top: 40px
+  font-family: $source
+  width: 560px
+  font-size: 34px
+  color: $new-red
+  margin: 0 auto
+  font-size: 24px
+  line-height: 30px
+  @media screen and (max-width: $iPad-portrait-width)
+    width: 90%
+    padding-bottom: 20px
+
+  
+// Contact
+
+#contact-us
+  @extend .standard-full-image
+  @include hr-image('../images/backgrounds/contact.jpg', '../images/backgrounds/contact@2x.jpg')
+  @media screen and (max-width: $iPhone-width)
+    padding-bottom: 0 !important
+  .section-content-wide
+    @extend .background-with-flowers-and-grunge
+  .section-content
+    @media screen and (max-width: $iPhone-width)
+      margin-bottom: 0
+    margin-bottom: 200px
+  padding-bottom: 0
+
+#main-map
+  text-align: center
+  position: relative
+  display: inline-block
+  vertical-align: top
+  width: 448px
+  & > div
+    margin: 0 auto
+    padding-top: 2px
+    border: 4px solid $new-red
+  a.view-on-google
+    display: block
+    font-family: $source
+    padding-top: 10px
+    margin-bottom: 30px
+    color: $light-salmon
+    font-size: 16px
+    text-decoration: none
+  @media screen and (max-width: 448px)
+    width: 80%
+    margin: 0 auto
+    overflow: hidden
+    & > div
+      border: none
+      position: relative
+      left: -10%
+
+
+#contact-list
+  $contact-list-color: $new-red
+  display: inline-block
+  vertical-align: top
+  width: 448px
+  margin-bottom: 30px
+  @media screen and (max-width: 448px)
+    width: 90%
+    margin: 0 auto
+    margin-bottom: 30px
+  font-family: $source
+  color: $contact-list-color
+  a
+    text-decoration: none
+    color: $contact-list-color
+  li
+    &.nmls
+      margin-top: 20px
+    text-align: left
+    p
+      margin: 0
+      padding: 0
+      display: inline-block
+    div
+      display: inline-block
+      vertical-align: top
+      p
+        font-weight: bold
+        display: block
+        margin: 0
+
+
+// Person detail
+
+#people
+  background-color: #F1DDBE
+  article
+    margin-top: 50px
+    &:after
+      content: " "
+      display: block
+      clear: both
+  .section-left
+    width: 225px
+    margin-right: 25px
+    float: left
+  .section-right
+    width: 605px
+    float: left
+    color: #000
+    p
+      color: #000
+    .contact-line
+      color: $new-cyan
+      font-weight: bold
+      p
+        color: $new-cyan
+    .nmls-line
+      margin-top: -20px
+      p
+        color: $new-cyan
+        font-weight: bold
+  .section-content
+    padding-top: 0
+  #person-detail .person-detail-img
+    margin: 0
+    background: image-url('site/person-border-blue.png') no-repeat 0 0
+    background-size: 160px 266px
+    width: 160px 
+    height: 266px
+  .person-quote
+    margin-top: 20px
+    font-size: 16px
+    line-height: 32px
+    p
+      color: $new-cyan
+      font-size: 16px
+      line-height: 32px
+  h1
+    @extend .standard-heading
+  h2
+    font-weight: 700
+    font-size: 24px
+    padding-bottom: 30px
+    background-image: none
+  h4
+    font-weight: bold
+    margin: 0
+    text-align: left
+    color: $new-cyan
+    margin-bottom: 20px
+    font-size: 18px
+  a.go-back-to-site
+    @media screen and (max-width: $iPad-width)
+      position: relative
+    @media screen and (max-width: $iPhone-width)
+      position: relative
+      left: 0
+      top: 0
+      margin: 0 auto
+      margin-bottom: 20px
+    @include box-sizing('border-box')
+    padding: 12px 0 12px 8px
+    position: fixed
+    left: 60px
+    top: 30px
+    color: #fff
+    text-decoration: none
+    font-weight: 700
+    display: block
+    width: 128px
+    height: 39px
+    background: image-url('site/back-to-main.png')
+    background-size: 128px 39px
+  @media screen and (max-width: 1200px)
+    .section-right
+      width: 545px
+      padding-right: 60px
+  @media screen and (max-width: 870px)
+    .section-content
+      width: 100%
+    .section-left
+      width: 100%
+      float: none
+    .section-right
+      width: 100%
+      float: none
+    #person-detail .person-detail-img
+      margin: 0 auto
+    h4
+      margin: 0 auto
+      margin-bottom: 30px
+      text-align: center
+
+#person-detail
+  background-color: #F1DDBE
+  .section-content
+    text-align: center
+    p
+      text-align: left
+  @media screen and (max-width: $iPad-width)
+    padding-top: 20px
+  padding-bottom: 0
+  h2
+    color: $new-cyan
+  .person-detail-img
+    margin: 0 auto
+    margin-bottom: 10px
+    height: 203px
+    width: 150px
+    color: #fff
+    background: image-url('site/person-border.png') no-repeat 0 0
+    background-size: 150px 203px
+    img
+      padding-top: 14px
+
+#coming-soon
+  @include hr-image('../images/backgrounds/application.jpg', '../images/backgrounds/application@2x.jpg')
+  .section-content-wide
+    background-color: transparent
+  .section-content
+    width: 100%
+    margin-top: 100px
+    position: relative
+    text-align: center
+    @extend .standard-box-shadow
+    @extend .background-with-grunge-fade
+    background-color: rgba(#F7E3CB, 0.85)
+  h2
+    margin-bottom: 100px
+    font-weight: bold
+  p
+    margin-bottom: 5px
+
+#upload
+  background-color: #F1DDBE
+  #upload-detail
+    @media screen and (max-width: $iPad-width)
+      padding-top: 20px
+    padding-top: 40px
+    min-height: 600px
+    text-align: center
+    p
+      margin-bottom: 5px
+      text-align: center
+    h2
+      background-image: none
+      padding-bottom: 40px
+    .selection-container
+      text-align: center
+    select
+      height: 50px
+      width: 300px
+      font-size: 16px
+      -webkit-appearance: menulist-button
+      margin: 0 auto
+      margin-bottom: 10px
+      color: $new-red
+    #upload-available
+      display: none
+    .upload-zone
+      &:before
+        display: block
+        background: image-url('site/upload-border.png') no-repeat 0 0
+        background-size: 470px 242px
+        height: 242px
+        width: 470px
+        position: relative
+        top: -15px
+        content: ""
+        position: absolute
+      position: relative
+      margin: 0 auto
+      margin-top: 32px
+      height: 212px
+      width: 470px
+      display: block
+      background: #fff
+      text-align: center
+      color: $new-red
+      #upload-field
+        background-color: #fff
+        height: 212px
+        width: 470px
+        display: block
+        label
+          height: 212px
+          width: 470px
+          display: block
+          position: relative
+          z-index: 10000
+        input
+          opacity: 0
+      p
+        line-height: 212px
+        font-weight: 500
+        font-size: 24px
+        span
+          color: $red
+    #upload-in-progress
+      display: none
+      #progress_container
+        @include border-radius(6px)
+        width: 400px
+        height: 30px
+        margin: 0 auto
+        display: block
+        border: 3px solid $text-brown
+        position: relative
+        top: 83px
+        #progress_meter
+          @include transition-property(all)
+          @include transition-duration(0.2s)
+          background-color: rgba($text-brown, 0.8)
+          height: 30px
+          width: 400px
+          position: relative
+          left: 0
+          display: block
+    #upload-success
+      @include border-radius(6px)
+      opacity: 0
+      text-align: center
+      color: #fff
+      font-size: 20px
+      width: 470px
+      height: 40px
+      line-height: 40px
+      margin: 0 auto
+      display: block
+      background-color: $new-red
+      position: relative
+      top: 30px
+
+
+// Application
+
+#application
+  @include hr-image('../images/backgrounds/application.jpg', '../images/backgrounds/application@2x.jpg')
+  @media screen and (max-width: $iPhone-width)
+    padding-bottom: 100px !important
+  background-size: cover
+  background-position: center top
+  background-attachment: fixed
+  background-position: 0 0
+  .section-content
+    @extend .background-with-grunge-fade
+    @media screen and (max-width: $iPhone-width)
+      margin-bottom: 0
+  .form-secure
+    @include box-sizing('border-box')
+    float: left
+    margin-top: 30px
+    margin-left: 50px
+    width: 200px
+    height: 200px
+    background: image-url('site/secure-form.png') no-repeat top center
+    background-size: 180px 180px
+    text-align: center
+    color: $new-cyan
+    font-weight: bold
+    text-transform: uppercase
+    padding-top: 100px
+    font-size: 20px
+    @media screen and (max-width: $iPad-width)
+      float: none
+      margin: 0 auto
+      margin-bottom: 0
+
+  .form-links
+    &:after
+      content: ""
+      display: block
+      clear: both
+    .buddha-links
+      float: right
+      a
+        &:last-child
+          margin-left: 10px
+        display: inline-block
+        .buddha-badge
+          width: 215px
+          height: 215px
+          .badge-interior
+            width: 215px
+            height: 215px
+            font-size: 16px
+            font-weight: bold
+      @media screen and (max-width: $iPad-width)
+        a:last-child
+          margin-left: 0
+        float: none
+        margin: 0 auto
+        text-align: center
+  .form-result
+    display: none
+    margin-bottom: 20px
+  .form-success
+    .img-holder
+      text-align: center
+      margin: 5px 0 25px 0
+    img
+      width: 300px
+      margin: 0 auto
+      position: relative
+  form
+    font-size: 18px
+    color: $new-red
+    font-weight: 400
+    input[type=text], input[type=email]
+      @include box-sizing('border-box')
+      border: 1px solid $text-brown
+      padding: 10px
+      font-size: 16px
+      background-color: #F5DCBC
+    textarea
+      @media screen and (max-width: $iPhone-width)
+        width: 100%
+        @include box-sizing('border-box')
+      border: 1px solid $text-brown
+      padding: 10px
+      font-size: 14px
+      width: 400px
+      height: 100px
+      background-color: #F5DCBC
+    h4
+      &:after
+        content: ":"
+      font-size: 32px
+      font-weight: 200
+      margin-bottom: 20px
+    h3
+      text-align: center
+    label.error
+      color: red
+      margin-top: 10px
+      font-weight: bold
+    input.error
+      border-color: $red
+    p.warning
+      font-weight: 500
+    .form-group
+      margin-bottom: 60px
+    .form-intro
+      text-align: center
+      padding-bottom: 50px
+      background: image-url('site/marker-brown.png') no-repeat bottom center
+      background-size: 39px 41px
+      .form-section
+        margin-bottom: 28px
+      input[type=text]
+        @media screen and (max-width: $iPhone-width)
+          width: 100%
+        margin: 0 auto
+        width: 300px
+    .form-body
+      &:after
+        content: ""
+        display: block
+        clear: both
+      text-align: left
+      margin: 0 auto
+      width: 90%
+      input[type=text], input[type=email]
+        width: 100%
+      .form-column
+        @media screen and (max-width: $iPad-portrait-width)
+          float: none
+          width: 100%
+        &:first-of-type
+          float: left
+        float: right
+        width: 45%
+    .form-final
+      text-align: center
+      margin-top: 20px
+      p
+        font-weight: 500
+    .form-section-with-multiple
+      input + label
+        margin-top: 10px
+    .form-section
+      margin-bottom: 28px
+      label, input
+        display: block
+      label
+        margin-bottom: 10px
+      input + input
+        margin-top: 10px
+      &.form-section-split
+        .form-left, .form-right
+          position: relative
+          display: inline-block
+          width: calc(50% - 10px)
+        .form-left
+          margin-right: 10px
+    .form-radio
+      position: relative
+      &.form-agree label.error
+        top: 82px
+      label.error
+        position: absolute
+        top: 48px
+        font-weight: 200
+      hr
+        display: none
+        border: 0
+        @media screen and (max-width: $iPhone-width)
+          display: block
+      span
+        display: block
+        margin-bottom: 10px
+        @media screen and (max-width: $iPhone-width)
+          margin-bottom: 20px
+      label, input
+        display: inline-block
+      label
+        &:first-of-type
+          margin-right: 30px
+          @media screen and (max-width: $iPhone-width)
+            margin-right: 0
+        font-weight: 500
+        line-height: 22px
+        position: relative
+        top: 2px
+
+#culture
+  h3
+    color: $new-cyan
+  .buddha-badge
+    float: left
+    margin-right: -90px
+    position: relative
+    left: -120px
+    width: 220px
+    height: 220px
+    @media screen and (max-width: $iPad-width)
+      float: none
+      margin: 0 auto
+      left: 0
+    .badge-interior
+      width: 220px
+      height: 220px
+  .culture-middle
+    img
+      width: 200px
+      float: right
+      @media screen and (max-width: $iPhone-width)
+        float: none
+    padding: 0 120px
+    @media screen and (max-width: $iPad-width)
+      padding: 0
+
+#awards
+  .buddha-badge
+    width: 220px
+    height: 220px
+    .badge-interior
+      width: 220px
+      height: 220px
+  @media screen and (max-width: $iPad-width)
+    .buddha-badge
+      position: relative
+      top: 0
+      right: 0
+      left: 0
+      bottom: 0
+      display: block
+      margin-left: 0
+      margin-right: 0
+      margin: 0 auto
+  .section-content
+    text-align: center
+  .awards-middle
+    text-align: left
+    margin-top: 40px
+    p
+      text-indent: -55px
+      margin-left: 55px
+      margin-bottom: 10px
+      strong,b
+        color: $new-cyan
+  .awards-bottom
+    // @media screen and (max-width: $iPad-width)
+    //   width: 100%
+    //   margin-left: 0
+    margin-top: 80px
+    img
+      max-width: 100%
+    // width: 120%
+    // margin-left: -10%
+    // p
+    //   max-width: none
+    // img
+    //   display: inline-block
+    //   margin: 0 7px 14px 7px

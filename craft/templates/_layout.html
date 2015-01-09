@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+	<meta charset="utf-8" />
+	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+	<link rel="home" href="{{ siteUrl }}" />
+
+	<link rel="stylesheet" href="{{ siteUrl }}css/main.css" type="text/css">
+	<script src="{{ siteUrl }}javascript/plugins.js"></script>
+	<script src="{{ siteUrl }}javascript/main.js"></script>
+
+</head>
+
+<body id="{% if craft.request.firstSegment %}{{craft.request.firstSegment}}{% else %}home{% endif %}" >
+	<!-- Header -->
+	<header id="header">
+
+		<div class="container">
+			<nav>
+				<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
+				<ul>
+					<li><a href="{{ url('about') }}" {% if craft.request.firstSegment == 'avout' %}class="active"{% endif %}>About</a></li>
+					<li><a href="{{ url('philosophy') }}" {% if craft.request.firstSegment == 'philosophy' %}class="active"{% endif %}>Philosophy</a></li>
+					<li><a href="{{ url('vineyard') }}" {% if craft.request.firstSegment == 'vineyard' %}class="active"{% endif %}>Vineyard</a></li>
+					<li><a href="{{ url('olive-oil') }}" {% if craft.request.firstSegment == 'olive-oil' %}class="active"{% endif %}>Olive Oil</a></li>
+					<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
+					<li><a href="{{ url('contact') }}" {% if craft.request.firstSegment == 'contact' %}class="active"{% endif %}>Contact</a></li>
+				</ul>
+			</nav>
+		</div>
+
+	</header>
+
+	<!-- Inherited Main Content -->
+	<main id="content" role="main">
+		{% block content %}
+
+		{% endblock %}
+	</main>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="container">
+			<ul>
+				<li>{{ siteName }}</li>
+				<li>{{ contactInformation.address }}</li>
+				<li>{{ contactInformation.primaryPhone }}</li>
+				<li>{{ contactInformation.primaryEmail }}</li>
+				<li></li>
+			</ul>
+			<p>© {{ now.year }} {{ siteName }}. All rights reserved.</p>
+		</div>
+	</footer>
+
+</body>
+</html>
