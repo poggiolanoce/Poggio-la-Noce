@@ -16,3 +16,11 @@ xcuserdata
 # svn & cvs
 .svn
 CVS
+
+# our noise
+
+public/.sass-cache
+public/node_modules
+
+craft/storage/runtime/*
+craft/storage/userphotos/*

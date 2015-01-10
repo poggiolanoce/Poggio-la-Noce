@@ -5,9 +5,9 @@
 	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
 	<link rel="home" href="{{ siteUrl }}" />
 
-	<link rel="stylesheet" href="{{ siteUrl }}css/main.css" type="text/css">
-	<script src="{{ siteUrl }}javascript/plugins.js"></script>
-	<script src="{{ siteUrl }}javascript/main.js"></script>
+	<link rel="stylesheet" href="/css/main.css" type="text/css">
+	<script src="/javascript/plugins.js"></script>
+	<script src="/javascript/main.js"></script>
 
 </head>
 
@@ -17,7 +17,11 @@
 
 		<div class="container">
 			<nav>
-				<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
+				<div class="logo">
+					<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
+					<h3><a href="{{ siteUrl }}">Fiesole, Italia</a></h3>
+					
+				</div>
 				<ul class="navigation">
 					<li><a href="{{ url('about') }}" {% if craft.request.getSegment(1) == 'avout' %}class="active"{% endif %}>About</a></li>
 					<li><a href="{{ url('philosophy') }}" {% if craft.request.getSegment(1) == 'philosophy' %}class="active"{% endif %}>Philosophy</a></li>
@@ -27,8 +31,8 @@
 					<li><a href="{{ url('contact') }}" {% if craft.request.getSegment(1) == 'contact' %}class="active"{% endif %}>Contact</a></li>
 				</ul>
 				<ul class="localization">
-					<li><a href="{{ url('/en') }}" {% if craft.request.firstSegment == 'en' %}class="active"{% endif %}>en</a></li>
-					<li><a href="{{ url('/it') }}" {% if craft.request.firstSegment == 'it' %}class="active"{% endif %}>it</a></li>
+					<li><a href="{{ url('/en') }}" {% if craft.request.firstSegment == 'en' %}class="active"{% endif %}>EN</a></li>
+					<li><a href="{{ url('/it') }}" {% if craft.request.firstSegment == 'it' %}class="active"{% endif %}>ITA</a></li>
 				</ul>
 			</nav>
 		</div>
