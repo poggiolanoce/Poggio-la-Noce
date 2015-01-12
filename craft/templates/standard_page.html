@@ -3,7 +3,7 @@
 {% block content %}
   
   {% for entry in craft.entries.section('pages').slug(craft.request.getSegment(1)) %}
-  <article class="page-content">hllo
+  <article class="page-content">
     <div class="page-image">
       <img src="{{ entry.pageImage.first().getUrl() }}" alt="">
     </div>
