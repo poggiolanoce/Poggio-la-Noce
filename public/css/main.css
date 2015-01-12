@@ -283,7 +283,30 @@ main#content .container {
   display: block;
 }
 
-/* line 172, sass/main.sass */
+/* line 171, sass/main.sass */
+.wine-page-content .wine-page-image {
+  position: relative;
+}
+/* line 173, sass/main.sass */
+.wine-page-content .wine-page-image:before {
+  content: "";
+  display: block;
+  width: 458px;
+  height: 454px;
+  background-image: url('/images/site/wine-splat.png?1421103814');
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 458px 454px;
+  position: absolute;
+  left: 0;
+  top: 110px;
+  z-index: 0;
+}
+/* line 186, sass/main.sass */
 .wine-page-content .wine-page-image img {
+  float: right;
+  margin-right: 60px;
   width: 195px;
+  position: relative;
+  z-index: 1;
 }

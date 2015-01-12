@@ -169,5 +169,23 @@ footer
 .wine-page-content
   .wine-page-text
   .wine-page-image
+    position: relative
+    &:before
+      content: ""
+      display: block
+      width: 458px
+      height: 454px
+      background-image: image-url('site/wine-splat.png')
+      background-position: 0 0
+      background-repeat: no-repeat
+      background-size: 458px 454px
+      position: absolute
+      left: 0
+      top: 110px
+      z-index: 0
     img
+      float: right
+      margin-right: 60px
       width: 195px
+      position: relative
+      z-index: 1
