@@ -35,9 +35,23 @@
 						<li {% if craft.locale == 'en_us' %}class="active"{% endif %}><a href="{{ url('/en') }}" >EN</a></li>
 						<li {% if craft.locale == 'it' %}class="active"{% endif %}><a href="{{ url('/it') }}" >ITA</a></li>
 					</ul>
-					
+
 				</div>
 			</nav>
+
+			<div class="banners">
+				{% set page_id = craft.request.getSegment(1) %}
+				{% for entry in craft.entries.section('pages').slug(page_id) %}
+					{% for banner in entry.pageBanner %}
+					
+						<div class="banner" style="background-image: url({{ banner.bannerImage.first().getUrl() }}) ">	
+							<div class="banner-headline">{{ banner.bannerHeadline }}</div>
+						</div>
+					
+					{% endfor %}
+				{% endfor %}
+
+			</div>
 
 	</header>
 

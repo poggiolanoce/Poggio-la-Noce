@@ -90,8 +90,11 @@ header .header-container {
 header nav {
   background-color: rgba(0, 0, 0, 0.35);
   height: 115px;
+  margin-bottom: -115px;
+  z-index: 1;
+  position: relative;
 }
-/* line 43, sass/main.sass */
+/* line 46, sass/main.sass */
 header .logo {
   width: 300px;
   height: 92px;
@@ -101,45 +104,45 @@ header .logo {
   top: 10px;
   margin-left: -150px;
 }
-/* line 44, sass/main.sass */
+/* line 47, sass/main.sass */
 header .logo h1, header .logo h3 {
   text-indent: -10000px;
 }
-/* line 53, sass/main.sass */
+/* line 56, sass/main.sass */
 header .navigation {
   padding-top: 50px;
 }
-/* line 55, sass/main.sass */
+/* line 58, sass/main.sass */
 header .navigation li {
   display: inline-block;
   text-transform: uppercase;
 }
-/* line 58, sass/main.sass */
+/* line 61, sass/main.sass */
 header .navigation li:nth-child(-n+4) {
   float: left;
   margin-left: 45px;
 }
-/* line 61, sass/main.sass */
+/* line 64, sass/main.sass */
 header .navigation li:nth-child(n+5) {
   float: right;
   margin-right: 45px;
 }
-/* line 64, sass/main.sass */
+/* line 67, sass/main.sass */
 header .navigation a {
   color: white;
   text-decoration: none;
 }
-/* line 67, sass/main.sass */
+/* line 70, sass/main.sass */
 header .navigation a.active {
   border-bottom: 3px solid white;
 }
-/* line 69, sass/main.sass */
+/* line 72, sass/main.sass */
 header .localization {
   position: absolute;
   top: 0;
   right: 45px;
 }
-/* line 73, sass/main.sass */
+/* line 76, sass/main.sass */
 header .localization li {
   padding: 7px 14px;
   background: white;
@@ -147,49 +150,80 @@ header .localization li {
   float: left;
   display: block;
 }
-/* line 79, sass/main.sass */
+/* line 82, sass/main.sass */
 header .localization li.active {
   background: #b24629;
 }
-/* line 81, sass/main.sass */
+/* line 84, sass/main.sass */
 header .localization li.active a {
   color: white;
 }
-/* line 83, sass/main.sass */
+/* line 86, sass/main.sass */
 header .localization li a {
   text-decoration: none;
   color: #999999;
 }
 
-/* line 86, sass/main.sass */
+/* line 89, sass/main.sass */
 footer {
   text-align: center;
   text-transform: uppercase;
   margin-top: 14px;
   margin-bottom: 50px;
 }
-/* line 91, sass/main.sass */
+/* line 94, sass/main.sass */
 footer ul {
   margin-bottom: 6px;
 }
-/* line 93, sass/main.sass */
+/* line 96, sass/main.sass */
 footer ul li {
   display: inline-block;
   padding: 0 25px;
   border-right: 1px solid #333333;
 }
-/* line 97, sass/main.sass */
+/* line 100, sass/main.sass */
 footer ul li:last-child {
   border-right: none;
 }
 
-/* line 102, sass/main.sass */
+/* line 103, sass/main.sass */
+.banners {
+  height: 100%;
+  position: relative;
+  z-index: 0;
+}
+/* line 107, sass/main.sass */
+.banners .banner {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  padding-top: 115px;
+  height: 100%;
+  background-size: cover;
+  text-align: center;
+  color: white;
+  font-size: 46px;
+}
+/* line 116, sass/main.sass */
+.banners .banner .banner-headline {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* line 123, sass/main.sass */
 .container {
   width: 1005px;
   margin: 0 auto;
   position: relative;
 }
-/* line 106, sass/main.sass */
+/* line 127, sass/main.sass */
+#home main#content .container {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+/* line 130, sass/main.sass */
 main#content .container {
   margin-top: 80px;
   margin-bottom: 40px;

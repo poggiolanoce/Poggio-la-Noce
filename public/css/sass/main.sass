@@ -40,6 +40,9 @@ header
   nav
     background-color: rgba(0,0,0,0.35)
     height: 115px
+    margin-bottom: -115px
+    z-index: 1
+    position: relative
   .logo
     h1, h3
       text-indent: -10000px
@@ -97,12 +100,33 @@ footer
       &:last-child
         border-right: none
 
+.banners
+  height: 100%
+  position: relative
+  z-index: 0
+  .banner
+    @include box-sizing('border-box')
+    display: block
+    padding-top: 115px
+    height: 100%
+    background-size: cover
+    text-align: center
+    color: #fff
+    font-size: 46px
+    .banner-headline
+      max-width: 900px
+      margin: 0 auto
+      position: relative
+
 // Content Work
 
 .container
   width: $medium-width
   margin: 0 auto
   position: relative
+  #home main#content &
+    margin-top: 0
+    margin-bottom: 0
   main#content &
     margin-top: 80px
     margin-bottom: 40px
