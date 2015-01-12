@@ -20,3 +20,5 @@ $(document).ready ->
     $page_blocks = $('.page-text-block')
 
     $headlines.eq(0).trigger('click')
+
+  # Wine Browsing

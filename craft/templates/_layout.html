@@ -42,16 +42,53 @@
 			</nav>
 
 			<div class="banners">
-				{% set page_id = craft.request.getSegment(1) %}
-				{% for entry in craft.entries.section('pages').slug(page_id) %}
-					{% for banner in entry.pageBanner %}
-					
-						<div class="banner" style="background-image: url({{ banner.bannerImage.first().getUrl() }}) ">	
-							<div class="banner-headline">{{ banner.bannerHeadline }}</div>
-						</div>
-					
+
+				{#
+				# Standard Page
+				#}
+				{% if craft.request.getSegment(1) != 'news' or craft.request.getSegment(1) != 'wines' %}
+				
+					{% set page_id = craft.request.getSegment(1) %}
+					{% for entry in craft.entries.section('pages').slug(page_id) %}
+						{% for banner in entry.pageBanner %}
+						
+							<div class="banner" style="background-image: url({{ banner.bannerImage.first().getUrl() }}) ">	
+								<div class="banner-headline">{{ banner.bannerHeadline }}</div>
+							</div>
+						
+						{% endfor %}
 					{% endfor %}
-				{% endfor %}
+				
+				{% endif %}
+
+				{#
+				# Wine Page
+				#}
+				{% if craft.request.getSegment(1) == 'wines' %}
+
+					<div class="banner" id="wine-page-banner">	
+						<ul class="wine-browser">
+							{% for entry in craft.entries.section('wine') %}
+								<li data-wine="{{ entry.slug }}">
+									<img src="{{ entry.bottleLabelImage.first().getUrl() }}" alt="{{ entry.title }}">
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+
+				{% endif %}
+
+				{#
+				# News Page
+				#}
+				{% if craft.request.getSegment(1) == 'news' %}
+
+					<div class="banner" id="news-page-banner">	
+						<div class="banner-headline">Tasting Notes</div>
+						<div class="banner-subheadline">2006-2011</div>
+					</div>
+
+				{% endif %}
 
 			</div>
 
