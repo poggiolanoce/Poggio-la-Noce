@@ -4,9 +4,14 @@
     $page_blocks = false;
     $headlines = $('.page-text-container h2');
     $('.page-text-container h2').on('click', function() {
-      $page_blocks.removeClass('active');
-      $(this).next().addClass('active');
-      return $(this).addClass('active');
+      if ($(this).hasClass('active')) {
+        $(this).next().removeClass('active');
+        return $(this).removeClass('active');
+      } else {
+        $page_blocks.removeClass('active');
+        $(this).next().addClass('active');
+        return $(this).addClass('active');
+      }
     });
     return $('.page-text-container').each(function() {
       $headlines.each(function() {

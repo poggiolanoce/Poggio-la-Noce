@@ -24,3 +24,7 @@ public/node_modules
 
 craft/storage/runtime/*
 craft/storage/userphotos/*
+
+public/images/pages/*
+public/images/banners/*
+public/images/wine/*

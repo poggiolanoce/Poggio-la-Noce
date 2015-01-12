@@ -54,17 +54,20 @@ header
     margin-left: -150px
   .navigation
     padding-top: 50px
-    float: right
-    // Need rules for less than 1400
-    &:first-of-type
-      float: left
-      li
-        margin-left: 45px
-        margin-right: 0
+    display: inline-block
+    text-align: center
     li
       display: inline-block
       text-transform: uppercase
-      margin-right: 45px
+    @media screen and (min-width: 1450px)
+      float: right
+      &:first-of-type
+        float: left
+        li
+          margin-left: 45px
+          margin-right: 0
+      li
+        margin-right: 45px
 
       
     a
