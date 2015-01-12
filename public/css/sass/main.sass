@@ -31,7 +31,6 @@ header
     height: $header-tall
   border-bottom: $header-border solid $copper
   height: $header-short
-  width: 100%
   display: block
   .header-container
     width: $wide-width
@@ -55,15 +54,19 @@ header
     margin-left: -150px
   .navigation
     padding-top: 50px
+    float: right
+    // Need rules for less than 1400
+    &:first-of-type
+      float: left
+      li
+        margin-left: 45px
+        margin-right: 0
     li
       display: inline-block
       text-transform: uppercase
-      &:nth-child(-n+4)
-        float: left
-        margin-left: 45px
-      &:nth-child(n+5)
-        float: right
-        margin-right: 45px
+      margin-right: 45px
+
+      
     a
       color: #fff
       text-decoration: none
@@ -110,6 +113,7 @@ footer
     padding-top: 115px
     height: 100%
     background-size: cover
+    background-position: center center
     text-align: center
     color: #fff
     font-size: 46px
