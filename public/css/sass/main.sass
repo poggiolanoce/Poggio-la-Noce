@@ -1,6 +1,7 @@
 @import "compass/reset"
 @import "compass/css3"
 @import "compass/utilities"
+@import "fonts"
 @import "mixins"
 
 // Variables
@@ -19,6 +20,8 @@ $black: #333333
 
 $text-gray: #999999
 $text-black: #333333
+
+$handwriting: "Nickyshand", Tahoma, Geneva, sans-serif
 
 body
   background-color: #fff
@@ -137,6 +140,9 @@ footer
   main#content &
     margin-top: 80px
     margin-bottom: 40px
+  h1
+    font-family: $handwriting
+    font-size: 94px
 
 .page-content
   &:after
