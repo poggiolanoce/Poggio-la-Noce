@@ -110,39 +110,49 @@ header .logo h1, header .logo h3 {
 /* line 55, sass/main.sass */
 header .navigation {
   padding-top: 50px;
-  float: right;
+  display: inline-block;
+  text-align: center;
 }
 /* line 59, sass/main.sass */
-header .navigation:first-of-type {
-  float: left;
-}
-/* line 61, sass/main.sass */
-header .navigation:first-of-type li {
-  margin-left: 45px;
-  margin-right: 0;
-}
-/* line 64, sass/main.sass */
 header .navigation li {
   display: inline-block;
   text-transform: uppercase;
-  margin-right: 45px;
 }
-/* line 70, sass/main.sass */
+@media screen and (min-width: 1450px) {
+  /* line 55, sass/main.sass */
+  header .navigation {
+    float: right;
+  }
+  /* line 64, sass/main.sass */
+  header .navigation:first-of-type {
+    float: left;
+  }
+  /* line 66, sass/main.sass */
+  header .navigation:first-of-type li {
+    margin-left: 45px;
+    margin-right: 0;
+  }
+  /* line 69, sass/main.sass */
+  header .navigation li {
+    margin-right: 45px;
+  }
+}
+/* line 73, sass/main.sass */
 header .navigation a {
   color: white;
   text-decoration: none;
 }
-/* line 73, sass/main.sass */
+/* line 76, sass/main.sass */
 header .navigation a.active {
   border-bottom: 3px solid white;
 }
-/* line 75, sass/main.sass */
+/* line 78, sass/main.sass */
 header .localization {
   position: absolute;
   top: 0;
   right: 45px;
 }
-/* line 79, sass/main.sass */
+/* line 82, sass/main.sass */
 header .localization li {
   padding: 7px 14px;
   background: white;
@@ -150,49 +160,49 @@ header .localization li {
   float: left;
   display: block;
 }
-/* line 85, sass/main.sass */
+/* line 88, sass/main.sass */
 header .localization li.active {
   background: #b24629;
 }
-/* line 87, sass/main.sass */
+/* line 90, sass/main.sass */
 header .localization li.active a {
   color: white;
 }
-/* line 89, sass/main.sass */
+/* line 92, sass/main.sass */
 header .localization li a {
   text-decoration: none;
   color: #999999;
 }
 
-/* line 92, sass/main.sass */
+/* line 95, sass/main.sass */
 footer {
   text-align: center;
   text-transform: uppercase;
   margin-top: 14px;
   margin-bottom: 50px;
 }
-/* line 97, sass/main.sass */
+/* line 100, sass/main.sass */
 footer ul {
   margin-bottom: 6px;
 }
-/* line 99, sass/main.sass */
+/* line 102, sass/main.sass */
 footer ul li {
   display: inline-block;
   padding: 0 25px;
   border-right: 1px solid #333333;
 }
-/* line 103, sass/main.sass */
+/* line 106, sass/main.sass */
 footer ul li:last-child {
   border-right: none;
 }
 
-/* line 106, sass/main.sass */
+/* line 109, sass/main.sass */
 .banners {
   height: 100%;
   position: relative;
   z-index: 0;
 }
-/* line 110, sass/main.sass */
+/* line 113, sass/main.sass */
 .banners .banner {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -206,31 +216,31 @@ footer ul li:last-child {
   color: white;
   font-size: 46px;
 }
-/* line 120, sass/main.sass */
+/* line 123, sass/main.sass */
 .banners .banner .banner-headline {
   max-width: 900px;
   margin: 0 auto;
   position: relative;
 }
 
-/* line 127, sass/main.sass */
+/* line 130, sass/main.sass */
 .container {
   width: 1005px;
   margin: 0 auto;
   position: relative;
 }
-/* line 131, sass/main.sass */
+/* line 134, sass/main.sass */
 #home main#content .container {
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 134, sass/main.sass */
+/* line 137, sass/main.sass */
 main#content .container {
   margin-top: 80px;
   margin-bottom: 40px;
 }
 
-/* line 139, sass/main.sass */
+/* line 142, sass/main.sass */
 .page-content:after {
   content: "";
   clear: both;
@@ -238,37 +248,37 @@ main#content .container {
   height: 1px;
   display: block;
 }
-/* line 145, sass/main.sass */
+/* line 148, sass/main.sass */
 .page-content .page-image {
   float: right;
   padding-left: 75px;
   width: 334px;
 }
-/* line 149, sass/main.sass */
+/* line 152, sass/main.sass */
 .page-content .page-image img {
   width: 334px;
 }
-/* line 151, sass/main.sass */
+/* line 154, sass/main.sass */
 .page-content .page-text {
   float: left;
   width: 596px;
 }
-/* line 154, sass/main.sass */
+/* line 157, sass/main.sass */
 .page-content .page-text h1 {
   margin-bottom: 10px;
 }
-/* line 156, sass/main.sass */
+/* line 159, sass/main.sass */
 .page-content .page-text h2 {
   border-top: 1px solid #b24629;
   border-bottom: 1px solid #b24629;
   padding: 25px 0;
   margin: 35px 0;
 }
-/* line 161, sass/main.sass */
+/* line 164, sass/main.sass */
 .page-content .page-text .page-text-block {
   display: none;
 }
-/* line 163, sass/main.sass */
+/* line 166, sass/main.sass */
 .page-content .page-text .page-text-block.active {
   display: block;
 }

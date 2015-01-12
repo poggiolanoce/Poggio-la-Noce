@@ -5,9 +5,13 @@ $(document).ready ->
 
   # Make each section active when clicked
   $('.page-text-container h2').on 'click', ()->
-    $page_blocks.removeClass('active')
-    $(this).next().addClass('active')
-    $(this).addClass('active')
+    if $(this).hasClass('active')
+      $(this).next().removeClass('active')
+      $(this).removeClass('active')
+    else
+      $page_blocks.removeClass('active')
+      $(this).next().addClass('active')
+      $(this).addClass('active')
 
   # Wrap content for collapsing content areas
   $('.page-text-container').each ()->
