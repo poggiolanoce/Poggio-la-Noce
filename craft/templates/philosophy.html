@@ -3,15 +3,17 @@
 {% block content %}
   
   {% for entry in craft.entries.section('pages').slug('philosophy') %}
-	<h1>{{ entry.pageSubtitle }}</h1>
-  <div class="page-content">
+  <article class="page-content">
     <div class="page-image">
       <img src="{{ entry.pageImage.first().getUrl() }}" alt="">
     </div>
     <div class="page-text">
-      {{ entry.pageBody }}
+      <h1>{{ entry.pageSubtitle }}</h1>
+      <div class="page-text-container">
+        {{ entry.pageBody }}
+      </div>
     </div>
-  </div>
+  </article>
   {% endfor %}
 	
 {% endblock %}
