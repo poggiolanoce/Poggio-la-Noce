@@ -282,3 +282,8 @@ main#content .container {
 .page-content .page-text .page-text-block.active {
   display: block;
 }
+
+/* line 172, sass/main.sass */
+.wine-page-content .wine-page-image img {
+  width: 195px;
+}

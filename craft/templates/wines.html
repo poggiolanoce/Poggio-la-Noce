@@ -1,0 +1,55 @@
+{% extends "_layout" %}
+
+{% block content %}
+  
+  {% for entry in craft.entries.section('wine') %}
+  <article class="page-content wine-page-content">
+    <div class="page-image wine-page-image">
+      <img src="{{ entry.bottleImage.first().getUrl() }}" alt="">
+    </div>
+    <div class="page-text wine-page-text">
+      <h1>{{ entry.title }}</h1>
+      <div class="page-text-container">
+
+        <h2>Description</h2>
+        {{ entry.wineDescription }}
+
+        <h2>Specifications</h2>
+        {% for specification in entry.wineSpecifications %}
+          <ul class="wine-specifications">
+            <li>
+            <strong>Wine Type:</strong>
+            {{ specification.wineType }}
+            </li>
+            <li>
+              <strong>Vineyard Location:</strong>
+              {{ specification.vineyardLocation }}
+            </li>
+            <li>
+              <strong>Grapes:</strong>
+              {{ specification.grapes }}
+            </li>
+            <li>
+              <strong>Exposition:</strong>
+              {{ specification.exposition }}
+            </li>
+            <li>
+              <strong>Soil:</strong>
+              {{ specification.soil }}
+            </li>
+            <li class="rich-text-specification">
+              <strong>Vinification and maturation:</strong>
+              {{ specification.vinificationAndMaturation }}
+            </li>
+          </ul>
+        {% endfor %}
+
+        <h2>Additional Details</h2>
+        {{ entry.wineAdditionalDetails }}
+
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+	
+{% endblock %}
