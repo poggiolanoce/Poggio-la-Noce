@@ -16,11 +16,19 @@ return array(
           'en_us' => 'http://craft.dev/en/',
           'it' => 'http://craft.dev/it/',
       ),
+      'environmentVariables' => array(
+        'siteUrl'        => 'http://craft.dev/',
+        'fileSystemPath' => '/Users/andy/Sites/poggio/'
+      )
   ),
   'craft.com' => array(
       'siteUrl' => array(
           'en_us' => 'http://example.com/en/',
           'it' => 'http://example.com/it/',
       ),
+      'environmentVariables' => array(
+        'siteUrl'        => 'http://craft.com/',
+        'fileSystemPath' => '/craft/'
+      )
   )
 );

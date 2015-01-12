@@ -15,49 +15,50 @@
 	<!-- Header -->
 	<header id="header">
 
-		<div class="container">
 			<nav>
-				<div class="logo">
-					<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
-					<h3><a href="{{ siteUrl }}">Fiesole, Italia</a></h3>
+				<div class="header-container">
+
+					<div class="logo">
+						<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
+						<h3><a href="{{ siteUrl }}">Fiesole, Italia</a></h3>
+					</div>
+					<ul class="navigation">
+						<li><a href="{{ url('about') }}" {% if craft.request.getSegment(1) == 'about' %}class="active"{% endif %}>About</a></li>
+						<li><a href="{{ url('philosophy') }}" {% if craft.request.getSegment(1) == 'philosophy' %}class="active"{% endif %}>Philosophy</a></li>
+						<li><a href="{{ url('vineyard') }}" {% if craft.request.getSegment(1) == 'vineyard' %}class="active"{% endif %}>Vineyard</a></li>
+						<li><a href="{{ url('wines') }}" {% if craft.request.getSegment(1) == 'wines' %}class="active"{% endif %}>Wines</a></li>
+						<li><a href="{{ url('olive-oil') }}" {% if craft.request.getSegment(1) == 'olive-oil' %}class="active"{% endif %}>Olive Oil</a></li>
+						<li><a href="{{ url('news') }}" {% if craft.request.getSegment(1) == 'news' %}class="active"{% endif %}>News</a></li>
+						<li><a href="{{ url('contact') }}" {% if craft.request.getSegment(1) == 'contact' %}class="active"{% endif %}>Contact</a></li>
+					</ul>
+					<ul class="localization">
+						<li {% if craft.locale == 'en_us' %}class="active"{% endif %}><a href="{{ url('/en') }}" >EN</a></li>
+						<li {% if craft.locale == 'it' %}class="active"{% endif %}><a href="{{ url('/it') }}" >ITA</a></li>
+					</ul>
 					
 				</div>
-				<ul class="navigation">
-					<li><a href="{{ url('about') }}" {% if craft.request.getSegment(1) == 'avout' %}class="active"{% endif %}>About</a></li>
-					<li><a href="{{ url('philosophy') }}" {% if craft.request.getSegment(1) == 'philosophy' %}class="active"{% endif %}>Philosophy</a></li>
-					<li><a href="{{ url('vineyard') }}" {% if craft.request.getSegment(1) == 'vineyard' %}class="active"{% endif %}>Vineyard</a></li>
-					<li><a href="{{ url('wines') }}" {% if craft.request.getSegment(1) == 'wines' %}class="active"{% endif %}>Wines</a></li>
-					<li><a href="{{ url('olive-oil') }}" {% if craft.request.getSegment(1) == 'olive-oil' %}class="active"{% endif %}>Olive Oil</a></li>
-					<li><a href="{{ url('news') }}" {% if craft.request.getSegment(1) == 'news' %}class="active"{% endif %}>News</a></li>
-					<li><a href="{{ url('contact') }}" {% if craft.request.getSegment(1) == 'contact' %}class="active"{% endif %}>Contact</a></li>
-				</ul>
-				<ul class="localization">
-					<li {% if craft.locale == 'en_us' %}class="active"{% endif %}><a href="{{ url('/en') }}" >EN</a></li>
-					<li {% if craft.locale == 'it' %}class="active"{% endif %}><a href="{{ url('/it') }}" >ITA</a></li>
-				</ul>
 			</nav>
-		</div>
 
 	</header>
 
 	<!-- Inherited Main Content -->
 	<main id="content" role="main">
-		{% block content %}
+		<div class="container">
+			{% block content %}
 
-		{% endblock %}
+			{% endblock %}
+		</div>
 	</main>
 
 	<!-- Footer -->
 	<footer id="footer">
-		<div class="container">
-			<ul>
-				<li>{{ siteName }}</li>
-				<li>{{ contactinformation.primaryAddress }}</li>
-				<li>{{ contactinformation.primaryPhone }}</li>
-				<li>{{ contactinformation.primaryEmail }}</li>
-			</ul>
-			<p>© {{ now.year }} {{ siteName }}. All rights reserved.</p>
-		</div>
+		<ul>
+			<li>{{ siteName }}</li>
+			<li>{{ contactinformation.primaryAddress }}</li>
+			<li>{{ contactinformation.primaryPhone }}</li>
+			<li>{{ contactinformation.primaryEmail }}</li>
+		</ul>
+		<p>© {{ now.year }} {{ siteName }}. All rights reserved.</p>
 	</footer>
 
 </body>

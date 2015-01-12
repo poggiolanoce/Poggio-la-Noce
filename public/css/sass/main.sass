@@ -18,19 +18,25 @@ $orange: #ED8F17
 $black: #333333
 
 $text-gray: #999999
+$text-black: #333333
 
 body
   background-color: #fff
+  color: $text-black
 
-// Header Work
+// Header and Footer Work
 
 header
-  &.home
+  #home &
     height: $header-tall
   border-bottom: $header-border solid $copper
   height: $header-short
   width: 100%
   display: block
+  .header-container
+    width: $wide-width
+    margin: 0 auto
+    position: relative
   nav
     background-color: rgba(0,0,0,0.35)
     height: 115px
@@ -77,3 +83,26 @@ header
       a
         text-decoration: none
         color: $text-gray
+footer
+  text-align: center
+  text-transform: uppercase
+  margin-top: 14px
+  margin-bottom: 50px
+  ul
+    margin-bottom: 6px
+    li
+      display: inline-block
+      padding: 0 25px
+      border-right: 1px solid $text-black
+      &:last-child
+        border-right: none
+
+// Content Work
+
+.container
+  width: $medium-width
+  margin: 0 auto
+  position: relative
+  main#content &
+    margin-top: 80px
+    margin-bottom: 40px
