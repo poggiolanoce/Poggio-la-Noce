@@ -26,13 +26,14 @@
 					<li><a href="{{ url('about') }}" {% if craft.request.getSegment(1) == 'avout' %}class="active"{% endif %}>About</a></li>
 					<li><a href="{{ url('philosophy') }}" {% if craft.request.getSegment(1) == 'philosophy' %}class="active"{% endif %}>Philosophy</a></li>
 					<li><a href="{{ url('vineyard') }}" {% if craft.request.getSegment(1) == 'vineyard' %}class="active"{% endif %}>Vineyard</a></li>
+					<li><a href="{{ url('wines') }}" {% if craft.request.getSegment(1) == 'wines' %}class="active"{% endif %}>Wines</a></li>
 					<li><a href="{{ url('olive-oil') }}" {% if craft.request.getSegment(1) == 'olive-oil' %}class="active"{% endif %}>Olive Oil</a></li>
 					<li><a href="{{ url('news') }}" {% if craft.request.getSegment(1) == 'news' %}class="active"{% endif %}>News</a></li>
 					<li><a href="{{ url('contact') }}" {% if craft.request.getSegment(1) == 'contact' %}class="active"{% endif %}>Contact</a></li>
 				</ul>
 				<ul class="localization">
-					<li><a href="{{ url('/en') }}" {% if craft.request.firstSegment == 'en' %}class="active"{% endif %}>EN</a></li>
-					<li><a href="{{ url('/it') }}" {% if craft.request.firstSegment == 'it' %}class="active"{% endif %}>ITA</a></li>
+					<li {% if craft.locale == 'en_us' %}class="active"{% endif %}><a href="{{ url('/en') }}" >EN</a></li>
+					<li {% if craft.locale == 'it' %}class="active"{% endif %}><a href="{{ url('/it') }}" >ITA</a></li>
 				</ul>
 			</nav>
 		</div>

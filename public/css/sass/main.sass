@@ -13,9 +13,11 @@ $header-tall: 770px
 $header-short: 482px
 $header-border: 30px
 
-$brown: #B24629
+$copper: #B24629
 $orange: #ED8F17
 $black: #333333
+
+$text-gray: #999999
 
 body
   background-color: #fff
@@ -25,10 +27,53 @@ body
 header
   &.home
     height: $header-tall
-  border-bottom: $header-border solid $brown
+  border-bottom: $header-border solid $copper
   height: $header-short
   width: 100%
   display: block
   nav
     background-color: rgba(0,0,0,0.35)
     height: 115px
+  .logo
+    h1, h3
+      text-indent: -10000px
+    width: 300px
+    height: 92px
+    background: image-url('site/logo.png') no-repeat 0 0
+    position: absolute
+    left: 50%
+    top: 10px
+    margin-left: -150px
+  .navigation
+    padding-top: 50px
+    li
+      display: inline-block
+      text-transform: uppercase
+      &:nth-child(-n+4)
+        float: left
+        margin-left: 45px
+      &:nth-child(n+5)
+        float: right
+        margin-right: 45px
+    a
+      color: #fff
+      text-decoration: none
+      &.active
+        border-bottom: 3px solid #fff
+  .localization
+    position: absolute
+    top: 0
+    right: 45px
+    li
+      padding: 7px 14px
+      background: #fff
+      color: $text-gray
+      float: left
+      display: block
+      &.active
+        background: $copper
+        a
+          color: #fff
+      a
+        text-decoration: none
+        color: $text-gray

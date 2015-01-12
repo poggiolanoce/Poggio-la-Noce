@@ -63,24 +63,93 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 20, sass/main.sass */
+/* line 22, sass/main.sass */
 body {
   background-color: white;
 }
 
-/* line 25, sass/main.sass */
+/* line 27, sass/main.sass */
 header {
   border-bottom: 30px solid #b24629;
   height: 482px;
   width: 100%;
   display: block;
 }
-/* line 26, sass/main.sass */
+/* line 28, sass/main.sass */
 header.home {
   height: 770px;
 }
-/* line 32, sass/main.sass */
+/* line 34, sass/main.sass */
 header nav {
   background-color: rgba(0, 0, 0, 0.35);
   height: 115px;
+}
+/* line 37, sass/main.sass */
+header .logo {
+  width: 300px;
+  height: 92px;
+  background: url('/images/site/logo.png?1421081585') no-repeat 0 0;
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  margin-left: -150px;
+}
+/* line 38, sass/main.sass */
+header .logo h1, header .logo h3 {
+  text-indent: -10000px;
+}
+/* line 47, sass/main.sass */
+header .navigation {
+  padding-top: 50px;
+}
+/* line 49, sass/main.sass */
+header .navigation li {
+  display: inline-block;
+  text-transform: uppercase;
+}
+/* line 52, sass/main.sass */
+header .navigation li:nth-child(-n+4) {
+  float: left;
+  margin-left: 45px;
+}
+/* line 55, sass/main.sass */
+header .navigation li:nth-child(n+5) {
+  float: right;
+  margin-right: 45px;
+}
+/* line 58, sass/main.sass */
+header .navigation a {
+  color: white;
+  text-decoration: none;
+}
+/* line 61, sass/main.sass */
+header .navigation a.active {
+  border-bottom: 3px solid white;
+}
+/* line 63, sass/main.sass */
+header .localization {
+  position: absolute;
+  top: 0;
+  right: 45px;
+}
+/* line 67, sass/main.sass */
+header .localization li {
+  padding: 7px 14px;
+  background: white;
+  color: #999999;
+  float: left;
+  display: block;
+}
+/* line 73, sass/main.sass */
+header .localization li.active {
+  background: #b24629;
+}
+/* line 75, sass/main.sass */
+header .localization li.active a {
+  color: white;
+}
+/* line 77, sass/main.sass */
+header .localization li a {
+  text-decoration: none;
+  color: #999999;
 }
