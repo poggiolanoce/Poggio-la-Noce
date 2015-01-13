@@ -290,7 +290,7 @@ main#content .container {
 }
 /* line 167, sass/main.sass */
 .page-content .page-text h1 {
-  margin-bottom: 10px;
+  margin-bottom: 45px;
 }
 /* line 169, sass/main.sass */
 .page-content .page-text h2 {
@@ -300,7 +300,7 @@ main#content .container {
   border-top: 1px solid #b24629;
   border-bottom: 1px solid #b24629;
   padding: 25px 0;
-  margin: 35px 0;
+  margin-bottom: -1px;
   height: 68px;
   position: relative;
 }
@@ -333,25 +333,26 @@ main#content .container {
 /* line 192, sass/main.sass */
 .page-content .page-text .page-text-block {
   display: none;
+  margin: 35px 0;
 }
-/* line 194, sass/main.sass */
+/* line 195, sass/main.sass */
 .page-content .page-text .page-text-block.active {
   display: block;
 }
 
-/* line 197, sass/main.sass */
+/* line 198, sass/main.sass */
 .wine-page-content {
   display: none;
 }
-/* line 199, sass/main.sass */
+/* line 200, sass/main.sass */
 .wine-page-content.active {
   display: block;
 }
-/* line 202, sass/main.sass */
+/* line 203, sass/main.sass */
 .wine-page-content .wine-page-image {
   position: relative;
 }
-/* line 204, sass/main.sass */
+/* line 205, sass/main.sass */
 .wine-page-content .wine-page-image:before {
   content: "";
   display: block;
@@ -366,7 +367,7 @@ main#content .container {
   top: 110px;
   z-index: 0;
 }
-/* line 217, sass/main.sass */
+/* line 218, sass/main.sass */
 .wine-page-content .wine-page-image img {
   float: right;
   margin-right: 60px;
@@ -375,14 +376,14 @@ main#content .container {
   z-index: 1;
 }
 
-/* line 224, sass/main.sass */
+/* line 225, sass/main.sass */
 .wine-browser {
   width: 1000px;
   margin: 0 auto;
   text-align: justify;
   padding-top: 55px;
 }
-/* line 230, sass/main.sass */
+/* line 231, sass/main.sass */
 .wine-browser li {
   display: inline-block;
   width: 160px;
@@ -394,7 +395,7 @@ main#content .container {
   padding-bottom: 15px;
   vertical-align: top;
 }
-/* line 241, sass/main.sass */
+/* line 242, sass/main.sass */
 .wine-browser li:hover:after {
   content: "";
   width: 66px;
@@ -406,32 +407,32 @@ main#content .container {
   left: 50%;
   margin-left: -33px;
 }
-/* line 251, sass/main.sass */
+/* line 252, sass/main.sass */
 .wine-browser li img {
   width: 140px;
   padding: 10px;
 }
-/* line 254, sass/main.sass */
+/* line 255, sass/main.sass */
 .wine-browser li:last-child {
   margin-right: 0;
 }
-/* line 256, sass/main.sass */
+/* line 257, sass/main.sass */
 .wine-browser li.active img {
   padding: 0;
   border: 10px solid #ed8f17;
 }
 @media screen and (min-width: 1180px) {
-  /* line 224, sass/main.sass */
+  /* line 225, sass/main.sass */
   .wine-browser {
     width: 1180px;
     padding-top: 20px;
   }
-  /* line 262, sass/main.sass */
+  /* line 263, sass/main.sass */
   .wine-browser li {
     width: 190px;
     margin-right: 57px;
   }
-  /* line 265, sass/main.sass */
+  /* line 266, sass/main.sass */
   .wine-browser li img {
     width: 170px;
   }
