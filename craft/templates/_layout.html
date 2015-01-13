@@ -68,11 +68,7 @@
 
 					<div class="banner" id="wine-page-banner">	
 						<ul class="wine-browser">
-							{% for entry in craft.entries.section('wine') %}
-								<li data-wine="{{ entry.slug }}">
-									<img src="{{ entry.bottleLabelImage.first().getUrl() }}" alt="{{ entry.title }}">
-								</li>
-							{% endfor %}
+							{% for entry in craft.entries.section('wine') %}<li data-wine="{{ entry.slug }}" {% if loop.index == 1 %}class="active"{% endif %}><img src="{{ entry.bottleLabelImage.first().getUrl() }}" alt="{{ entry.title }}"></li>{% endfor %}
 						</ul>
 					</div>
 

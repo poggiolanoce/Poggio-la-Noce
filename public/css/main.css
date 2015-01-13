@@ -338,14 +338,14 @@ main#content .container {
 /* line 207, sass/main.sass */
 .wine-browser li {
   display: inline-block;
-  width: 140px;
-  padding: 10px;
+  width: 160px;
   margin: 0;
   padding: 0;
-  margin-right: 62px;
+  margin-right: 50px;
   cursor: pointer;
   position: relative;
   padding-bottom: 20px;
+  vertical-align: top;
 }
 /* line 218, sass/main.sass */
 .wine-browser li:hover:after {
@@ -362,13 +362,14 @@ main#content .container {
 /* line 228, sass/main.sass */
 .wine-browser li img {
   width: 140px;
+  padding: 10px;
 }
-/* line 230, sass/main.sass */
+/* line 231, sass/main.sass */
 .wine-browser li:last-child {
   margin-right: 0;
 }
-/* line 232, sass/main.sass */
-.wine-browser li.active {
+/* line 233, sass/main.sass */
+.wine-browser li.active img {
   padding: 0;
   border: 10px solid #ed8f17;
 }
@@ -376,14 +377,14 @@ main#content .container {
   /* line 201, sass/main.sass */
   .wine-browser {
     width: 1180px;
-    padding-top: 10px;
+    padding-top: 20px;
   }
-  /* line 238, sass/main.sass */
+  /* line 239, sass/main.sass */
   .wine-browser li {
-    width: 170px;
-    margin-right: 71px;
+    width: 190px;
+    margin-right: 57px;
   }
-  /* line 241, sass/main.sass */
+  /* line 242, sass/main.sass */
   .wine-browser li img {
     width: 170px;
   }
