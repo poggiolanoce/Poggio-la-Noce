@@ -2,7 +2,7 @@
 
 {% block content %}
   
-  {% for entry in craft.entries.section('wine').limit(3) %}
+  {% for entry in craft.entries.section('wine') %}
   <article class="page-content wine-page-content {% if loop.index == 1 %}active{% endif %}" id="wine-{{ entry.slug }}">
     <div class="page-image wine-page-image">
       <img src="{{ entry.bottleImage.first().getUrl() }}" alt="">
