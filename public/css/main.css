@@ -363,14 +363,14 @@ main#content .container {
   background-repeat: no-repeat;
   background-size: 458px 454px;
   position: absolute;
-  left: 0;
+  right: -90px;
   top: 110px;
   z-index: 0;
 }
 /* line 218, sass/main.sass */
 .wine-page-content .wine-page-image img {
   float: right;
-  margin-right: 60px;
+  margin-right: 5px;
   width: 195px;
   position: relative;
   z-index: 1;
