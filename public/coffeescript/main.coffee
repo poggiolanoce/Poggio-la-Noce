@@ -18,7 +18,7 @@ $(document).ready ->
 
   # Wrap content for collapsing content areas
   $('.page-text-container').each ()->
-    $headlines.each ()->
+    $(this).find('h2').each ()->
       $(this).nextUntil('h2').wrapAll('<div class="page-text-block" />')
     $page_blocks = $('.page-text-block')
 

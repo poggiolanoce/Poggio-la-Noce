@@ -17,7 +17,7 @@
       }
     });
     $('.page-text-container').each(function() {
-      $headlines.each(function() {
+      $(this).find('h2').each(function() {
         return $(this).nextUntil('h2').wrapAll('<div class="page-text-block" />');
       });
       $page_blocks = $('.page-text-block');
