@@ -1,7 +1,9 @@
 $(document).ready ->
   $page_blocks = false
   $headlines = $('.page-text-container h2')
-
+  
+  $wine_selection = $('.wine-browser li')
+  $wine_content =  $('.wine-page-content')
 
   # Make each section active when clicked
   $('.page-text-container h2').on 'click', ()->
@@ -22,3 +24,10 @@ $(document).ready ->
     $headlines.eq(0).trigger('click')
 
   # Wine Browsing
+  $wine_selection.on 'click', ()->
+    $wine_selection.removeClass('active')
+    $(this).addClass('active')
+
+    $wine_content.removeClass('active')
+    $selection = $("#wine-#{$(this).data('wine')}")
+    $selection.addClass('active')
