@@ -11,6 +11,7 @@
         return $(this).removeClass('active');
       } else {
         $page_blocks.removeClass('active');
+        $headlines.removeClass('active');
         $(this).next().addClass('active');
         return $(this).addClass('active');
       }

@@ -294,33 +294,64 @@ main#content .container {
 }
 /* line 169, sass/main.sass */
 .page-content .page-text h2 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   border-top: 1px solid #b24629;
   border-bottom: 1px solid #b24629;
   padding: 25px 0;
   margin: 35px 0;
+  height: 68px;
+  position: relative;
 }
-/* line 174, sass/main.sass */
+/* line 177, sass/main.sass */
+.page-content .page-text h2:after {
+  content: "";
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 18px;
+  top: 25px;
+  display: block;
+  background-image: url("../images/site/accordion.png");
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+@media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
+  /* line 177, sass/main.sass */
+  .page-content .page-text h2:after {
+    background-image: url("../images/site/accordion@2x.png");
+    background-size: 25px 98px;
+  }
+}
+/* line 189, sass/main.sass */
+.page-content .page-text h2.active:after {
+  top: 20px;
+  background-position: 0 bottom;
+}
+/* line 192, sass/main.sass */
 .page-content .page-text .page-text-block {
   display: none;
 }
-/* line 176, sass/main.sass */
+/* line 194, sass/main.sass */
 .page-content .page-text .page-text-block.active {
   display: block;
 }
 
-/* line 179, sass/main.sass */
+/* line 197, sass/main.sass */
 .wine-page-content {
   display: none;
 }
-/* line 181, sass/main.sass */
+/* line 199, sass/main.sass */
 .wine-page-content.active {
   display: block;
 }
-/* line 184, sass/main.sass */
+/* line 202, sass/main.sass */
 .wine-page-content .wine-page-image {
   position: relative;
 }
-/* line 186, sass/main.sass */
+/* line 204, sass/main.sass */
 .wine-page-content .wine-page-image:before {
   content: "";
   display: block;
@@ -335,7 +366,7 @@ main#content .container {
   top: 110px;
   z-index: 0;
 }
-/* line 199, sass/main.sass */
+/* line 217, sass/main.sass */
 .wine-page-content .wine-page-image img {
   float: right;
   margin-right: 60px;
@@ -344,14 +375,14 @@ main#content .container {
   z-index: 1;
 }
 
-/* line 206, sass/main.sass */
+/* line 224, sass/main.sass */
 .wine-browser {
   width: 1000px;
   margin: 0 auto;
   text-align: justify;
   padding-top: 55px;
 }
-/* line 212, sass/main.sass */
+/* line 230, sass/main.sass */
 .wine-browser li {
   display: inline-block;
   width: 160px;
@@ -363,7 +394,7 @@ main#content .container {
   padding-bottom: 15px;
   vertical-align: top;
 }
-/* line 223, sass/main.sass */
+/* line 241, sass/main.sass */
 .wine-browser li:hover:after {
   content: "";
   width: 66px;
@@ -375,32 +406,32 @@ main#content .container {
   left: 50%;
   margin-left: -33px;
 }
-/* line 233, sass/main.sass */
+/* line 251, sass/main.sass */
 .wine-browser li img {
   width: 140px;
   padding: 10px;
 }
-/* line 236, sass/main.sass */
+/* line 254, sass/main.sass */
 .wine-browser li:last-child {
   margin-right: 0;
 }
-/* line 238, sass/main.sass */
+/* line 256, sass/main.sass */
 .wine-browser li.active img {
   padding: 0;
   border: 10px solid #ed8f17;
 }
 @media screen and (min-width: 1180px) {
-  /* line 206, sass/main.sass */
+  /* line 224, sass/main.sass */
   .wine-browser {
     width: 1180px;
     padding-top: 20px;
   }
-  /* line 244, sass/main.sass */
+  /* line 262, sass/main.sass */
   .wine-browser li {
     width: 190px;
     margin-right: 57px;
   }
-  /* line 247, sass/main.sass */
+  /* line 265, sass/main.sass */
   .wine-browser li img {
     width: 170px;
   }

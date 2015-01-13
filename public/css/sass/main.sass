@@ -167,10 +167,28 @@ footer
     h1
       margin-bottom: 10px
     h2
+      @include box-sizing('border-box')
       border-top: 1px solid $copper
       border-bottom: 1px solid $copper
       padding: 25px 0
       margin: 35px 0
+      height: 68px
+      position: relative
+      &:after
+        content: ""
+        width: 25px
+        height: 25px
+        position: absolute
+        right: 18px
+        top: 25px
+        display: block
+        @include hr-image('../images/site/accordion.png', '../images/site/accordion@2x.png')
+        background-size: 25px
+        background-repeat: no-repeat
+        background-position: 0 0
+      &.active:after
+        top: 20px
+        background-position: 0 bottom
     .page-text-block
       display: none
       &.active
