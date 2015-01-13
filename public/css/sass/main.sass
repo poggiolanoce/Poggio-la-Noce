@@ -23,6 +23,7 @@ $text-black: #333333
 
 $handwriting: "Nickyshand", Tahoma, Geneva, sans-serif
 $serif: "P22MackinacMedium", Georgia, serif
+$sans: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif
 
 body
   background-color: #fff
@@ -62,7 +63,7 @@ header
     top: 10px
     margin-left: -150px
   .navigation
-    padding-top: 50px
+    padding-top: 51px
     display: inline-block
     text-align: center
     li
@@ -73,17 +74,17 @@ header
       &:first-of-type
         float: left
         li
-          margin-left: 45px
+          margin-left: 68px
           margin-right: 0
       li
         margin-right: 45px
-
-      
     a
+      font-size: 18px
       color: #fff
       text-decoration: none
+      padding-bottom: 10px
       &.active
-        border-bottom: 3px solid #fff
+        border-bottom: 5px solid #fff
   .localization
     position: absolute
     top: 0
@@ -106,8 +107,9 @@ footer
   text-transform: uppercase
   margin-top: 14px
   margin-bottom: 50px
+  font-size: 14px
   ul
-    margin-bottom: 6px
+    margin-bottom: 10px
     li
       display: inline-block
       padding: 0 25px
@@ -192,10 +194,19 @@ footer
     text-align: center
     color: #fff
     font-size: 46px
-    .banner-headline
+    .banner-headline-container
       max-width: 900px
       margin: 0 auto
       position: relative
+      display: table
+      height: 93%
+    .banner-headline
+      font-family: $handwriting
+      font-size: 46px
+      line-height: 58px
+      display: table-cell 
+      vertical-align: middle 
+      text-align: center 
   #wine-page-banner
     background-image: image-url('banners/wine-banner.jpg')
 
@@ -237,10 +248,14 @@ footer
       @include box-sizing('border-box')
       border-top: 1px solid $copper
       border-bottom: 1px solid $copper
-      padding: 25px 0
       margin-bottom: -1px
       height: 68px
       position: relative
+      font-family: $sans
+      color: $copper
+      text-transform: uppercase
+      font-size: 30px
+      line-height: 68px
       &:after
         content: ""
         width: 25px

@@ -59,8 +59,12 @@
 					{% for entry in craft.entries.section('pages').slug(page_id) %}
 						{% for banner in entry.pageBanner %}
 						
-							<div class="banner {% if loop.index == 1 %}active{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl() }}) ">	
-								<div class="banner-headline">{{ banner.bannerHeadline }} {{loop.length}}</div>
+							<div class="banner {% if loop.index == 1 %}active{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl() }}) ">
+
+								<div class="banner-headline-container">
+									<div class="banner-headline">{{ banner.bannerHeadline }} {{loop.length}}</div>
+								</div>
+
 							</div>
 						
 						{% endfor %}
