@@ -69,9 +69,9 @@
 								<li class="previous">Previous</li>
 								<li class="next">Next</li>
 							</ul>
-							<ul class="banner-dots">
+							<ul class="banner-dots" style="margin-left: -{{ (30 * entry.pageBanner|length)/2 }}px">
 								{% for banner in entry.pageBanner %}
-									<li data-slide="{{ loop.index - 1}}"></li>
+									<li data-slide="{{ loop.index - 1}}" {% if loop.index == 1 %}class="active"{% endif %}></li>
 								{% endfor %}
 							</ul>
 						{% endif %}

@@ -6,6 +6,10 @@ $(document).ready ->
   $wine_content =  $('.wine-page-content')
 
   is_transitioning = false
+  current_slide = 0
+  max_slide = $('.banners .banner').length - 1
+  $banner_dots = $('.banner-dots li')
+  $banner_arrows = $('.banner-arrows li')
 
   # Make each section active when clicked
   $('.page-text-container h2').on 'click', ()->
@@ -40,9 +44,20 @@ $(document).ready ->
   if $('.banners .banner').length > 1
     $('.banners').addClass('banner_slideshow')
 
-  $('.banner_slideshow .banner-dots li').on 'click', ()->
+  $banner_dots.on 'click', ()->
     next_slide = $(this).data('slide')
     changeSlide(next_slide)
+
+  $banner_arrows.on 'click', ()->
+    direction = if $(this).hasClass('previous') then -1 else 1
+    if current_slide == 0 && direction == -1
+      changeSlide(max_slide)
+    else if current_slide == max_slide && direction == 1
+      changeSlide(0)
+    else
+      changeSlide(current_slide + direction)
+    
+
 
   changeSlide = (slide)->
     $previously_active = $('.banners .banner.active')
@@ -52,11 +67,15 @@ $(document).ready ->
     if is_transitioning then return false
 
     is_transitioning = true
+    current_slide = slide
+
+    $banner_dots.filter('.active').removeClass('active')
+    $banner_dots.eq(slide).addClass('active')
 
     $previously_active.removeClass('active').addClass('previously_active')
     $active.addClass('active')
 
-    setTimeout finishChangeslide, 2000
+    setTimeout finishChangeslide, 1000
 
   finishChangeslide = ()->
     $('.previously_active').removeClass('previously_active')
