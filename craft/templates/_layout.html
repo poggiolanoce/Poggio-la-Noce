@@ -19,8 +19,10 @@
 				<div class="header-container">
 
 					<div class="logo">
-						<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
-						<h3><a href="{{ siteUrl }}">Fiesole, Italia</a></h3>
+						<a href="{{ siteUrl }}">
+						<h1>{{ siteName }}</h1>
+						<h3>Fiesole, Italia</h3>
+						</a>
 					</div>
 					<ul class="navigation">
 						<li><a href="{{ url('about') }}" {% if craft.request.getSegment(1) == 'about' %}class="active"{% endif %}>About</a></li>
@@ -48,15 +50,32 @@
 				#}
 				{% if craft.request.getSegment(1) != 'news' or craft.request.getSegment(1) != 'wines' %}
 				
-					{% set page_id = craft.request.getSegment(1) %}
+					{% if craft.request.getSegment(1) %}
+						{% set page_id = craft.request.getSegment(1)  %}
+					{% else %}  
+						{% set page_id = 'home' %}
+					{% endif %}
+
 					{% for entry in craft.entries.section('pages').slug(page_id) %}
 						{% for banner in entry.pageBanner %}
 						
-							<div class="banner" style="background-image: url({{ banner.bannerImage.first().getUrl() }}) ">	
-								<div class="banner-headline">{{ banner.bannerHeadline }}</div>
+							<div class="banner {% if loop.index == 1 %}active{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl() }}) ">	
+								<div class="banner-headline">{{ banner.bannerHeadline }} {{loop.length}}</div>
 							</div>
 						
 						{% endfor %}
+						{% if entry.pageBanner|length > 1 %}
+							<ul class="banner-arrows">
+								<li class="previous">Previous</li>
+								<li class="next">Next</li>
+							</ul>
+							<ul class="banner-dots">
+								{% for banner in entry.pageBanner %}
+									<li data-slide="{{ loop.index - 1}}"></li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+
 					{% endfor %}
 				
 				{% endif %}
