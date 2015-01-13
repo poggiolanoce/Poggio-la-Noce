@@ -127,6 +127,8 @@ footer
       max-width: 900px
       margin: 0 auto
       position: relative
+  #wine-page-banner
+    background-image: image-url('banners/wine-banner.jpg')
 
 // Content Work
 
@@ -195,3 +197,46 @@ footer
       width: 195px
       position: relative
       z-index: 1
+
+.wine-browser
+  width: 1000px
+  margin: 0 auto
+  text-align: justify
+  position:relative
+  padding-top: 55px
+  li
+    display: inline-block
+    width: 140px
+    padding: 10px
+    margin: 0
+    padding: 0
+    margin-right: 62px
+    cursor: pointer
+    position: relative
+    padding-bottom: 20px
+    &:hover
+      &:after
+        content: ""
+        width: 66px
+        height: 7px
+        background-color: #fff
+        display: block
+        position: absolute
+        bottom: 0
+        left: 50%
+        margin-left: -33px
+    img
+      width: 140px
+    &:last-child
+      margin-right: 0
+    &.active
+      padding: 0
+      border: 10px solid $orange
+  @media screen and (min-width: 1180px)
+    width: 1180px
+    padding-top: 10px
+    li
+      width: 170px
+      margin-right: 71px
+      img
+        width: 170px
