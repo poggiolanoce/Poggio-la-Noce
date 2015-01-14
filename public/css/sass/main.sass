@@ -44,8 +44,8 @@ header
     position: relative
   nav
     background-color: rgba(0,0,0,0.35)
-    height: 140px
-    margin-bottom: -140px
+    height: 115px
+    margin-bottom: -115px
     z-index: 1
     position: relative
   .logo
@@ -61,24 +61,27 @@ header
     background-size: 100%
     position: absolute
     left: 50%
-    top: 10px
+    top: 19px
     margin-left: -125px
   .navigation
-    padding-top: 91px
+    padding-top: 51px
     display: inline-block
     text-align: center
+    float: right
     li
       display: inline-block
       text-transform: uppercase
-    @media screen and (min-width: $wide-width)
-      float: right
-      &:first-of-type
-        float: left
-        li
-          margin-left: 68px
-          margin-right: 0
+      margin-right: 12px
+    &.left-navigation
+      float: left
       li
-        margin-right: 45px
+        margin-left: 32px
+        margin-right: 0
+        &:first-child
+          margin-left: 0
+    &.right-navigation
+      li:last-child
+        margin-right: 0
     a
       font-size: 18px
       color: #fff
@@ -118,8 +121,17 @@ header
       width: 300px
       height: 92px
       margin-left: -150px
+      top: 10px
     .navigation
       padding-top: 51px
+      li
+        margin-right: 45px
+      &.left-navigation
+        li, li:first-child
+          margin-left: 68px
+      &.right-navigation
+        li:last-child
+          margin-right: 45px
 footer
   #home &
     padding-top: 14px

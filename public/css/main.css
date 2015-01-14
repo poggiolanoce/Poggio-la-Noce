@@ -200,8 +200,8 @@ header .header-container {
 /* line 45, sass/main.sass */
 header nav {
   background-color: rgba(0, 0, 0, 0.35);
-  height: 140px;
-  margin-bottom: -140px;
+  height: 115px;
+  margin-bottom: -115px;
   z-index: 1;
   position: relative;
 }
@@ -213,7 +213,7 @@ header .logo {
   background-size: 100%;
   position: absolute;
   left: 50%;
-  top: 10px;
+  top: 19px;
   margin-left: -125px;
 }
 /* line 52, sass/main.sass */
@@ -228,46 +228,46 @@ header .logo a {
 }
 /* line 66, sass/main.sass */
 header .navigation {
-  padding-top: 91px;
+  padding-top: 51px;
   display: inline-block;
   text-align: center;
+  float: right;
 }
-/* line 70, sass/main.sass */
+/* line 71, sass/main.sass */
 header .navigation li {
   display: inline-block;
   text-transform: uppercase;
+  margin-right: 12px;
 }
-@media screen and (min-width: 1440px) {
-  /* line 66, sass/main.sass */
-  header .navigation {
-    float: right;
-  }
-  /* line 75, sass/main.sass */
-  header .navigation:first-of-type {
-    float: left;
-  }
-  /* line 77, sass/main.sass */
-  header .navigation:first-of-type li {
-    margin-left: 68px;
-    margin-right: 0;
-  }
-  /* line 80, sass/main.sass */
-  header .navigation li {
-    margin-right: 45px;
-  }
+/* line 75, sass/main.sass */
+header .navigation.left-navigation {
+  float: left;
 }
-/* line 82, sass/main.sass */
+/* line 77, sass/main.sass */
+header .navigation.left-navigation li {
+  margin-left: 32px;
+  margin-right: 0;
+}
+/* line 80, sass/main.sass */
+header .navigation.left-navigation li:first-child {
+  margin-left: 0;
+}
+/* line 83, sass/main.sass */
+header .navigation.right-navigation li:last-child {
+  margin-right: 0;
+}
+/* line 85, sass/main.sass */
 header .navigation a {
   font-size: 18px;
   color: white;
   text-decoration: none;
   padding-bottom: 10px;
 }
-/* line 87, sass/main.sass */
+/* line 90, sass/main.sass */
 header .navigation a.active {
   border-bottom: 5px solid white;
 }
-/* line 89, sass/main.sass */
+/* line 92, sass/main.sass */
 header .localization {
   position: absolute;
   top: 0;
@@ -275,7 +275,7 @@ header .localization {
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
   display: none;
 }
-/* line 95, sass/main.sass */
+/* line 98, sass/main.sass */
 header .localization li {
   padding: 9px 12px;
   background: white;
@@ -283,47 +283,60 @@ header .localization li {
   float: left;
   display: block;
 }
-/* line 101, sass/main.sass */
+/* line 104, sass/main.sass */
 header .localization li.active {
   background: #b24629;
 }
-/* line 103, sass/main.sass */
+/* line 106, sass/main.sass */
 header .localization li.active a {
   color: white;
 }
-/* line 105, sass/main.sass */
+/* line 108, sass/main.sass */
 header .localization li a {
   text-decoration: none;
   color: #999999;
 }
 @media screen and (min-width: 1440px) {
-  /* line 109, sass/main.sass */
+  /* line 112, sass/main.sass */
   header .header-container {
     width: 1440px;
   }
-  /* line 111, sass/main.sass */
+  /* line 114, sass/main.sass */
   header nav {
     height: 115px;
     margin-bottom: -115px;
   }
-  /* line 114, sass/main.sass */
+  /* line 117, sass/main.sass */
   header .logo {
     width: 300px;
     height: 92px;
     margin-left: -150px;
+    top: 10px;
   }
-  /* line 115, sass/main.sass */
+  /* line 118, sass/main.sass */
   header .logo a {
     width: 300px;
     height: 92px;
   }
-  /* line 121, sass/main.sass */
+  /* line 125, sass/main.sass */
   header .navigation {
     padding-top: 51px;
   }
+  /* line 127, sass/main.sass */
+  header .navigation li {
+    margin-right: 45px;
+  }
+  /* line 130, sass/main.sass */
+  header .navigation.left-navigation li, header .navigation.left-navigation li:first-child {
+    margin-left: 68px;
+  }
+  /* line 133, sass/main.sass */
+  header .navigation.right-navigation li:last-child {
+    margin-right: 45px;
+  }
 }
 
-/* line 123, sass/main.sass */
+/* line 135, sass/main.sass */
 footer {
   text-align: center;
   text-transform: uppercase;
@@ -331,32 +344,32 @@ footer {
   margin-bottom: 50px;
   font-size: 14px;
 }
-/* line 124, sass/main.sass */
+/* line 136, sass/main.sass */
 #home footer {
   padding-top: 14px;
 }
-/* line 131, sass/main.sass */
+/* line 143, sass/main.sass */
 footer ul {
   margin-bottom: 10px;
 }
-/* line 133, sass/main.sass */
+/* line 145, sass/main.sass */
 footer ul li {
   display: inline-block;
   padding: 0 25px;
   border-right: 1px solid #333333;
 }
-/* line 137, sass/main.sass */
+/* line 149, sass/main.sass */
 footer ul li:last-child {
   border-right: none;
 }
 
-/* line 140, sass/main.sass */
+/* line 152, sass/main.sass */
 .banners {
   height: 100%;
   position: relative;
   z-index: 0;
 }
-/* line 144, sass/main.sass */
+/* line 156, sass/main.sass */
 .banners .banner-arrows {
   position: absolute;
   z-index: 10;
@@ -364,7 +377,7 @@ footer ul li:last-child {
   margin-top: -30px;
   width: 100%;
 }
-/* line 150, sass/main.sass */
+/* line 162, sass/main.sass */
 .banners .banner-arrows li {
   width: 32px;
   height: 60px;
@@ -385,34 +398,34 @@ footer ul li:last-child {
   transition-duration: 0.2s;
 }
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
-  /* line 150, sass/main.sass */
+  /* line 162, sass/main.sass */
   .banners .banner-arrows li {
     background-image: url("../images/site/arrows@2x.png");
     background-size: 64px 60px;
   }
 }
-/* line 162, sass/main.sass */
+/* line 174, sass/main.sass */
 .banners .banner-arrows li:hover {
   opacity: 0.6;
 }
-/* line 164, sass/main.sass */
+/* line 176, sass/main.sass */
 .banners .banner-arrows li.previous {
   background-position: top left;
   left: 20px;
 }
-/* line 167, sass/main.sass */
+/* line 179, sass/main.sass */
 .banners .banner-arrows li.next {
   background-position: top right;
   right: 20px;
 }
-/* line 171, sass/main.sass */
+/* line 183, sass/main.sass */
 .banners .banner-dots {
   position: absolute;
   z-index: 10;
   top: 657px;
   left: 50%;
 }
-/* line 176, sass/main.sass */
+/* line 188, sass/main.sass */
 .banners .banner-dots li {
   width: 22px;
   height: 22px;
@@ -423,18 +436,18 @@ footer ul li:last-child {
   margin-right: 8px;
   display: inline-block;
 }
-/* line 185, sass/main.sass */
+/* line 197, sass/main.sass */
 .banners .banner-dots li:last-child {
   margin-right: 0;
 }
-/* line 187, sass/main.sass */
+/* line 199, sass/main.sass */
 .banners .banner-dots li.active {
   border: 3px solid white;
   width: 16px;
   height: 16px;
   background-color: transparent;
 }
-/* line 193, sass/main.sass */
+/* line 205, sass/main.sass */
 .banners.banner_slideshow .banner {
   position: absolute;
   left: 0;
@@ -443,7 +456,7 @@ footer ul li:last-child {
   bottom: 0;
   opacity: 0;
 }
-/* line 200, sass/main.sass */
+/* line 212, sass/main.sass */
 .banners.banner_slideshow .banner.active {
   opacity: 1;
   z-index: 5;
@@ -456,11 +469,11 @@ footer ul li:last-child {
   -o-transition-duration: 1s;
   transition-duration: 1s;
 }
-/* line 205, sass/main.sass */
+/* line 217, sass/main.sass */
 .banners.banner_slideshow .banner.previously_active {
   opacity: 1;
 }
-/* line 207, sass/main.sass */
+/* line 219, sass/main.sass */
 .banners .banner {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -473,11 +486,11 @@ footer ul li:last-child {
   text-align: center;
   color: white;
 }
-/* line 217, sass/main.sass */
+/* line 229, sass/main.sass */
 .banners .banner.with_cta .banner-headline-container {
   height: 70%;
 }
-/* line 219, sass/main.sass */
+/* line 231, sass/main.sass */
 .banners .banner .banner-headline-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -485,7 +498,7 @@ footer ul li:last-child {
   display: table;
   height: 93%;
 }
-/* line 225, sass/main.sass */
+/* line 237, sass/main.sass */
 .banners .banner .banner-headline {
   font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
   font-size: 42px;
@@ -494,7 +507,7 @@ footer ul li:last-child {
   vertical-align: middle;
   text-align: center;
 }
-/* line 232, sass/main.sass */
+/* line 244, sass/main.sass */
 .banners .banner .banner-cta {
   font-size: 24px;
   font-style: italic;
@@ -505,7 +518,7 @@ footer ul li:last-child {
   right: 0;
   bottom: 65px;
 }
-/* line 241, sass/main.sass */
+/* line 253, sass/main.sass */
 .banners .banner .banner-cta .banner-cta-interior {
   display: inline-block;
   cursor: pointer;
@@ -513,13 +526,13 @@ footer ul li:last-child {
   padding: 20px 60px;
   line-height: 42px;
 }
-/* line 248, sass/main.sass */
+/* line 260, sass/main.sass */
 .banners .banner .banner-video p {
   position: relative;
   padding-left: 50px;
   top: 1px;
 }
-/* line 252, sass/main.sass */
+/* line 264, sass/main.sass */
 .banners .banner .banner-video p:before {
   content: "";
   width: 42px;
@@ -534,77 +547,77 @@ footer ul li:last-child {
   top: -2px;
 }
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
-  /* line 252, sass/main.sass */
+  /* line 264, sass/main.sass */
   .banners .banner .banner-video p:before {
     background-image: url("../images/site/play@2x.png");
     background-size: 42px 42px;
   }
 }
-/* line 264, sass/main.sass */
+/* line 276, sass/main.sass */
 .banners #wine-page-banner {
   background-image: url('/images/banners/wine-banner.jpg?1421107543');
 }
 
-/* line 269, sass/main.sass */
+/* line 281, sass/main.sass */
 .hidden-video {
   height: 450px;
   overflow: hidden;
   display: none;
 }
 
-/* line 276, sass/main.sass */
+/* line 288, sass/main.sass */
 .container {
   width: 1005px;
   margin: 0 auto;
   position: relative;
 }
-/* line 280, sass/main.sass */
+/* line 292, sass/main.sass */
 #home main#content .container {
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 283, sass/main.sass */
+/* line 295, sass/main.sass */
 main#content .container {
   margin-top: 80px;
   margin-bottom: 40px;
 }
-/* line 286, sass/main.sass */
+/* line 298, sass/main.sass */
 .container h1 {
   font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
   font-size: 72px;
 }
-/* line 289, sass/main.sass */
+/* line 301, sass/main.sass */
 .container #wine h1 {
   font-size: 94px;
 }
-/* line 291, sass/main.sass */
+/* line 303, sass/main.sass */
 .container p {
   font-size: 18px;
   line-height: 28px;
   margin-bottom: 10px;
 }
-/* line 295, sass/main.sass */
+/* line 307, sass/main.sass */
 .container strong {
   font-weight: bold;
 }
-/* line 297, sass/main.sass */
+/* line 309, sass/main.sass */
 .container em {
   font-style: italic;
 }
-/* line 299, sass/main.sass */
+/* line 311, sass/main.sass */
 .container ul {
   padding-left: 25px;
   font-size: 18px;
   line-height: 28px;
   padding-right: 100px;
 }
-/* line 304, sass/main.sass */
+/* line 316, sass/main.sass */
 .container ul li {
   list-style: disc;
   margin-bottom: 10px;
 }
 
-/* line 309, sass/main.sass */
+/* line 321, sass/main.sass */
 .page-content:after {
   content: "";
   clear: both;
@@ -612,26 +625,26 @@ main#content .container {
   height: 1px;
   display: block;
 }
-/* line 315, sass/main.sass */
+/* line 327, sass/main.sass */
 .page-content .page-image {
   float: right;
   padding-left: 75px;
   width: 334px;
 }
-/* line 319, sass/main.sass */
+/* line 331, sass/main.sass */
 .page-content .page-image img {
   width: 334px;
 }
-/* line 321, sass/main.sass */
+/* line 333, sass/main.sass */
 .page-content .page-text {
   float: left;
   width: 596px;
 }
-/* line 324, sass/main.sass */
+/* line 336, sass/main.sass */
 .page-content .page-text h1 {
   margin-bottom: 35px;
 }
-/* line 326, sass/main.sass */
+/* line 338, sass/main.sass */
 .page-content .page-text h2 {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -647,7 +660,7 @@ main#content .container {
   font-size: 30px;
   line-height: 68px;
 }
-/* line 338, sass/main.sass */
+/* line 350, sass/main.sass */
 .page-content .page-text h2:after {
   content: "";
   width: 25px;
@@ -662,48 +675,48 @@ main#content .container {
   background-position: 0 0;
 }
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
-  /* line 338, sass/main.sass */
+  /* line 350, sass/main.sass */
   .page-content .page-text h2:after {
     background-image: url("../images/site/accordion@2x.png");
     background-size: 25px 98px;
   }
 }
-/* line 350, sass/main.sass */
+/* line 362, sass/main.sass */
 .page-content .page-text h2.active:after {
   top: 20px;
   background-position: 0 bottom;
 }
-/* line 353, sass/main.sass */
+/* line 365, sass/main.sass */
 .page-content .page-text .page-text-block {
   display: none;
   margin: 35px 0;
 }
-/* line 356, sass/main.sass */
+/* line 368, sass/main.sass */
 .page-content .page-text .page-text-block.active {
   display: block;
 }
 
-/* line 359, sass/main.sass */
+/* line 371, sass/main.sass */
 .wine-page-content {
   display: none;
 }
-/* line 361, sass/main.sass */
+/* line 373, sass/main.sass */
 .wine-page-content.active {
   display: block;
 }
-/* line 364, sass/main.sass */
+/* line 376, sass/main.sass */
 .wine-page-content .wine-page-text .wine-specifications {
   padding: 0;
 }
-/* line 366, sass/main.sass */
+/* line 378, sass/main.sass */
 .wine-page-content .wine-page-text .wine-specifications li {
   list-style: none;
 }
-/* line 368, sass/main.sass */
+/* line 380, sass/main.sass */
 .wine-page-content .wine-page-image {
   position: relative;
 }
-/* line 370, sass/main.sass */
+/* line 382, sass/main.sass */
 .wine-page-content .wine-page-image:before {
   content: "";
   display: block;
@@ -718,7 +731,7 @@ main#content .container {
   top: 110px;
   z-index: 0;
 }
-/* line 383, sass/main.sass */
+/* line 395, sass/main.sass */
 .wine-page-content .wine-page-image img {
   float: right;
   margin-right: 5px;
@@ -727,14 +740,14 @@ main#content .container {
   z-index: 1;
 }
 
-/* line 390, sass/main.sass */
+/* line 402, sass/main.sass */
 .wine-browser {
   width: 1000px;
   margin: 0 auto;
   text-align: justify;
   padding-top: 55px;
 }
-/* line 396, sass/main.sass */
+/* line 408, sass/main.sass */
 .wine-browser li {
   display: inline-block;
   width: 160px;
@@ -746,7 +759,7 @@ main#content .container {
   padding-bottom: 15px;
   vertical-align: top;
 }
-/* line 407, sass/main.sass */
+/* line 419, sass/main.sass */
 .wine-browser li:hover:after {
   content: "";
   width: 66px;
@@ -758,32 +771,32 @@ main#content .container {
   left: 50%;
   margin-left: -33px;
 }
-/* line 417, sass/main.sass */
+/* line 429, sass/main.sass */
 .wine-browser li img {
   width: 140px;
   padding: 10px;
 }
-/* line 420, sass/main.sass */
+/* line 432, sass/main.sass */
 .wine-browser li:last-child {
   margin-right: 0;
 }
-/* line 422, sass/main.sass */
+/* line 434, sass/main.sass */
 .wine-browser li.active img {
   padding: 0;
   border: 10px solid #ed8f17;
 }
 @media screen and (min-width: 1180px) {
-  /* line 390, sass/main.sass */
+  /* line 402, sass/main.sass */
   .wine-browser {
     width: 1180px;
     padding-top: 20px;
   }
-  /* line 428, sass/main.sass */
+  /* line 440, sass/main.sass */
   .wine-browser li {
     width: 190px;
     margin-right: 57px;
   }
-  /* line 431, sass/main.sass */
+  /* line 443, sass/main.sass */
   .wine-browser li img {
     width: 170px;
   }
