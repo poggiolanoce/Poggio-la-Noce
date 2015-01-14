@@ -1,6 +1,6 @@
 (function() {
   $(document).ready(function() {
-    var $banner_arrows, $banner_dots, $headlines, $page_blocks, $wine_content, $wine_selection, changeSlide, clearErrors, current_slide, finishChangeslide, is_transitioning, max_slide, populateErrors;
+    var $banner_arrows, $banner_dots, $headlines, $page_blocks, $slideshow_speed, $wine_content, $wine_selection, bannerIncrement, changeSlide, clearErrors, current_slide, finishChangeslide, is_transitioning, max_slide, populateErrors, start_autoplay, stop_autoplay;
     $page_blocks = false;
     $headlines = $('.page-text-container h2');
     $wine_selection = $('.wine-browser li');
@@ -10,6 +10,7 @@
     max_slide = $('.banners .banner').length - 1;
     $banner_dots = $('.banner-dots li');
     $banner_arrows = $('.banner-arrows li');
+    $slideshow_speed = 4000;
     $('.page-text-container h2').on('click', function() {
       var $parent_block, $sibling_h2s, $sibling_text;
       $parent_block = $(this).parent();
@@ -40,26 +41,27 @@
       $selection = $("#wine-" + ($(this).data('wine')));
       return $selection.addClass('active');
     });
-    if ($('.banners .banner').length > 1) {
-      $('.banners').addClass('banner_slideshow');
-    }
-    $banner_dots.on('click', function() {
-      var next_slide;
-      next_slide = $(this).data('slide');
-      return changeSlide(next_slide);
-    });
-    $banner_arrows.on('click', function() {
-      var direction;
-      direction = $(this).hasClass('previous') ? -1 : 1;
+    start_autoplay = function() {
+      return $.doTimeout('autoplay', $slideshow_speed, function() {
+        console.log('hi');
+        changeSlide(bannerIncrement(1), true);
+        return true;
+      });
+    };
+    stop_autoplay = function() {
+      $.doTimeout('autoplay');
+      return $.doTimeout($slideshow_speed * 2, start_autoplay);
+    };
+    bannerIncrement = function(direction) {
       if (current_slide === 0 && direction === -1) {
-        return changeSlide(max_slide);
+        return max_slide;
       } else if (current_slide === max_slide && direction === 1) {
-        return changeSlide(0);
+        return 0;
       } else {
-        return changeSlide(current_slide + direction);
+        return current_slide + direction;
       }
-    });
-    changeSlide = function(slide) {
+    };
+    changeSlide = function(slide, automatic) {
       var $active, $previously_active;
       $previously_active = $('.banners .banner.active');
       $active = $('.banners .banner').eq(slide);
@@ -68,6 +70,9 @@
       }
       if (is_transitioning) {
         return false;
+      }
+      if (automatic !== true) {
+        stop_autoplay();
       }
       is_transitioning = true;
       current_slide = slide;
@@ -81,6 +86,21 @@
       $('.previously_active').removeClass('previously_active');
       return is_transitioning = false;
     };
+    if ($('.banners .banner').length > 1) {
+      $('.banners').addClass('banner_slideshow');
+      start_autoplay();
+    }
+    $banner_dots.on('click', function() {
+      var next_slide;
+      next_slide = $(this).data('slide');
+      return changeSlide(next_slide, false);
+    });
+    $banner_arrows.on('click', function() {
+      var direction, new_slide;
+      direction = $(this).hasClass('previous') ? -1 : 1;
+      new_slide = bannerIncrement(direction);
+      return changeSlide(new_slide, false);
+    });
     clearErrors = function() {
       $('.errors').hide();
       return $('.errors ul').html('');
