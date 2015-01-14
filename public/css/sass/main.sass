@@ -225,7 +225,23 @@ footer
         cursor: pointer
         background-color: $orange
         padding: 25px 40px
-
+        line-height: 42px
+        p
+          position: relative
+          padding-left: 50px
+          top: 1px
+        p:before
+          content: ""
+          width: 42px
+          height: 42px
+          @include hr-image('../images/site/play.png', '../images/site/play@2x.png')
+          background-size: cover
+          background-repeat: no-repeat
+          background-position: 0 0
+          display: inline-block
+          position: absolute
+          left: 0
+          top: -2px
   #wine-page-banner
     background-image: image-url('banners/wine-banner.jpg')
 
