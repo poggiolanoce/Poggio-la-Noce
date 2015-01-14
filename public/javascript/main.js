@@ -11,12 +11,16 @@
     $banner_dots = $('.banner-dots li');
     $banner_arrows = $('.banner-arrows li');
     $('.page-text-container h2').on('click', function() {
+      var $parent_block, $sibling_h2s, $sibling_text;
+      $parent_block = $(this).parent();
+      $sibling_h2s = $parent_block.find('h2');
+      $sibling_text = $parent_block.find('.page-text-block');
       if ($(this).hasClass('active')) {
         $(this).next().removeClass('active');
         return $(this).removeClass('active');
       } else {
-        $page_blocks.removeClass('active');
-        $headlines.removeClass('active');
+        $sibling_h2s.removeClass('active');
+        $sibling_text.removeClass('active');
         $(this).next().addClass('active');
         return $(this).addClass('active');
       }
@@ -26,7 +30,7 @@
         return $(this).nextUntil('h2').wrapAll('<div class="page-text-block" />');
       });
       $page_blocks = $('.page-text-block');
-      return $headlines.eq(0).trigger('click');
+      return $(this).find('h2').eq(0).trigger('click');
     });
     $wine_selection.on('click', function() {
       var $selection;

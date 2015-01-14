@@ -39,37 +39,38 @@ header
   height: $header-short
   display: block
   .header-container
-    width: $wide-width
+    width: $medium-width
     margin: 0 auto
     position: relative
   nav
     background-color: rgba(0,0,0,0.35)
-    height: 115px
-    margin-bottom: -115px
+    height: 140px
+    margin-bottom: -140px
     z-index: 1
     position: relative
   .logo
     h1, h3
       text-indent: -10000px
     a
-      width: 300px
-      height: 92px
+      width: 250px
+      height: 75px
       display: block
-    width: 300px
-    height: 92px
+    width: 250px
+    height: 75px
     background: image-url('site/logo.png') no-repeat 0 0
+    background-size: 100%
     position: absolute
     left: 50%
     top: 10px
-    margin-left: -150px
+    margin-left: -125px
   .navigation
-    padding-top: 51px
+    padding-top: 91px
     display: inline-block
     text-align: center
     li
       display: inline-block
       text-transform: uppercase
-    @media screen and (min-width: 1450px)
+    @media screen and (min-width: $wide-width)
       float: right
       &:first-of-type
         float: left
@@ -89,8 +90,10 @@ header
     position: absolute
     top: 0
     right: 45px
+    font-family: $sans
+    display: none
     li
-      padding: 7px 14px
+      padding: 9px 12px
       background: #fff
       color: $text-gray
       float: left
@@ -102,6 +105,21 @@ header
       a
         text-decoration: none
         color: $text-gray
+  @media screen and (min-width: $wide-width)
+    .header-container
+      width: $wide-width
+    nav
+      height: 115px
+      margin-bottom: -115px
+    .logo
+      a
+        width: 300px
+        height: 92px
+      width: 300px
+      height: 92px
+      margin-left: -150px
+    .navigation
+      padding-top: 51px
 footer
   #home &
     padding-top: 14px
@@ -212,7 +230,7 @@ footer
       vertical-align: middle 
       text-align: center
     .banner-cta
-      font-size: 27px
+      font-size: 24px
       font-style: italic
       position: absolute
       margin-left: auto
@@ -224,7 +242,7 @@ footer
         display: inline-block
         cursor: pointer
         background-color: $orange
-        padding: 25px 40px
+        padding: 20px 60px
         line-height: 42px
     .banner-video
       p
