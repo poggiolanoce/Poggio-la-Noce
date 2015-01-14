@@ -85,6 +85,95 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   src: url("../fonts/2D0C65_0_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2D0C65_0_0.woff2") format("woff2"), url("../fonts/2D0C65_0_0.woff") format("woff"), url("../fonts/2D0C65_0_0.ttf") format("truetype");
 }
 
+@media all {
+  /* line 55, sass/mixins.scss */
+  .featherlight {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #333333;
+    background: rgba(0, 0, 0, 0);
+  }
+  /* line 68, sass/mixins.scss */
+  .featherlight:last-of-type {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  /* line 71, sass/mixins.scss */
+  .featherlight:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em;
+  }
+  /* line 78, sass/mixins.scss */
+  .featherlight .featherlight-content {
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+    display: inline-block;
+    overflow: auto;
+    padding: 25px 25px 0;
+    border-bottom: 25px solid transparent;
+    min-width: 30%;
+    margin-left: 5%;
+    margin-right: 5%;
+    max-height: 95%;
+    background: white;
+    cursor: auto;
+    white-space: normal;
+  }
+  /* line 94, sass/mixins.scss */
+  .featherlight .featherlight-inner {
+    display: block;
+  }
+  /* line 97, sass/mixins.scss */
+  .featherlight .featherlight-close-icon {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    line-height: 25px;
+    width: 25px;
+    cursor: pointer;
+    text-align: center;
+    font: Arial, sans-serif;
+    background: white;
+    background: rgba(255, 255, 255, 0.3);
+    color: black;
+  }
+  /* line 111, sass/mixins.scss */
+  .featherlight .featherlight-image {
+    width: 100%;
+  }
+  /* line 114, sass/mixins.scss */
+  .featherlight iframe {
+    border: none;
+  }
+
+  /* line 118, sass/mixins.scss */
+  .featherlight-iframe .featherlight-content {
+    border-bottom: 0;
+    padding: 0;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  /* line 124, sass/mixins.scss */
+  .featherlight .featherlight-content {
+    margin-left: 10px;
+    margin-right: 10px;
+    max-height: 98%;
+    padding: 10px 10px 0;
+    border-bottom: 10px solid transparent;
+  }
+}
 /* line 28, sass/main.sass */
 body {
   background-color: white;
@@ -354,9 +443,12 @@ footer ul li:last-child {
   background-position: center center;
   text-align: center;
   color: white;
-  font-size: 46px;
 }
 /* line 199, sass/main.sass */
+.banners .banner.with_cta .banner-headline-container {
+  height: 70%;
+}
+/* line 201, sass/main.sass */
 .banners .banner .banner-headline-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -364,73 +456,98 @@ footer ul li:last-child {
   display: table;
   height: 93%;
 }
-/* line 205, sass/main.sass */
+/* line 207, sass/main.sass */
 .banners .banner .banner-headline {
   font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
-  font-size: 46px;
+  font-size: 42px;
   line-height: 58px;
   display: table-cell;
   vertical-align: middle;
   text-align: center;
 }
-/* line 212, sass/main.sass */
+/* line 214, sass/main.sass */
+.banners .banner .banner-video {
+  font-size: 27px;
+  font-style: italic;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 65px;
+}
+/* line 223, sass/main.sass */
+.banners .banner .banner-video .banner-video-interior {
+  display: inline-block;
+  cursor: pointer;
+  background-color: #ed8f17;
+  padding: 25px 40px;
+}
+/* line 229, sass/main.sass */
 .banners #wine-page-banner {
   background-image: url('/images/banners/wine-banner.jpg?1421107543');
 }
 
-/* line 217, sass/main.sass */
+/* line 234, sass/main.sass */
+.hidden-video {
+  height: 450px;
+  overflow: hidden;
+  display: none;
+}
+
+/* line 241, sass/main.sass */
 .container {
   width: 1005px;
   margin: 0 auto;
   position: relative;
 }
-/* line 221, sass/main.sass */
+/* line 245, sass/main.sass */
 #home main#content .container {
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 224, sass/main.sass */
+/* line 248, sass/main.sass */
 main#content .container {
   margin-top: 80px;
   margin-bottom: 40px;
 }
-/* line 227, sass/main.sass */
+/* line 251, sass/main.sass */
 .container h1 {
   font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
   font-size: 72px;
 }
-/* line 230, sass/main.sass */
+/* line 254, sass/main.sass */
 .container #wine h1 {
   font-size: 94px;
 }
-/* line 232, sass/main.sass */
+/* line 256, sass/main.sass */
 .container p {
   font-size: 18px;
   line-height: 28px;
   margin-bottom: 10px;
 }
-/* line 236, sass/main.sass */
+/* line 260, sass/main.sass */
 .container strong {
   font-weight: bold;
 }
-/* line 238, sass/main.sass */
+/* line 262, sass/main.sass */
 .container em {
   font-style: italic;
 }
-/* line 240, sass/main.sass */
+/* line 264, sass/main.sass */
 .container ul {
   padding-left: 25px;
   font-size: 18px;
   line-height: 28px;
   padding-right: 100px;
 }
-/* line 245, sass/main.sass */
+/* line 269, sass/main.sass */
 .container ul li {
   list-style: disc;
   margin-bottom: 10px;
 }
 
-/* line 250, sass/main.sass */
+/* line 274, sass/main.sass */
 .page-content:after {
   content: "";
   clear: both;
@@ -438,26 +555,26 @@ main#content .container {
   height: 1px;
   display: block;
 }
-/* line 256, sass/main.sass */
+/* line 280, sass/main.sass */
 .page-content .page-image {
   float: right;
   padding-left: 75px;
   width: 334px;
 }
-/* line 260, sass/main.sass */
+/* line 284, sass/main.sass */
 .page-content .page-image img {
   width: 334px;
 }
-/* line 262, sass/main.sass */
+/* line 286, sass/main.sass */
 .page-content .page-text {
   float: left;
   width: 596px;
 }
-/* line 265, sass/main.sass */
+/* line 289, sass/main.sass */
 .page-content .page-text h1 {
   margin-bottom: 35px;
 }
-/* line 267, sass/main.sass */
+/* line 291, sass/main.sass */
 .page-content .page-text h2 {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -473,7 +590,7 @@ main#content .container {
   font-size: 30px;
   line-height: 68px;
 }
-/* line 279, sass/main.sass */
+/* line 303, sass/main.sass */
 .page-content .page-text h2:after {
   content: "";
   width: 25px;
@@ -488,48 +605,48 @@ main#content .container {
   background-position: 0 0;
 }
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
-  /* line 279, sass/main.sass */
+  /* line 303, sass/main.sass */
   .page-content .page-text h2:after {
     background-image: url("../images/site/accordion@2x.png");
     background-size: 25px 98px;
   }
 }
-/* line 291, sass/main.sass */
+/* line 315, sass/main.sass */
 .page-content .page-text h2.active:after {
   top: 20px;
   background-position: 0 bottom;
 }
-/* line 294, sass/main.sass */
+/* line 318, sass/main.sass */
 .page-content .page-text .page-text-block {
   display: none;
   margin: 35px 0;
 }
-/* line 297, sass/main.sass */
+/* line 321, sass/main.sass */
 .page-content .page-text .page-text-block.active {
   display: block;
 }
 
-/* line 300, sass/main.sass */
+/* line 324, sass/main.sass */
 .wine-page-content {
   display: none;
 }
-/* line 302, sass/main.sass */
+/* line 326, sass/main.sass */
 .wine-page-content.active {
   display: block;
 }
-/* line 305, sass/main.sass */
+/* line 329, sass/main.sass */
 .wine-page-content .wine-page-text .wine-specifications {
   padding: 0;
 }
-/* line 307, sass/main.sass */
+/* line 331, sass/main.sass */
 .wine-page-content .wine-page-text .wine-specifications li {
   list-style: none;
 }
-/* line 309, sass/main.sass */
+/* line 333, sass/main.sass */
 .wine-page-content .wine-page-image {
   position: relative;
 }
-/* line 311, sass/main.sass */
+/* line 335, sass/main.sass */
 .wine-page-content .wine-page-image:before {
   content: "";
   display: block;
@@ -544,7 +661,7 @@ main#content .container {
   top: 110px;
   z-index: 0;
 }
-/* line 324, sass/main.sass */
+/* line 348, sass/main.sass */
 .wine-page-content .wine-page-image img {
   float: right;
   margin-right: 5px;
@@ -553,14 +670,14 @@ main#content .container {
   z-index: 1;
 }
 
-/* line 331, sass/main.sass */
+/* line 355, sass/main.sass */
 .wine-browser {
   width: 1000px;
   margin: 0 auto;
   text-align: justify;
   padding-top: 55px;
 }
-/* line 337, sass/main.sass */
+/* line 361, sass/main.sass */
 .wine-browser li {
   display: inline-block;
   width: 160px;
@@ -572,7 +689,7 @@ main#content .container {
   padding-bottom: 15px;
   vertical-align: top;
 }
-/* line 348, sass/main.sass */
+/* line 372, sass/main.sass */
 .wine-browser li:hover:after {
   content: "";
   width: 66px;
@@ -584,32 +701,32 @@ main#content .container {
   left: 50%;
   margin-left: -33px;
 }
-/* line 358, sass/main.sass */
+/* line 382, sass/main.sass */
 .wine-browser li img {
   width: 140px;
   padding: 10px;
 }
-/* line 361, sass/main.sass */
+/* line 385, sass/main.sass */
 .wine-browser li:last-child {
   margin-right: 0;
 }
-/* line 363, sass/main.sass */
+/* line 387, sass/main.sass */
 .wine-browser li.active img {
   padding: 0;
   border: 10px solid #ed8f17;
 }
 @media screen and (min-width: 1180px) {
-  /* line 331, sass/main.sass */
+  /* line 355, sass/main.sass */
   .wine-browser {
     width: 1180px;
     padding-top: 20px;
   }
-  /* line 369, sass/main.sass */
+  /* line 393, sass/main.sass */
   .wine-browser li {
     width: 190px;
     margin-right: 57px;
   }
-  /* line 372, sass/main.sass */
+  /* line 396, sass/main.sass */
   .wine-browser li img {
     width: 170px;
   }

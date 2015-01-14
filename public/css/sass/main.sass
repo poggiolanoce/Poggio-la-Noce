@@ -195,7 +195,9 @@ footer
     background-position: center center
     text-align: center
     color: #fff
-    font-size: 46px
+    &.with_cta 
+      .banner-headline-container
+        height: 70%
     .banner-headline-container
       max-width: 1000px
       margin: 0 auto
@@ -204,13 +206,35 @@ footer
       height: 93%
     .banner-headline
       font-family: $handwriting
-      font-size: 46px
+      font-size: 42px
       line-height: 58px
       display: table-cell 
       vertical-align: middle 
-      text-align: center 
+      text-align: center
+    .banner-video
+      font-size: 27px
+      font-style: italic
+      position: absolute
+      margin-left: auto
+      margin-right: auto
+      left: 0
+      right: 0
+      bottom: 65px
+      .banner-video-interior
+        display: inline-block
+        cursor: pointer
+        background-color: $orange
+        padding: 25px 40px
+
   #wine-page-banner
     background-image: image-url('banners/wine-banner.jpg')
+
+// Hidden video inside banners
+
+.hidden-video
+  height: 450px
+  overflow: hidden
+  display: none
 
 // Content Work
 

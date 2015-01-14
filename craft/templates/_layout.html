@@ -59,12 +59,21 @@
 					{% for entry in craft.entries.section('pages').slug(page_id) %}
 						{% for banner in entry.pageBanner %}
 						
-							<div class="banner {% if loop.index == 1 %}active{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl() }}) ">
+							<div class="banner {% if loop.index == 1 %}active{% endif %}{% if banner.bannerVideo %} with_cta{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl() }}) ">
 
 								<div class="banner-headline-container">
-									<div class="banner-headline">{{ banner.bannerHeadline }} {{loop.length}}</div>
+									<div class="banner-headline">{{ banner.bannerHeadline }}</div>
 								</div>
-
+								{% if banner.bannerVideo %}
+									<div class="banner-video"  data-featherlight="#video-{{ loop.index }}">
+										<div class="banner-video-interior">
+											<p>Watch Video</p>
+										</div>
+									</div>
+									<div id="video-{{ loop.index }}" class="hidden-video">
+										<iframe width="800" height="450" src="//www.youtube.com/embed/{{ banner.bannerVideo }}" frameborder="0" allowfullscreen></iframe>
+									</div>
+								{% endif %}
 							</div>
 						
 						{% endfor %}
