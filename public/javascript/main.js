@@ -1,6 +1,6 @@
 (function() {
   $(document).ready(function() {
-    var $banner_arrows, $banner_dots, $headlines, $page_blocks, $wine_content, $wine_selection, changeSlide, current_slide, finishChangeslide, is_transitioning, max_slide;
+    var $banner_arrows, $banner_dots, $headlines, $page_blocks, $wine_content, $wine_selection, changeSlide, clearErrors, current_slide, finishChangeslide, is_transitioning, max_slide, populateErrors;
     $page_blocks = false;
     $headlines = $('.page-text-container h2');
     $wine_selection = $('.wine-browser li');
@@ -77,10 +77,41 @@
       $active.addClass('active');
       return setTimeout(finishChangeslide, 1000);
     };
-    return finishChangeslide = function() {
+    finishChangeslide = function() {
       $('.previously_active').removeClass('previously_active');
       return is_transitioning = false;
     };
+    clearErrors = function() {
+      $('.errors').hide();
+      return $('.errors ul').html('');
+    };
+    populateErrors = function(response) {
+      var errorList, key;
+      errorList = [];
+      for (key in response.error) {
+        if (response.error.hasOwnProperty(key)) {
+          errorList.push(response.error[key][0]);
+        }
+      }
+      $.each(errorList, function(k, v) {
+        return $('.errors ul').append("<li>" + v + "</li>");
+      });
+      return $('.errors').show();
+    };
+    return $("#contact form").submit(function(ev) {
+      var data;
+      ev.preventDefault();
+      data = $(this).serialize();
+      clearErrors();
+      $.post("/", data, function(response) {
+        if (response.success) {
+          $('form').hide();
+          $(".success").show();
+        } else {
+          populateErrors(response);
+        }
+      });
+    });
   });
 
 }).call(this);

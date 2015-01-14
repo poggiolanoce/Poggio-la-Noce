@@ -12,43 +12,43 @@
       <div class="page-text-container">
         {{ entry.pageBody }}
 
-        {% macro errorList(errors) %}
-          {% if errors %}
-            <p>The following errors were found</p>
-            <ul class="errors">
-              {% for error in errors %}
-                <li>{{ error }}</li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-        {% endmacro %}
+        <div class="errors">
+          <ul>
+            
+          </ul>
+        </div>
 
-        {% from _self import errorList %}
+        <div class="success">
+          <p><em><strong>Thank you for your message!</strong> </br> Someone will be in contact with you shortly.</em></p>
+        </div>
 
         <form method="post" action="" accept-charset="UTF-8">
           {{ getCsrfInput() }}
           <input type="hidden" name="action" value="contactForm/sendMessage">
           <input type="hidden" name="redirect" value="contact/thanks">
+          
+          <div class="form-left">
+ 
+            <h3><label for="fromName">Your Name</label></h3>
+            <input id="fromName" type="text" name="fromName" value="{% if message is defined %}{{ message.fromName }}{% endif %}">
 
-          <h3><label for="fromName">Your Name</label></h3>
-          <input id="fromName" type="text" name="fromName" value="{% if message is defined %}{{ message.fromName }}{% endif %}">
-          {{ message is defined and message ? errorList(message.getErrors('fromName')) }}
+            <h3><label for="fromEmail">Your Email<span class="required">*</span></label></h3>
+            <input id="fromEmail" type="text" name="fromEmail" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}">
+            
+            <input type="submit" value="Send">
 
-          <h3><label for="fromEmail">Your Email</label></h3>
-          <input id="fromEmail" type="text" name="fromEmail" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}">
-          {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
+          </div>
 
-          <h3><label for="subject">Subject</label></h3>
-          <input id="subject" type="text" name="subject" value="{% if message is defined %}{{ message.subject }}{% endif %}">
-          {{ message is defined and message ? errorList(message.getErrors('subject')) }}
+          <div class="form-right">
 
-          <h3><label for="message">Message</label></h3>
-          <textarea rows="10" cols="40" id="message" name="message">{% if message is defined %}{{ message.message }}{% endif %}</textarea>
-          {{ message is defined and message ? errorList(message.getErrors('message')) }}
+            <h3><label for="message">Message<span class="required">*</span></label></h3>
+            <textarea rows="10" cols="40" id="message" name="message">{% if message is defined %}{{ message.message }}{% endif %}</textarea>
+            
+          </div>
+
 
           <input id="location" name="location" type="text">
 
-          <input type="submit" value="Send">
         </form>
       </div>
     </div>

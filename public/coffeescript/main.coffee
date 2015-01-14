@@ -16,7 +16,7 @@ $(document).ready ->
     $parent_block = $(this).parent()
     $sibling_h2s = $parent_block.find('h2')
     $sibling_text = $parent_block.find('.page-text-block')
-    
+
     if $(this).hasClass('active')
       $(this).next().removeClass('active')
       $(this).removeClass('active')
@@ -60,8 +60,6 @@ $(document).ready ->
       changeSlide(0)
     else
       changeSlide(current_slide + direction)
-    
-
 
   changeSlide = (slide)->
     $previously_active = $('.banners .banner.active')
@@ -84,3 +82,31 @@ $(document).ready ->
   finishChangeslide = ()->
     $('.previously_active').removeClass('previously_active')
     is_transitioning = false
+
+  # Contact Form
+
+  clearErrors = ()->
+    $('.errors').hide()
+    $('.errors ul').html('')
+  populateErrors = (response)->
+    errorList = []
+    for key of response.error
+      errorList.push response.error[key][0] if response.error.hasOwnProperty(key)
+    $.each errorList, (k,v)->
+      $('.errors ul').append("<li>#{v}</li>")
+    $('.errors').show()
+  
+  $("#contact form").submit (ev) ->
+    ev.preventDefault()
+    data = $(this).serialize()
+    clearErrors()
+
+    $.post "/", data, (response) ->
+      if response.success
+        $('form').hide()
+        $(".success").show()
+      else
+        populateErrors(response)
+      return
+
+    return

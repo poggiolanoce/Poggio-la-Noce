@@ -442,3 +442,138 @@ footer
       margin-right: 57px
       img
         width: 170px
+
+// Awards page
+
+// Contact Page
+
+#contact
+  .success
+    display: none
+  .errors
+    display: none
+    font-style: italic
+    padding: 10px 0
+    border-top: 1px solid $copper
+    border-bottom: 1px solid $copper
+    margin: 20px 0
+    ul li
+      font-size: 14px
+      margin-bottom: 5px
+      &:last-child
+        margin-bottom: 0
+  form
+    .form-left
+      float: left
+      width: 240px
+    .form-right
+      float: left
+    #location
+      display: none
+  label, input, button, select, textarea
+    font-size: 14px
+    font-weight: normal
+    line-height: 20px
+  .required
+    color: red
+    padding-left: 5px
+
+  input[type="submit"]
+    -webkit-appearance: button
+    display: block
+    padding: 6px 12px
+    margin-bottom: 0
+    text-align: center
+    cursor: pointer
+    background-image: none
+    border: 1px solid transparent
+    color: #fff
+    background: $orange
+    font-size: 16px
+    line-height: 20px
+    font-family: $serif
+    margin-top: 10px
+    width: 220px
+
+  label
+    display: block
+    margin-bottom: 5px
+
+  select, textarea
+    display: inline-block
+    height: 20px
+    padding: 4px 6px
+    margin-bottom: 10px
+    font-size: 14px
+    line-height: 20px
+    color: #555555
+    vertical-align: middle
+
+
+  input
+    &[type="text"], &[type="password"], &[type="datetime"], &[type="datetime-local"], &[type="date"], &[type="month"], &[type="time"], &[type="week"], &[type="number"], &[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="color"]
+      display: inline-block
+      height: 20px
+      padding: 4px 6px
+      margin-bottom: 10px
+      font-size: 14px
+      line-height: 20px
+      color: #555555
+      vertical-align: middle
+
+  input
+    width: 206px
+
+  textarea
+    width: 340px
+    height: 140px
+    background-color: #ffffff
+    border: 1px solid #cccccc
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s
+    transition: border linear 0.2s, box-shadow linear 0.2s
+
+  input
+    &[type="text"], &[type="password"], &[type="datetime"], &[type="datetime-local"], &[type="date"], &[type="month"], &[type="time"], &[type="week"], &[type="number"], &[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="color"]
+      background-color: #ffffff
+      border: 1px solid #cccccc
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+      -webkit-transition: border linear 0.2s, box-shadow linear 0.2s
+      -moz-transition: border linear 0.2s, box-shadow linear 0.2s
+      -o-transition: border linear 0.2s, box-shadow linear 0.2s
+      transition: border linear 0.2s, box-shadow linear 0.2s
+
+  textarea:focus
+    border-color: rgba(82, 168, 236, 0.8)
+    outline: 0
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+
+  input
+    &[type="text"]:focus, &[type="password"]:focus, &[type="datetime"]:focus, &[type="datetime-local"]:focus, &[type="date"]:focus, &[type="month"]:focus, &[type="time"]:focus, &[type="week"]:focus, &[type="number"]:focus, &[type="email"]:focus, &[type="url"]:focus, &[type="search"]:focus, &[type="tel"]:focus, &[type="color"]:focus
+      border-color: rgba(82, 168, 236, 0.8)
+      outline: 0
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+
+  .uneditable-input:focus
+    border-color: rgba(82, 168, 236, 0.8)
+    outline: 0
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+
+  input
+    &[type="radio"], &[type="checkbox"]
+      margin: 4px 0 0
+      margin-top: 1px \9
+      *margin-top: 0
+      line-height: normal
