@@ -1,47 +1,58 @@
 {% extends "_layout" %}
 
 {% block content %}
-	<h1>Contact Us</h1>
 
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  {% for entry in craft.entries.section('pages').slug(craft.request.getSegment(1)) %}
+  <article class="page-content">
+    <div class="page-image">
+      <img src="{{ entry.pageImage.first().getUrl() }}" alt="">
+    </div>
+    <div class="page-text">
+      <h1>{{ entry.pageSubtitle }}</h1>
+      <div class="page-text-container">
+        {{ entry.pageBody }}
 
-  {% macro errorList(errors) %}
-    {% if errors %}
-      <p>The following errors were found</p>
-      <ul class="errors">
-        {% for error in errors %}
-          <li>{{ error }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  {% endmacro %}
+        {% macro errorList(errors) %}
+          {% if errors %}
+            <p>The following errors were found</p>
+            <ul class="errors">
+              {% for error in errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endmacro %}
 
-  {% from _self import errorList %}
+        {% from _self import errorList %}
 
-  <form method="post" action="" accept-charset="UTF-8">
-    {{ getCsrfInput() }}
-    <input type="hidden" name="action" value="contactForm/sendMessage">
-    <input type="hidden" name="redirect" value="contact/thanks">
+        <form method="post" action="" accept-charset="UTF-8">
+          {{ getCsrfInput() }}
+          <input type="hidden" name="action" value="contactForm/sendMessage">
+          <input type="hidden" name="redirect" value="contact/thanks">
 
-    <h3><label for="fromName">Your Name</label></h3>
-    <input id="fromName" type="text" name="fromName" value="{% if message is defined %}{{ message.fromName }}{% endif %}">
-    {{ message is defined and message ? errorList(message.getErrors('fromName')) }}
+          <h3><label for="fromName">Your Name</label></h3>
+          <input id="fromName" type="text" name="fromName" value="{% if message is defined %}{{ message.fromName }}{% endif %}">
+          {{ message is defined and message ? errorList(message.getErrors('fromName')) }}
 
-    <h3><label for="fromEmail">Your Email</label></h3>
-    <input id="fromEmail" type="text" name="fromEmail" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}">
-    {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
+          <h3><label for="fromEmail">Your Email</label></h3>
+          <input id="fromEmail" type="text" name="fromEmail" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}">
+          {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
 
-    <h3><label for="subject">Subject</label></h3>
-    <input id="subject" type="text" name="subject" value="{% if message is defined %}{{ message.subject }}{% endif %}">
-    {{ message is defined and message ? errorList(message.getErrors('subject')) }}
+          <h3><label for="subject">Subject</label></h3>
+          <input id="subject" type="text" name="subject" value="{% if message is defined %}{{ message.subject }}{% endif %}">
+          {{ message is defined and message ? errorList(message.getErrors('subject')) }}
 
-    <h3><label for="message">Message</label></h3>
-    <textarea rows="10" cols="40" id="message" name="message">{% if message is defined %}{{ message.message }}{% endif %}</textarea>
-    {{ message is defined and message ? errorList(message.getErrors('message')) }}
+          <h3><label for="message">Message</label></h3>
+          <textarea rows="10" cols="40" id="message" name="message">{% if message is defined %}{{ message.message }}{% endif %}</textarea>
+          {{ message is defined and message ? errorList(message.getErrors('message')) }}
 
-    <input id="location" name="location" type="text">
+          <input id="location" name="location" type="text">
 
-    <input type="submit" value="Send">
-  </form>
+          <input type="submit" value="Send">
+        </form>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
 
 {% endblock %}
