@@ -810,11 +810,70 @@ main#content .container {
   }
 }
 
-/* line 455, sass/main.sass */
+/* line 454, sass/main.sass */
+#news .awards-list li {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 459, sass/main.sass */
+#news .awards-list li:after {
+  content: "";
+  clear: both;
+}
+/* line 462, sass/main.sass */
+#news .awards-list li .left-image {
+  float: left;
+  margin-right: 20px;
+}
+/* line 465, sass/main.sass */
+#news .awards-list li .left-image img {
+  width: 137px;
+  border: 2px solid #889b9f;
+}
+/* line 468, sass/main.sass */
+#news .awards-list li .right-content {
+  float: left;
+  width: 296px;
+}
+/* line 471, sass/main.sass */
+#news .awards-list li .award-date {
+  font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
+  font-size: 44px;
+}
+/* line 474, sass/main.sass */
+#news .awards-list li .award-description {
+  padding-bottom: 20px;
+}
+/* line 476, sass/main.sass */
+#news .awards-list li .award-score {
+  background: #ed8f17;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  line-height: 60px;
+  font-size: 36px;
+  font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+/* line 489, sass/main.sass */
+#news .awards-list li .award-giver {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 497, sass/main.sass */
 #contact .success {
   display: none;
 }
-/* line 457, sass/main.sass */
+/* line 499, sass/main.sass */
 #contact .errors {
   display: none;
   font-style: italic;
@@ -823,40 +882,44 @@ main#content .container {
   border-bottom: 1px solid #b24629;
   margin: 20px 0;
 }
-/* line 464, sass/main.sass */
+/* line 506, sass/main.sass */
 #contact .errors ul li {
   font-size: 14px;
   margin-bottom: 5px;
 }
-/* line 467, sass/main.sass */
+/* line 509, sass/main.sass */
 #contact .errors ul li:last-child {
   margin-bottom: 0;
 }
-/* line 470, sass/main.sass */
+/* line 511, sass/main.sass */
+#contact form {
+  margin-top: 20px;
+}
+/* line 513, sass/main.sass */
 #contact form .form-left {
   float: left;
   width: 240px;
 }
-/* line 473, sass/main.sass */
+/* line 516, sass/main.sass */
 #contact form .form-right {
   float: left;
 }
-/* line 475, sass/main.sass */
+/* line 518, sass/main.sass */
 #contact form #location {
   display: none;
 }
-/* line 477, sass/main.sass */
+/* line 520, sass/main.sass */
 #contact label, #contact input, #contact button, #contact select, #contact textarea {
   font-size: 14px;
   font-weight: normal;
   line-height: 20px;
 }
-/* line 481, sass/main.sass */
+/* line 524, sass/main.sass */
 #contact .required {
   color: red;
   padding-left: 5px;
 }
-/* line 485, sass/main.sass */
+/* line 528, sass/main.sass */
 #contact input[type="submit"] {
   -webkit-appearance: button;
   display: block;
@@ -874,12 +937,12 @@ main#content .container {
   margin-top: 10px;
   width: 220px;
 }
-/* line 502, sass/main.sass */
+/* line 545, sass/main.sass */
 #contact label {
   display: block;
   margin-bottom: 5px;
 }
-/* line 506, sass/main.sass */
+/* line 549, sass/main.sass */
 #contact select, #contact textarea {
   display: inline-block;
   height: 20px;
@@ -890,7 +953,7 @@ main#content .container {
   color: #555555;
   vertical-align: middle;
 }
-/* line 518, sass/main.sass */
+/* line 561, sass/main.sass */
 #contact input[type="text"], #contact input[type="password"], #contact input[type="datetime"], #contact input[type="datetime-local"], #contact input[type="date"], #contact input[type="month"], #contact input[type="time"], #contact input[type="week"], #contact input[type="number"], #contact input[type="email"], #contact input[type="url"], #contact input[type="search"], #contact input[type="tel"], #contact input[type="color"] {
   display: inline-block;
   height: 20px;
@@ -901,11 +964,11 @@ main#content .container {
   color: #555555;
   vertical-align: middle;
 }
-/* line 528, sass/main.sass */
+/* line 571, sass/main.sass */
 #contact input {
   width: 206px;
 }
-/* line 531, sass/main.sass */
+/* line 574, sass/main.sass */
 #contact textarea {
   width: 340px;
   height: 140px;
@@ -919,7 +982,7 @@ main#content .container {
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
-/* line 545, sass/main.sass */
+/* line 588, sass/main.sass */
 #contact input[type="text"], #contact input[type="password"], #contact input[type="datetime"], #contact input[type="datetime-local"], #contact input[type="date"], #contact input[type="month"], #contact input[type="time"], #contact input[type="week"], #contact input[type="number"], #contact input[type="email"], #contact input[type="url"], #contact input[type="search"], #contact input[type="tel"], #contact input[type="color"] {
   background-color: white;
   border: 1px solid #cccccc;
@@ -931,7 +994,7 @@ main#content .container {
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
-/* line 556, sass/main.sass */
+/* line 599, sass/main.sass */
 #contact textarea:focus {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
@@ -939,7 +1002,7 @@ main#content .container {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
-/* line 564, sass/main.sass */
+/* line 607, sass/main.sass */
 #contact input[type="text"]:focus, #contact input[type="password"]:focus, #contact input[type="datetime"]:focus, #contact input[type="datetime-local"]:focus, #contact input[type="date"]:focus, #contact input[type="month"]:focus, #contact input[type="time"]:focus, #contact input[type="week"]:focus, #contact input[type="number"]:focus, #contact input[type="email"]:focus, #contact input[type="url"]:focus, #contact input[type="search"]:focus, #contact input[type="tel"]:focus, #contact input[type="color"]:focus {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
@@ -947,7 +1010,7 @@ main#content .container {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
-/* line 571, sass/main.sass */
+/* line 614, sass/main.sass */
 #contact .uneditable-input:focus {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
@@ -955,7 +1018,7 @@ main#content .container {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
-/* line 579, sass/main.sass */
+/* line 622, sass/main.sass */
 #contact input[type="radio"], #contact input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;

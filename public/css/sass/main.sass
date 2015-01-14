@@ -449,6 +449,48 @@ footer
 
 // Awards page
 
+#news
+  .awards-list
+    li
+      @include box-sizing('border-box')
+      width: 49%
+      display: inline-block
+      vertical-align: top
+      &:after
+        content: ""
+        clear: both
+      .left-image
+        float: left
+        margin-right: 20px
+        img
+          width: 137px
+          border: 2px solid #889B9F
+      .right-content
+        float: left
+        width: 296px
+      .award-date
+        font-family: $handwriting
+        font-size: 44px
+      .award-description
+        padding-bottom: 20px
+      .award-score
+        background: $orange
+        width: 60px
+        height: 60px
+        border-radius: 50%
+        display: inline-block
+        color: #fff
+        text-align: center
+        line-height: 60px
+        font-size: 36px
+        font-family: $sans
+        vertical-align: middle
+        margin-right: 10px
+      .award-giver
+        display: inline-block
+        vertical-align: middle
+
+
 // Contact Page
 
 #contact
@@ -467,6 +509,7 @@ footer
       &:last-child
         margin-bottom: 0
   form
+    margin-top: 20px
     .form-left
       float: left
       width: 240px
