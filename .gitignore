@@ -23,8 +23,10 @@ public/.sass-cache
 public/node_modules
 
 craft/storage/runtime/*
-craft/storage/userphotos/*
+craft/config/db.php
+craft/config/general.php
 
-public/images/pages/*
-public/images/banners/*
-public/images/wine/*
+
+craft/config/general.php
+
+public/package.json
