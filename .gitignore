@@ -30,3 +30,8 @@ craft/config/general.php
 craft/config/general.php
 
 public/package.json
+
+# server noise
+backup.tar
+html
+.htaccess
