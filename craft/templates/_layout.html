@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+	<meta charset="utf-8" />
+	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+	<link rel="home" href="{{ siteUrl }}" />
+
+	<link rel="stylesheet" href="/css/main.css" type="text/css">
+	<script src="/javascript/plugins.js"></script>
+	<script src="/javascript/main.js"></script>
+
+</head>
+
+<body id="{% if craft.request.getSegment(1) %}{{craft.request.getSegment(1)}}{% else %}home{% endif %}" >
+	<!-- Header -->
+	<header id="header">
+
+			<nav>
+				<div class="header-container">
+
+					<div class="logo">
+						<a href="{{ siteUrl }}">
+						<h1>{{ siteName }}</h1>
+						<h3>Fiesole, Italia</h3>
+						</a>
+					</div>
+					<ul class="navigation left-navigation">
+						<li><a href="{{ url('about') }}" {% if craft.request.getSegment(1) == 'about' %}class="active"{% endif %}>About</a></li>
+						<li><a href="{{ url('philosophy') }}" {% if craft.request.getSegment(1) == 'philosophy' %}class="active"{% endif %}>Philosophy</a></li>
+						<li><a href="{{ url('vineyard') }}" {% if craft.request.getSegment(1) == 'vineyard' %}class="active"{% endif %}>Vineyard</a></li>
+					</ul>
+					<ul class="navigation right-navigation">
+						<li><a href="{{ url('wines') }}" {% if craft.request.getSegment(1) == 'wines' %}class="active"{% endif %}>Wines</a></li>
+						<li><a href="{{ url('olive-oil') }}" {% if craft.request.getSegment(1) == 'olive-oil' %}class="active"{% endif %}>Olive Oil</a></li>
+						<li><a href="{{ url('news') }}" {% if craft.request.getSegment(1) == 'news' %}class="active"{% endif %}>News</a></li>
+						<li><a href="{{ url('contact') }}" {% if craft.request.getSegment(1) == 'contact' %}class="active"{% endif %}>Contact</a></li>
+					</ul>
+					<ul class="localization">
+						<li {% if craft.locale == 'en_us' %}class="active"{% endif %}><a href="{{ url('/en') }}" >EN</a></li>
+						<li {% if craft.locale == 'it' %}class="active"{% endif %}><a href="{{ url('/it') }}" >ITA</a></li>
+					</ul>
+
+				</div>
+			</nav>
+
+			<div class="banners">
+
+				{#
+				# Standard Page
+				#}
+				{% if craft.request.getSegment(1) != 'news' or craft.request.getSegment(1) != 'wines' %}
+				
+					{% if craft.request.getSegment(1) %}
+						{% set page_id = craft.request.getSegment(1)  %}
+					{% else %}  
+						{% set page_id = 'home' %}
+					{% endif %}
+
+					{% for entry in craft.entries.section('pages').slug(page_id) %}
+						{% for banner in entry.pageBanner %}
+						
+							<div class="banner {% if loop.index == 1 %}active{% endif %}{% if banner.bannerVideo %} with_cta{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl() }}) ">
+
+								<div class="banner-headline-container">
+									<div class="banner-headline">{{ banner.bannerHeadline }}</div>
+								</div>
+								{% if banner.bannerVideo %}
+									<div class="banner-cta banner-video"  data-featherlight="#video-{{ loop.index }}">
+										<div class="banner-cta-interior banner-video-interior">
+											<p>Watch Video</p>
+										</div>
+									</div>
+									<div id="video-{{ loop.index }}" class="hidden-video">
+										<iframe width="800" height="450" src="//www.youtube.com/embed/{{ banner.bannerVideo }}?modestbranding=1&autohide=1&showinfo=0&rel=0" frameborder="0" allowfullscreen></iframe>
+									</div>
+								{% endif %}
+							</div>
+						
+						{% endfor %}
+						{% if entry.pageBanner|length > 1 %}
+							<ul class="banner-arrows">
+								<li class="previous">Previous</li>
+								<li class="next">Next</li>
+							</ul>
+							<ul class="banner-dots" style="margin-left: -{{ (30 * entry.pageBanner|length)/2 }}px">
+								{% for banner in entry.pageBanner %}
+									<li data-slide="{{ loop.index - 1}}" {% if loop.index == 1 %}class="active"{% endif %}></li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+
+					{% endfor %}
+				
+				{% endif %}
+
+				{#
+				# Wine Page
+				#}
+				{% if craft.request.getSegment(1) == 'wines' %}
+
+					<div class="banner" id="wine-page-banner">	
+						<ul class="wine-browser">
+							{% for entry in craft.entries.section('wine') %}<li data-wine="{{ entry.slug }}" {% if loop.index == 1 %}class="active"{% endif %}><img src="{{ entry.bottleLabelImage.first().getUrl() }}" alt="{{ entry.title }}"></li>{% endfor %}
+						</ul>
+					</div>
+
+				{% endif %}
+
+				{#
+				# News Page
+				#}
+				{% if craft.request.getSegment(1) == 'news' %}
+
+					<div class="banner" id="news-page-banner">
+
+						<div class="banner-headline-container">
+							<div class="banner-headline">Press Reviews & Ratings</div>
+						</div>
+						
+					</div>
+
+				{% endif %}
+
+			</div>
+
+	</header>
+
+	<!-- Inherited Main Content -->
+	<main id="content" role="main">
+		<div class="container">
+			{% block content %}
+
+			{% endblock %}
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<ul>
+			<li>{{ siteName }}</li>
+			<li>{{ contactinformation.primaryAddress }}</li>
+			<li>{{ contactinformation.primaryPhone }}</li>
+			<li>{{ contactinformation.primaryEmail }}</li>
+		</ul>
+		<p>© {{ now.year }} {{ siteName }}. All rights reserved.</p>
+	</footer>
+
+</body>
+</html>

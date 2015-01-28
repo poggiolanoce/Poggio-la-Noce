@@ -1,0 +1,630 @@
+@import "compass/reset"
+@import "compass/css3"
+@import "compass/utilities"
+@import "fonts"
+@import "mixins"
+
+// Variables
+
+$source : 'Source Sans Pro', sans-serif
+$wide-width: 1440px
+$medium-width: 1005px
+
+$header-tall: 770px
+$header-short: 482px
+$header-border: 30px
+
+$copper: #B24629
+$orange: #ED8F17
+$black: #333333
+
+$text-gray: #999999
+$text-black: #333333
+
+$handwriting: "Nickyshand", Tahoma, Geneva, sans-serif
+$serif: "P22MackinacMedium", Georgia, serif
+$sans: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif
+
+body
+  background-color: #fff
+  color: $text-black
+  font-family: $serif
+
+// Header and Footer Work
+
+header
+  #home &
+    height: $header-tall
+  border-bottom: $header-border solid $copper
+  height: $header-short
+  display: block
+  .header-container
+    width: $medium-width
+    margin: 0 auto
+    position: relative
+  nav
+    background-color: rgba(0,0,0,0.35)
+    height: 115px
+    margin-bottom: -115px
+    z-index: 1
+    position: relative
+  .logo
+    h1, h3
+      text-indent: -10000px
+    a
+      width: 250px
+      height: 75px
+      display: block
+    width: 250px
+    height: 75px
+    background: image-url('site/logo.png') no-repeat 0 0
+    background-size: 100%
+    position: absolute
+    left: 50%
+    top: 19px
+    margin-left: -125px
+  .navigation
+    padding-top: 51px
+    display: inline-block
+    text-align: center
+    float: right
+    li
+      display: inline-block
+      text-transform: uppercase
+      margin-right: 12px
+    &.left-navigation
+      float: left
+      li
+        margin-left: 32px
+        margin-right: 0
+        &:first-child
+          margin-left: 0
+    &.right-navigation
+      li:last-child
+        margin-right: 0
+    a
+      font-size: 18px
+      color: #fff
+      text-decoration: none
+      padding-bottom: 10px
+      &.active
+        border-bottom: 5px solid #fff
+  .localization
+    position: absolute
+    top: 0
+    right: 45px
+    font-family: $sans
+    display: none
+    li
+      padding: 9px 12px
+      background: #fff
+      color: $text-gray
+      float: left
+      display: block
+      &.active
+        background: $copper
+        a
+          color: #fff
+      a
+        text-decoration: none
+        color: $text-gray
+  @media screen and (min-width: $wide-width)
+    .header-container
+      width: $wide-width
+    nav
+      height: 115px
+      margin-bottom: -115px
+    .logo
+      a
+        width: 300px
+        height: 92px
+      width: 300px
+      height: 92px
+      margin-left: -150px
+      top: 10px
+    .navigation
+      padding-top: 51px
+      li
+        margin-right: 45px
+      &.left-navigation
+        li, li:first-child
+          margin-left: 68px
+      &.right-navigation
+        li:last-child
+          margin-right: 45px
+footer
+  #home &
+    padding-top: 14px
+  text-align: center
+  text-transform: uppercase
+  padding-top: 40px
+  margin-bottom: 50px
+  font-size: 14px
+  ul
+    margin-bottom: 10px
+    li
+      display: inline-block
+      padding: 0 25px
+      border-right: 1px solid $text-black
+      &:last-child
+        border-right: none
+
+.banners
+  height: 100%
+  position: relative
+  z-index: 0
+  #home &
+    .banner .banner-cta
+      bottom: 165px
+  .banner-arrows
+    position: absolute
+    z-index: 10
+    top: 52%
+    margin-top: -30px
+    width: 100%
+    li
+      width: 32px
+      height: 60px
+      display: block
+      position: absolute
+      @include hr-image('../images/site/arrows.png', '../images/site/arrows@2x.png')
+      background-size: auto 60px
+      background-repeat: no-repeat
+      text-indent: -10000px
+      cursor: pointer
+      @include transition-property(opacity)
+      @include transition-duration(0.2s)
+      &:hover
+        opacity: 0.6
+    li.previous
+      background-position: top left
+      left: 20px
+    li.next
+      background-position: top right
+      right: 20px
+
+  .banner-dots
+    position: absolute
+    z-index: 10
+    top: 657px
+    left: 50%
+    li
+      width: 22px
+      height: 22px
+      display: block
+      cursor: pointer
+      background-color: #fff
+      border-radius: 50%
+      margin-right: 8px
+      display: inline-block
+      &:last-child
+        margin-right: 0
+      &.active
+        border: 3px solid #fff
+        width: 16px
+        height: 16px
+        background-color: transparent
+  &.banner_slideshow
+    .banner
+      position: absolute
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+      opacity: 0
+      &.active
+        opacity: 1
+        z-index: 5
+        @include transition-property(opacity)
+        @include transition-duration(1s)
+      &.previously_active
+        opacity: 1
+  .banner
+    @include box-sizing('border-box')
+    display: block
+    padding-top: 115px
+    height: 100%
+    background-size: cover
+    background-position: center center
+    text-align: center
+    color: #fff
+    &.with_cta 
+      .banner-headline-container
+        height: 70%
+    .banner-headline-container
+      max-width: 1000px
+      margin: 0 auto
+      position: relative
+      display: table
+      height: 93%
+    .banner-headline
+      font-family: $handwriting
+      font-size: 42px
+      line-height: 58px
+      display: table-cell 
+      vertical-align: middle 
+      text-align: center
+    .banner-cta
+      font-size: 24px
+      font-style: italic
+      position: absolute
+      margin-left: auto
+      margin-right: auto
+      left: 0
+      right: 0
+      bottom: 65px
+      .banner-cta-interior
+        display: inline-block
+        cursor: pointer
+        background-color: $orange
+        padding: 20px 60px
+        line-height: 42px
+    .banner-video
+      p
+        position: relative
+        padding-left: 50px
+        top: 1px
+      p:before
+        content: ""
+        width: 42px
+        height: 42px
+        @include hr-image('../images/site/play.png', '../images/site/play@2x.png')
+        background-size: cover
+        background-repeat: no-repeat
+        background-position: 0 0
+        display: inline-block
+        position: absolute
+        left: 0
+        top: -2px
+  #wine-page-banner
+    background-image: image-url('banners/wine-banner.jpg')
+  #news-page-banner
+    background-image: image-url('banners/news-banner.jpg')
+    .banner-headline
+      font-size: 72px
+
+// Hidden video inside banners
+
+.hidden-video
+  height: 450px
+  overflow: hidden
+  display: none
+
+// Content Work
+
+.container
+  width: $medium-width
+  margin: 0 auto
+  position: relative
+  #home main#content &
+    margin-top: 0
+    margin-bottom: 0
+  main#content &
+    margin-top: 80px
+    margin-bottom: 40px
+  h1
+    font-family: $handwriting
+    font-size: 72px
+  #wine h1
+    font-size: 94px
+  p
+    font-size: 18px
+    line-height: 28px
+    margin-bottom: 10px
+  strong
+    font-weight: bold
+  em
+    font-style: italic
+  ul
+    padding-left: 25px
+    font-size: 18px
+    line-height: 28px
+    padding-right: 100px
+    li
+      list-style: disc
+      margin-bottom: 10px
+
+.page-content
+  &:after
+    content: ""
+    clear: both
+    width: 100%
+    height: 1px
+    display: block
+  .page-image
+    float: right
+    padding-left: 75px
+    width: 334px
+    img
+      width: 334px
+  .page-text
+    float: left
+    width: 596px
+    h1
+      margin-bottom: 35px
+    h2
+      @include box-sizing('border-box')
+      border-top: 1px solid $copper
+      border-bottom: 1px solid $copper
+      margin-bottom: -1px
+      height: 68px
+      position: relative
+      font-family: $sans
+      color: $copper
+      text-transform: uppercase
+      font-size: 30px
+      line-height: 68px
+      &:after
+        content: ""
+        width: 25px
+        height: 25px
+        position: absolute
+        right: 18px
+        top: 25px
+        display: block
+        @include hr-image('../images/site/accordion.png', '../images/site/accordion@2x.png')
+        background-size: 25px
+        background-repeat: no-repeat
+        background-position: 0 0
+      &.active:after
+        top: 20px
+        background-position: 0 bottom
+    .page-text-block
+      display: none
+      margin: 35px 0
+      &.active
+        display: block
+
+.wine-page-content
+  display: none
+  &.active
+    display: block
+  .wine-page-text
+    .wine-specifications
+      padding: 0
+      li
+        list-style: none
+  .wine-page-image
+    position: relative
+    &:before
+      content: ""
+      display: block
+      width: 458px
+      height: 454px
+      background-image: image-url('site/wine-splat.png')
+      background-position: 0 0
+      background-repeat: no-repeat
+      background-size: 458px 454px
+      position: absolute
+      right: -90px
+      top: 110px
+      z-index: 0
+    img
+      float: right
+      margin-right: 5px
+      width: 195px
+      position: relative
+      z-index: 1
+
+.wine-browser
+  width: 1000px
+  margin: 0 auto
+  text-align: justify
+  position:relative
+  padding-top: 55px
+  li
+    display: inline-block
+    width: 160px
+    margin: 0
+    padding: 0
+    margin-right: 50px
+    cursor: pointer
+    position: relative
+    padding-bottom: 15px
+    vertical-align: top
+    &:hover
+      &:after
+        content: ""
+        width: 66px
+        height: 7px
+        background-color: #fff
+        display: block
+        position: absolute
+        bottom: 0
+        left: 50%
+        margin-left: -33px
+    img
+      width: 140px
+      padding: 10px
+    &:last-child
+      margin-right: 0
+    &.active img
+      padding: 0
+      border: 10px solid $orange
+  @media screen and (min-width: 1180px)
+    width: 1180px
+    padding-top: 20px
+    li
+      width: 190px
+      margin-right: 57px
+      img
+        width: 170px
+
+// Awards page
+
+#news
+  .awards-list
+    li
+      @include box-sizing('border-box')
+      width: 49%
+      display: inline-block
+      vertical-align: top
+      margin-bottom: 70px
+      &:after
+        content: ""
+        clear: both
+      .left-image
+        float: left
+        margin-right: 20px
+        img
+          width: 137px
+          border: 2px solid #889B9F
+      .right-content
+        float: left
+        width: 296px
+      .award-date
+        font-family: $handwriting
+        font-size: 44px
+      .award-description
+        padding-bottom: 20px
+      .award-score
+        background: $orange
+        width: 60px
+        height: 60px
+        border-radius: 50%
+        display: inline-block
+        color: #fff
+        text-align: center
+        line-height: 60px
+        font-size: 36px
+        font-family: $sans
+        vertical-align: middle
+        margin-right: 10px
+      .award-giver
+        display: inline-block
+        vertical-align: middle
+
+
+// Contact Page
+
+#contact
+  .success
+    display: none
+  .errors
+    display: none
+    font-style: italic
+    padding: 10px 0
+    border-top: 1px solid $copper
+    border-bottom: 1px solid $copper
+    margin: 20px 0
+    ul li
+      font-size: 14px
+      margin-bottom: 5px
+      &:last-child
+        margin-bottom: 0
+  form
+    margin-top: 20px
+    .form-left
+      float: left
+      width: 240px
+    .form-right
+      float: left
+    #location
+      display: none
+  label, input, button, select, textarea
+    font-size: 14px
+    font-weight: normal
+    line-height: 20px
+  .required
+    color: red
+    padding-left: 5px
+
+  input[type="submit"]
+    -webkit-appearance: button
+    display: block
+    padding: 6px 12px
+    margin-bottom: 0
+    text-align: center
+    cursor: pointer
+    background-image: none
+    border: 1px solid transparent
+    color: #fff
+    background: $orange
+    font-size: 16px
+    line-height: 20px
+    font-family: $serif
+    margin-top: 10px
+    width: 220px
+
+  label
+    display: block
+    margin-bottom: 5px
+
+  select, textarea
+    display: inline-block
+    height: 20px
+    padding: 4px 6px
+    margin-bottom: 10px
+    font-size: 14px
+    line-height: 20px
+    color: #555555
+    vertical-align: middle
+
+
+  input
+    &[type="text"], &[type="password"], &[type="datetime"], &[type="datetime-local"], &[type="date"], &[type="month"], &[type="time"], &[type="week"], &[type="number"], &[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="color"]
+      display: inline-block
+      height: 20px
+      padding: 4px 6px
+      margin-bottom: 10px
+      font-size: 14px
+      line-height: 20px
+      color: #555555
+      vertical-align: middle
+
+  input
+    width: 206px
+
+  textarea
+    width: 340px
+    height: 140px
+    background-color: #ffffff
+    border: 1px solid #cccccc
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s
+    transition: border linear 0.2s, box-shadow linear 0.2s
+
+  input
+    &[type="text"], &[type="password"], &[type="datetime"], &[type="datetime-local"], &[type="date"], &[type="month"], &[type="time"], &[type="week"], &[type="number"], &[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="color"]
+      background-color: #ffffff
+      border: 1px solid #cccccc
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+      -webkit-transition: border linear 0.2s, box-shadow linear 0.2s
+      -moz-transition: border linear 0.2s, box-shadow linear 0.2s
+      -o-transition: border linear 0.2s, box-shadow linear 0.2s
+      transition: border linear 0.2s, box-shadow linear 0.2s
+
+  textarea:focus
+    border-color: rgba(82, 168, 236, 0.8)
+    outline: 0
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+
+  input
+    &[type="text"]:focus, &[type="password"]:focus, &[type="datetime"]:focus, &[type="datetime-local"]:focus, &[type="date"]:focus, &[type="month"]:focus, &[type="time"]:focus, &[type="week"]:focus, &[type="number"]:focus, &[type="email"]:focus, &[type="url"]:focus, &[type="search"]:focus, &[type="tel"]:focus, &[type="color"]:focus
+      border-color: rgba(82, 168, 236, 0.8)
+      outline: 0
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+
+  .uneditable-input:focus
+    border-color: rgba(82, 168, 236, 0.8)
+    outline: 0
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+
+  input
+    &[type="radio"], &[type="checkbox"]
+      margin: 4px 0 0
+      margin-top: 1px \9
+      *margin-top: 0
+      line-height: normal

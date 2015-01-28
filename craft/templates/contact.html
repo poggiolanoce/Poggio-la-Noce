@@ -1,0 +1,58 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+  {% for entry in craft.entries.section('pages').slug(craft.request.getSegment(1)) %}
+  <article class="page-content">
+    <div class="page-image">
+      <img src="{{ entry.pageImage.first().getUrl() }}" alt="">
+    </div>
+    <div class="page-text">
+      <h1>{{ entry.pageSubtitle }}</h1>
+      <div class="page-text-container">
+        {{ entry.pageBody }}
+
+        <div class="errors">
+          <ul>
+            
+          </ul>
+        </div>
+
+        <div class="success">
+          <p><em><strong>Thank you for your message!</strong> </br> Someone will be in contact with you shortly.</em></p>
+        </div>
+
+        <form method="post" action="" accept-charset="UTF-8">
+          {{ getCsrfInput() }}
+          <input type="hidden" name="action" value="contactForm/sendMessage">
+          <input type="hidden" name="redirect" value="contact/thanks">
+          
+          <div class="form-left">
+ 
+            <h3><label for="fromName">Your Name</label></h3>
+            <input id="fromName" type="text" name="fromName" value="{% if message is defined %}{{ message.fromName }}{% endif %}">
+
+            <h3><label for="fromEmail">Your Email<span class="required">*</span></label></h3>
+            <input id="fromEmail" type="text" name="fromEmail" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}">
+            
+            <input type="submit" value="Send">
+
+          </div>
+
+          <div class="form-right">
+
+            <h3><label for="message">Message<span class="required">*</span></label></h3>
+            <textarea rows="10" cols="40" id="message" name="message">{% if message is defined %}{{ message.message }}{% endif %}</textarea>
+            
+          </div>
+
+
+          <input id="location" name="location" type="text">
+
+        </form>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+
+{% endblock %}

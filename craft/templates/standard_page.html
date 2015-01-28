@@ -1,0 +1,19 @@
+{% extends "_layout" %}
+
+{% block content %}
+  
+  {% for entry in craft.entries.section('pages').slug(craft.request.getSegment(1)) %}
+  <article class="page-content">
+    <div class="page-image">
+      <img src="{{ entry.pageImage.first().getUrl() }}" alt="">
+    </div>
+    <div class="page-text">
+      <h1>{{ entry.pageSubtitle }}</h1>
+      <div class="page-text-container">
+        {{ entry.pageBody }}
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+	
+{% endblock %}
