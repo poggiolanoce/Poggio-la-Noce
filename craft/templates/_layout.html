@@ -140,7 +140,7 @@
 			<li>{{ siteName }}</li>
 			<li>{{ contactinformation.primaryAddress }}</li>
 			<li>{{ contactinformation.primaryPhone }}</li>
-			<li>{{ contactinformation.primaryEmail }}</li>
+			<li><a href="mailto:{{ contactinformation.primaryEmail }}">{{ contactinformation.primaryEmail }}</a></li>
 		</ul>
 		<p>© {{ now.year }} {{ siteName }}. All rights reserved.</p>
 	</footer>
