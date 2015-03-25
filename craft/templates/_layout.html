@@ -107,6 +107,20 @@
 				{% endif %}
 
 				{#
+				# Awards Page
+				#}
+				{% if craft.request.getSegment(1) == 'awards' %}
+
+					<div class="banner" id="awards-page-banner">
+
+						<div class="banner-headline-container">
+							<div class="banner-headline">Press Reviews & Ratings</div>
+						</div>
+						
+					</div>
+
+				{% endif %}				
+				{#
 				# News Page
 				#}
 				{% if craft.request.getSegment(1) == 'news' %}
@@ -114,7 +128,7 @@
 					<div class="banner" id="news-page-banner">
 
 						<div class="banner-headline-container">
-							<div class="banner-headline">Press Reviews & Ratings</div>
+							<div class="banner-headline">News And Updates</div>
 						</div>
 						
 					</div>

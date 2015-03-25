@@ -1,122 +1,47 @@
+
+
 {% extends "_layout" %}
 
 {% block content %}
 
+
   <article class="page-content">
-    <div class="awards-list">
-      <li>
-        <figure class="left-image">
-          <img src="/images/wine/gigio-art.jpg" alt="">
-        </figure>
-        <div class="right-content">
-          <h4 class="award-date">2011</h4>
-          <p class="award-description">
-            “Lots of dried-berry, burnt-orange & dark-chocolate aromas. Full body, juicy tannins and a spicy, coffee, walnut and berry aftertaste. Needs time to soften. A blend of 90% sangiovese and 10% merlot. Better in 2016.”
-          </p>
-          <div class="award-score">
-            92
-          </div>
-          <div class="award-giver">
-            <img src="/images/site/award-james.jpg" alt="">
-          </div>
-        </div>
-      </li>
+  {% paginate craft.entries.section('news').limit(100) as pageEntries %}
+    {% for entry in pageEntries %}
 
-      <li>
-        <figure class="left-image">
-          <img src="/images/wine/gigetto-art.jpg" alt="">
-        </figure>
-        <div class="right-content">
-          <h4 class="award-date">2011</h4>
-          <p class="award-description">
-            “Very attractive aromas of cinnamon cookie, cherry and plum follow through to a full body, firm tannins and a fresh finish. A delicious blend of 90% sangiovese and 10% merlot. Drink or hold.”
-          </p>
-          <div class="award-score">
-            92
-          </div>
-          <div class="award-giver">
-            <img src="/images/site/award-james.jpg" alt="">
-          </div>
-        </div>
-      </li>
+    <div class="page-text">
+      <p class="news-date">{{ entry.postDate.format('F d, Y') }}</p>
+      <h1>{{ entry.title }}</h1>
+      <div class="news-image">
+        <img src="{{ entry.newsImage.first().getUrl() }}" alt="">
+      </div>
+      <div class="news-content">
+        {{ entry.body }}        
+      </div>
+  </div> 
+  {% endfor %}
 
-      <!-- Next Row -->
+    {% if paginate.prevUrl %}<a href="{{ paginate.prevUrl }}">Previous Page</a>{% endif %}
+    {% if paginate.nextUrl %}<a href="{{ paginate.nextUrl }}">Next Page</a>{% endif %}
+{% endpaginate %}
+    <div id="news-sidebar">
+    <h1>Recent Updates</h1>
+      {% set allEntries = craft.entries.section('news').limit(10) %}
 
-      <li>
-        <figure class="left-image">
-          <img src="/images/wine/gigio-art.jpg" alt="">
-        </figure>
-        <div class="right-content">
-          <h4 class="award-date">2010</h4>
-          <p class="award-description">
-            “Very intense aromas of currants, blackberries and minerals. Full body with fine tannins and a beautiful finish. A blend of 90% sangiovese and 10% merlot. Made from 3.2 acres near Florence. Better after 2014.”
-          </p>
-          <div class="award-score">
-            92
-          </div>
-          <div class="award-giver">
-            <img src="/images/site/award-james.jpg" alt="">
-          </div>
-        </div>
-      </li>
-
-      <li>
-        <figure class="left-image">
-          <img src="/images/wine/gigetto-art.jpg" alt="">
-        </figure>
-        <div class="right-content">
-          <h4 class="award-date">2010</h4>
-          <p class="award-description">
-            “A focused, clean red with light currant and cherry color and hints of new wood. Full body with firm tannins and a juicy finish. I think a year or two more of bottle age will bring this together wonderfully. 90% sangiovese and 10% merlot.”
-          </p>
-          <div class="award-score">
-            91
-          </div>
-          <div class="award-giver">
-            <img src="/images/site/award-james.jpg" alt="">
-          </div>
-        </div>
-      </li>
-
-      <!-- Next Row -->
-
-      <li>
-        <figure class="left-image">
-          <img src="/images/wine/gigio-art.jpg" alt="">
-        </figure>
-        <div class="right-content">
-          <h4 class="award-date">2007</h4>
-          <p class="award-description">
-            “A big, full, powerful red, with dried berries, toasty oak and coffee aromas and flavors. Very rich and long. Verging on a blockbuster style. 95 percent Sangiovese and 5 percent Merlot. The second vintage of this new winery from Fiesole. Best after 2013. 100 cases made.”
-          </p>
-          <div class="award-score">
-            93
-          </div>
-          <div class="award-giver">
-            <img src="/images/site/award-wine-specator.jpg" alt="">
-          </div>
-        </div>
-      </li>
-
-      <li>
-        <figure class="left-image">
-          <img src="/images/wine/gigio-art.jpg" alt="">
-        </figure>
-        <div class="right-content">
-          <h4 class="award-date">2006</h4>
-          <p class="award-description">
-            “A dense, powerful and subtle red, with ripe plum, berries and toasty oak. Full and chewy. Needs time to come together. A new wine from Fiesole. Best after 2011.”
-          </p>
-          <div class="award-score">
-            92
-          </div>
-          <div class="award-giver">
-            <img src="/images/site/award-wine-specator.jpg" alt="">
-          </div>
-        </div>
-      </li>
-
+      {% for year, entriesInYear in allEntries | group("postDate.year") %}
+          <h2>{{ year }}</h2>
+          <ul>
+              {% for month, entriesInMonth in entriesInYear | group("postDate|date('F')") %}
+                  <h3>{{ month }}</h3>
+                  <ul>
+                      {% for entry in entriesInMonth %}
+                          <li><img src="{{ entry.newsImage.first().getUrl('thumb') }}" width="{{ entry.newsImage.first().getWidth('thumb') }}" height="{{ entry.newsImage.first().getHeight('thumb') }}">
+      {{ entry.getLink() }}</li>
+                      {% endfor %}
+                  </ul>
+              {% endfor %}
+          </ul>
+      {% endfor %}
     </div>
   </article>
-
 {% endblock %}

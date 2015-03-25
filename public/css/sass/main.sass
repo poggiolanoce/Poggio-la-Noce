@@ -278,6 +278,10 @@ footer
         top: -2px
   #wine-page-banner
     background-image: image-url('banners/wine-banner.jpg')
+  #awards-page-banner
+    background-image: image-url('banners/news-banner.jpg')
+    .banner-headline
+      font-size: 72px
   #news-page-banner
     background-image: image-url('banners/news-banner.jpg')
     .banner-headline
@@ -452,7 +456,7 @@ footer
 
 // Awards page
 
-#news
+#awards
   .awards-list
     li
       @include box-sizing('border-box')
@@ -494,9 +498,43 @@ footer
         display: inline-block
         vertical-align: middle
 
+// News Page
 
+#news
+  .container
+    h1
+      font-size: 45px
+    #news-sidebar
+      float: right
+      padding-left: 75px 
+      width: 334px
+      h1
+        font-family: $sans
+        color: $text-gray
+        text-transform: uppercase
+        font-size: 2em
+        line-height: 2.5em
+        text-align: center
+      ul
+        padding: 0px
+        li
+          border-bottom: 1px solid $text-gray 
+          list-style: none
+          padding: 20px 0
+          float: left
+          a 
+            font-family: $handwriting
+            text-decoration: none
+            color: $text-black
+            float: left
+            font-size: 20px
+            &:hover
+              color: $orange
+          img
+            float: left
+            margin-right: 10px
 // Contact Page
-
+  
 #contact
   .success
     display: none
