@@ -5,17 +5,26 @@
     
   <div id="news-sidebar">
     <!-- Sidebar -->
-    <h1>Recent Updates</h1>
-    <ul>
-    {% set allEntries = craft.entries.section('news').limit(10) %}
-    {% for entry in allEntries %}
-      <li>
-        <h4>{{ entry.postDate.format('F d, Y') }}</h4>
-        <img src="{{ entry.newsImage.first().getUrl('thumb') }}" width="{{ entry.newsImage.first().getWidth('thumb') }}" height="{{ entry.newsImage.first().getHeight('thumb') }}">
-        {{ entry.getLink() }}
-      </li>
-    {% endfor %}
-    </ul>
+    <div class="news-sidebar-section">
+      <h1>Awards</h1>
+      <p>See a short list of awards our wines have collected over the years</p>
+      <a href="{{siteUrl}}/awards">Our Awards</a>
+    </div>
+    
+    <div class="news-sidebar-section">
+      <h1>Recent Updates</h1>
+      <ul>
+      {% set allEntries = craft.entries.section('news').limit(10) %}
+      {% for entry in allEntries %}
+        <li>
+          <h4>{{ entry.postDate.format('F d, Y') }}</h4>
+          <img src="{{ entry.newsImage.first().getUrl('thumb') }}" width="{{ entry.newsImage.first().getWidth('thumb') }}" height="{{ entry.newsImage.first().getHeight('thumb') }}">
+          {{ entry.getLink() }}
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+
   </div>
 
   <!-- Article Area -->
