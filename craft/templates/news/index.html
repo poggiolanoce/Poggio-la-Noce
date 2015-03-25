@@ -1,47 +1,41 @@
-
-
 {% extends "_layout" %}
-
 {% block content %}
+  
+  <div class="page-content">
+    
+  <div id="news-sidebar">
+    <!-- Sidebar -->
+    <h1>Recent Updates</h1>
+    <ul>
+    {% set allEntries = craft.entries.section('news').limit(10) %}
+    {% for entry in allEntries %}
+      <li>
+        <h4>{{ entry.postDate.format('F d, Y') }}</h4>
+        <img src="{{ entry.newsImage.first().getUrl('thumb') }}" width="{{ entry.newsImage.first().getWidth('thumb') }}" height="{{ entry.newsImage.first().getHeight('thumb') }}">
+        {{ entry.getLink() }}
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
 
-
-  <article class="page-content">
+  <!-- Article Area -->
   {% paginate craft.entries.section('news').limit(100) as pageEntries %}
     {% for entry in pageEntries %}
-
-    <div class="page-text">
+    <article class="page-text">
       <p class="news-date">{{ entry.postDate.format('F d, Y') }}</p>
       <h1>{{ entry.title }}</h1>
       <div class="news-image">
-        <img src="{{ entry.newsImage.first().getUrl() }}" alt="">
+        <img src="{{ entry.newsImage.first().getUrl('newsMainImage') }}" width="{{ entry.newsImage.first().getWidth('newsMainImage') }}" height="{{ entry.newsImage.first().getHeight('newsMainImage') }}">
       </div>
       <div class="news-content">
         {{ entry.body }}        
       </div>
-  </div> 
-  {% endfor %}
+    </article>
+    {% endfor %}
 
     {% if paginate.prevUrl %}<a href="{{ paginate.prevUrl }}">Previous Page</a>{% endif %}
     {% if paginate.nextUrl %}<a href="{{ paginate.nextUrl }}">Next Page</a>{% endif %}
-{% endpaginate %}
-    <div id="news-sidebar">
-    <h1>Recent Updates</h1>
-      {% set allEntries = craft.entries.section('news').limit(10) %}
+  {% endpaginate %}    
+  </div>
 
-      {% for year, entriesInYear in allEntries | group("postDate.year") %}
-          <h2>{{ year }}</h2>
-          <ul>
-              {% for month, entriesInMonth in entriesInYear | group("postDate|date('F')") %}
-                  <h3>{{ month }}</h3>
-                  <ul>
-                      {% for entry in entriesInMonth %}
-                          <li><img src="{{ entry.newsImage.first().getUrl('thumb') }}" width="{{ entry.newsImage.first().getWidth('thumb') }}" height="{{ entry.newsImage.first().getHeight('thumb') }}">
-      {{ entry.getLink() }}</li>
-                      {% endfor %}
-                  </ul>
-              {% endfor %}
-          </ul>
-      {% endfor %}
-    </div>
-  </article>
 {% endblock %}

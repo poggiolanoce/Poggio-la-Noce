@@ -18,6 +18,7 @@ $copper: #B24629
 $orange: #ED8F17
 $black: #333333
 
+$text-light-gray: #E2E2E2
 $text-gray: #999999
 $text-black: #333333
 
@@ -519,6 +520,15 @@ footer
   .container
     h1
       font-size: 45px
+    .page-content
+      .news-image
+        margin-bottom: 20px
+      .page-text
+        &:only-of-type, &:last-child
+          border-bottom: none
+        border-bottom: 1px solid $text-light-gray
+        padding-bottom: 30px
+        margin-bottom: 30px
     #news-sidebar
       float: right
       padding-left: 75px 
@@ -527,13 +537,16 @@ footer
         font-family: $sans
         color: $text-gray
         text-transform: uppercase
-        font-size: 2em
-        line-height: 2.5em
+        font-size: 32px
+        line-height: 32px
         text-align: center
       ul
         padding: 0px
+        h4
+          font-size: 14px
+          margin-bottom: 5px
         li
-          border-bottom: 1px solid $text-gray 
+          border-bottom: 1px solid $text-light-gray
           list-style: none
           padding: 20px 0
           float: left
@@ -548,6 +561,7 @@ footer
           img
             float: left
             margin-right: 10px
+
 // Contact Page
   
 #contact
