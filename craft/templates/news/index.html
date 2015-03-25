@@ -10,6 +10,14 @@
       <p>See a short list of awards our wines have collected over the years</p>
       <a href="{{siteUrl}}/awards">Our Awards</a>
     </div>
+
+    <div class="news-sidebar-section">
+      <h1>Search Archives</h1>
+      <form action="{{ url('news/archive') }}">
+        <input type="search" name="q" placeholder="SEARCH">
+        <input type="submit" value="Go">
+      </form>
+    </div>
     
     <div class="news-sidebar-section">
       <h1>Recent Updates</h1>

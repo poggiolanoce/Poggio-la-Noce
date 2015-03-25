@@ -559,6 +559,33 @@ footer
         width: 100%
         height: 1px
         display: block
+    .news-search
+      width: 596px
+      min-height: 300px
+      .number-results
+      .result-listing
+        margin: 0
+        padding: 0
+        li
+          border-bottom: 1px solid $text-light-gray
+          list-style: none
+          padding: 14px 0
+          margin: 0
+          &:last-child
+            border-bottom: none
+          img
+            float: left
+            margin-right: 25px
+        a
+          color: $text-black
+          text-decoration: none
+          span
+            color: $copper
+            display: block
+          span:last-child
+            color: $text-black
+      .no-results
+        font-size: 18px
     #news-sidebar
       float: right
       padding-left: 75px 
