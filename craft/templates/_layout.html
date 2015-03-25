@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="/css/main.css" type="text/css">
 	<script src="/javascript/plugins.js"></script>
 	<script src="/javascript/main.js"></script>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
 </head>
 
@@ -154,7 +155,8 @@
 			<li>{{ siteName }}</li>
 			<li>{{ contactinformation.primaryAddress }}</li>
 			<li>{{ contactinformation.primaryPhone }}</li>
-			<li>{{ contactinformation.primaryEmail }}</li>
+			<li><a href="mailto:{{ contactinformation.primaryEmail }}">{{ contactinformation.primaryEmail }}</a></li>
+			<li class="facebook"><a href="https://www.facebook.com/PoggioLaNoce" target="_blank">Facebook</a></li>
 		</ul>
 		<p>© {{ now.year }} {{ siteName }}. All rights reserved.</p>
 	</footer>
