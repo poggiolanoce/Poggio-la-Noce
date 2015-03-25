@@ -918,12 +918,52 @@ main#content .container {
   border-bottom: none;
 }
 /* line 532, sass/main.sass */
+#news .container .pagination {
+  clear: left;
+  width: 596px;
+}
+/* line 535, sass/main.sass */
+#news .container .pagination a {
+  display: block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  text-align: center;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  color: #fff;
+  background: #ED8F17;
+  font-size: 16px;
+  line-height: 40px;
+  font-family: "P22MackinacMedium", Georgia, serif;
+  margin-top: 10px;
+  width: 220px;
+  font-style: italic;
+  text-decoration: none;
+}
+/* line 552, sass/main.sass */
+#news .container .pagination a:first-child {
+  float: right;
+}
+/* line 554, sass/main.sass */
+#news .container .pagination a:last-child {
+  float: left;
+}
+/* line 556, sass/main.sass */
+#news .container .pagination:after {
+  content: "";
+  clear: both;
+  width: 100%;
+  height: 1px;
+  display: block;
+}
+/* line 562, sass/main.sass */
 #news .container #news-sidebar {
   float: right;
   padding-left: 75px;
   width: 334px;
 }
-/* line 536, sass/main.sass */
+/* line 566, sass/main.sass */
 #news .container #news-sidebar h1 {
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
   color: #999999;
@@ -932,23 +972,23 @@ main#content .container {
   line-height: 32px;
   text-align: center;
 }
-/* line 543, sass/main.sass */
+/* line 573, sass/main.sass */
 #news .container #news-sidebar ul {
   padding: 0px;
 }
-/* line 545, sass/main.sass */
+/* line 575, sass/main.sass */
 #news .container #news-sidebar ul h4 {
   font-size: 14px;
   margin-bottom: 5px;
 }
-/* line 548, sass/main.sass */
+/* line 578, sass/main.sass */
 #news .container #news-sidebar ul li {
   border-bottom: 1px solid #E2E2E2;
   list-style: none;
   padding: 20px 0;
   float: left;
 }
-/* line 553, sass/main.sass */
+/* line 583, sass/main.sass */
 #news .container #news-sidebar ul li a {
   font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
   text-decoration: none;
@@ -956,35 +996,35 @@ main#content .container {
   float: left;
   font-size: 20px;
 }
-/* line 559, sass/main.sass */
+/* line 589, sass/main.sass */
 #news .container #news-sidebar ul li a:hover {
   color: #ED8F17;
 }
-/* line 561, sass/main.sass */
+/* line 591, sass/main.sass */
 #news .container #news-sidebar ul li img {
   float: left;
   margin-right: 10px;
 }
 
-/* line 568, sass/main.sass */
+/* line 598, sass/main.sass */
 #contact .prefer_email {
   clear: both;
   padding-top: 30px;
 }
-/* line 571, sass/main.sass */
+/* line 601, sass/main.sass */
 #contact .prefer_email a {
   color: #B24629;
   text-decoration: none;
 }
-/* line 574, sass/main.sass */
+/* line 604, sass/main.sass */
 #contact .prefer_email a:hover {
   text-decoration: underline;
 }
-/* line 576, sass/main.sass */
+/* line 606, sass/main.sass */
 #contact .success {
   display: none;
 }
-/* line 578, sass/main.sass */
+/* line 608, sass/main.sass */
 #contact .errors {
   display: none;
   font-style: italic;
@@ -993,44 +1033,44 @@ main#content .container {
   border-bottom: 1px solid #B24629;
   margin: 20px 0;
 }
-/* line 585, sass/main.sass */
+/* line 615, sass/main.sass */
 #contact .errors ul li {
   font-size: 14px;
   margin-bottom: 5px;
 }
-/* line 588, sass/main.sass */
+/* line 618, sass/main.sass */
 #contact .errors ul li:last-child {
   margin-bottom: 0;
 }
-/* line 590, sass/main.sass */
+/* line 620, sass/main.sass */
 #contact form {
   margin-top: 20px;
 }
-/* line 592, sass/main.sass */
+/* line 622, sass/main.sass */
 #contact form .form-left {
   float: left;
   width: 240px;
 }
-/* line 595, sass/main.sass */
+/* line 625, sass/main.sass */
 #contact form .form-right {
   float: left;
 }
-/* line 597, sass/main.sass */
+/* line 627, sass/main.sass */
 #contact form #location {
   display: none;
 }
-/* line 599, sass/main.sass */
+/* line 629, sass/main.sass */
 #contact label, #contact input, #contact button, #contact select, #contact textarea {
   font-size: 14px;
   font-weight: normal;
   line-height: 20px;
 }
-/* line 603, sass/main.sass */
+/* line 633, sass/main.sass */
 #contact .required {
   color: red;
   padding-left: 5px;
 }
-/* line 607, sass/main.sass */
+/* line 637, sass/main.sass */
 #contact input[type="submit"] {
   -webkit-appearance: button;
   display: block;
@@ -1048,12 +1088,12 @@ main#content .container {
   margin-top: 10px;
   width: 220px;
 }
-/* line 624, sass/main.sass */
+/* line 654, sass/main.sass */
 #contact label {
   display: block;
   margin-bottom: 5px;
 }
-/* line 628, sass/main.sass */
+/* line 658, sass/main.sass */
 #contact select, #contact textarea {
   display: inline-block;
   height: 20px;
@@ -1064,7 +1104,7 @@ main#content .container {
   color: #555555;
   vertical-align: middle;
 }
-/* line 640, sass/main.sass */
+/* line 670, sass/main.sass */
 #contact input[type="text"], #contact input[type="password"], #contact input[type="datetime"], #contact input[type="datetime-local"], #contact input[type="date"], #contact input[type="month"], #contact input[type="time"], #contact input[type="week"], #contact input[type="number"], #contact input[type="email"], #contact input[type="url"], #contact input[type="search"], #contact input[type="tel"], #contact input[type="color"] {
   display: inline-block;
   height: 20px;
@@ -1075,11 +1115,11 @@ main#content .container {
   color: #555555;
   vertical-align: middle;
 }
-/* line 650, sass/main.sass */
+/* line 680, sass/main.sass */
 #contact input {
   width: 206px;
 }
-/* line 653, sass/main.sass */
+/* line 683, sass/main.sass */
 #contact textarea {
   width: 340px;
   height: 140px;
@@ -1093,7 +1133,7 @@ main#content .container {
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
-/* line 667, sass/main.sass */
+/* line 697, sass/main.sass */
 #contact input[type="text"], #contact input[type="password"], #contact input[type="datetime"], #contact input[type="datetime-local"], #contact input[type="date"], #contact input[type="month"], #contact input[type="time"], #contact input[type="week"], #contact input[type="number"], #contact input[type="email"], #contact input[type="url"], #contact input[type="search"], #contact input[type="tel"], #contact input[type="color"] {
   background-color: #ffffff;
   border: 1px solid #cccccc;
@@ -1105,7 +1145,7 @@ main#content .container {
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
-/* line 678, sass/main.sass */
+/* line 708, sass/main.sass */
 #contact textarea:focus {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
@@ -1113,7 +1153,7 @@ main#content .container {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
-/* line 686, sass/main.sass */
+/* line 716, sass/main.sass */
 #contact input[type="text"]:focus, #contact input[type="password"]:focus, #contact input[type="datetime"]:focus, #contact input[type="datetime-local"]:focus, #contact input[type="date"]:focus, #contact input[type="month"]:focus, #contact input[type="time"]:focus, #contact input[type="week"]:focus, #contact input[type="number"]:focus, #contact input[type="email"]:focus, #contact input[type="url"]:focus, #contact input[type="search"]:focus, #contact input[type="tel"]:focus, #contact input[type="color"]:focus {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
@@ -1121,7 +1161,7 @@ main#content .container {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
-/* line 693, sass/main.sass */
+/* line 723, sass/main.sass */
 #contact .uneditable-input:focus {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
@@ -1129,7 +1169,7 @@ main#content .container {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
-/* line 701, sass/main.sass */
+/* line 731, sass/main.sass */
 #contact input[type="radio"], #contact input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;

@@ -19,7 +19,7 @@
   </div>
 
   <!-- Article Area -->
-  {% paginate craft.entries.section('news').limit(100) as pageEntries %}
+  {% paginate craft.entries.section('news').limit(10) as pageEntries %}
     {% for entry in pageEntries %}
     <article class="page-text">
       <p class="news-date">{{ entry.postDate.format('F d, Y') }}</p>
@@ -33,8 +33,10 @@
     </article>
     {% endfor %}
 
-    {% if paginate.prevUrl %}<a href="{{ paginate.prevUrl }}">Previous Page</a>{% endif %}
-    {% if paginate.nextUrl %}<a href="{{ paginate.nextUrl }}">Next Page</a>{% endif %}
+    <div class="pagination">
+      {% if paginate.nextUrl %}<a href="{{ paginate.nextUrl }}">Older Posts »</a>{% endif %}
+      {% if paginate.prevUrl %}<a href="{{ paginate.prevUrl }}">« Newer Posts</a>{% endif %}
+    </div>
   {% endpaginate %}    
   </div>
 
