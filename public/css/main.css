@@ -580,7 +580,7 @@ footer ul li.facebook a {
 }
 /* line 297, sass/main.sass */
 .banners #awards-page-banner {
-  background-image: url('/images/banners/news-banner.jpg?1427306844');
+  background-image: url('/images/banners/news-banner.jpg?1427317930');
 }
 /* line 299, sass/main.sass */
 .banners #awards-page-banner .banner-headline {
@@ -588,7 +588,7 @@ footer ul li.facebook a {
 }
 /* line 301, sass/main.sass */
 .banners #news-page-banner {
-  background-image: url('/images/banners/news-banner.jpg?1427306844');
+  background-image: url('/images/banners/news-banner-alt.jpg');
 }
 /* line 303, sass/main.sass */
 .banners #news-page-banner .banner-headline {
@@ -982,7 +982,7 @@ main#content .container {
   width: 48px;
   height: 48px;
   border: none;
-  background: #F48F1B url('/images/site/search.png?1427317482') no-repeat center center;
+  background: #F48F1B url('/images/site/search.png?1427317930') no-repeat center center;
   text-indent: -10000px;
 }
 /* line 586, sass/main.sass */
