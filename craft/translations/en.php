@@ -15,5 +15,6 @@ return array(
     "Exposition" => "Exposition",
     "Soil" => "Soil",
     "Vinification" => "Vinification and maturation",
-    "Additional" => "Additional Details"
+    "Additional" => "Additional Details",
+    "Watch" => "Watch the video"
 );
