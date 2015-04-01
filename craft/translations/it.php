@@ -15,5 +15,6 @@ return array(
     "Exposition" => "Esposizione",
     "Soil" => "Terreno",
     "Vinification" => "Vinification and maturation",
-    "Additional" => "Ulteriori dettagli"
+    "Additional" => "Ulteriori dettagli",
+    "Watch" => "Guarda il video"
 );
