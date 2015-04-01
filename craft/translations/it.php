@@ -14,7 +14,7 @@ return array(
     "Grapes" => "Uvaggio",
     "Exposition" => "Esposizione",
     "Soil" => "Terreno",
-    "Vinification" => "Vinification and maturation",
+    "Vinification" => "Vinificazione e Affinamento",
     "Additional" => "Ulteriori dettagli",
     "Watch" => "Guarda il video"
 );
