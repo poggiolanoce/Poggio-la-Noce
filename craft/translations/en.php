@@ -16,5 +16,12 @@ return array(
     "Soil" => "Soil",
     "Vinification" => "Vinification and maturation",
     "Additional" => "Additional Details",
-    "Watch" => "Watch the video"
+    "Watch" => "Watch the video",
+    "About" => "About",
+    "Philosophy" => "Philosophy",
+    "Vineyard" => "Vineyard",
+    "Wines" => "Wines",
+    "Olive Oil" => "Olive Oil",
+    "Awards" => "Awards",
+    "Contact" => "Contact",    
 );

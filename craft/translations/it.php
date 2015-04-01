@@ -16,5 +16,12 @@ return array(
     "Soil" => "Terreno",
     "Vinification" => "Vinificazione e Affinamento",
     "Additional" => "Ulteriori dettagli",
-    "Watch" => "Guarda il video"
+    "Watch" => "Guarda il video",
+    "About" => "L'azienda",
+    "Philosophy" => "Filosofia",
+    "Vineyard" => "Il vigneto",
+    "Wines" => "Vinos",
+    "Olive Oil" => "Olio di Oliva",
+    "Awards" => "Premi",
+    "Contact" => "Contatti",
 );
