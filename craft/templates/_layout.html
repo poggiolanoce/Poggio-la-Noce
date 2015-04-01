@@ -33,7 +33,9 @@
 					<ul class="navigation right-navigation">
 						<li><a href="{{ url('wines') }}" {% if craft.request.getSegment(1) == 'wines' %}class="active"{% endif %}>{{"Wines" | translate}}</a></li>
 						<li><a href="{{ url('olive-oil') }}" {% if craft.request.getSegment(1) == 'olive-oil' %}class="active"{% endif %}>{{"Olive Oil" | translate}}</a></li>
+						{% if craft.locale == 'en_us' %}
 						<li><a href="{{ url('awards') }}" {% if craft.request.getSegment(1) == 'awards' %}class="active"{% endif %}>{{"Awards" | translate}}</a></li>
+						{% endif %}
 						<li><a href="{{ url('contact') }}" {% if craft.request.getSegment(1) == 'contact' %}class="active"{% endif %}>{{"Contact" | translate}}</a></li>
 					</ul>
 					<ul class="localization">
