@@ -20,7 +20,7 @@ return array(
     "About" => "L'azienda",
     "Philosophy" => "Filosofia",
     "Vineyard" => "Il vigneto",
-    "Wines" => "Vinos",
+    "Wines" => "Vini",
     "Olive Oil" => "Olio di Oliva",
     "Awards" => "Premi",
     "Contact" => "Contatti",
