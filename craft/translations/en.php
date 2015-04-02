@@ -23,5 +23,6 @@ return array(
     "Wines" => "Wines",
     "Olive Oil" => "Olive Oil",
     "Awards" => "Awards",
-    "Contact" => "Contact",    
+    "Contact" => "Contact",
+    "Reviews" => "Press Reviews & Ratings"
 );

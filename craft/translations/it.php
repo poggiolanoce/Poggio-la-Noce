@@ -6,7 +6,7 @@ return array(
     "Message" => "Messaggio",
     "Thanks" => "Grazie per il messaggio!",
     "Thanks2" => "Vi contatteremo appena possibile.",
-    "PreferEmail" => "Preferisci email? ci puoi contattare a ",
+    "PreferEmail" => "Preferisci email? Ci puoi contattare a ",
     "Description" => "Descrizione",
     "Specifications" => "Specifiche",
     "WineType" => "Tipo di Vino",
@@ -22,6 +22,7 @@ return array(
     "Vineyard" => "Il vigneto",
     "Wines" => "Vini",
     "Olive Oil" => "Olio di Oliva",
-    "Awards" => "Premi",
+    "Awards" => "Valutazioni Stampa",
     "Contact" => "Contatti",
+    "Reviews" => "Commenti stampa e valutazioni"
 );
