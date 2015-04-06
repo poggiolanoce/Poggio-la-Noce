@@ -24,5 +24,16 @@ return array(
     "Olive Oil" => "Olio di Oliva",
     "Awards" => "Valutazioni Stampa",
     "Contact" => "Contatti",
-    "Reviews" => "Commenti stampa e valutazioni"
+    "Reviews" => "Commenti stampa e valutazioni",
+    "News And Updates" => "Notizie e Aggiornamenti",
+    "Recent Updates" => "Aggiornamenti recenti",
+    "Search Archives" => "Ricerca archivi",
+    "Search" => "Ricerca",
+    "Get Updates" => "Ricevi aggiornamenti via email",
+    "Join Our Newsletter" => "Iscriviti alla newsletter",
+    "First Name" => "Nome",
+    "Last Name" => "Cognome",
+    "Send Me Updates" => "Inviami aggiornamenti",
+    "Award Description" => "Guarda le recensioni sui nostri vini negli ultimi anni",
+    "Our Awards" => "Recensioni"
 );

@@ -6,21 +6,26 @@
   <div id="news-sidebar">
     <!-- Sidebar -->
     <div class="news-sidebar-section">
-      <h1>Awards</h1>
-      <p>See a short list of awards our wines have collected over the years</p>
-      <a href="{{siteUrl}}awards">Our Awards</a>
+      <h1>{{ "Get Updates" | translate }}</h1>
+      {% include '_mailchimp' %}
+    </div>
+
+    <div class="news-sidebar-section">
+      <h1>{{ "Awards" | translate }}</h1>
+      <p>{{ "Award Description" | translate }}</p>
+      <a href="{{siteUrl}}awards">{{ "Our Awards" | translate }}</a>
     </div>
 
     <div class="news-sidebar-section news-search-form">
-      <h1>Search Archives</h1>
+      <h1>{{ "Search Archives" | translate }}</h1>
       <form action="{{ url('news/archive') }}">
-        <input type="search" name="q" placeholder="SEARCH">
+        <input type="search" name="q" placeholder="{{ 'Search' | translate }}">
         <input type="submit" value="Go">
       </form>
     </div>
     
     <div class="news-sidebar-section">
-      <h1>Recent Updates</h1>
+      <h1>{{ "Recent Updates" | translate }}</h1>
       <ul>
       {% set allEntries = craft.entries.section('news').limit(10) %}
       {% for entry in allEntries %}

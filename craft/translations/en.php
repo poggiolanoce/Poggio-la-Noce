@@ -24,5 +24,16 @@ return array(
     "Olive Oil" => "Olive Oil",
     "Awards" => "Awards",
     "Contact" => "Contact",
-    "Reviews" => "Press Reviews & Ratings"
+    "Reviews" => "Press Reviews & Ratings",
+    "News And Updates" => "News And Updates",
+    "Recent Updates" => "Recent Updates",
+    "Search Archives" => "Search Archives",
+    "Search" => "Search",
+    "Get Updates" => "Get Updates Via Email",
+    "Join Our Newsletter" => "Join Our Newsletter",
+    "First Name" => "First Name",
+    "Last Name" => "Last Name",
+    "Send Me Updates" => "Send Me Updates",
+    "Award Description" => "See a short list of awards our wines have collected over the years",
+    "Our Awards" => "Our Awards"
 );
