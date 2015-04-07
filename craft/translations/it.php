@@ -23,6 +23,7 @@ return array(
     "Wines" => "Vini",
     "Olive Oil" => "Olio di Oliva",
     "Awards" => "Valutazioni Stampa",
+    "Awards Menu" => "Recensioni",
     "Contact" => "Contatti",
     "Reviews" => "Commenti stampa e valutazioni",
     "News And Updates" => "Notizie e Aggiornamenti",
@@ -35,5 +36,7 @@ return array(
     "Last Name" => "Cognome",
     "Send Me Updates" => "Inviami aggiornamenti",
     "Award Description" => "Guarda le recensioni sui nostri vini negli ultimi anni",
-    "Our Awards" => "Recensioni"
+    "Our Awards" => "Recensioni",
+    "Search Results" => "Risultati della ricerca",
+    "No Results" => "Nessun risultato per la ricerca."
 );

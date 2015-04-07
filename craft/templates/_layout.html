@@ -25,15 +25,13 @@
 						<h3>Fiesole, Italia</h3>
 						</a>
 					</div>
-					<ul class="navigation left-navigation">
+					<ul class="navigation">
 						<li><a href="{{ url('about') }}" {% if craft.request.getSegment(1) == 'about' %}class="active"{% endif %}>{{"About" | translate}}</a></li>
 						<li><a href="{{ url('philosophy') }}" {% if craft.request.getSegment(1) == 'philosophy' %}class="active"{% endif %}>{{"Philosophy" | translate}}</a></li>
 						<li><a href="{{ url('vineyard') }}" {% if craft.request.getSegment(1) == 'vineyard' %}class="active"{% endif %}>{{"Vineyard" | translate}}</a></li>
-					</ul>
-					<ul class="navigation right-navigation">
 						<li><a href="{{ url('wines') }}" {% if craft.request.getSegment(1) == 'wines' %}class="active"{% endif %}>{{"Wines" | translate}}</a></li>
 						<li><a href="{{ url('olive-oil') }}" {% if craft.request.getSegment(1) == 'olive-oil' %}class="active"{% endif %}>{{"Olive Oil" | translate}}</a></li>
-						<li><a href="{{ url('awards') }}" {% if craft.request.getSegment(1) == 'awards' %}class="active"{% endif %}>{{"Awards" | translate}}</a></li>
+						<li><a href="{{ url('awards') }}" {% if craft.request.getSegment(1) == 'awards' %}class="active"{% endif %}>{{"Awards Menu" | translate}}</a></li>
 						<li><a href="{{ url('contact') }}" {% if craft.request.getSegment(1) == 'contact' %}class="active"{% endif %}>{{"Contact" | translate}}</a></li>
 					</ul>
 					<ul class="localization">

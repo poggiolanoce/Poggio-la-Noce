@@ -15,7 +15,7 @@
     
   </div>
     
-  <h1>Search Results</h1>
+  <h1>{{ "Search Results" | translate }}</h1>
 
   <div class="news-search">
     {% set query = craft.request.getParam('q') %}
@@ -39,7 +39,7 @@
 
       {% else %}
 
-      <p class="no-results">Your search for “{{ query }}” didn’t return any results.</p>
+      <p class="no-results">{{ "No Results" | translate }}</p>
 
     {% endif %}  
   </div>

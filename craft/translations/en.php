@@ -23,6 +23,7 @@ return array(
     "Wines" => "Wines",
     "Olive Oil" => "Olive Oil",
     "Awards" => "Awards",
+    "Awards Menu" => "Awards",
     "Contact" => "Contact",
     "Reviews" => "Press Reviews & Ratings",
     "News And Updates" => "News And Updates",
@@ -35,5 +36,7 @@ return array(
     "Last Name" => "Last Name",
     "Send Me Updates" => "Send Me Updates",
     "Award Description" => "See a short list of awards our wines have collected over the years",
-    "Our Awards" => "Our Awards"
+    "Our Awards" => "Our Awards",
+    "Search Results" => "Search Results",
+    "No Results" => "Your search didn’t return any results."
 );

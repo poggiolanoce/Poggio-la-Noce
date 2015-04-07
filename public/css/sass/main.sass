@@ -45,46 +45,40 @@ header
     position: relative
   nav
     background-color: rgba(0,0,0,0.35)
-    height: 115px
-    margin-bottom: -115px
+    height: 120px
+    margin-bottom: -120px
     z-index: 1
     position: relative
   .logo
     h1, h3
       text-indent: -10000px
     a
-      width: 250px
-      height: 75px
+      width: 225px
+      height: 67px
       display: block
-    width: 250px
-    height: 75px
+    width: 225px
+    height: 67px
     background: image-url('site/logo.png') no-repeat 0 0
     background-size: 100%
     position: absolute
     left: 50%
-    top: 19px
-    margin-left: -125px
+    top: 8px
+    margin-left: -112px
   .navigation
-    padding-top: 51px
-    display: inline-block
-    text-align: center
-    float: right
+    padding-top: 93px
+    display: block
+    min-width: 1000px
+    width: 100%
+    max-width: 1200px
+    text-align: justify
+    &:after
+      width: 100%
+      display: inline-block
+      content: "."
+      visibility: hidden
     li
       display: inline-block
       text-transform: uppercase
-      margin-right: 12px
-    &.left-navigation
-      float: left
-      li
-        margin-left: 32px
-        margin-right: 0
-        &:first-child
-          margin-left: 0
-    &.right-navigation
-      li
-        margin-right: 10px
-      li:last-child
-        margin-right: 0
     a
       font-size: 17px
       color: #fff
