@@ -259,7 +259,7 @@ header .navigation a.active {
 header .localization {
   position: absolute;
   top: 0;
-  right: 45px;
+  right: 0;
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
 }
 /* line 94, sass/main.sass */
