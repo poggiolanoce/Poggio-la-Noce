@@ -48,6 +48,7 @@
 				{#
 				# Standard Page
 				#}
+
 				{% if craft.request.getSegment(1) != 'news' or craft.request.getSegment(1) != 'wines' %}
 				
 					{% if craft.request.getSegment(1) %}
@@ -59,7 +60,11 @@
 					{% for entry in craft.entries.section('pages').slug(page_id) %}
 						{% for banner in entry.pageBanner %}
 						
-							<div class="banner {% if loop.index == 1 %}active{% endif %}{% if banner.bannerVideo %} with_cta{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl() }}) ">
+							{% if craft.request.getSegment(1) != '' %}
+							<div class="banner {% if loop.index == 1 %}active{% endif %}{% if banner.bannerVideo %} with_cta{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl('siteBanner') }}) ">
+							{% else %}
+							<div class="banner {% if loop.index == 1 %}active{% endif %}{% if banner.bannerVideo %} with_cta{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl('homeBanner') }}) ">
+							{% endif %}
 
 								<div class="banner-headline-container">
 									<div class="banner-headline">{{ banner.bannerHeadline }}</div>
