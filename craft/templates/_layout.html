@@ -43,7 +43,8 @@
 			</nav>
 
 			<div class="banners">
-
+				{% cache %}
+				
 				{#
 				# Standard Page
 				#}
@@ -133,7 +134,7 @@
 					</div>
 
 				{% endif %}
-
+			{% endcache %}
 			</div>
 
 	</header>
