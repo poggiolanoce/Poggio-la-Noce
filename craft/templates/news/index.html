@@ -27,7 +27,7 @@
     <div class="news-sidebar-section">
       <h1>{{ "Recent Updates" | translate }}</h1>
       <ul>
-      {% set allEntries = craft.entries.section('news').limit(10) %}
+      {% set allEntries = craft.entries.section('news').limit(5) %}
       {% for entry in allEntries %}
         <li>
           <h4>{{ entry.postDate.localeDate() }}</h4>
