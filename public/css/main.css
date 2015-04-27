@@ -860,7 +860,7 @@ main#content .container {
   margin-left: 20px;
 }
 /* line 500, sass/main.sass */
-#news .container .page-detail .news-image .news-content img {
+#news .container .page-detail .news-content img {
   float: right;
   margin-left: 20px;
   margin-bottom: 20px;
