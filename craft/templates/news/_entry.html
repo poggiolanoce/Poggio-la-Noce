@@ -16,9 +16,15 @@
 {% extends "_layout" %}
 
 {% block content %}
-	<article>
+	<article class="page-content page-detail">
 		<h1>{{ entry.title }}</h1>
-		<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-		{{ entry.body }}
+		<p>{{ entry.postDate.localeDate() }}</p>
+    
+    <div class="news-image">
+      <img src="{{ entry.newsImage.first().getUrl('newsMainImage') }}" width="{{ entry.newsImage.first().getWidth('newsMainImage') }}" height="{{ entry.newsImage.first().getHeight('newsMainImage') }}">
+    </div>
+    <div class="news-content">
+      {{ entry.body }}
+    </div>
 	</article>
 {% endblock %}

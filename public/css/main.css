@@ -206,7 +206,7 @@ header nav {
 header .logo {
   width: 225px;
   height: 67px;
-  background: url('/images/site/logo.png?1422661587') no-repeat 0 0;
+  background: url('/images/site/logo.png?1428522431') no-repeat 0 0;
   background-size: 100%;
   position: absolute;
   left: 50%;
@@ -322,7 +322,7 @@ footer ul li:last-child {
 /* line 130, sass/main.sass */
 footer ul li.facebook a {
   text-indent: -10000px;
-  background-image: url('/images/site/facebook.png?1427306854');
+  background-image: url('/images/site/facebook.png?1428522431');
   width: 18px;
   height: 18px;
   position: relative;
@@ -527,11 +527,11 @@ footer ul li.facebook a {
 }
 /* line 267, sass/main.sass */
 .banners #wine-page-banner {
-  background-image: url('/images/banners/wine-banner.jpg?1422407618');
+  background-image: url('/images/banners/wine-banner.jpg?1428522423');
 }
 /* line 269, sass/main.sass */
 .banners #awards-page-banner {
-  background-image: url('/images/banners/news-banner.jpg?1427317930');
+  background-image: url('/images/banners/news-banner.jpg?1428522411');
 }
 /* line 271, sass/main.sass */
 .banners #awards-page-banner .banner-headline {
@@ -539,7 +539,7 @@ footer ul li.facebook a {
 }
 /* line 273, sass/main.sass */
 .banners #news-page-banner {
-  background-image: url('/images/banners/news-banner-alt.jpg?1427477609');
+  background-image: url('/images/banners/news-banner-alt.jpg?1428522411');
 }
 /* line 275, sass/main.sass */
 .banners #news-page-banner .banner-headline {
@@ -710,7 +710,7 @@ main#content .container {
   display: block;
   width: 458px;
   height: 454px;
-  background-image: url('/images/site/wine-splat.png?1422661587');
+  background-image: url('/images/site/wine-splat.png?1428522432');
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: 458px 454px;
@@ -855,25 +855,30 @@ main#content .container {
   font-size: 45px;
 }
 /* line 496, sass/main.sass */
+#news .container .page-detail .news-image {
+  float: right;
+  margin-left: 20px;
+}
+/* line 500, sass/main.sass */
 #news .container .page-content .news-image {
   margin-bottom: 20px;
 }
-/* line 498, sass/main.sass */
+/* line 502, sass/main.sass */
 #news .container .page-content .page-text {
   border-bottom: 1px solid #E2E2E2;
   padding-bottom: 30px;
   margin-bottom: 30px;
 }
-/* line 499, sass/main.sass */
+/* line 503, sass/main.sass */
 #news .container .page-content .page-text:only-of-type, #news .container .page-content .page-text:last-child {
   border-bottom: none;
 }
-/* line 504, sass/main.sass */
+/* line 508, sass/main.sass */
 #news .container .pagination {
   clear: left;
   width: 596px;
 }
-/* line 507, sass/main.sass */
+/* line 511, sass/main.sass */
 #news .container .pagination a {
   display: block;
   padding: 6px 12px;
@@ -892,15 +897,15 @@ main#content .container {
   font-style: italic;
   text-decoration: none;
 }
-/* line 524, sass/main.sass */
+/* line 528, sass/main.sass */
 #news .container .pagination a:first-child {
   float: right;
 }
-/* line 526, sass/main.sass */
+/* line 530, sass/main.sass */
 #news .container .pagination a:last-child {
   float: left;
 }
-/* line 528, sass/main.sass */
+/* line 532, sass/main.sass */
 #news .container .pagination:after {
   content: "";
   clear: both;
@@ -908,11 +913,11 @@ main#content .container {
   height: 1px;
   display: block;
 }
-/* line 535, sass/main.sass */
+/* line 539, sass/main.sass */
 #news .container .news-search-form form {
   position: relative;
 }
-/* line 537, sass/main.sass */
+/* line 541, sass/main.sass */
 #news .container .news-search-form form input[type=search] {
   width: 100%;
   border: none;
@@ -925,7 +930,7 @@ main#content .container {
   font-size: 24px;
   text-indent: 8px;
 }
-/* line 548, sass/main.sass */
+/* line 552, sass/main.sass */
 #news .container .news-search-form form input[type=submit] {
   position: absolute;
   right: 0;
@@ -933,68 +938,68 @@ main#content .container {
   width: 48px;
   height: 48px;
   border: none;
-  background: #F48F1B url('/images/site/search.png?1427317930') no-repeat center center;
+  background: #F48F1B url('/images/site/search.png?1428522432') no-repeat center center;
   text-indent: -10000px;
 }
-/* line 558, sass/main.sass */
+/* line 562, sass/main.sass */
 #news .container .news-search {
   width: 596px;
   min-height: 300px;
 }
-/* line 562, sass/main.sass */
+/* line 566, sass/main.sass */
 #news .container .news-search .result-listing {
   margin: 0;
   padding: 0;
 }
-/* line 565, sass/main.sass */
+/* line 569, sass/main.sass */
 #news .container .news-search .result-listing li {
   border-bottom: 1px solid #E2E2E2;
   list-style: none;
   padding: 14px 0;
   margin: 0;
 }
-/* line 570, sass/main.sass */
+/* line 574, sass/main.sass */
 #news .container .news-search .result-listing li:last-child {
   border-bottom: none;
 }
-/* line 572, sass/main.sass */
+/* line 576, sass/main.sass */
 #news .container .news-search .result-listing li img {
   float: left;
   margin-right: 25px;
 }
-/* line 575, sass/main.sass */
+/* line 579, sass/main.sass */
 #news .container .news-search .result-listing a {
   color: #333333;
   text-decoration: none;
 }
-/* line 578, sass/main.sass */
+/* line 582, sass/main.sass */
 #news .container .news-search .result-listing a span {
   color: #B24629;
   display: block;
 }
-/* line 581, sass/main.sass */
+/* line 585, sass/main.sass */
 #news .container .news-search .result-listing a span:last-child {
   color: #333333;
 }
-/* line 583, sass/main.sass */
+/* line 587, sass/main.sass */
 #news .container .news-search .no-results {
   font-size: 18px;
 }
-/* line 585, sass/main.sass */
+/* line 589, sass/main.sass */
 #news .container #news-sidebar {
   float: right;
   padding-left: 75px;
   width: 334px;
 }
-/* line 589, sass/main.sass */
+/* line 593, sass/main.sass */
 #news .container #news-sidebar a {
   color: #B24629;
 }
-/* line 591, sass/main.sass */
+/* line 595, sass/main.sass */
 #news .container #news-sidebar .news-sidebar-section {
   margin-bottom: 40px;
 }
-/* line 593, sass/main.sass */
+/* line 597, sass/main.sass */
 #news .container #news-sidebar h1 {
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
   color: #999999;
@@ -1003,17 +1008,17 @@ main#content .container {
   line-height: 52px;
   text-align: center;
 }
-/* line 600, sass/main.sass */
+/* line 604, sass/main.sass */
 #news .container #news-sidebar ul {
   padding: 0px;
 }
-/* line 602, sass/main.sass */
+/* line 606, sass/main.sass */
 #news .container #news-sidebar ul h4 {
   font-size: 14px;
   margin-bottom: 5px;
   margin-top: -4px;
 }
-/* line 606, sass/main.sass */
+/* line 610, sass/main.sass */
 #news .container #news-sidebar ul li {
   border-bottom: 1px solid #E2E2E2;
   list-style: none;
@@ -1021,7 +1026,7 @@ main#content .container {
   margin-bottom: 0;
   float: left;
 }
-/* line 612, sass/main.sass */
+/* line 616, sass/main.sass */
 #news .container #news-sidebar ul li a {
   font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
   text-decoration: none;
@@ -1029,21 +1034,21 @@ main#content .container {
   float: left;
   font-size: 20px;
 }
-/* line 618, sass/main.sass */
+/* line 622, sass/main.sass */
 #news .container #news-sidebar ul li a:hover {
   color: #ED8F17;
 }
-/* line 620, sass/main.sass */
+/* line 624, sass/main.sass */
 #news .container #news-sidebar ul li img {
   float: left;
   margin-right: 10px;
 }
-/* line 623, sass/main.sass */
+/* line 627, sass/main.sass */
 #news .container #news-sidebar #mc_embed_signup {
   padding: 25px 30px;
   background-color: #F3F3F3;
 }
-/* line 626, sass/main.sass */
+/* line 630, sass/main.sass */
 #news .container #news-sidebar #mc_embed_signup h2 {
   text-align: center;
   font-size: 20px;
@@ -1051,16 +1056,16 @@ main#content .container {
   padding: 0;
   margin-bottom: 25px;
 }
-/* line 632, sass/main.sass */
+/* line 636, sass/main.sass */
 #news .container #news-sidebar #mc_embed_signup .mc-field-group {
   margin-bottom: 15px;
 }
-/* line 634, sass/main.sass */
+/* line 638, sass/main.sass */
 #news .container #news-sidebar #mc_embed_signup .mc-field-group label {
   display: block;
   margin-bottom: 5px;
 }
-/* line 637, sass/main.sass */
+/* line 641, sass/main.sass */
 #news .container #news-sidebar #mc_embed_signup .mc-field-group input {
   width: 100%;
   padding: 5px;
@@ -1069,14 +1074,14 @@ main#content .container {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 642, sass/main.sass */
+/* line 646, sass/main.sass */
 #news .container #news-sidebar #mc_embed_signup .mc-field-group .mce_inline_error {
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 645, sass/main.sass */
+/* line 649, sass/main.sass */
 #news .container #news-sidebar #mc_embed_signup input[type="submit"] {
   -webkit-appearance: button;
   display: block;
@@ -1096,33 +1101,33 @@ main#content .container {
   text-align: center;
 }
 
-/* line 666, sass/main.sass */
+/* line 670, sass/main.sass */
 #contact .prefer_email {
   clear: both;
   padding-top: 30px;
 }
-/* line 669, sass/main.sass */
+/* line 673, sass/main.sass */
 #contact .prefer_email a {
   color: #B24629;
   text-decoration: none;
 }
-/* line 672, sass/main.sass */
+/* line 676, sass/main.sass */
 #contact .prefer_email a:hover {
   text-decoration: underline;
 }
-/* line 674, sass/main.sass */
+/* line 678, sass/main.sass */
 #contact .success {
   display: none;
 }
-/* line 676, sass/main.sass */
+/* line 680, sass/main.sass */
 #contact .success p {
   margin-top: 20px;
 }
-/* line 678, sass/main.sass */
+/* line 682, sass/main.sass */
 #contact .success strong {
   font-weight: bold;
 }
-/* line 680, sass/main.sass */
+/* line 684, sass/main.sass */
 #contact .errors {
   display: none;
   font-style: italic;
@@ -1131,44 +1136,44 @@ main#content .container {
   border-bottom: 1px solid #B24629;
   margin: 20px 0;
 }
-/* line 687, sass/main.sass */
+/* line 691, sass/main.sass */
 #contact .errors ul li {
   font-size: 14px;
   margin-bottom: 5px;
 }
-/* line 690, sass/main.sass */
+/* line 694, sass/main.sass */
 #contact .errors ul li:last-child {
   margin-bottom: 0;
 }
-/* line 692, sass/main.sass */
+/* line 696, sass/main.sass */
 #contact form {
   margin-top: 20px;
 }
-/* line 694, sass/main.sass */
+/* line 698, sass/main.sass */
 #contact form .form-left {
   float: left;
   width: 240px;
 }
-/* line 697, sass/main.sass */
+/* line 701, sass/main.sass */
 #contact form .form-right {
   float: left;
 }
-/* line 699, sass/main.sass */
+/* line 703, sass/main.sass */
 #contact form #location {
   display: none;
 }
-/* line 701, sass/main.sass */
+/* line 705, sass/main.sass */
 #contact label, #contact input, #contact button, #contact select, #contact textarea {
   font-size: 14px;
   font-weight: normal;
   line-height: 20px;
 }
-/* line 705, sass/main.sass */
+/* line 709, sass/main.sass */
 #contact .required {
   color: red;
   padding-left: 5px;
 }
-/* line 709, sass/main.sass */
+/* line 713, sass/main.sass */
 #contact input[type="submit"] {
   -webkit-appearance: button;
   display: block;
@@ -1186,12 +1191,12 @@ main#content .container {
   margin-top: 10px;
   width: 220px;
 }
-/* line 726, sass/main.sass */
+/* line 730, sass/main.sass */
 #contact label {
   display: block;
   margin-bottom: 5px;
 }
-/* line 730, sass/main.sass */
+/* line 734, sass/main.sass */
 #contact select, #contact textarea {
   display: inline-block;
   height: 20px;
@@ -1202,7 +1207,7 @@ main#content .container {
   color: #555555;
   vertical-align: middle;
 }
-/* line 742, sass/main.sass */
+/* line 746, sass/main.sass */
 #contact input[type="text"], #contact input[type="password"], #contact input[type="datetime"], #contact input[type="datetime-local"], #contact input[type="date"], #contact input[type="month"], #contact input[type="time"], #contact input[type="week"], #contact input[type="number"], #contact input[type="email"], #contact input[type="url"], #contact input[type="search"], #contact input[type="tel"], #contact input[type="color"] {
   display: inline-block;
   height: 20px;
@@ -1213,11 +1218,11 @@ main#content .container {
   color: #555555;
   vertical-align: middle;
 }
-/* line 752, sass/main.sass */
+/* line 756, sass/main.sass */
 #contact input {
   width: 206px;
 }
-/* line 755, sass/main.sass */
+/* line 759, sass/main.sass */
 #contact textarea {
   width: 340px;
   height: 140px;
@@ -1231,7 +1236,7 @@ main#content .container {
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
-/* line 769, sass/main.sass */
+/* line 773, sass/main.sass */
 #contact input[type="text"], #contact input[type="password"], #contact input[type="datetime"], #contact input[type="datetime-local"], #contact input[type="date"], #contact input[type="month"], #contact input[type="time"], #contact input[type="week"], #contact input[type="number"], #contact input[type="email"], #contact input[type="url"], #contact input[type="search"], #contact input[type="tel"], #contact input[type="color"] {
   background-color: #ffffff;
   border: 1px solid #cccccc;
@@ -1243,7 +1248,7 @@ main#content .container {
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
-/* line 780, sass/main.sass */
+/* line 784, sass/main.sass */
 #contact textarea:focus {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
@@ -1251,7 +1256,7 @@ main#content .container {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
-/* line 788, sass/main.sass */
+/* line 792, sass/main.sass */
 #contact input[type="text"]:focus, #contact input[type="password"]:focus, #contact input[type="datetime"]:focus, #contact input[type="datetime-local"]:focus, #contact input[type="date"]:focus, #contact input[type="month"]:focus, #contact input[type="time"]:focus, #contact input[type="week"]:focus, #contact input[type="number"]:focus, #contact input[type="email"]:focus, #contact input[type="url"]:focus, #contact input[type="search"]:focus, #contact input[type="tel"]:focus, #contact input[type="color"]:focus {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
@@ -1259,7 +1264,7 @@ main#content .container {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
-/* line 795, sass/main.sass */
+/* line 799, sass/main.sass */
 #contact .uneditable-input:focus {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
@@ -1267,7 +1272,7 @@ main#content .container {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
-/* line 803, sass/main.sass */
+/* line 807, sass/main.sass */
 #contact input[type="radio"], #contact input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;

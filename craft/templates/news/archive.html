@@ -31,7 +31,7 @@
             <a href="{{ entry.url }}">
             <img src="{{ entry.newsImage.first().getUrl('thumb') }}" width="{{ entry.newsImage.first().getWidth('thumb') }}" height="{{   entry.newsImage.first().getHeight('thumb') }}">
             <span>{{ entry.title }}</span>
-            <span>{{ entry.postDate.format('F d, Y') }}</span>
+            <span>{{ entry.postDate.localeDate() }}</span>
             </a>
           </li>
         {% endfor %}

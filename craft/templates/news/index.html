@@ -30,7 +30,7 @@
       {% set allEntries = craft.entries.section('news').limit(10) %}
       {% for entry in allEntries %}
         <li>
-          <h4>{{ entry.postDate.format('F d, Y') }}</h4>
+          <h4>{{ entry.postDate.localeDate() }}</h4>
           <img src="{{ entry.newsImage.first().getUrl('thumb') }}" width="{{ entry.newsImage.first().getWidth('thumb') }}" height="{{ entry.newsImage.first().getHeight('thumb') }}">
           {{ entry.getLink() }}
         </li>
@@ -44,7 +44,7 @@
   {% paginate craft.entries.section('news').limit(10) as pageEntries %}
     {% for entry in pageEntries %}
     <article class="page-text">
-      <p class="news-date">{{ entry.postDate.format('F d, Y') }}</p>
+      <p class="news-date">{{ entry.postDate.localeDate() }}</p>
       <h1>{{ entry.title }}</h1>
       <div class="news-image">
         <img src="{{ entry.newsImage.first().getUrl('newsMainImage') }}" width="{{ entry.newsImage.first().getWidth('newsMainImage') }}" height="{{ entry.newsImage.first().getHeight('newsMainImage') }}">
