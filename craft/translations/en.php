@@ -27,6 +27,7 @@ return array(
     "Contact" => "Contact",
     "Reviews" => "Press Reviews & Ratings",
     "News And Updates" => "News And Updates",
+    "News" => "News",
     "Recent Updates" => "Recent Updates",
     "Search Archives" => "Search Archives",
     "Search" => "Search",

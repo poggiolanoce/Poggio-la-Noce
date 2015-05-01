@@ -27,6 +27,7 @@ return array(
     "Contact" => "Contatti",
     "Reviews" => "Commenti stampa e valutazioni",
     "News And Updates" => "Notizie e Aggiornamenti",
+    "News" => "Notizie",
     "Recent Updates" => "Aggiornamenti recenti",
     "Search Archives" => "Ricerca archivi",
     "Search" => "Ricerca",
