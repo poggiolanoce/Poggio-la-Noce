@@ -16,11 +16,11 @@ return array(
 		'tablePrefix' => 'craft'
   ),
 	'.com' => array(
-	  'server' => 'internal-db.s202594.gridserver.com',
-		'user' => 'db202594',
-		'password' => '@Poggio1234',
-		'database' => 'db202594_craft',
-		'tablePrefix' => 'craft',
+          'server' => '*',
+                'user' => 'root',
+                'password' => 'vAtQ4hY2aL',
+                'database' => 'poggio',
+                'tablePrefix' => 'craft'
   )
 );
 
