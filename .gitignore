@@ -25,6 +25,7 @@ public/node_modules
 craft/storage/runtime/*
 
 public/package.json
+public/images/*
 
 # server noise
 backup.tar
