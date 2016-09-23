@@ -1,8 +1,8 @@
 {% extends "_layout" %}
 {% block content %}
-  
+
   <div class="page-content">
-    
+
   <div id="news-sidebar">
     <!-- Sidebar -->
     <div class="news-sidebar-section">
@@ -23,7 +23,7 @@
         <input type="submit" value="Go">
       </form>
     </div>
-    
+
     <div class="news-sidebar-section">
       <h1>{{ "Recent Updates" | translate }}</h1>
       <ul>
@@ -40,8 +40,9 @@
 
   </div>
 
-  <!-- Article Area -->
-  {% paginate craft.entries.section('news').limit(10) as pageEntries %}
+    <!-- Article Area -->
+    {% paginate craft.entries.section('news').limit(10) as pageEntries %}
+
     {% for entry in pageEntries %}
     <article class="page-text">
       <p class="news-date">{{ entry.postDate.localeDate() }}</p>
@@ -50,7 +51,7 @@
         <img src="{{ entry.newsImage.first().getUrl('newsMainImage') }}" width="{{ entry.newsImage.first().getWidth('newsMainImage') }}" height="{{ entry.newsImage.first().getHeight('newsMainImage') }}">
       </div>
       <div class="news-content">
-        {{ entry.body }}        
+        {{ entry.body }}
       </div>
     </article>
     {% endfor %}
@@ -59,7 +60,7 @@
       {% if paginate.nextUrl %}<a href="{{ paginate.nextUrl }}">Older Posts »</a>{% endif %}
       {% if paginate.prevUrl %}<a href="{{ paginate.prevUrl }}">« Newer Posts</a>{% endif %}
     </div>
-  {% endpaginate %}    
+
   </div>
 
 {% endblock %}
