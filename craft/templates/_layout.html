@@ -36,7 +36,7 @@
 						<li><a href="{{ url('about') }}" {% if craft.request.getSegment(1) == 'about' %}class="active"{% endif %}>{{"About" | translate}}</a></li>
 						<li><a href="{{ url('philosophy') }}" {% if craft.request.getSegment(1) == 'philosophy' %}class="active"{% endif %}>{{"Philosophy" | translate}}</a></li>
 						<li><a href="{{ url('vineyard') }}" {% if craft.request.getSegment(1) == 'vineyard' %}class="active"{% endif %}>{{"Vineyard" | translate}}</a></li>
-						<li><a href="{{ url('wines') }}" {% if craft.request.getSegment(1) == 'wines' %}class="active"{% endif %}>{{"Wines" | translate}}</a></li>
+						<li><a href="{{ url('wine') }}" {% if craft.request.getSegment(1) == 'wine' %}class="active"{% endif %}>{{"Wines" | translate}}</a></li>
 						<li><a href="{{ url('olive-oil') }}" {% if craft.request.getSegment(1) == 'olive-oil' %}class="active"{% endif %}>{{"Olive Oil" | translate}}</a></li>
 						<li><a href="{{ url('news') }}" {% if craft.request.getSegment(1) == 'news' %}class="active"{% endif %}>{{"News" | translate}}</a></li>
 						<li><a href="{{ url('contact') }}" {% if craft.request.getSegment(1) == 'contact' %}class="active"{% endif %}>{{"Contact" | translate}}</a></li>
@@ -51,22 +51,22 @@
 
 			<div class="banners">
 				{% cache %}
-				
+
 				{#
 				# Standard Page
 				#}
 
 				{% if craft.request.getSegment(1) != 'news' or craft.request.getSegment(1) != 'wines' %}
-				
+
 					{% if craft.request.getSegment(1) %}
 						{% set page_id = craft.request.getSegment(1)  %}
-					{% else %}  
+					{% else %}
 						{% set page_id = 'home' %}
 					{% endif %}
 
 					{% for entry in craft.entries.section('pages').slug(page_id) %}
 						{% for banner in entry.pageBanner %}
-						
+
 							{% if craft.request.getSegment(1) != '' %}
 							<div class="banner {% if loop.index == 1 %}active{% endif %}{% if banner.bannerVideo %} with_cta{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl('siteBanner') }}) ">
 							{% else %}
@@ -87,7 +87,7 @@
 									</div>
 								{% endif %}
 							</div>
-						
+
 						{% endfor %}
 						{% if entry.pageBanner|length > 1 %}
 							<ul class="banner-arrows">
@@ -102,17 +102,28 @@
 						{% endif %}
 
 					{% endfor %}
-				
+
 				{% endif %}
 
 				{#
 				# Wine Page
 				#}
-				{% if craft.request.getSegment(1) == 'wines' %}
+				{% if craft.request.getSegment(1) == 'wine' %}
 
-					<div class="banner" id="wine-page-banner">	
+					<div class="banner" id="wine-page-banner">
 						<ul class="wine-browser">
-							{% for entry in craft.entries.section('wine') %}<li data-wine="{{ entry.slug }}" {% if loop.index == 1 %}class="active"{% endif %}><img src="{{ entry.bottleLabelImage.first().getUrl() }}" alt="{{ entry.title }}"></li>{% endfor %}
+							{% spaceless %}
+							{% for product in craft.commerce.products.type('wine').order('postDate asc') %}
+								{% set assets = product.bottleTitleImage.first() %}
+								<li data-wine="{{ product.slug }}" {% if craft.request.getSegment(2) == product.slug %}class="active"{% endif %}>
+									<a href="{{product.slug}}">
+										{% if assets | length %}
+											<img src="{{ assets.getUrl() }}" alt="{{ product.title }}">
+										{% endif %}
+									</a>
+								</li>
+							{% endfor %}
+							{% endspaceless %}
 						</ul>
 					</div>
 
@@ -128,10 +139,10 @@
 						<div class="banner-headline-container">
 							<div class="banner-headline">{{ "Reviews" | translate }}</div>
 						</div>
-						
+
 					</div>
 
-				{% endif %}				
+				{% endif %}
 				{#
 				# News Page
 				#}
@@ -142,7 +153,7 @@
 						<div class="banner-headline-container">
 							<div class="banner-headline">{{ "News And Updates" | translate }}</div>
 						</div>
-						
+
 					</div>
 
 				{% endif %}
