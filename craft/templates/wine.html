@@ -2,21 +2,24 @@
 
 {% block content %}
 {% cache globally using key craft.request.path %}
-  
-  {% for entry in craft.entries.section('wine') %}
-  <article class="page-content wine-page-content {% if loop.index == 1 %}active{% endif %}" id="wine-{{ entry.slug }}">
+
+{% if product is not defined %}
+  {% redirect craft.commerce.products.type('wine').first().url %}
+{% endif %}
+
+  <article class="page-content wine-page-content active" id="wine-{{ product.slug }}">
     <div class="page-image wine-page-image">
-      <img src="{{ entry.bottleImage.first().getUrl() }}" alt="">
+      <img src="{{ product.bottleImage.first().getUrl() }}" alt="">
     </div>
     <div class="page-text wine-page-text">
-      <h1>{{ entry.title }}</h1>
+      <h1>{{ product.title }}</h1>
       <div class="page-text-container">
 
         <h2>{{ "Description" | translate }}</h2>
-        {{ entry.wineDescription }}
+        {{ product.wineDescription }}
 
         <h2>{{ "Specifications" | translate }}</h2>
-        {% for specification in entry.wineSpecifications %}
+        {% for specification in product.wineSpecifications %}
           <ul class="wine-specifications">
             <li>
             <strong>{{ "WineType" | translate }}:</strong>
@@ -46,12 +49,11 @@
         {% endfor %}
 
         <h2>{{ "Additional" | translate }}</h2>
-        {{ entry.wineAdditionalDetails }}
+        {{ product.wineAdditionalDetails }}
 
       </div>
     </div>
   </article>
-  {% endfor %}
 
 {% endcache %}
 {% endblock %}
