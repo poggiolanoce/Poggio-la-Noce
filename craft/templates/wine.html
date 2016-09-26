@@ -4,7 +4,7 @@
 {% cache globally using key craft.request.path %}
 
 {% if product is not defined %}
-  {% redirect craft.commerce.products.type('wine').first().url %}
+  {% redirect craft.commerce.products.type('wine').order('postDate asc').first().url %}
 {% endif %}
 
   <article class="page-content wine-page-content active" id="wine-{{ product.slug }}">
@@ -49,7 +49,10 @@
         {% endfor %}
 
         <h2>{{ "Additional" | translate }}</h2>
-        {{ product.wineAdditionalDetails }}
+        {{ product.wineAdditionalDetails
+          | replace('/<(.?)strong>/', '')
+          | replace('/<p>(.*?):/', "<p><strong>$1:</strong>")
+          | raw }}
 
       </div>
     </div>
