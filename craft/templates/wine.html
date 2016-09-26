@@ -51,7 +51,7 @@
         <h2>{{ "Additional" | translate }}</h2>
         {{ product.wineAdditionalDetails
           | replace('/<(.?)strong>/', '')
-          | replace('/<p>(.*?):/', "<p><strong>$1:</strong>")
+          | replace('/(?<=>)(.*?):/', "<strong>$1:</strong>")
           | raw }}
 
       </div>
