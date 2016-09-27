@@ -39,5 +39,7 @@ return array(
     "Award Description" => "Guarda le recensioni sui nostri vini negli ultimi anni",
     "Our Awards" => "Recensioni",
     "Search Results" => "Risultati della ricerca",
-    "No Results" => "Nessun risultato per la ricerca."
+    "No Results" => "Nessun risultato per la ricerca.",
+    "Add to cart" => "Aggiungi al carrello",
+    "Cart" => "Carrello"
 );

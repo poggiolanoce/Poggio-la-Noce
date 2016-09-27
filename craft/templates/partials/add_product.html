@@ -1,0 +1,18 @@
+<form method="POST">
+  <input type="hidden" name="action" value="commerce/cart/updateCart">
+  <input type="hidden" name="redirect" value="commerce/cart">
+  <input type="hidden" value="{{ product.defaultVariantId }}" name="purchasableId" />
+
+  {{ getCsrfInput() }}
+  <span class="price">{{ product.defaultVariant.price|currency(cart.currency) }}</span>
+  {% if product.defaultVariant.stock <= 0 and product.defaultVariant.unlimitedStock == false %}
+    <span>Item not currently available</span>
+  {% else %}
+    <div class="input-group">
+      <label for="qty">Qty:</label>
+      <input type="number" name="qty" value="1" min="1" max="10">
+    </div>
+    <input type="submit" value="{{ "Add to cart" | t }}" class="btn btn-outline-danger" />
+  {% endif %}
+</form>
+

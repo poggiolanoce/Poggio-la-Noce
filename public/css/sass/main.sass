@@ -36,6 +36,8 @@ body
 header
   #home &
     height: $header-tall
+  #commerce &
+    height: 120px
   border-bottom: $header-border solid $copper
   height: $header-short
   display: block
@@ -86,13 +88,21 @@ header
       padding-bottom: 10px
       &.active
         border-bottom: 5px solid #fff
+
+
+.top-menu
+  position: absolute
+  top: 15px
+  right: 0
+  height: 25px
+  font-family: $sans
+  line-height: 26px
   .localization
-    position: absolute
-    top: 0
-    right: 0
-    font-family: $sans
+    display: inline-block
+    vertical-align: top
     li
-      padding: 9px 12px
+      padding: 0 12px
+      height: 25px
       background: #fff
       color: $text-gray
       float: left
@@ -104,6 +114,37 @@ header
       a
         text-decoration: none
         color: $text-gray
+  .cart
+    display: inline-block
+    vertical-align: top
+    margin-left: 15px
+    font-size: 16px
+    height: 100%
+    color: white
+    font-family: $sans
+    text-transform: uppercase
+    .fa
+      padding-right: 4px
+    a
+      color: white
+      text-decoration: none
+      display: block
+      height: 100%
+      span
+        @include box-sizing('border-box')
+        margin-left: 4px
+        margin-top: 3px
+        border-radius: 9px
+        background: $orange
+        display: inline-block
+        vertical-align: top
+        color: #fff
+        min-width: 19px
+        padding: 0 6px
+        height: 19px
+        line-height: 20px
+        font-size: 14px
+        text-align: center
 
 footer
   #home &
@@ -144,6 +185,8 @@ footer
   #home &
     .banner .banner-cta
       bottom: 165px
+  #commerce &
+    display: none
   .banner-arrows
     position: absolute
     z-index: 10
@@ -366,6 +409,46 @@ footer
       margin: 35px 0
       &.active
         display: block
+
+  .add-to-cart
+    @include box-sizing('border-box')
+    border-top: 1px solid $copper
+    border-bottom: 1px solid $copper
+    margin-bottom: -1px
+    position: relative
+    font-family: $sans
+    padding: 42px 0
+    form
+      display: flex
+      justify-content: space-between
+      .price
+        font-size: 48px
+        flex-grow: 1
+      .input-group
+        margin-right: 30px
+        label
+          display: block
+          font-size: 14px
+          font-family: $serif
+          padding-bottom: 2px
+      input[type=number]
+        font-size: 22px
+        border: 1px solid rgba($text-black, 0.5)
+        border-radius: 4px
+        padding: 2px 4px
+      input[type=submit]
+        @include box-sizing('border-box')
+        cursor: pointer
+        height: 48px
+        border: 0
+        border-radius: 4px
+        background-color: $orange
+        font-weight: normal
+        padding: 0 25px
+        font-family: $sans
+        font-size: 28px
+        color: #fff
+        letter-spacing: 0.05em
 
 .wine-page-content
   .wine-page-text
