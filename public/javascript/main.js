@@ -1,10 +1,8 @@
 (function() {
   $(document).ready(function() {
-    var $banner_arrows, $banner_dots, $headlines, $page_blocks, $slideshow_speed, $wine_content, $wine_selection, bannerIncrement, changeSlide, clearErrors, current_slide, finishChangeslide, is_transitioning, max_slide, populateErrors, start_autoplay, stop_autoplay;
+    var $banner_arrows, $banner_dots, $headlines, $page_blocks, $slideshow_speed, bannerIncrement, changeSlide, clearErrors, current_slide, finishChangeslide, is_transitioning, max_slide, populateErrors, start_autoplay, stop_autoplay;
     $page_blocks = false;
     $headlines = $('.page-text-container h2');
-    $wine_selection = $('.wine-browser li');
-    $wine_content = $('.wine-page-content');
     is_transitioning = false;
     current_slide = 0;
     max_slide = $('.banners .banner').length - 1;
@@ -32,14 +30,6 @@
       });
       $page_blocks = $('.page-text-block');
       return $(this).find('h2').eq(0).trigger('click');
-    });
-    $wine_selection.on('click', function() {
-      var $selection;
-      $wine_selection.removeClass('active');
-      $(this).addClass('active');
-      $wine_content.removeClass('active');
-      $selection = $("#wine-" + ($(this).data('wine')));
-      return $selection.addClass('active');
     });
     start_autoplay = function() {
       return $.doTimeout('autoplay', $slideshow_speed, function() {

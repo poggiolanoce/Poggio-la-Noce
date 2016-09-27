@@ -1,0 +1,62 @@
+{% extends "_layout" %}
+
+{% block content %}
+{% cache globally using key craft.request.path %}
+
+{% if product is not defined %}
+  {% redirect craft.commerce.products.type('wine').order('postDate asc').first().url %}
+{% endif %}
+
+  <article class="page-content wine-page-content active" id="wine-{{ product.slug }}">
+    <div class="page-image wine-page-image">
+      <img src="{{ product.bottleImage.first().getUrl() }}" alt="">
+    </div>
+    <div class="page-text wine-page-text">
+      <h1>{{ product.title }}</h1>
+      <div class="page-text-container">
+
+        <h2>{{ "Description" | translate }}</h2>
+        {{ product.wineDescription }}
+
+        <h2>{{ "Specifications" | translate }}</h2>
+        {% for specification in product.wineSpecifications %}
+          <ul class="wine-specifications">
+            <li>
+            <strong>{{ "WineType" | translate }}:</strong>
+            {{ specification.wineType }}
+            </li>
+            <li>
+              <strong>{{ "VineyardLocation" | translate }}:</strong>
+              {{ specification.vineyardLocation }}
+            </li>
+            <li>
+              <strong>{{ "Grapes" | translate }}:</strong>
+              {{ specification.grapes }}
+            </li>
+            <li>
+              <strong>{{ "Exposition" | translate }}:</strong>
+              {{ specification.exposition }}
+            </li>
+            <li>
+              <strong>{{ "Soil" | translate }}:</strong>
+              {{ specification.soil }}
+            </li>
+            <li class="rich-text-specification">
+              <strong>{{ "Vinification" | translate }}:</strong>
+              {{ specification.vinificationAndMaturation }}
+            </li>
+          </ul>
+        {% endfor %}
+
+        <h2>{{ "Additional" | translate }}</h2>
+        {{ product.wineAdditionalDetails
+          | replace('/<(.?)strong>/', '')
+          | replace('/(?<=>)(.*?):/', "<strong>$1:</strong>")
+          | raw }}
+
+      </div>
+    </div>
+  </article>
+
+{% endcache %}
+{% endblock %}

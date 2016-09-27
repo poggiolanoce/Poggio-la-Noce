@@ -1,9 +1,6 @@
 $(document).ready ->
   $page_blocks = false
   $headlines = $('.page-text-container h2')
-  
-  $wine_selection = $('.wine-browser li')
-  $wine_content =  $('.wine-page-content')
 
   is_transitioning = false
   current_slide = 0
@@ -36,16 +33,6 @@ $(document).ready ->
 
     $(this).find('h2').eq(0).trigger('click')
 
-  # Wine Browsing
-  $wine_selection.on 'click', ()->
-    $wine_selection.removeClass('active')
-    $(this).addClass('active')
-
-    $wine_content.removeClass('active')
-    $selection = $("#wine-#{$(this).data('wine')}")
-    $selection.addClass('active')
-
-
   # Slider
   start_autoplay = ()->
     $.doTimeout 'autoplay', $slideshow_speed, ()->
@@ -74,7 +61,7 @@ $(document).ready ->
 
     if automatic != true
       stop_autoplay()
-    
+
     is_transitioning = true
     current_slide = slide
 
@@ -115,7 +102,7 @@ $(document).ready ->
     $.each errorList, (k,v)->
       $('.errors ul').append("<li>#{v}</li>")
     $('.errors').show()
-  
+
   $("#contact form").submit (ev) ->
     ev.preventDefault()
     data = $(this).serialize()
