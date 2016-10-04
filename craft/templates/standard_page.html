@@ -15,7 +15,18 @@
       </div>
       <div class="page-galleries">
         {% for gallery in entry.pageGallery %}
-          <h4 data-gallery="#gallery-{{ loop.index }}">View {{ gallery.galleryTitle }} Gallery</h4>
+          <div data-gallery="#gallery-{{ loop.index }}">
+            {% set asset = gallery.galleryImages.first() %}
+            {% if asset %}
+              <img class="slide " src="{{ asset.getUrl('galleryThumb') }}" alt="">
+            {% endif %}
+            <div class="gallery-description">
+              <h4>View {{ gallery.galleryTitle }} Gallery</h4>
+              {% if gallery.galleryDescription is defined %}
+                <p>{{ gallery.galleryDescription }}</p>
+              {% endif %}
+            </div>
+          </div>
 
           <div id="gallery-{{ loop.index }}" class="hidden-gallery">
             <div class="gallery">
