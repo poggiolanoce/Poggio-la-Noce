@@ -1,6 +1,6 @@
 (function() {
   $(document).ready(function() {
-    var $headlines, $page_blocks, clearErrors, populateErrors;
+    var $age_confirmed, $headlines, $page_blocks, $pressed_button, $requirement_inputs, $trigger_requirements, ageGate, checkRequirements, clearErrors, populateErrors, verifiedAge;
     $page_blocks = false;
     $headlines = $('.page-text-container h2, .shipping-group h3');
     $headlines.on('click', function() {
@@ -38,10 +38,34 @@
         }
       });
     });
-    $.featherlight($('.shipping-confirmation'), {
-      otherClose: '.close',
-      closeIcon: ''
-    });
+    $pressed_button = false;
+    $trigger_requirements = $('.buy');
+    $requirement_inputs = $('.agreement input');
+    $age_confirmed = $('.shipping-confirmation-confirm');
+    ageGate = function(e) {
+      if (!localStorage.getItem("verified")) {
+        e.preventDefault();
+        $pressed_button = $(e.currentTarget);
+        return $.featherlight($('.shipping-confirmation'), {
+          otherClose: '.close',
+          closeIcon: ''
+        });
+      }
+    };
+    checkRequirements = function(e) {
+      if ($('.agreement input').filter(':checked').length === 2) {
+        return $('.shipping-confirmation-confirm').attr('disabled', false);
+      } else {
+        return $('.shipping-confirmation-confirm').attr('disabled', 'disabled');
+      }
+    };
+    verifiedAge = function() {
+      localStorage.setItem("verified", true);
+      return $pressed_button.trigger('click');
+    };
+    $trigger_requirements.on('click', ageGate);
+    $requirement_inputs.on('change', checkRequirements);
+    $age_confirmed.on('click', verifiedAge);
     clearErrors = function() {
       $('.errors').hide();
       return $('.errors ul').html('');

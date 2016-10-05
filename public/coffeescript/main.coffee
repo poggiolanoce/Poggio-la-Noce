@@ -40,9 +40,36 @@ $(document).ready ->
       afterOpen: ()->
         @$content.find('.gallery').slideshow()
 
-  $.featherlight $('.shipping-confirmation'),
-    otherClose: '.close'
-    closeIcon: ''
+  # Age Requirement Form
+  $pressed_button = false
+  $trigger_requirements = $('.buy')
+  $requirement_inputs = $('.agreement input')
+  $age_confirmed = $('.shipping-confirmation-confirm')
+
+  ageGate = (e)->
+    if !localStorage.getItem("verified")
+      e.preventDefault()
+      $pressed_button = $(e.currentTarget)
+
+      $.featherlight $('.shipping-confirmation'),
+        otherClose: '.close'
+        closeIcon: ''
+
+  checkRequirements = (e)->
+    if $('.agreement input').filter(':checked').length == 2
+      $('.shipping-confirmation-confirm').attr('disabled',false)
+    else
+      $('.shipping-confirmation-confirm').attr('disabled','disabled')
+
+  verifiedAge = ()->
+    # Set session
+    localStorage.setItem("verified", true)
+    # Resume action
+    $pressed_button.trigger 'click'
+
+  $trigger_requirements.on 'click', ageGate
+  $requirement_inputs.on 'change', checkRequirements
+  $age_confirmed.on 'click', verifiedAge
 
   # Contact Form
   clearErrors = ()->
