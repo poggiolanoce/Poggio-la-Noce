@@ -11,8 +11,8 @@
     text-align: center;
     white-space: nowrap;
     cursor: pointer;
-    background: #333333;
-    background: rgba(0, 0, 0, 0);
+    background: #333;
+    background: transparent;
   }
   /* line 68, sass/mixins.scss */
   .featherlight:last-of-type {
@@ -28,62 +28,48 @@
   }
   /* line 78, sass/mixins.scss */
   .featherlight .featherlight-content {
-    position: relative;
     text-align: left;
     vertical-align: middle;
     display: inline-block;
     overflow: auto;
-    padding: 25px 25px 0;
-    border-bottom: 25px solid transparent;
     min-width: 30%;
     margin-left: 5%;
     margin-right: 5%;
-    max-height: 95%;
-    background: white;
+    max-height: 85%;
+    max-width: 85%;
+    background: #fff;
     cursor: auto;
     white-space: normal;
   }
-  /* line 94, sass/mixins.scss */
+  /* line 92, sass/mixins.scss */
   .featherlight .featherlight-inner {
     display: block;
   }
-  /* line 97, sass/mixins.scss */
+  /* line 95, sass/mixins.scss */
   .featherlight .featherlight-close-icon {
     position: absolute;
     z-index: 9999;
-    top: 0;
-    right: 0;
-    line-height: 25px;
-    width: 25px;
+    top: 50px;
+    right: 50px;
+    line-height: 22px;
+    width: 22px;
     cursor: pointer;
     text-align: center;
-    font: Arial, sans-serif;
-    background: white;
-    background: rgba(255, 255, 255, 0.3);
-    color: black;
+    text-indent: -10000px;
+    background: url('/images/site/close.svg?1475527681') no-repeat 0 0;
   }
-  /* line 111, sass/mixins.scss */
+  /* line 107, sass/mixins.scss */
   .featherlight .featherlight-image {
     width: 100%;
   }
-  /* line 114, sass/mixins.scss */
+  /* line 110, sass/mixins.scss */
   .featherlight iframe {
     border: none;
   }
 
-  /* line 118, sass/mixins.scss */
+  /* line 114, sass/mixins.scss */
   .featherlight-iframe .featherlight-content {
     border-bottom: 0;
     padding: 0;
-  }
-}
-@media only screen and (max-width: 1024px) {
-  /* line 124, sass/mixins.scss */
-  .featherlight .featherlight-content {
-    margin-left: 10px;
-    margin-right: 10px;
-    max-height: 98%;
-    padding: 10px 10px 0;
-    border-bottom: 10px solid transparent;
   }
 }

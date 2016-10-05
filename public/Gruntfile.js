@@ -2,10 +2,13 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     coffee: {
-      compile: {
-        files: {
-          'javascript/main.js': 'coffeescript/main.coffee'
-        }
+      glob_to_multiple: {
+        expand: true,
+        flatten: true,
+        cwd: 'coffeescript/',
+        src: ['**/*.coffee'],
+        dest: 'javascript/',
+        ext: '.js'
       }
     },
     compass: {
@@ -26,7 +29,7 @@ module.exports = function(grunt) {
     },
     watch: {
       scripts: {
-        files: ['coffeescript/*.coffee','coffeescript/*.js'],
+        files: ['coffeescript/**/*.coffee','coffeescript/**/*.js'],
         tasks: ['coffee','uglify'],
         options: {
           spawn: false,
@@ -41,7 +44,7 @@ module.exports = function(grunt) {
       }
     }
   });
-  
+
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-watch');

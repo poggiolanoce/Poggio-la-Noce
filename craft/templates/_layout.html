@@ -14,6 +14,7 @@
 
 	<link rel="stylesheet" href="/css/main.css" type="text/css">
 	<script src="/javascript/plugins.js"></script>
+	<script src="/javascript/slideshow.js"></script>
 	<script src="/javascript/main.js"></script>
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
@@ -75,33 +76,23 @@
 						{% for banner in entry.pageBanner %}
 
 							{% if craft.request.getSegment(1) != '' %}
-							<div class="banner {% if loop.index == 1 %}active{% endif %}{% if banner.bannerVideo %} with_cta{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl('siteBanner') }}) ">
+							<div class="banner slide {% if loop.index == 1 %}active{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl('siteBanner') }}) ">
 							{% else %}
-							<div class="banner {% if loop.index == 1 %}active{% endif %}{% if banner.bannerVideo %} with_cta{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl('homeBanner') }}) ">
+							<div class="banner slide {% if loop.index == 1 %}active{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl('homeBanner') }}) ">
 							{% endif %}
 
 								<div class="banner-headline-container">
 									<div class="banner-headline">{{ banner.bannerHeadline }}</div>
 								</div>
-								{% if banner.bannerVideo %}
-									<div class="banner-cta banner-video"  data-featherlight="#video-{{ loop.index }}">
-										<div class="banner-cta-interior banner-video-interior">
-											<p>{{ "Watch" | translate }}</p>
-										</div>
-									</div>
-									<div id="video-{{ loop.index }}" class="hidden-video">
-										<iframe width="800" height="450" src="//www.youtube.com/embed/{{ banner.bannerVideo }}?modestbranding=1&autohide=1&showinfo=0&rel=0" frameborder="0" allowfullscreen></iframe>
-									</div>
-								{% endif %}
 							</div>
 
 						{% endfor %}
 						{% if entry.pageBanner|length > 1 %}
-							<ul class="banner-arrows">
+							<ul class="arrows">
 								<li class="previous">Previous</li>
 								<li class="next">Next</li>
 							</ul>
-							<ul class="banner-dots" style="margin-left: -{{ (30 * entry.pageBanner|length)/2 }}px">
+							<ul class="dots" style="margin-left: -{{ (30 * entry.pageBanner|length)/2 }}px">
 								{% for banner in entry.pageBanner %}
 									<li data-slide="{{ loop.index - 1}}" {% if loop.index == 1 %}class="active"{% endif %}></li>
 								{% endfor %}
