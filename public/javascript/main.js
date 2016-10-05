@@ -2,17 +2,18 @@
   $(document).ready(function() {
     var $headlines, $page_blocks, clearErrors, populateErrors;
     $page_blocks = false;
-    $headlines = $('.page-text-container h2');
-    $('.page-text-container h2').on('click', function() {
-      var $parent_block, $sibling_h2s, $sibling_text;
+    $headlines = $('.page-text-container h2, .shipping-group h3');
+    $headlines.on('click', function() {
+      var $parent_block, $sibling_headings, $sibling_text, $sibling_text_class;
       $parent_block = $(this).parent();
-      $sibling_h2s = $parent_block.find('h2');
-      $sibling_text = $parent_block.find('.page-text-block');
+      $sibling_headings = $parent_block.find('h2,h3');
+      $sibling_text_class = $sibling_headings.first().next().attr('class');
+      $sibling_text = $parent_block.find('.' + $sibling_text_class.split(' ').pop());
       if ($(this).hasClass('active')) {
         $(this).next().removeClass('active');
         return $(this).removeClass('active');
       } else {
-        $sibling_h2s.removeClass('active');
+        $sibling_headings.removeClass('active');
         $sibling_text.removeClass('active');
         $(this).next().addClass('active');
         return $(this).addClass('active');
@@ -36,6 +37,10 @@
           return this.$content.find('.gallery').slideshow();
         }
       });
+    });
+    $.featherlight($('.shipping-confirmation'), {
+      otherClose: '.close',
+      closeIcon: ''
     });
     clearErrors = function() {
       $('.errors').hide();

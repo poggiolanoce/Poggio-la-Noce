@@ -41,5 +41,7 @@ return array(
     "Search Results" => "Search Results",
     "No Results" => "Your search didn’t return any results.",
     "Add to cart" => "Add to Cart",
-    "Cart" => "Cart"
+    "Cart" => "Cart",
+    "Are you 21" => "I am at least 21 years of age",
+    "Are you in EU/US" => "I am shipping to an approved destination listed above"
 );
