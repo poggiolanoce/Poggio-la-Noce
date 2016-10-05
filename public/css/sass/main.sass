@@ -144,54 +144,6 @@ footer
   #home &
     .banner .banner-cta
       bottom: 165px
-  .banner-arrows
-    position: absolute
-    z-index: 10
-    top: 52%
-    margin-top: -30px
-    width: 100%
-    li
-      width: 32px
-      height: 60px
-      display: block
-      position: absolute
-      @include hr-image('../images/site/arrows.png', '../images/site/arrows@2x.png')
-      background-size: auto 60px
-      background-repeat: no-repeat
-      text-indent: -10000px
-      cursor: pointer
-      @include transition-property(opacity)
-      @include transition-duration(0.2s)
-      &:hover
-        opacity: 0.6
-    li.previous
-      background-position: top left
-      left: 20px
-    li.next
-      background-position: top right
-      right: 20px
-
-  .banner-dots
-    position: absolute
-    z-index: 10
-    top: 657px
-    left: 50%
-    li
-      width: 22px
-      height: 22px
-      display: block
-      cursor: pointer
-      background-color: #fff
-      border-radius: 50%
-      margin-right: 8px
-      display: inline-block
-      &:last-child
-        margin-right: 0
-      &.active
-        border: 3px solid #fff
-        width: 16px
-        height: 16px
-        background-color: transparent
   &.banner_slideshow
     .banner
       position: absolute
@@ -275,11 +227,93 @@ footer
     .banner-headline
       font-size: 72px
 
+.page-galleries
+  margin-top: 25px
+  [data-gallery]
+    cursor: pointer
+    .gallery-description
+      display: inline-block
+      vertical-align: middle
+      h4
+        font-size: 28px
+        font-family: $sans
+      p
+        font-size: 14px
+        margin-bottom: 0
+    img
+      display: inline-block
+      vertical-align: middle
+      vertical-align: middle
+      display: inline-block
+      width: 100px
+      margin-right: 15px
+
+.gallery
+  width: 100%
+  img
+    max-width: 100%
+    display: none
+    &.active
+      display: block
+
+.dots
+  position: absolute
+  z-index: 10
+  top: 657px
+  left: 50%
+  li
+    width: 22px
+    height: 22px
+    display: block
+    cursor: pointer
+    background-color: #fff
+    border-radius: 50%
+    margin-right: 8px
+    display: inline-block
+    &:last-child
+      margin-right: 0
+    &.active
+      border: 3px solid #fff
+      width: 16px
+      height: 16px
+      background-color: transparent
+
+.arrows
+  position: absolute
+  z-index: 10
+  top: 52%
+  left: 0
+  margin-top: -30px
+  width: 100%
+  li
+    width: 32px
+    height: 60px
+    display: block
+    position: absolute
+    @include hr-image('../images/site/arrows.png', '../images/site/arrows@2x.png')
+    background-size: auto 60px
+    background-repeat: no-repeat
+    text-indent: -10000px
+    cursor: pointer
+    @include transition-property(opacity)
+    @include transition-duration(0.2s)
+    &:hover
+      opacity: 0.6
+  li.previous
+    background-position: top left
+    left: 20px
+  li.next
+    background-position: top right
+    right: 20px
+
 // Hidden video inside banners
 
 .hidden-video
   height: 450px
   overflow: hidden
+  display: none
+
+.hidden-gallery
   display: none
 
 // Content Work

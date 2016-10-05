@@ -26,6 +26,7 @@ craft/storage/runtime/*
 
 public/package.json
 public/images/*
+!public/images/site
 
 # server noise
 backup.tar
