@@ -20,7 +20,7 @@ $(document).ready ->
   # Wrap content for collapsing content areas
   $('.page-text-container').each ()->
     $(this).find('h2').each ()->
-      $(this).nextUntil('h2').wrapAll('<div class="page-text-block" />')
+      $(this).nextUntil('h2, .add-to-cart').wrapAll('<div class="page-text-block" />')
     $page_blocks = $('.page-text-block')
 
     $(this).find('h2').eq(0).trigger('click')

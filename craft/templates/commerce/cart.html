@@ -1,6 +1,6 @@
-{% extends 'commerce/_layouts/main' %}
+{% extends '_layout.html' %}
 
-{% block main %}
+{% block content %}
     <div class="row">
         <div class="twelve columns">
 
@@ -18,9 +18,7 @@
                     <tr>
                         <td>
                             <strong>{{ item.description }}</strong><br>
-                            ({{ item.sku }})
                             <br>
-                            <code>{{ item.options|json_encode }}</code>
                             <form method="POST">
                                 <input type="hidden" name="action" value="commerce/cart/removeLineItem"/>
                                 <input type="hidden" name="redirect" value="commerce/cart"/>
@@ -34,17 +32,10 @@
                                 <input type="hidden" name="action" value="commerce/cart/updateLineItem">
                                 <input type="hidden" name="redirect" value="commerce/cart">
                                 <input type="hidden" name="lineItemId" value="{{ item.id }}">
-                                <input type="text" placeholder="My Note" size="20" name="note" value="{{ item.note }}">
                                 <span {% if item.getError('qty') %}class="has-error"{% endif %}>
                                 <input  type="number" name="qty" min="1" value="{{ item.qty }}">
                                 </span>
                                 {{ getCsrfInput() }}
-                                {% if item.options.giftWrapped is defined %}
-                                <select name="options[giftWrapped]">
-                                    <option value="no" {% if item.options.giftWrapped == 'no' %}selected{% endif %}>No gift wrap.</option>
-                                    <option value="yes" {% if item.options.giftWrapped == 'yes' %}selected{% endif %}>Gift wrapped.</option>
-                                </select>
-                                {% endif %}
                                 <input type="submit" class="button" value="Update"/>
                             </form>
                         </td>
@@ -122,7 +113,7 @@
             {% endif %}
 
             {% if not cart.lineItems|length %}
-                <p>You have no items in your cart, add some on the <a href="/commerce/products">products page</a>.</p>
+                <p>You have no items in your cart, add some on the <a href="/wine">products page</a>.</p>
             {% endif %}
 
         </div>

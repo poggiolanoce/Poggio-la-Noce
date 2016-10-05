@@ -39,5 +39,7 @@ return array(
     "Award Description" => "See a short list of awards our wines have collected over the years",
     "Our Awards" => "Our Awards",
     "Search Results" => "Search Results",
-    "No Results" => "Your search didn’t return any results."
+    "No Results" => "Your search didn’t return any results.",
+    "Add to cart" => "Add to Cart",
+    "Cart" => "Cart"
 );
