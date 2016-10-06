@@ -68,16 +68,25 @@
       </div>
       <div class="product-navigation">
           {% set matched = false %}
+
+          {#
+          # Check for next product
+          #}
           {% for item in craft.commerce.products.order('postDate asc') %}
             {% if item.slug == product.slug and item.next.title is defined %}
               {% set matched = true %}
               <span>Next: <a href="{{item.next.url}}">{{item.next.title}}</a></span>
             {% endif %}
           {% endfor %}
+
+          {#
+          # Fallback at end of loop
+          #}
           {% if not matched %}
             {% set link = craft.commerce.products.order('postDate asc').first() %}
             <span>Next: <a href="{{link.url}}">{{link.title}}</a></span>
           {% endif %}
+
           <span><a href="{{ url('products') }}">{{ "All" | t }} {{ "Products" | t }}</a></span>
       </div>
     </div>
