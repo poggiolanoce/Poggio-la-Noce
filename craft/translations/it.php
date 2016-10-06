@@ -21,6 +21,8 @@ return array(
     "Philosophy" => "Filosofia",
     "Vineyard" => "Il vigneto",
     "Wines" => "Vini",
+    "Products" => "Vini & Olio d'oliva",
+    "Our" => "Il nostro",
     "Olive Oil" => "Olio di Oliva",
     "Awards" => "Valutazioni Stampa",
     "Awards Menu" => "Recensioni",
@@ -41,5 +43,6 @@ return array(
     "Search Results" => "Risultati della ricerca",
     "No Results" => "Nessun risultato per la ricerca.",
     "Add to cart" => "Aggiungi al carrello",
-    "Cart" => "Carrello"
+    "Cart" => "Carrello",
+    "Purcahse" => "Acquista"
 );
