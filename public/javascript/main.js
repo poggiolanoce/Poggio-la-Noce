@@ -20,7 +20,7 @@
     });
     $('.page-text-container').each(function() {
       $(this).find('h2').each(function() {
-        return $(this).nextUntil('h2, .add-to-cart').wrapAll('<div class="page-text-block" />');
+        return $(this).nextUntil('h2').wrapAll('<div class="page-text-block" />');
       });
       $page_blocks = $('.page-text-block');
       return $(this).find('h2').eq(0).trigger('click');
