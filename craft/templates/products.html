@@ -1,0 +1,21 @@
+{% extends "_layout" %}
+
+{% block content %}
+{% cache globally using key craft.request.path %}
+
+  <article class="page-content product-overview">
+    <ul>
+    {% for item in craft.commerce.products.type('wine').order('postDate asc') %}
+      {% include 'partials/product_preview.html' %}
+    {% endfor %}
+    </ul>
+
+    <ul>
+    {% for item in craft.commerce.products.type('oliveOil').order('postDate asc') %}
+      {% include 'partials/product_preview.html' %}
+    {% endfor %}
+    </ul>
+  </article>
+
+{% endcache %}
+{% endblock %}

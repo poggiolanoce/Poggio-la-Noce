@@ -11,7 +11,7 @@ $wide-width: 1440px
 $medium-width: 1005px
 
 $header-tall: 770px
-$header-short: 482px
+$header-short: 360px
 $header-border: 30px
 
 $copper: #B24629
@@ -86,9 +86,8 @@ header
   .navigation
     padding-top: 93px
     display: block
-    min-width: 1000px
-    width: 100%
-    max-width: 1200px
+    width: 800px
+    margin: 0 auto
     text-align: justify
     &:after
       width: 100%
@@ -228,9 +227,6 @@ footer
     background-position: center center
     text-align: center
     color: #fff
-    &.with_cta
-      .banner-headline-container
-        height: 70%
     .banner-headline-container
       max-width: 1000px
       margin: 0 auto
@@ -244,40 +240,13 @@ footer
       display: table-cell
       vertical-align: middle
       text-align: center
-    .banner-cta
-      font-size: 24px
-      font-style: italic
-      position: absolute
-      margin-left: auto
-      margin-right: auto
-      left: 0
-      right: 0
-      bottom: 65px
-      .banner-cta-interior
-        display: inline-block
-        cursor: pointer
-        background-color: $orange
-        padding: 20px 60px
-        line-height: 42px
-    .banner-video
-      p
-        position: relative
-        padding-left: 50px
-        top: 1px
-      p:before
-        content: ""
-        width: 42px
-        height: 42px
-        @include hr-image('../images/site/play.png', '../images/site/play@2x.png')
-        background-size: cover
-        background-repeat: no-repeat
-        background-position: 0 0
-        display: inline-block
-        position: absolute
-        left: 0
-        top: -2px
-  #wine-page-banner
+  #products-page-banner
     background-image: image-url('banners/wine-banner.jpg')
+    &.oils-banner
+      background-image: image-url('banners/olive-oil-banner.jpg')
+    .banner-headline
+      font-size: 72px
+      text-transform: capitalize
   #awards-page-banner
     background-image: image-url('banners/news-banner.jpg')
     .banner-headline
@@ -552,13 +521,8 @@ footer
         display: block
 
   .add-to-cart
-    @include box-sizing('border-box')
-    border-top: 1px solid $copper
-    border-bottom: 1px solid $copper
-    margin-bottom: -1px
     position: relative
     font-family: $sans
-    padding: 42px 0
     form
       display: flex
       justify-content: space-between
@@ -580,14 +544,62 @@ footer
       input[type=submit]
         @extend %button
 
-.wine-page-content
-  .wine-page-text
+#products
+  .product-overview
+    margin-top: -170px
+    ul
+      display: -webkit-box
+      display: -ms-flexbox
+      display: flex
+      -ms-flex-flow: row wrap
+      flex-flow: row wrap
+      -ms-flex-pack: center
+      justify-content: center
+      padding: 0
+      &:first-child
+        border-bottom: 1px solid $copper
+        padding-bottom: 35px
+        margin-bottom: 85px
+      li
+        box-sizing: border-box
+        padding: 0 25px 50px 25px
+        text-align: center
+        list-style: none
+        -ms-flex: 0 1 33%
+        flex: 0 1 33%
+        img
+          height: 530px
+        h3
+          font-family: $handwriting
+          font-size: 48px
+          margin: 20px 0
+        p
+          font-size: 16px
+          line-height: 24px
+        a.learn-more
+          font-size: 16px
+          color: $copper
+          text-decoration: none
+          &:after
+            padding-left: 5px
+            content: "»"
+
+.product-page-content
+  .product-page-text
     .wine-specifications
       padding: 0
       li
         list-style: none
-  .wine-page-image
+  .page-image
     position: relative
+    img
+      float: right
+      margin-right: 5px
+      position: relative
+      z-index: 1
+  .wine-page-image
+    img
+      width: 195px
     &:before
       content: ""
       display: block
@@ -601,56 +613,22 @@ footer
       right: -90px
       top: 110px
       z-index: 0
-    img
-      float: right
-      margin-right: 5px
-      width: 195px
-      position: relative
-      z-index: 1
-
-.wine-browser
-  width: 1000px
-  margin: 0 auto
-  text-align: justify
-  position:relative
-  padding-top: 55px
-  li
-    display: inline-block
-    width: 160px
-    margin: 0
-    padding: 0
-    margin-right: 50px
-    cursor: pointer
-    position: relative
-    padding-bottom: 15px
-    vertical-align: top
-    &:hover
-      &:after
-        content: ""
-        width: 66px
-        height: 7px
-        background-color: #fff
-        display: block
-        position: absolute
-        bottom: 0
-        left: 50%
-        margin-left: -33px
-    img
-      width: 140px
-      padding: 10px
-    &:last-child
-      margin-right: 0
-    &.active img
-      padding: 0
-      border: 10px solid $orange
-  @media screen and (min-width: 1180px)
-    width: 1180px
-    padding-top: 20px
-    li
-      width: 190px
-      margin-right: 57px
-      img
-        width: 170px
+  .product-navigation
+    padding-top: 35px
+    display: -webkit-box
+    display: -ms-flexbox
+    display: flex
+    -ms-flex-flow: row
+    flex-flow: row
+    -ms-flex-pack: space-between
+    justify-content: space-between
+    a
+      color: $copper
+      text-decoration: none
+    span:first-child
+      a:after
+        padding-left: 5px
+        content: "»"
 
 // Awards page
 

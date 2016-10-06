@@ -21,6 +21,9 @@ return array(
     "Philosophy" => "Philosophy",
     "Vineyard" => "Vineyard",
     "Wines" => "Wines",
+    "Products" => "Wines & Olive Oil",
+    "Our" => "Our",
+    "All" => "All",
     "Olive Oil" => "Olive Oil",
     "Awards" => "Awards",
     "Awards Menu" => "Awards",
@@ -44,5 +47,7 @@ return array(
     "Cart" => "Cart",
     "Are you 21" => "I am at least 21 years of age",
     "Are you in EU/US" => "I am shipping to an approved destination listed above",
-    "Confirm" => "Confirm"
+    "Confirm" => "Confirm",
+    "Purchase" => "Purchase",
+    "Next" => "Next"
 );
