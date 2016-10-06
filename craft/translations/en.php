@@ -21,6 +21,9 @@ return array(
     "Philosophy" => "Philosophy",
     "Vineyard" => "Vineyard",
     "Wines" => "Wines",
+    "Products" => "Wines & Olive Oil",
+    "Our" => "Our",
+    "All" => "All",
     "Olive Oil" => "Olive Oil",
     "Awards" => "Awards",
     "Awards Menu" => "Awards",
@@ -41,5 +44,7 @@ return array(
     "Search Results" => "Search Results",
     "No Results" => "Your search didn’t return any results.",
     "Add to cart" => "Add to Cart",
-    "Cart" => "Cart"
+    "Cart" => "Cart",
+    "Purchase" => "Purchase",
+    "Next" => "Next"
 );

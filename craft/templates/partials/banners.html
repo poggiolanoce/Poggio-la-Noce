@@ -1,0 +1,102 @@
+<div class="banners">
+{% cache %}
+
+  {#
+  # Standard Page
+  #}
+
+  {% if craft.request.getSegment(1) != 'news' or craft.request.getSegment(1) != 'wines' %}
+
+    {% if craft.request.getSegment(1) %}
+      {% set page_id = craft.request.getSegment(1)  %}
+    {% else %}
+      {% set page_id = 'home' %}
+    {% endif %}
+
+    {% for entry in craft.entries.section('pages').slug(page_id) %}
+      {% for banner in entry.pageBanner %}
+
+        {% if craft.request.getSegment(1) != '' %}
+        <div class="banner slide {% if loop.index == 1 %}active{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl('siteBanner') }}) ">
+        {% else %}
+        <div class="banner slide {% if loop.index == 1 %}active{% endif %}" style="background-image: url({{ banner.bannerImage.first().getUrl('homeBanner') }}) ">
+        {% endif %}
+
+          <div class="banner-headline-container">
+            <div class="banner-headline">{{ banner.bannerHeadline }}</div>
+          </div>
+        </div>
+
+      {% endfor %}
+      {% if entry.pageBanner|length > 1 %}
+        <ul class="arrows">
+          <li class="previous">Previous</li>
+          <li class="next">Next</li>
+        </ul>
+        <ul class="dots" style="margin-left: -{{ (30 * entry.pageBanner|length)/2 }}px">
+          {% for banner in entry.pageBanner %}
+            <li data-slide="{{ loop.index - 1}}" {% if loop.index == 1 %}class="active"{% endif %}></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+    {% endfor %}
+
+  {% endif %}
+
+
+  {#
+  # Products Page
+  #}
+  {% if craft.request.getSegment(1) == 'products' %}
+
+    <div class="banner {% if craft.request.getSegment(2) %}{{craft.request.getSegment(2)}}-banner{% endif %}" id="products-page-banner">
+      <div class="banner-headline-container">
+
+        {% if craft.request.getSegment(2) is empty %}
+          <div class="banner-headline">{{ "Our" | t }} {{ "Products" | t }}</div>
+        {% elseif craft.request.getSegment(2) == "wine" %}
+          <div class="banner-headline">
+            {{ "Our" | t }} {{ "Wines" | t }}: {{ product.title }}
+          </div>
+        {% else %}
+          <div class="banner-headline">
+            {{ "Our" | t }} {{ product.title }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+  {% endif %}
+
+  {#
+  # Awards Page
+  #}
+  {% if craft.request.getSegment(1) == 'awards' %}
+
+    <div class="banner" id="awards-page-banner">
+
+      <div class="banner-headline-container">
+        <div class="banner-headline">{{ "Reviews" | translate }}</div>
+      </div>
+
+    </div>
+
+  {% endif %}
+  {#
+  # News Page
+  #}
+  {% if craft.request.getSegment(1) == 'news' %}
+
+    <div class="banner" id="news-page-banner">
+
+      <div class="banner-headline-container">
+        <div class="banner-headline">{{ "News And Updates" | translate }}</div>
+      </div>
+
+    </div>
+
+  {% endif %}
+
+{% endcache %}
+</div>

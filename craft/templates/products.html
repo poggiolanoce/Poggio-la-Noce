@@ -1,0 +1,27 @@
+{% extends "_layout" %}
+
+{% block content %}
+{% cache globally using key craft.request.path %}
+
+  <article class="page-content product-overview">
+    {% set wines = craft.commerce.products.type('wine').order('postDate asc') %}
+    {% if wines | length > 0 %}
+    <ul>
+    {% for item in wines %}
+      {% include 'partials/product_preview.html' %}
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% set oils = craft.commerce.products.type('oliveOil').order('postDate asc') %}
+    {% if oils | length > 0 %}
+    <ul>
+    {% for item in oils %}
+      {% include 'partials/product_preview.html' %}
+    {% endfor %}
+    </ul>
+    {% endif %}
+  </article>
+
+{% endcache %}
+{% endblock %}
