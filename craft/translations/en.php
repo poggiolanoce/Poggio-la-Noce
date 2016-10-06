@@ -23,6 +23,7 @@ return array(
     "Wines" => "Wines",
     "Products" => "Wines & Olive Oil",
     "Our" => "Our",
+    "All" => "All",
     "Olive Oil" => "Olive Oil",
     "Awards" => "Awards",
     "Awards Menu" => "Awards",
@@ -44,5 +45,6 @@ return array(
     "No Results" => "Your search didn’t return any results.",
     "Add to cart" => "Add to Cart",
     "Cart" => "Cart",
-    "Purcahse" => "Purchase"
+    "Purchase" => "Purchase",
+    "Next" => "Next"
 );

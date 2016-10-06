@@ -23,6 +23,7 @@ return array(
     "Wines" => "Vini",
     "Products" => "Vini & Olio d'oliva",
     "Our" => "Il nostro",
+    "All" => "Tutto i",
     "Olive Oil" => "Olio di Oliva",
     "Awards" => "Valutazioni Stampa",
     "Awards Menu" => "Recensioni",
@@ -44,5 +45,6 @@ return array(
     "No Results" => "Nessun risultato per la ricerca.",
     "Add to cart" => "Aggiungi al carrello",
     "Cart" => "Carrello",
-    "Purcahse" => "Acquista"
+    "Purchase" => "Acquista",
+    "Next" => "Il prossimo"
 );
