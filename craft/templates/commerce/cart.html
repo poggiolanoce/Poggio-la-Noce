@@ -4,6 +4,7 @@
     <div class="row">
         <div class="twelve columns">
 
+            {% set cart = craft.commerce.cart %}
             {% if cart.lineItems|length %}
             <table class="u-full-width">
                 <thead>
