@@ -47,7 +47,7 @@ $(document).ready ->
   $age_confirmed = $('.shipping-confirmation-confirm')
 
   ageGate = (e)->
-    if !localStorage.getItem("verified")
+    if !sessionStorage.getItem("verified")
       e.preventDefault()
       $pressed_button = $(e.currentTarget)
 
@@ -63,7 +63,7 @@ $(document).ready ->
 
   verifiedAge = ()->
     # Set session
-    localStorage.setItem("verified", true)
+    sessionStorage.setItem("verified", true)
     # Resume action
     $pressed_button.trigger 'click'
 
