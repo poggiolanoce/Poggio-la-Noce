@@ -43,7 +43,7 @@
     $requirement_inputs = $('.agreement input');
     $age_confirmed = $('.shipping-confirmation-confirm');
     ageGate = function(e) {
-      if (!localStorage.getItem("verified")) {
+      if (!sessionStorage.getItem("verified")) {
         e.preventDefault();
         $pressed_button = $(e.currentTarget);
         return $.featherlight($('.shipping-confirmation'), {
@@ -60,7 +60,7 @@
       }
     };
     verifiedAge = function() {
-      localStorage.setItem("verified", true);
+      sessionStorage.setItem("verified", true);
       return $pressed_button.trigger('click');
     };
     $trigger_requirements.on('click', ageGate);
