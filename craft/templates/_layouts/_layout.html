@@ -11,16 +11,17 @@
   <meta charset="utf-8" />
   <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
   <link rel="home" href="{{ siteUrl }}" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
+  <link rel="stylesheet" href="/css/shared.css" type="text/css">
   <link rel="stylesheet" href="/css/main.css" type="text/css">
+  {% if craft.request.getSegment(1) == "commerce" %}
+    <link rel="stylesheet" href="/css/store.css" type="text/css">
+  {% endif %}
+
   <script src="/javascript/plugins.js"></script>
   <script src="/javascript/slideshow.js"></script>
   <script src="/javascript/main.js"></script>
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-
-  {% if craft.request.getSegment(1) == "commerce" %}
-    <link rel="stylesheet" href="/commerce/style.css" type="text/css">
-  {% endif %}
 
 </head>
 
