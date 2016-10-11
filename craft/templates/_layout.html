@@ -8,44 +8,44 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 <head>
-	<meta charset="utf-8" />
-	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
-	<link rel="home" href="{{ siteUrl }}" />
+  <meta charset="utf-8" />
+  <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+  <link rel="home" href="{{ siteUrl }}" />
 
-	<link rel="stylesheet" href="/css/main.css" type="text/css">
-	<script src="/javascript/plugins.js"></script>
-	<script src="/javascript/slideshow.js"></script>
-	<script src="/javascript/main.js"></script>
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/css/main.css" type="text/css">
+  <script src="/javascript/plugins.js"></script>
+  <script src="/javascript/slideshow.js"></script>
+  <script src="/javascript/main.js"></script>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
-	{% if craft.request.getSegment(1) == "commerce" %}
-		<link rel="stylesheet" href="/commerce/style.css" type="text/css">
-	{% endif %}
+  {% if craft.request.getSegment(1) == "commerce" %}
+    <link rel="stylesheet" href="/commerce/style.css" type="text/css">
+  {% endif %}
 
 </head>
 
 <body id="{% if craft.request.getSegment(1) %}{{craft.request.getSegment(1)}}{% else %}home{% endif %}" >
-	<!-- Header -->
-	<header id="header">
+  <!-- Header -->
+  <header id="header">
 
-			{% include 'partials/nav' %}
-			{% include 'partials/banners' %}
+      {% include 'partials/nav' %}
+      {% include 'partials/banners' %}
 
-	</header>
+  </header>
 
-	<!-- Inherited Main Content -->
-	<main id="content" role="main">
-		<div class="container">
-			{% block content %}
+  <!-- Inherited Main Content -->
+  <main id="content" role="main">
+    <div class="container">
+      {% block content %}
 
-			{% endblock %}
-		</div>
-	</main>
+      {% endblock %}
+    </div>
+  </main>
 
-	<!-- Age/Shipping Confirmation -->
-	{% include 'partials/confirmation_modal.html' %}
+  <!-- Age/Shipping Confirmation -->
+  {% include 'partials/confirmation_modal.html' %}
 
-	{% include 'partials/footer.html' %}
+  {% include 'partials/footer.html' %}
 
 </body>
 </html>
