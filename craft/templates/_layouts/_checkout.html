@@ -1,6 +1,6 @@
 {% set showNav = false %}
 
-{% extends 'commerce/_layouts/main' %}
+{% extends "_layouts/_commerce" %}
 
 {% block header %}
   <div id="header" class="container">
@@ -22,10 +22,10 @@
 
 {% block main %}
 
-{% include 'commerce/_includes/meter' %}
+  {% include 'commerce/_includes/meter' %}
 
-{% block content %}
+  {% block content %}
 
-{% endblock %}
+  {% endblock %}
 
 {% endblock %}
