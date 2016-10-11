@@ -1,0 +1,36 @@
+$source : 'Source Sans Pro', sans-serif
+$wide-width: 1440px
+$medium-width: 1005px
+
+$header-tall: 770px
+$header-short: 360px
+$header-border: 30px
+
+$copper: #B24629
+$orange: #ED8F17
+$black: #333333
+
+$text-light-gray: #E2E2E2
+$text-gray: #999999
+$text-black: #333333
+
+$handwriting: "Nickyshand", Tahoma, Geneva, sans-serif
+$serif: "P22MackinacMedium", Georgia, serif
+$sans: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif
+
+%button
+  box-sizing: border-box
+  cursor: pointer
+  height: 48px
+  border: 0
+  border-radius: 4px
+  background-color: $orange
+  font-weight: normal
+  padding: 0 25px
+  font-family: $sans
+  font-size: 28px
+  color: #fff
+  letter-spacing: 0.05em
+  &[disabled='disabled']
+    background-color: rgba($black, 0.4)
+    cursor: not-allowed

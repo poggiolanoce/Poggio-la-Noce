@@ -1,0 +1,30 @@
+{% set showNav = false %}
+
+{% extends "_layouts/_commerce" %}
+
+{% block header %}
+  <div id="header" class="container">
+    <div class="row">
+      <div class="twelve columns">
+
+        <div class="flash">{{ craft.session.getFlash('notice') }}</div>
+        <div class="flash">{{ craft.session.getFlash('error') }}</div>
+
+        {% if cart.isEmpty %}
+        <div class="flash">Your cart is empty.</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block main %}
+
+  {% include 'commerce/_includes/meter' %}
+
+  {% block content %}
+
+  {% endblock %}
+
+{% endblock %}
