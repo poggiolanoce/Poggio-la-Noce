@@ -7,6 +7,9 @@
       <h3>Fiesole, Italia</h3>
       </a>
     </div>
+
+    {% set page = craft.request.getSegment(1) %}
+    {% if page != 'commerce' %}
     <ul class="navigation">
       <li><a href="{{ url('about') }}" {% if craft.request.getSegment(1) == 'about' %}class="active"{% endif %}>{{"About" | translate}}</a></li>
       <li><a href="{{ url('philosophy') }}" {% if craft.request.getSegment(1) == 'philosophy' %}class="active"{% endif %}>{{"Philosophy" | translate}}</a></li>
@@ -27,5 +30,7 @@
         </a>
       </div>
     </div>
+    {% endif %}
+
   </div>
 </nav>
