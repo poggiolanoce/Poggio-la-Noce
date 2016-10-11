@@ -40,6 +40,64 @@
 
         <div class="six columns">
 
+            <h3>Create login</h3>
+
+            <form method="post" accept-charset="UTF-8">
+
+                {{ getCsrfInput() }}
+
+                <input type="hidden" name="action" value="users/saveUser">
+                <input type="hidden" name="redirect" value="commerce/checkout/addresses">
+
+                {% macro errorList(errors) %}
+                    {% if errors %}
+                        <ul class="errors">
+                            {% for error in errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endmacro %}
+
+                {% from _self import errorList %}
+
+                <label for="username">Username</label>
+                <input id="username" type="text" name="username" class="u-full-width"
+                    {%- if account is defined %} value="{{ account.username }}"{% endif -%}>
+
+                {% if account is defined %}
+                    {{ errorList(account.getErrors('username')) }}
+                {% endif %}
+
+                <label for="email">Email</label>
+                <input id="email" type="text" name="email" class="u-full-width"
+                    {%- if account is defined %} value="{{ account.email }}"{% endif %}>
+
+                {% if account is defined %}
+                    {{ errorList(account.getErrors('email')) }}
+                {% endif %}
+
+                <label for="password">Password</label>
+                <input id="password" type="password" class="u-full-width" name="password">
+
+                {% if account is defined %}
+                    {{ errorList(account.getErrors('password')) }}
+                {% endif %}
+                <br/>
+
+                <input type="submit" value="Register" class="button button-primary"/>
+
+            </form>
+
+            <p><a href="{{ url('forgotpassword') }}">Forget your password?</a></p>
+
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div class="six columns">
+
             <h3>Guest Checkout</h3>
 
             {#
