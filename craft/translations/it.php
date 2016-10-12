@@ -21,6 +21,9 @@ return array(
     "Philosophy" => "Filosofia",
     "Vineyard" => "Il vigneto",
     "Wines" => "Vini",
+    "Products" => "Vini & Olio d'oliva",
+    "Our" => "Il nostro",
+    "All" => "Tutto i",
     "Olive Oil" => "Olio di Oliva",
     "Awards" => "Valutazioni Stampa",
     "Awards Menu" => "Recensioni",
@@ -42,6 +45,8 @@ return array(
     "No Results" => "Nessun risultato per la ricerca.",
     "Add to cart" => "Aggiungi al carrello",
     "Cart" => "Carrello",
+    "Purchase" => "Acquista",
+    "Next" => "Il prossimo",
     "Are you 21" => "I am at least 21 years of age",
     "Are you in EU/US" => "I am shipping to an approved destination listed above",
     "Confirm" => "Confirm"

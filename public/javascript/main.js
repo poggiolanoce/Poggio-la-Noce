@@ -11,17 +11,20 @@
       $sibling_text = $parent_block.find('.' + $sibling_text_class.split(' ').pop());
       if ($(this).hasClass('active')) {
         $(this).next().removeClass('active');
-        return $(this).removeClass('active');
+        $(this).removeClass('active');
       } else {
         $sibling_headings.removeClass('active');
         $sibling_text.removeClass('active');
         $(this).next().addClass('active');
-        return $(this).addClass('active');
+        $(this).addClass('active');
+      }
+      if ($sibling_headings.filter('.active').length === 0) {
+        return $sibling_headings.first().trigger('click');
       }
     });
     $('.page-text-container').each(function() {
       $(this).find('h2').each(function() {
-        return $(this).nextUntil('h2, .add-to-cart').wrapAll('<div class="page-text-block" />');
+        return $(this).nextUntil('h2').wrapAll('<div class="page-text-block" />');
       });
       $page_blocks = $('.page-text-block');
       return $(this).find('h2').eq(0).trigger('click');
