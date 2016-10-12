@@ -1,6 +1,6 @@
-{% extends "_layout" %}
+{% extends "_layouts/_layout" %}
 {% block content %}
-  
+
 <div class="page-content">
 
   <div id="news-sidebar">
@@ -12,9 +12,9 @@
         <input type="submit" value="Go">
       </form>
     </div>
-    
+
   </div>
-    
+
   <h1>{{ "Search Results" | translate }}</h1>
 
   <div class="news-search">
@@ -41,7 +41,7 @@
 
       <p class="no-results">{{ "No Results" | translate }}</p>
 
-    {% endif %}  
+    {% endif %}
   </div>
 
 </div>

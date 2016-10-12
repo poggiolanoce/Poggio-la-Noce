@@ -1,0 +1,52 @@
+{# Tell the browser to cache this page for 30 days #}
+{% set expiry = now|date_modify('+4 days') %}
+
+{% header "Cache-Control: max-age=" ~ expiry.timestamp %}
+{% header "Pragma: cache" %}
+{% header "Expires: " ~ expiry|date('D, d M Y H:i:s', 'GMT') ~ " GMT" %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+  <link rel="home" href="{{ siteUrl }}" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  <link rel="stylesheet" href="/css/shared.css" type="text/css">
+  <link rel="stylesheet" href="/css/main.css" type="text/css">
+  {% if craft.request.getSegment(1) == "commerce" %}
+    <link rel="stylesheet" href="/css/store.css" type="text/css">
+  {% endif %}
+
+  <script src="/javascript/plugins.js"></script>
+  <script src="/javascript/slideshow.js"></script>
+  <script src="/javascript/main.js"></script>
+
+</head>
+
+<body id="{% if craft.request.getSegment(1) %}{{craft.request.getSegment(1)}}{% else %}home{% endif %}" >
+  <!-- Header -->
+  <header id="header">
+
+      {% include 'partials/nav' %}
+      {% include 'partials/banners' %}
+
+  </header>
+
+  <!-- Inherited Main Content -->
+  <main id="content" role="main">
+    <div class="container">
+      {% block content %}
+
+      {% endblock %}
+    </div>
+  </main>
+
+  <!-- Age/Shipping Confirmation -->
+  {% include 'partials/confirmation_modal.html' %}
+
+  {% include 'partials/footer.html' %}
+
+</body>
+</html>

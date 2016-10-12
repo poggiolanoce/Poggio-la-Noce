@@ -13,13 +13,13 @@
  # http://buildwithcraft.com/docs/routing
  #}
 
-{% extends "_layout" %}
+{% extends "_layouts/_layout" %}
 
 {% block content %}
 	<article class="page-content page-detail">
 		<h1>{{ entry.title }}</h1>
 		<p>{{ entry.postDate.localeDate() }}</p>
-    
+
     <div class="news-image">
       <img src="{{ entry.newsImage.first().getUrl('newsMainImage') }}" width="{{ entry.newsImage.first().getWidth('newsMainImage') }}" height="{{ entry.newsImage.first().getHeight('newsMainImage') }}">
     </div>

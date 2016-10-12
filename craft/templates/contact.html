@@ -1,4 +1,4 @@
-{% extends "_layout" %}
+{% extends "_layouts/_layout" %}
 
 {% block content %}
 {% cache globally using key craft.request.path %}
@@ -15,7 +15,7 @@
 
         <div class="errors">
           <ul>
-            
+
           </ul>
         </div>
 
@@ -27,15 +27,15 @@
           {{ getCsrfInput() }}
           <input type="hidden" name="action" value="contactForm/sendMessage">
           <input type="hidden" name="redirect" value="contact/thanks">
-          
+
           <div class="form-left">
- 
+
             <h3><label for="fromName">{{ "Name" | translate }}</label></h3>
             <input id="fromName" type="text" name="fromName" value="{% if message is defined %}{{ message.fromName }}{% endif %}">
 
             <h3><label for="fromEmail">{{ "Email" | translate }}<span class="required">*</span></label></h3>
             <input id="fromEmail" type="text" name="fromEmail" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}">
-            
+
             <input type="submit" value="Send">
 
           </div>
@@ -44,7 +44,7 @@
 
             <h3><label for="message">{{ "Message" | translate }}<span class="required">*</span></label></h3>
             <textarea rows="10" cols="40" id="message" name="message">{% if message is defined %}{{ message.message }}{% endif %}</textarea>
-            
+
           </div>
 
 
