@@ -1,18 +1,19 @@
 (function() {
   $(document).ready(function() {
-    var $headlines, $page_blocks, clearErrors, populateErrors;
+    var $age_confirmed, $headlines, $page_blocks, $pressed_button, $requirement_inputs, $trigger_requirements, ageGate, checkRequirements, clearErrors, populateErrors, verifiedAge;
     $page_blocks = false;
-    $headlines = $('.page-text-container h2');
-    $('.page-text-container h2').on('click', function() {
-      var $parent_block, $sibling_h2s, $sibling_text;
+    $headlines = $('.page-text-container h2, .shipping-group h3');
+    $headlines.on('click', function() {
+      var $parent_block, $sibling_headings, $sibling_text, $sibling_text_class;
       $parent_block = $(this).parent();
-      $sibling_h2s = $parent_block.find('h2');
-      $sibling_text = $parent_block.find('.page-text-block');
+      $sibling_headings = $parent_block.find('h2,h3');
+      $sibling_text_class = $sibling_headings.first().next().attr('class');
+      $sibling_text = $parent_block.find('.' + $sibling_text_class.split(' ').pop());
       if ($(this).hasClass('active')) {
         $(this).next().removeClass('active');
         return $(this).removeClass('active');
       } else {
-        $sibling_h2s.removeClass('active');
+        $sibling_headings.removeClass('active');
         $sibling_text.removeClass('active');
         $(this).next().addClass('active');
         return $(this).addClass('active');
@@ -37,6 +38,34 @@
         }
       });
     });
+    $pressed_button = false;
+    $trigger_requirements = $('.buy');
+    $requirement_inputs = $('.agreement input');
+    $age_confirmed = $('.shipping-confirmation-confirm');
+    ageGate = function(e) {
+      if (!sessionStorage.getItem("verified")) {
+        e.preventDefault();
+        $pressed_button = $(e.currentTarget);
+        return $.featherlight($('.shipping-confirmation'), {
+          otherClose: '.close',
+          closeIcon: ''
+        });
+      }
+    };
+    checkRequirements = function(e) {
+      if ($('.agreement input').filter(':checked').length === 2) {
+        return $('.shipping-confirmation-confirm').attr('disabled', false);
+      } else {
+        return $('.shipping-confirmation-confirm').attr('disabled', 'disabled');
+      }
+    };
+    verifiedAge = function() {
+      sessionStorage.setItem("verified", true);
+      return $pressed_button.trigger('click');
+    };
+    $trigger_requirements.on('click', ageGate);
+    $requirement_inputs.on('change', checkRequirements);
+    $age_confirmed.on('click', verifiedAge);
     clearErrors = function() {
       $('.errors').hide();
       return $('.errors ul').html('');
