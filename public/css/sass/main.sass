@@ -31,6 +31,23 @@ body
   color: $text-black
   font-family: $serif
 
+%button
+  @include box-sizing('border-box')
+  cursor: pointer
+  height: 48px
+  border: 0
+  border-radius: 4px
+  background-color: $orange
+  font-weight: normal
+  padding: 0 25px
+  font-family: $sans
+  font-size: 28px
+  color: #fff
+  letter-spacing: 0.05em
+  &[disabled='disabled']
+    background-color: rgba($black, 0.4)
+    cursor: not-allowed
+
 // Header and Footer Work
 
 header
@@ -328,6 +345,96 @@ footer
 .hidden-gallery
   display: none
 
+.shipping-confirmation
+  max-width: 768px
+  max-height: 525px
+  display: none
+  padding: 35px
+  position: relative
+  .close
+    width: 22px
+    height: 22px
+    cursor: pointer
+    display: block
+    position: absolute
+    right: 35px
+    top: 35px
+    background: image-url('site/close_black.svg') 0 0 no-repeat
+  h2
+    font-size: 36px
+    margin-bottom: 22px
+    font-family: $sans
+  h3
+    @include box-sizing('border-box')
+    font-family: $sans
+    color: $copper
+    text-transform: uppercase
+    border-top: 1px solid $copper
+    border-bottom: 1px solid $copper
+    margin-bottom: -1px
+    height: 40px
+    position: relative
+    font-family: $sans
+    color: $copper
+    text-transform: uppercase
+    font-size: 22px
+    line-height: 40px
+    &:after
+      content: ""
+      width: 20px
+      height: 20px
+      position: absolute
+      right: 10px
+      top: 13px
+      display: block
+      @include hr-image('../images/site/accordion.png', '../images/site/accordion@2x.png')
+      background-size: cover !important
+      background-repeat: no-repeat
+      background-position: 0 0
+    &.active:after
+      top: 10px
+      background-position: 0 bottom
+  p
+    margin-bottom: 22px
+    font-size: 18px
+    line-height: 28px
+  .agreement
+    margin-bottom: 22px
+    font-size: 18px
+    li
+      margin-bottom: 20px
+      input, label
+        vertical-align: middle
+        display: inline-block
+  .shipping-group
+    margin-bottom: 22px
+    .shipping-list
+      display: none
+      &.active
+        display: block
+    ul
+      display: -ms-flexbox
+      display: -webkit-flex
+      display: flex
+      -ms-flex-flow: row wrap
+      flex-flow: row wrap
+      margin-top: 15px
+      max-height: 95px
+      overflow-y: auto
+    li
+      display: inline-block
+      padding-bottom: 15px
+      color: $copper
+      font-size: 14px
+      -webkit-box-flex: 0
+      -ms-flex: 0 1 20%
+      flex: 0 1 20%
+  .shipping-confirmation-confirm
+    @extend %button
+    text-decoration: none
+    display: inline-block
+    letter-spacing: 0
+
 // Content Work
 
 .container
@@ -435,18 +542,7 @@ footer
         border-radius: 4px
         padding: 2px 4px
       input[type=submit]
-        @include box-sizing('border-box')
-        cursor: pointer
-        height: 48px
-        border: 0
-        border-radius: 4px
-        background-color: $orange
-        font-weight: normal
-        padding: 0 25px
-        font-family: $sans
-        font-size: 28px
-        color: #fff
-        letter-spacing: 0.05em
+        @extend %button
 
 #products
   .product-overview

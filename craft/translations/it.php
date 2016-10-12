@@ -46,5 +46,8 @@ return array(
     "Add to cart" => "Aggiungi al carrello",
     "Cart" => "Carrello",
     "Purchase" => "Acquista",
-    "Next" => "Il prossimo"
+    "Next" => "Il prossimo",
+    "Are you 21" => "I am at least 21 years of age",
+    "Are you in EU/US" => "I am shipping to an approved destination listed above",
+    "Confirm" => "Confirm"
 );

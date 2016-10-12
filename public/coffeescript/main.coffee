@@ -1,18 +1,21 @@
 $(document).ready ->
   $page_blocks = false
-  $headlines = $('.page-text-container h2')
+  $headlines = $('.page-text-container h2, .shipping-group h3')
 
   # Make each section active when clicked
-  $('.page-text-container h2').on 'click', ()->
+  $headlines.on 'click', ()->
     $parent_block = $(this).parent()
-    $sibling_h2s = $parent_block.find('h2')
-    $sibling_text = $parent_block.find('.page-text-block')
+
+    $sibling_headings = $parent_block.find('h2,h3')
+    $sibling_text_class = $sibling_headings.first().next().attr('class')
+
+    $sibling_text = $parent_block.find('.' + $sibling_text_class.split(' ').pop())
 
     if $(this).hasClass('active')
       $(this).next().removeClass('active')
       $(this).removeClass('active')
     else
-      $sibling_h2s.removeClass('active')
+      $sibling_headings.removeClass('active')
       $sibling_text.removeClass('active')
       $(this).next().addClass('active')
       $(this).addClass('active')
@@ -40,6 +43,37 @@ $(document).ready ->
     $.featherlight $(this).data('gallery'),
       afterOpen: ()->
         @$content.find('.gallery').slideshow()
+
+  # Age Requirement Form
+  $pressed_button = false
+  $trigger_requirements = $('.buy')
+  $requirement_inputs = $('.agreement input')
+  $age_confirmed = $('.shipping-confirmation-confirm')
+
+  ageGate = (e)->
+    if !sessionStorage.getItem("verified")
+      e.preventDefault()
+      $pressed_button = $(e.currentTarget)
+
+      $.featherlight $('.shipping-confirmation'),
+        otherClose: '.close'
+        closeIcon: ''
+
+  checkRequirements = (e)->
+    if $('.agreement input').filter(':checked').length == 2
+      $('.shipping-confirmation-confirm').attr('disabled',false)
+    else
+      $('.shipping-confirmation-confirm').attr('disabled','disabled')
+
+  verifiedAge = ()->
+    # Set session
+    sessionStorage.setItem("verified", true)
+    # Resume action
+    $pressed_button.trigger 'click'
+
+  $trigger_requirements.on 'click', ageGate
+  $requirement_inputs.on 'change', checkRequirements
+  $age_confirmed.on 'click', verifiedAge
 
   # Contact Form
   clearErrors = ()->
