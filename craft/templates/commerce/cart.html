@@ -1,6 +1,10 @@
 {% extends '_layouts/_layout.html' %}
 
 {% block content %}
+
+  <div class="flash">{{ craft.session.getFlash('notice') }}</div>
+  <div class="flash">{{ craft.session.getFlash('error') }}</div>
+
   <div class="row">
     <div class="twelve columns">
 

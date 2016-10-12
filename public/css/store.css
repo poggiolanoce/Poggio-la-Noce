@@ -272,97 +272,54 @@
 /* line 116, sass/store.sass */
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 25px;
   font-weight: 300;
 }
 
 /* line 121, sass/store.sass */
 h1 {
-  font-size: 4rem;
-  line-height: 1.2;
-  letter-spacing: -0.1rem;
+  font-size: 28px;
 }
 
-/* line 126, sass/store.sass */
+/* line 124, sass/store.sass */
 h2 {
-  font-size: 3.6rem;
-  line-height: 1.25;
-  letter-spacing: -0.1rem;
+  font-size: 24px;
 }
 
-/* line 131, sass/store.sass */
+/* line 127, sass/store.sass */
 h3 {
-  font-size: 3rem;
-  line-height: 1.3;
-  letter-spacing: -0.1rem;
+  font-size: 22px;
+}
+
+/* line 130, sass/store.sass */
+h4 {
+  font-size: 18px;
+}
+
+/* line 133, sass/store.sass */
+h5 {
+  font-size: 14px;
 }
 
 /* line 136, sass/store.sass */
-h4 {
-  font-size: 2.4rem;
-  line-height: 1.35;
-  letter-spacing: -0.08rem;
-}
-
-/* line 141, sass/store.sass */
-h5 {
-  font-size: 1.8rem;
-  line-height: 1.5;
-  letter-spacing: -0.05rem;
-}
-
-/* line 146, sass/store.sass */
 h6 {
-  font-size: 1.5rem;
-  line-height: 1.6;
-  letter-spacing: 0;
+  font-size: 12px;
 }
 
 /* Larger than phablet */
-@media (min-width: 550px) {
-  /* line 153, sass/store.sass */
-  h1 {
-    font-size: 5rem;
-  }
-
-  /* line 155, sass/store.sass */
-  h2 {
-    font-size: 4.2rem;
-  }
-
-  /* line 157, sass/store.sass */
-  h3 {
-    font-size: 3.6rem;
-  }
-
-  /* line 159, sass/store.sass */
-  h4 {
-    font-size: 3rem;
-  }
-
-  /* line 161, sass/store.sass */
-  h5 {
-    font-size: 2.4rem;
-  }
-
-  /* line 163, sass/store.sass */
-  h6 {
-    font-size: 1.5rem;
-  }
-}
-/* line 166, sass/store.sass */
+/* line 154, sass/store.sass */
 p {
   margin-top: 0;
 }
 
 /* Links
  *–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* line 172, sass/store.sass */
+/* line 160, sass/store.sass */
 a {
   color: #ED8F17;
   text-decoration: none;
 }
-/* line 175, sass/store.sass */
+/* line 163, sass/store.sass */
 a:hover {
   color: rgba(237, 143, 23, 0.8);
   text-decoration: none;
@@ -370,9 +327,10 @@ a:hover {
 
 /* Buttons
  *–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* line 182, sass/store.sass */
+/* line 170, sass/store.sass */
 .button, button {
   display: inline-block;
+  vertical-align: top;
   height: 38px;
   padding: 0 30px;
   color: #555;
@@ -391,9 +349,10 @@ a:hover {
   box-sizing: border-box;
 }
 
-/* line 202, sass/store.sass */
+/* line 192, sass/store.sass */
 input[type="submit"], input[type="reset"], input[type="button"] {
   display: inline-block;
+  vertical-align: top;
   height: 38px;
   padding: 0 30px;
   color: #555;
@@ -401,7 +360,6 @@ input[type="submit"], input[type="reset"], input[type="button"] {
   font-size: 13px;
   font-weight: 600;
   line-height: 38px;
-  letter-spacing: 0.1rem;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
@@ -412,82 +370,82 @@ input[type="submit"], input[type="reset"], input[type="button"] {
   box-sizing: border-box;
 }
 
-/* line 221, sass/store.sass */
+/* line 212, sass/store.sass */
 .button .fa, button .fa {
   font-size: 16px;
 }
 
-/* line 224, sass/store.sass */
+/* line 215, sass/store.sass */
 .button:hover, button:hover {
   color: #333;
   border-color: #888;
   outline: 0;
 }
 
-/* line 230, sass/store.sass */
+/* line 221, sass/store.sass */
 input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover {
   color: #333;
   border-color: #888;
   outline: 0;
 }
 
-/* line 235, sass/store.sass */
+/* line 226, sass/store.sass */
 .button:focus, button:focus {
   color: #333;
   border-color: #888;
   outline: 0;
 }
 
-/* line 241, sass/store.sass */
+/* line 232, sass/store.sass */
 input[type="submit"]:focus, input[type="reset"]:focus, input[type="button"]:focus {
   color: #333;
   border-color: #888;
   outline: 0;
 }
 
-/* line 246, sass/store.sass */
+/* line 237, sass/store.sass */
 .button.button-primary, button.button-primary {
   color: #FFF;
   background-color: #ED8F17;
   border-color: #ED8F17;
 }
 
-/* line 252, sass/store.sass */
+/* line 243, sass/store.sass */
 input[type="submit"].button-primary, input[type="reset"].button-primary, input[type="button"].button-primary {
   color: #FFF;
   background-color: #ED8F17;
   border-color: #ED8F17;
 }
 
-/* line 257, sass/store.sass */
+/* line 248, sass/store.sass */
 .button.button-primary:hover, button.button-primary:hover {
   color: #FFF;
   background-color: #ED8F17;
   border-color: #ED8F17;
 }
 
-/* line 263, sass/store.sass */
+/* line 254, sass/store.sass */
 input[type="submit"].button-primary:hover, input[type="reset"].button-primary:hover, input[type="button"].button-primary:hover {
   color: #FFF;
   background-color: #ED8F17;
   border-color: #ED8F17;
 }
 
-/* line 268, sass/store.sass */
+/* line 259, sass/store.sass */
 .button.button-primary:focus, button.button-primary:focus {
   color: #FFF;
   background-color: #ED8F17;
   border-color: #ED8F17;
 }
 
-/* line 274, sass/store.sass */
+/* line 265, sass/store.sass */
 input[type="submit"].button-primary:focus, input[type="reset"].button-primary:focus, input[type="button"].button-primary:focus {
   color: #FFF;
   background-color: #ED8F17;
   border-color: #ED8F17;
 }
 
-/* line 279, sass/store.sass */
+/* line 270, sass/store.sass */
 .button.link {
   display: inline;
   border: none;
@@ -504,12 +462,12 @@ input[type="submit"].button-primary:focus, input[type="reset"].button-primary:fo
 
 /* Forms
  *–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* line 295, sass/store.sass */
+/* line 286, sass/store.sass */
 label, input, button, textarea, select {
   font-family: "Source Sans Pro", sans-serif;
 }
 
-/* line 299, sass/store.sass */
+/* line 290, sass/store.sass */
 input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"] {
   height: 38px;
   padding: 6px 10px;
@@ -521,7 +479,7 @@ input[type="email"], input[type="number"], input[type="search"], input[type="tex
   box-sizing: border-box;
 }
 
-/* line 309, sass/store.sass */
+/* line 300, sass/store.sass */
 textarea, select {
   height: 38px;
   padding: 6px 10px;
@@ -534,14 +492,14 @@ textarea, select {
 }
 
 /* Removes awkward default styles on some inputs for iOS */
-/* line 322, sass/store.sass */
+/* line 313, sass/store.sass */
 input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-/* line 327, sass/store.sass */
+/* line 318, sass/store.sass */
 textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -551,37 +509,41 @@ textarea {
   padding-bottom: 6px;
 }
 
-/* line 336, sass/store.sass */
+/* line 327, sass/store.sass */
 input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="text"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="password"]:focus {
   border: 1px solid #ED8F17;
   outline: 0;
 }
 
-/* line 340, sass/store.sass */
+/* line 331, sass/store.sass */
 textarea:focus, select:focus {
   border: 1px solid #ED8F17;
   outline: 0;
 }
 
-/* line 344, sass/store.sass */
+/* line 335, sass/store.sass */
 label, legend {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
+/* line 339, sass/store.sass */
+label:only-of-type, legend:only-of-type {
+  margin-bottom: 0;
+}
 
-/* line 349, sass/store.sass */
+/* line 342, sass/store.sass */
 fieldset {
   padding: 0;
   border-width: 0;
 }
 
-/* line 354, sass/store.sass */
+/* line 347, sass/store.sass */
 input[type="checkbox"], input[type="radio"] {
   display: inline;
 }
 
-/* line 357, sass/store.sass */
+/* line 350, sass/store.sass */
 label > .label-body {
   display: inline-block;
   margin-left: 0.5rem;
@@ -590,43 +552,43 @@ label > .label-body {
 
 /* Lists
  *–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* line 365, sass/store.sass */
+/* line 358, sass/store.sass */
 ul {
   list-style: circle inside;
 }
 
-/* line 368, sass/store.sass */
+/* line 361, sass/store.sass */
 ol {
   list-style: decimal inside;
   padding-left: 0;
   margin-top: 0;
 }
 
-/* line 373, sass/store.sass */
+/* line 366, sass/store.sass */
 ul {
   padding-left: 0;
   margin-top: 0;
 }
-/* line 376, sass/store.sass */
+/* line 369, sass/store.sass */
 ul ul, ul ol {
   margin: 1.5rem 0 1.5rem 3rem;
   font-size: 90%;
 }
 
-/* line 381, sass/store.sass */
+/* line 374, sass/store.sass */
 ol ol, ol ul {
   margin: 1.5rem 0 1.5rem 3rem;
   font-size: 90%;
 }
 
-/* line 385, sass/store.sass */
+/* line 378, sass/store.sass */
 li {
   margin-bottom: 0.5rem;
 }
 
 /* Code
  *–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* line 391, sass/store.sass */
+/* line 384, sass/store.sass */
 code {
   padding: 0.2rem 0.5rem;
   margin: 0 0.2rem;
@@ -637,7 +599,7 @@ code {
   border-radius: 4px;
 }
 
-/* line 400, sass/store.sass */
+/* line 393, sass/store.sass */
 pre > code {
   display: block;
   padding: 1rem 1.5rem;
@@ -646,67 +608,67 @@ pre > code {
 
 /* Tables
  *–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* line 408, sass/store.sass */
+/* line 401, sass/store.sass */
 th, td {
   padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #E1E1E1;
 }
 
-/* line 413, sass/store.sass */
+/* line 406, sass/store.sass */
 th:first-child, td:first-child {
   padding-left: 0;
 }
 
-/* line 416, sass/store.sass */
+/* line 409, sass/store.sass */
 th:last-child, td:last-child {
   padding-right: 0;
 }
 
 /* Spacing
  *–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* line 422, sass/store.sass */
+/* line 415, sass/store.sass */
 button, .button {
   margin-bottom: 1rem;
 }
 
-/* line 425, sass/store.sass */
+/* line 418, sass/store.sass */
 input, textarea, select, fieldset {
   margin-bottom: 1.5rem;
 }
 
-/* line 428, sass/store.sass */
+/* line 421, sass/store.sass */
 pre, blockquote, dl, figure, table, p, ul, ol, form {
   margin-bottom: 2.5rem;
 }
 
 /* Utilities
  *–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* line 434, sass/store.sass */
+/* line 427, sass/store.sass */
 .u-full-width {
   width: 100%;
   box-sizing: border-box;
 }
 
-/* line 438, sass/store.sass */
+/* line 431, sass/store.sass */
 .u-max-full-width {
   max-width: 100%;
   box-sizing: border-box;
 }
 
-/* line 442, sass/store.sass */
+/* line 435, sass/store.sass */
 .u-pull-right {
   float: right;
 }
 
-/* line 445, sass/store.sass */
+/* line 438, sass/store.sass */
 .u-pull-left {
   float: left;
 }
 
 /* Misc
  *–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* line 451, sass/store.sass */
+/* line 444, sass/store.sass */
 hr {
   margin-top: 3rem;
   margin-bottom: 3.5rem;
@@ -717,7 +679,7 @@ hr {
 /* Clearing
  *–––––––––––––––––––––––––––––––––––––––––––––––––– */
 /* Self Clearing Goodness */
-/* line 462, sass/store.sass */
+/* line 455, sass/store.sass */
 .container:after, .row:after, .u-cf {
   content: "";
   display: table;
@@ -726,19 +688,19 @@ hr {
 
 /* Helpers
  *–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* line 470, sass/store.sass */
+/* line 463, sass/store.sass */
 .rounded {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
 
-/* line 475, sass/store.sass */
+/* line 468, sass/store.sass */
 .right {
   float: right;
 }
 
-/* line 478, sass/store.sass */
+/* line 471, sass/store.sass */
 .text-right {
   text-align: right;
 }
@@ -752,46 +714,46 @@ hr {
 /* Larger than Desktop HD */
 /* Steps
  *–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* line 502, sass/store.sass */
+/* line 495, sass/store.sass */
 .steps {
   margin-bottom: 40px;
 }
-/* line 504, sass/store.sass */
+/* line 497, sass/store.sass */
 .steps ul {
   display: flex;
   display: -webkit-flex;
   margin-bottom: 0;
 }
-/* line 508, sass/store.sass */
+/* line 501, sass/store.sass */
 .steps ul li {
   list-style: none;
   display: block;
   flex: 1;
   color: #aaa;
 }
-/* line 513, sass/store.sass */
+/* line 506, sass/store.sass */
 .steps ul li a {
   color: #aaa;
 }
-/* line 515, sass/store.sass */
+/* line 508, sass/store.sass */
 .steps ul li.done {
-  color: #ED8F17;
+  color: #B24629;
   opacity: 0.5;
 }
-/* line 518, sass/store.sass */
+/* line 511, sass/store.sass */
 .steps ul li.done a {
-  color: #ED8F17;
+  color: #B24629;
 }
-/* line 520, sass/store.sass */
+/* line 513, sass/store.sass */
 .steps ul li.sel {
-  color: #ED8F17;
+  color: #B24629;
   opacity: 1;
 }
-/* line 523, sass/store.sass */
+/* line 516, sass/store.sass */
 .steps ul li.sel a {
-  color: #ED8F17;
+  color: #B24629;
 }
-/* line 525, sass/store.sass */
+/* line 518, sass/store.sass */
 .steps .meter {
   height: 10px;
   position: relative;
@@ -802,7 +764,7 @@ hr {
   padding: 3px;
   margin-bottom: 10px;
 }
-/* line 534, sass/store.sass */
+/* line 527, sass/store.sass */
 .steps .meter > span {
   display: block;
   height: 100%;
@@ -810,55 +772,55 @@ hr {
   border-bottom-right-radius: 2px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: #ED8F17;
+  background-color: #B24629;
   position: relative;
   overflow: hidden;
 }
 
 @media (max-width: 750px) {
-  /* line 547, sass/store.sass */
+  /* line 540, sass/store.sass */
   .steps ul {
     display: block;
     margin-left: 24px;
   }
-  /* line 550, sass/store.sass */
+  /* line 543, sass/store.sass */
   .steps ul li {
     list-style: decimal;
     display: list-item;
   }
-  /* line 553, sass/store.sass */
+  /* line 546, sass/store.sass */
   .steps .meter {
     display: none;
   }
 }
 /* Commerce Design
  *–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* line 559, sass/store.sass */
+/* line 552, sass/store.sass */
 #main {
   margin-top: 25px;
 }
 
-/* line 562, sass/store.sass */
+/* line 555, sass/store.sass */
 img.product {
   width: 100%;
 }
 
-/* line 565, sass/store.sass */
+/* line 558, sass/store.sass */
 .flash {
   color: #ED8F17;
   margin-bottom: 10px;
 }
 
-/* line 570, sass/store.sass */
+/* line 563, sass/store.sass */
 .has-error input {
   border: 1px solid #ED8F17;
 }
-/* line 572, sass/store.sass */
+/* line 565, sass/store.sass */
 .has-error .help-block {
   color: #ED8F17;
 }
 
-/* line 575, sass/store.sass */
+/* line 568, sass/store.sass */
 .address-select {
   background: #fff;
   border: 1px solid #eee;
@@ -866,78 +828,78 @@ img.product {
   position: relative;
   border-radius: 4px;
 }
-/* line 581, sass/store.sass */
+/* line 574, sass/store.sass */
 .address-select .radio {
   padding: 14px 15px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 582, sass/store.sass */
+/* line 575, sass/store.sass */
 .address-select .radio input {
   margin: 0 5px 0 0;
   position: relative;
   top: -1px;
 }
-/* line 590, sass/store.sass */
+/* line 583, sass/store.sass */
 .address-select ul.address-data {
   display: inline;
 }
-/* line 592, sass/store.sass */
+/* line 585, sass/store.sass */
 .address-select ul.address-data li {
   display: inline;
   display: inline;
 }
-/* line 595, sass/store.sass */
+/* line 588, sass/store.sass */
 .address-select ul.address-data li strong {
   display: none;
 }
-/* line 598, sass/store.sass */
+/* line 591, sass/store.sass */
 .address-select ul.address-data li span[data-key=firstName], .address-select ul.address-data li span[data-key=lastName] {
   font-weight: bold;
 }
-/* line 600, sass/store.sass */
+/* line 593, sass/store.sass */
 .address-select .actions {
   float: right;
   padding: 14px 15px;
   font-size: 0.9em;
 }
-/* line 604, sass/store.sass */
+/* line 597, sass/store.sass */
 .address-select .actions ul {
   margin: 0;
 }
-/* line 606, sass/store.sass */
+/* line 599, sass/store.sass */
 .address-select .actions ul li {
   display: inline-block;
   margin: 0 0 0 1em;
 }
-/* line 609, sass/store.sass */
+/* line 602, sass/store.sass */
 .address-select .actions ul li a {
   color: #999;
   text-decoration: underline;
 }
-/* line 612, sass/store.sass */
+/* line 605, sass/store.sass */
 .address-select .body {
   padding: 14px;
 }
 
-/* line 615, sass/store.sass */
+/* line 608, sass/store.sass */
 .hidden {
   display: none;
 }
 
-/* line 618, sass/store.sass */
+/* line 611, sass/store.sass */
 .product.row {
   border-bottom: 1px solid #fafafa;
   margin-bottom: 2.5rem;
 }
 
-/* line 622, sass/store.sass */
+/* line 615, sass/store.sass */
 .product-details {
   padding-top: 2rem;
 }
 
-/* line 625, sass/store.sass */
+/* line 618, sass/store.sass */
 .address-card {
   background-color: transparent;
   border-radius: 5px;
@@ -946,23 +908,23 @@ img.product {
   margin-bottom: 15px;
   position: relative;
 }
-/* line 632, sass/store.sass */
+/* line 625, sass/store.sass */
 .address-card form {
   display: inline;
   margin: 0px;
 }
-/* line 635, sass/store.sass */
+/* line 628, sass/store.sass */
 .address-card .edit {
   position: absolute;
   top: 20px;
   right: 20px;
 }
-/* line 639, sass/store.sass */
+/* line 632, sass/store.sass */
 .address-card ul {
   list-style: none;
 }
 
-/* line 642, sass/store.sass */
+/* line 635, sass/store.sass */
 .shipping-select {
   background: #fff;
   border: 1px solid #eee;
@@ -970,15 +932,15 @@ img.product {
   position: relative;
   border-radius: 4px;
 }
-/* line 648, sass/store.sass */
+/* line 641, sass/store.sass */
 .shipping-select input {
   margin: 0 5px 0 0;
 }
-/* line 650, sass/store.sass */
+/* line 643, sass/store.sass */
 .shipping-select label {
   padding: 10px 14px;
 }
-/* line 652, sass/store.sass */
+/* line 645, sass/store.sass */
 .shipping-select .price {
   float: right;
   padding: 4px 4px;
@@ -986,7 +948,7 @@ img.product {
   font-weight: normal;
 }
 
-/* line 658, sass/store.sass */
+/* line 651, sass/store.sass */
 .review-card {
   background-color: transparent;
   border-radius: 5px;
@@ -995,12 +957,12 @@ img.product {
   margin-bottom: 15px;
   position: relative;
 }
-/* line 665, sass/store.sass */
+/* line 658, sass/store.sass */
 .review-card ul {
   list-style: none;
   margin: 0;
 }
-/* line 668, sass/store.sass */
+/* line 661, sass/store.sass */
 .review-card ul li {
   border-top: 1px solid #E1E1E1;
   padding: 10px 0;
