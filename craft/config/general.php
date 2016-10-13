@@ -1,35 +1,32 @@
 <?php
 
-/**
- * General Configuration
- *
- * All of your system's general configuration settings go in here.
- * You can see a list of the default settings in craft/app/etc/config/defaults/general.php
- */
+// Ensure our urls have the right scheme
+define('URI_SCHEME', ( isset($_SERVER['HTTPS'] ) ) ? "https://" : "http://" );
+
+// The site url
+define('SITE_URL', URI_SCHEME . $_SERVER['SERVER_NAME'] . '/');
+
+// The site basepath
+define('BASEPATH', realpath(CRAFT_BASE_PATH . '/../') . '/');
 
 return array(
   '*' => array(
-
-  ),
-  'poggio.dev' => array(
-    'siteUrl' => array(
-      'en_us' => 'http://poggio.dev/en/',
-      'it' => 'http://poggio.dev/it/',
-    ),
+    'generateTransformsBeforePageLoad' => true,
+    'autoLoginAfterAccountActivation' => true,
+    'enableTemplateCaching' => false,
+    'devMode'   => true,
     'environmentVariables' => array(
-      'siteUrl'        => 'http://poggio.dev',
-      'fileSystemPath' => '/Users/nimwunnan/Sites/poggio/'
+        'siteUrl'  => SITE_URL,
+        'basePath' => BASEPATH
+    ),
+    'siteUrl' => array(
+      'en_us' => SITE_URL . 'en/',
+      'it' => SITE_URL . 'it/'
     )
   ),
   '.com' => array(
-    'siteUrl' => array(
-      'en_us' => 'http://www.poggiolanoce.com/en/',
-      'it' => 'http://www.poggiolanoce.com/it/',
-    ),
-    'environmentVariables' => array(
-      'siteUrl'        => 'http://www.poggiolanoce.com',
-      'fileSystemPath' => '/home/202594/domains/poggiolanoce.com'
-    )
+    'enableTemplateCaching' => true,
+    'devMode'   => false
   )
 );
 
