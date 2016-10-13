@@ -9,7 +9,7 @@
 
       <input type="hidden" name="action" value="users/login">
 
-      {% if redirect %}
+      {% if redirect is defined %}
         <input type="hidden" name="redirect" value="commerce/checkout/addresses">
       {% else %}
         <input type="hidden" name="redirect" value="{{ url('/') }}">
