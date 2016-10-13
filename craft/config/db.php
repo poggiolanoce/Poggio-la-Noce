@@ -8,19 +8,19 @@
  */
 
 return array(
-	'*' => array(
-		'server' => '127.0.0.1',
-		'user' => 'root',
-		'password' => '',
-		'database' => 'poggia',
-		'tablePrefix' => 'craft'
+  '*' => array(
+    'server' => '*',
+    'user' => 'root',
+    'password' => 'vAtQ4hY2aL',
+    'database' => 'poggio',
+    'tablePrefix' => 'craft'
   ),
-	'.com' => array(
-          'server' => '*',
-                'user' => 'root',
-                'password' => 'vAtQ4hY2aL',
-                'database' => 'poggio',
-                'tablePrefix' => 'craft'
+  '.dev' => array(
+    'server' => '127.0.0.1',
+    'user' => 'root',
+    'password' => '',
+    'database' => 'poggio',
+    'tablePrefix' => 'craft'
   )
 );
 

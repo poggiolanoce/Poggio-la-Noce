@@ -20,36 +20,37 @@
         <h2>{{ "Description" | translate }}</h2>
         {{ product.wineDescription }}
 
-        {% if specification in product.wineSpecifications %}
-        <h2>{{ "Specifications" | translate }}</h2>
-        {% for specification in product.wineSpecifications %}
-          <ul class="wine-specifications">
-            <li>
-            <strong>{{ "WineType" | translate }}:</strong>
-            {{ specification.wineType }}
-            </li>
-            <li>
-              <strong>{{ "VineyardLocation" | translate }}:</strong>
-              {{ specification.vineyardLocation }}
-            </li>
-            <li>
-              <strong>{{ "Grapes" | translate }}:</strong>
-              {{ specification.grapes }}
-            </li>
-            <li>
-              <strong>{{ "Exposition" | translate }}:</strong>
-              {{ specification.exposition }}
-            </li>
-            <li>
-              <strong>{{ "Soil" | translate }}:</strong>
-              {{ specification.soil }}
-            </li>
-            <li class="rich-text-specification">
-              <strong>{{ "Vinification" | translate }}:</strong>
-              {{ specification.vinificationAndMaturation }}
-            </li>
-          </ul>
-        {% endfor %}
+        {% set wineSpecs = product.wineSpecifications %}
+        {% if wineSpecs %}
+          <h2>{{ "Specifications" | translate }}</h2>
+          {% for specification in wineSpecs %}
+            <ul class="wine-specifications">
+              <li>
+              <strong>{{ "WineType" | translate }}:</strong>
+              {{ specification.wineType }}
+              </li>
+              <li>
+                <strong>{{ "VineyardLocation" | translate }}:</strong>
+                {{ specification.vineyardLocation }}
+              </li>
+              <li>
+                <strong>{{ "Grapes" | translate }}:</strong>
+                {{ specification.grapes }}
+              </li>
+              <li>
+                <strong>{{ "Exposition" | translate }}:</strong>
+                {{ specification.exposition }}
+              </li>
+              <li>
+                <strong>{{ "Soil" | translate }}:</strong>
+                {{ specification.soil }}
+              </li>
+              <li class="rich-text-specification">
+                <strong>{{ "Vinification" | translate }}:</strong>
+                {{ specification.vinificationAndMaturation }}
+              </li>
+            </ul>
+          {% endfor %}
         {% endif %}
 
         {% if product.wineAdditionalDetails %}
