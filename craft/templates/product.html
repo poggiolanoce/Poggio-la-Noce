@@ -21,7 +21,7 @@
         {{ product.wineDescription }}
 
         {% set wineSpecs = product.wineSpecifications %}
-        {% if wineSpecs %}
+        {% if wineSpecs | length > 0 %}
           <h2>{{ "Specifications" | translate }}</h2>
           {% for specification in wineSpecs %}
             <ul class="wine-specifications">
