@@ -97,6 +97,20 @@
     </div>
 
   {% endif %}
+  {#
+  # Gallery Page
+  #}
+  {% if craft.request.getSegment(1) == 'gallery' %}
+
+    <div class="banner" id="gallery-page-banner">
+
+      <div class="banner-headline-container">
+        <div class="banner-headline">{{ "Gallery" | translate }}</div>
+      </div>
+
+    </div>
+
+  {% endif %}
 
 {% endcache %}
 </div>

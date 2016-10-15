@@ -21,6 +21,8 @@
     @banner_dots = $('.dots li')
     @banner_arrows = $('.arrows li')
 
+    video_players = []
+
     @start_autoplay = ()=>
       $.doTimeout 'autoplay', @settings.slideshow_speed, ()=>
         @changeSlide(@bannerIncrement(1), true)
@@ -48,6 +50,11 @@
       if automatic != true && @settings.autoplay
         @stop_autoplay()
 
+      # If the previous slide had a video, try and stop it
+      $old_video = $previously_active.find('iframe')
+      if $old_video.length > 0
+        player = video_players[$old_video.data('index')]
+        player.stopVideo()
 
       @is_transitioning = true
       @current_slide = slide
@@ -66,6 +73,25 @@
     @finishChangeslide = ()=>
       $('.previously_active').removeClass('previously_active')
       @is_transitioning = false
+      @autoplayVideo()
+
+    @autoplayVideo = ()=>
+      $new_video = @element.children('.active').find('iframe')
+
+      # Is there a player stored?
+      player_ref = video_players[$new_video.data('index')]
+      if player_ref
+        player_ref.playVideo()
+
+      # Should we store a new player?
+      if $new_video.length > 0 && !player_ref
+        player = new YT.Player $new_video.get(0),
+          events:
+            'onReady': @onPlayerReady,
+        video_players.push player
+
+    @onPlayerReady = (event)=>
+      event.target.playVideo()
 
     @handleDotEvent = (e)=>
       next_slide = $(e.currentTarget).data('slide')
@@ -81,12 +107,11 @@
 
 
   Slideshow::init = ->
-    # Place initialization logic here
-    # You already have access to the DOM element and
-    # the options via the instance, e.g. this.element
-    # and this.options
-    @max_slide = @element.children('.slide').length - 1
+    # Check for videos to autplay
+    @autoplayVideo()
 
+    # Determine if there is additional content
+    @max_slide = @element.children('.slide').length - 1
     if @max_slide < 1
       return
 

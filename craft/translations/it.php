@@ -31,6 +31,7 @@ return array(
     "Reviews" => "Commenti stampa e valutazioni",
     "News And Updates" => "Notizie e Aggiornamenti",
     "News" => "Notizie",
+    "Gallery" => "Galleria",
     "Recent Updates" => "Aggiornamenti recenti",
     "Search Archives" => "Ricerca archivi",
     "Search" => "Ricerca",
