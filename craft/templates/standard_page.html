@@ -14,7 +14,7 @@
         {{ entry.pageBody }}
       </div>
       <div class="page-galleries">
-        {% for gallery in entry.pageGallery %}
+        {% for gallery in entry.photoGallery %}
           {% include 'partials/gallery_launcher.html' with {
             'title': gallery.galleryTitle,
             'description': gallery.galleryDescription,

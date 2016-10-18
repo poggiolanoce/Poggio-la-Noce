@@ -7,17 +7,19 @@
   {% set videoGalleries = [] %}
 
   {% for page in craft.entries.section('pages') %}
-    {% for gallery in page.pageGallery %}
-      {% if (gallery.galleryPageInclude or page.slug == "gallery") and gallery.type == "photoGallery" %}
+    {% for gallery in page.photoGallery %}
+      {% if gallery.galleryPageInclude %}
         {% set photoGalleries = photoGalleries|merge([gallery]) %}
       {% endif %}
     {% endfor %}
   {% endfor %}
-  {% for page in craft.entries.section('pages').slug(craft.request.getSegment(1)) %}
-    {% for gallery in page.pageGallery %}
-      {% if gallery.type == "videoGallery" %}
-        {% set videoGalleries = videoGalleries|merge([gallery]) %}
-      {% endif %}
+
+  {% for page in craft.entries.section('gallery') %}
+    {% for gallery in page.photoGallery %}
+      {% set photoGalleries = photoGalleries|merge([gallery]) %}
+    {% endfor %}
+    {% for gallery in page.videoGallery %}
+      {% set videoGalleries = videoGalleries|merge([gallery]) %}
     {% endfor %}
   {% endfor %}
 
