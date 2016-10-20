@@ -31,6 +31,7 @@ return array(
     "Reviews" => "Commenti stampa e valutazioni",
     "News And Updates" => "Notizie e Aggiornamenti",
     "News" => "Notizie",
+    "Gallery" => "Galleria",
     "Recent Updates" => "Aggiornamenti recenti",
     "Search Archives" => "Ricerca archivi",
     "Search" => "Ricerca",
@@ -44,6 +45,7 @@ return array(
     "Search Results" => "Risultati della ricerca",
     "No Results" => "Nessun risultato per la ricerca.",
     "Add to cart" => "Aggiungi al carrello",
+    "Out of Stock" => "Esaurito",
     "Cart" => "Carrello",
     "Purchase" => "Acquista",
     "Next" => "Il prossimo",
@@ -53,5 +55,6 @@ return array(
     "Shipping Reminder" => "As a reminder, we currently only ship to the locations listed below.",
     "Shipping Reminder 2" => "If you do not see any available shipping options, please ensure that the shipping location is among the locations listed below.",
     "Approved US Dests" => "Destinazioni Approvati: United States",
-    "Approved EU Dests" => "Destinazioni Approvato: Unione europea"
+    "Approved EU Dests" => "Destinazioni Approvato: Unione europea",
+    "Buy" => "Acquistare"
 );

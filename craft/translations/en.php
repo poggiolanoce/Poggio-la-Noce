@@ -31,6 +31,7 @@ return array(
     "Reviews" => "Press Reviews & Ratings",
     "News And Updates" => "News And Updates",
     "News" => "News",
+    "Gallery" => "Gallery",
     "Recent Updates" => "Recent Updates",
     "Search Archives" => "Search Archives",
     "Search" => "Search",
@@ -44,6 +45,7 @@ return array(
     "Search Results" => "Search Results",
     "No Results" => "Your search didn’t return any results.",
     "Add to cart" => "Add to Cart",
+    "Out of Stock" => "Out of Stock",
     "Cart" => "Cart",
     "Purchase" => "Purchase",
     "Next" => "Next",
@@ -53,5 +55,6 @@ return array(
     "Shipping Reminder" => "As a reminder, we currently only ship to the locations listed below.",
     "Shipping Reminder 2" => "If you do not see any available shipping options, please ensure that the shipping location is among the locations listed below.",
     "Approved US Dests" => "Approved US Destinations",
-    "Approved EU Dests" => "Approved EU Destinations"
+    "Approved EU Dests" => "Approved EU Destinations",
+    "Buy" => "Buy"
 );

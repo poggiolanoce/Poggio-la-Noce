@@ -23,5 +23,17 @@
     {% endif %}
   </article>
 
+  {% includejs %}
+    $(document).ready(function() {
+
+      var $list_items = $('.page-content ul li .buy-reveal');
+      $list_items.find('.faux-buy').click(function() {
+        $list_items.filter('.active').removeClass('active');
+        $(this).parent().addClass('active');
+      });
+
+    });
+  {% endincludejs %}
+
 {% endcache %}
 {% endblock %}

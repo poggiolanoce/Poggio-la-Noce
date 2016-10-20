@@ -1,0 +1,25 @@
+{% set max = 0 %}
+<div id="{{type}}-gallery-{{ loop.index }}" class="hidden-gallery">
+  <div class="gallery {{type}}-gallery">
+    {% if type == 'photo' %}
+      {% for image in gallery.galleryImages %}
+        {% set max = loop.index %}
+        <img class="slide {% if loop.index == 1 %}active{% endif %}" src="{{image.url}}" alt="">
+      {% endfor %}
+    {% elseif type == 'video' %}
+      {% set videoIds = gallery.videoIds | replace({' ': ''}) | split(',')  %}
+      {% for videoId in videoIds %}
+        {% set max = loop.index %}
+        <div class="slide {% if loop.index == 1 %}active{% endif %}">
+          <iframe id="video-{{ loop.index }}" data-index="{{loop.index - 1}}" width="720" height="405" src="https://www.youtube.com/embed/{{videoId}}?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+  {% if max > 1 %}
+  <ul class="arrows">
+    <li class="previous">Previous</li>
+    <li class="next">Next</li>
+  </ul>
+  {% endif %}
+</div>

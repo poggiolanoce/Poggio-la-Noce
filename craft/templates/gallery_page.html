@@ -1,0 +1,60 @@
+{% extends "_layouts/_layout" %}
+
+{% block content %}
+{% cache globally using key craft.request.path %}
+
+  {% set photoGalleries = [] %}
+  {% set videoGalleries = [] %}
+
+  {% for page in craft.entries.section('pages') %}
+    {% for gallery in page.photoGallery %}
+      {% if gallery.galleryPageInclude %}
+        {% set photoGalleries = photoGalleries|merge([gallery]) %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  {% for page in craft.entries.section('gallery') %}
+    {% for gallery in page.photoGallery %}
+      {% set photoGalleries = photoGalleries|merge([gallery]) %}
+    {% endfor %}
+    {% for gallery in page.videoGallery %}
+      {% set videoGalleries = videoGalleries|merge([gallery]) %}
+    {% endfor %}
+  {% endfor %}
+
+  <article class="page-content">
+
+      <div class="page-galleries">
+      {% for gallery in photoGalleries %}
+        {% include 'partials/gallery_launcher.html' with {
+          'title': gallery.galleryTitle,
+          'description': gallery.galleryDescription,
+          'prefix': 'photo-gallery',
+          'imageTransform': 'galleryThumbLarge',
+          'asset': gallery.galleryImages.first()
+        }%}
+        {% include 'partials/gallery.html' with { 'type': 'photo' } %}
+        {% endfor %}
+      </div>
+
+      <h2>Video Albums</h2>
+
+      <div class="page-galleries video-galleries">
+      {% for gallery in videoGalleries %}
+        {% include 'partials/gallery_launcher.html' with {
+          'title': gallery.galleryTitle,
+          'description': gallery.galleryDescription,
+          'prefix': 'video-gallery',
+          'imageTransform': 'galleryThumbVideo',
+          'asset': gallery.galleryPreviewImage.first()
+        }%}
+        {% include 'partials/gallery.html' with { 'type': 'video' } %}
+      {% endfor %}
+      </div>
+
+
+  </article>
+
+{% endcache %}
+{% endblock %}

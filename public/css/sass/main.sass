@@ -65,6 +65,10 @@
     background-image: image-url('banners/news-banner-alt.jpg')
     .banner-headline
       font-size: 72px
+  #gallery-page-banner
+    background-image: image-url('banners/contact_banner_photo_blur.png')
+    .banner-headline
+      font-size: 72px
 
 .page-galleries
   margin-top: 25px
@@ -86,6 +90,42 @@
       display: inline-block
       width: 100px
       margin-right: 15px
+
+#gallery
+  h2
+    text-align: center
+    font-size: 72px
+    margin-top: 25px
+    padding-top: 50px
+    border-top: 1px solid $copper
+    margin-bottom: 40px
+    font-family: $handwriting
+  .page-galleries
+    display: -ms-flexbox
+    display: -webkit-flex
+    display: flex
+    -ms-flex-flow: row wrap
+    flex-flow: row wrap
+    width: calc(100% + 50px)
+    margin-left: -25px
+    justify-content: center
+    overflow: hidden
+    [data-gallery]
+      width: 300px
+      margin: 0 25px 40px 25px
+    img
+      width: 100%
+      height: 300px
+      display: block
+      margin-right: 0
+      margin-bottom: 15px
+    h4
+      margin-bottom: 5px
+    p
+      line-height: 22px
+    &.video-galleries
+      img
+        height: 169px
 
 .gallery
   width: 100%
@@ -144,6 +184,15 @@
   li.next
     background-position: top right
     right: 20px
+
+.video-gallery
+  .slide
+    opacity: 0
+    display: none
+    margin-bottom: -3px
+    &.active
+      opacity: 1
+      display: block
 
 // Hidden video inside banners
 
@@ -351,6 +400,7 @@
         border: 1px solid rgba($text-black, 0.5)
         border-radius: 4px
         padding: 2px 4px
+        width: 60px
       input[type=submit]
         @extend %button
 
@@ -395,6 +445,53 @@
           &:after
             padding-left: 5px
             content: "»"
+        .buy-reveal
+          margin-top: 10px
+          height: 40px
+          font-family: $sans
+          position: relative
+          &.active
+            form
+              opacity: 1
+            .faux-buy
+              margin-left: 60px
+              opacity: 0
+              pointer-events: none
+            .buy
+              margin-left: 40px
+          form, .buy
+            -webkit-transition: all 0.25s
+            -moz-transition: all 0.25s
+            -o-transition: all 0.25s
+            transition: all 0.25s
+          .buy, .faux-buy
+            @extend %button
+            display: inline-block
+            vertical-align: middle
+            height: 40px
+            font-size: 22px
+            line-height: 42px
+          .faux-buy
+            -webkit-transition: all 0.1s
+            -moz-transition: all 0.1s
+            -o-transition: all 0.1s
+            transition: all 0.1s
+            position: relative
+            z-index: 1
+          form
+            position: absolute
+            z-index: 0
+            text-align: center
+            width: 100%
+            top: 0
+            opacity: 0
+            .price
+              display: inline-block
+              vertical-align: middle
+              font-size: 36px
+              line-height: 40px
+              position: relative
+              top: 2px
 
 .product-page-content
   .product-page-text

@@ -14,31 +14,15 @@
         {{ entry.pageBody }}
       </div>
       <div class="page-galleries">
-        {% for gallery in entry.pageGallery %}
-          <div data-gallery="#gallery-{{ loop.index }}">
-            {% set asset = gallery.galleryImages.first() %}
-            {% if asset %}
-              <img class="slide " src="{{ asset.getUrl('galleryThumb') }}" alt="">
-            {% endif %}
-            <div class="gallery-description">
-              <h4>View {{ gallery.galleryTitle }} Gallery</h4>
-              {% if gallery.galleryDescription is defined %}
-                <p>{{ gallery.galleryDescription }}</p>
-              {% endif %}
-            </div>
-          </div>
-
-          <div id="gallery-{{ loop.index }}" class="hidden-gallery">
-            <div class="gallery">
-              {% for image in gallery.galleryImages %}
-                <img class="slide {% if loop.index == 1 %}active{% endif %}" src="{{image.url}}" alt="">
-              {% endfor %}
-            </div>
-            <ul class="arrows">
-              <li class="previous">Previous</li>
-              <li class="next">Next</li>
-            </ul>
-          </div>
+        {% for gallery in entry.photoGallery %}
+          {% include 'partials/gallery_launcher.html' with {
+            'title': gallery.galleryTitle,
+            'description': gallery.galleryDescription,
+            'prefix': 'photo-gallery',
+            'imageTransform': 'galleryThumb',
+            'asset': gallery.galleryImages.first()
+          }%}
+        {% include 'partials/gallery.html' with { 'type': 'photo' } %}
         {% endfor %}
       </div>
     </div>
