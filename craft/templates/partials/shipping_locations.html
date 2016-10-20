@@ -1,0 +1,19 @@
+<div class="shipping-group">
+  <h3 class="active">{{ "Approved US Dests" | t }}</h3>
+  <div class="shipping-list active">
+    <ul>
+    {% for state in shippingConfirmation.shippingDestinationsInUs %}
+      <li>{{state.label}}</li>
+    {% endfor %}
+    </ul>
+  </div>
+
+  <h3>{{ "Approved EU Dests" | t }}</h3>
+  <div class="shipping-list">
+    <ul>
+    {% for country in shippingConfirmation.shippingDestinationsInEu %}
+      <li>{{country.label}}</li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>

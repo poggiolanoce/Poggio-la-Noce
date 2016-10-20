@@ -19,49 +19,7 @@
         </thead>
         <tbody>
           {% for item in cart.lineItems %}
-          <tr>
-            <td>
-              <strong>{{ item.description }}</strong><br>
-              <br>
-              <form method="POST">
-                <input type="hidden" name="action" value="commerce/cart/removeLineItem"/>
-                <input type="hidden" name="redirect" value="commerce/cart"/>
-                {{ getCsrfInput() }}
-                <input type="hidden" name="lineItemId" value="{{ item.id }}"/>
-                <input type="submit" class="button link" value="Remove"/>
-              </form>
-            </td>
-            <td>
-              <form method="POST">
-                <input type="hidden" name="action" value="commerce/cart/updateLineItem">
-                <input type="hidden" name="redirect" value="commerce/cart">
-                <input type="hidden" name="lineItemId" value="{{ item.id }}">
-                <span {% if item.getError('qty') %}class="has-error"{% endif %}>
-                  <input  type="number" name="qty" min="1" value="{{ item.qty }}">
-                </span>
-                {{ getCsrfInput() }}
-                <input type="submit" class="button" value="Update"/>
-              </form>
-            </td>
-            <td class="text-right">
-              {% if item.onSale %}
-              <s>Price: {{ item.price|currency(cart.currency) }}</s><br>
-              Sale Off: {{ item.saleAmount|currency(cart.currency) }}<br>
-              Sale Price {{ item.salePrice|currency(cart.currency) }}<br>
-              Sale Price Subtotal: {{ item.subtotal|currency(cart.currency) }}<br>
-              {% else %}
-              Price: {{ item.price|currency(cart.currency) }}<br>
-              Sale Price {{ item.salePrice|currency(cart.currency) }}<br>
-              Sale Price Subtotal: {{ item.subtotal|currency(cart.currency) }}<br>
-              {% endif %}
-
-              Discount: {{ item.discount|currency(cart.currency) }}<br>
-              Taxes: {{ item.tax|currency(cart.currency) }}<br>
-              Taxes (Inc): {{ item.taxIncluded|currency(cart.currency) }}<br>
-              Shipping: {{ item.shippingCost|currency(cart.currency) }}<br>
-              Total: {{ item.total|currency(cart.currency) }}<br>
-            </td>
-          </tr>
+            {% include "commerce/_includes/cart_item" %}
           {% endfor %}
 
           {% for adjustment in cart.adjustments %}
@@ -99,13 +57,11 @@
             <td>
             </td>
             <td class="text-right">
-              Total Discount: {{ cart.totalDiscount|currency(cart.currency) }}<br>
+              {% if cart.totalDiscount != '0' %}
+                Total Discount: {{ cart.totalDiscount|currency(cart.currency) }}<br>
+              {% endif %}
               Total Shipping: {{ cart.totalShippingCost|currency(cart.currency) }}<br>
               Total Tax: {{ cart.totalTax|currency(cart.currency) }}<br>
-              Total Tax (inc): {{ cart.totalTaxIncluded|currency(cart.currency) }}<br>
-              Item Total: {{ cart.itemTotal|currency(cart.currency) }}<br>
-              Base Discount: {{ cart.baseDiscount|currency(cart.currency) }}<br>
-              Base Shipping Cost: {{ cart.baseShippingCost|currency(cart.currency) }}<br>
               <h4>Total Price: {{ cart.totalPrice|currency(cart.currency) }}</h4>
             </td>
           </tr>

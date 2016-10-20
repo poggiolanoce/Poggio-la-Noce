@@ -4,7 +4,17 @@
   <h3>Shipping Method</h3>
   <div class="row">
 
-    <div class="two-thirds column">
+
+    <div class="one-third column">
+      <div class="address-card address-reminder">
+        <p>{{ "Shipping Reminder" | t }}</p>
+        <p>{{ "Shipping Reminder 2" | t }}</p>
+        {% include 'partials/shipping_locations' %}
+      </div>
+    </div>
+
+
+    <div class="one-third column">
 
       {#
       Choosing a shipping method.
@@ -67,5 +77,6 @@
         {% endif %}
       </div>
     </div>
+
   </div>
 {% endblock %}

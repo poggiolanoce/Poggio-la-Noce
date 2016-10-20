@@ -1,27 +1,10 @@
 <div class="shipping-confirmation">
   <div class="close"></div>
+
   <h2>{{ shippingConfirmation.shippingTitle }}</h2>
   <p>{{ shippingConfirmation.shippingBody }}</p>
-  <div class="shipping-group">
-    <h3 class="active">Approved US Destinations</h3>
-    <div class="shipping-list active">
-      <ul>
-      {% for state in shippingConfirmation.shippingDestinationsInUs %}
-        <li>{{state.label}}</li>
-      {% endfor %}
-      </ul>
-    </div>
+  {% include 'partials/shipping_locations' %}
 
-    <h3>Approved EU Destinations</h3>
-    <div class="shipping-list">
-      <ul>
-      {% for country in shippingConfirmation.shippingDestinationsInEu %}
-        <li>{{country.label}}</li>
-      {% endfor %}
-      </ul>
-    </div>
-
-  </div>
   <ul class="agreement">
     <li>
       <input type="checkbox" name="age_agreement" value="age">

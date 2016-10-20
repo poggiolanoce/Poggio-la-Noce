@@ -8,10 +8,23 @@
       </a>
     </div>
 
+    <div class="user-menu">
+      {% if currentUser %}
+        <p>
+          Welcome, {{ currentUser.username }}
+        </p>
+        <a href="{{ logoutUrl }}"><span class="fa fa-sign-in"></span> Logout?</a>
+      {% else %}
+        <a href="{{ loginUrl }}"><span class="fa fa-sign-out"></span> Login</a>
+      {% endif %}
+    </div>
+
+
     {% set section = craft.request.getSegment(1) %}
     {% set subsection = craft.request.getSegment(2) %}
+    {% set display_menu = section != 'commerce' or subsection == 'cart' %}
 
-    {% if section != 'commerce' or subsection == 'cart' %}
+    {% if display_menu %}
     <ul class="navigation">
       <li><a href="{{ url('about') }}" {% if craft.request.getSegment(1) == 'about' %}class="active"{% endif %}>{{"About" | translate}}</a></li>
       <li><a href="{{ url('philosophy') }}" {% if craft.request.getSegment(1) == 'philosophy' %}class="active"{% endif %}>{{"Philosophy" | translate}}</a></li>
@@ -31,6 +44,13 @@
         </a>
       </div>
     </div>
+    {% elseif not display_menu and currentUser %}
+      <div class="top-menu order-menu">
+        {% if currentUser %}
+          <a href="{{ url('commerce/customer') }}">{{ "My Orders"|t }}</a>
+          <a href="{{ url('commerce/customer/addresses') }}">{{ "My Addresses"|t }}</a>
+        {% endif %}
+      </div>
     {% endif %}
 
   </div>
