@@ -57,7 +57,7 @@
     cursor: pointer;
     text-align: center;
     text-indent: -10000px;
-    background: url('/images/site/close.svg?1475692222') no-repeat 0 0;
+    background: url('/images/site/close.svg?1476839585') no-repeat 0 0;
   }
   /* line 107, sass/_mixins.scss */
   .featherlight .featherlight-image {
@@ -75,7 +75,7 @@
   }
 }
 /* line 21, sass/_variables.sass */
-.shipping-confirmation .shipping-confirmation-confirm, .page-content .add-to-cart form input[type=submit] {
+.shipping-confirmation .shipping-confirmation-confirm, .page-content .add-to-cart form input[type=submit], #products .product-overview ul li .buy-reveal .buy, #products .product-overview ul li .buy-reveal .faux-buy {
   box-sizing: border-box;
   cursor: pointer;
   height: 48px;
@@ -90,7 +90,7 @@
   letter-spacing: 0.05em;
 }
 /* line 34, sass/_variables.sass */
-.shipping-confirmation [disabled='disabled'].shipping-confirmation-confirm, .page-content .add-to-cart form input[disabled='disabled'][type=submit] {
+.shipping-confirmation [disabled='disabled'].shipping-confirmation-confirm, .page-content .add-to-cart form input[disabled='disabled'][type=submit], #products .product-overview ul li .buy-reveal [disabled='disabled'].buy, #products .product-overview ul li .buy-reveal [disabled='disabled'].faux-buy {
   background-color: rgba(51, 51, 51, 0.4);
   cursor: not-allowed;
 }
@@ -420,7 +420,7 @@
   position: absolute;
   right: 35px;
   top: 35px;
-  background: url('/images/site/close_black.svg?1476301685') 0 0 no-repeat;
+  background: url('/images/site/close_black.svg?1476839585') 0 0 no-repeat;
 }
 /* line 222, sass/main.sass */
 .shipping-confirmation h2 {
@@ -756,31 +756,94 @@ main#content .container {
   padding-left: 5px;
   content: "»";
 }
+/* line 448, sass/main.sass */
+#products .product-overview ul li .buy-reveal {
+  margin-top: 10px;
+  height: 40px;
+  font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
+  position: relative;
+}
+/* line 454, sass/main.sass */
+#products .product-overview ul li .buy-reveal.active form {
+  opacity: 1;
+}
+/* line 456, sass/main.sass */
+#products .product-overview ul li .buy-reveal.active .faux-buy {
+  margin-left: 60px;
+  opacity: 0;
+  pointer-events: none;
+}
+/* line 460, sass/main.sass */
+#products .product-overview ul li .buy-reveal.active .buy {
+  margin-left: 40px;
+}
+/* line 462, sass/main.sass */
+#products .product-overview ul li .buy-reveal form, #products .product-overview ul li .buy-reveal .buy {
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+}
+/* line 467, sass/main.sass */
+#products .product-overview ul li .buy-reveal .buy, #products .product-overview ul li .buy-reveal .faux-buy {
+  display: inline-block;
+  vertical-align: middle;
+  height: 40px;
+  font-size: 22px;
+  line-height: 42px;
+}
+/* line 474, sass/main.sass */
+#products .product-overview ul li .buy-reveal .faux-buy {
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  transition: all 0.1s;
+  position: relative;
+  z-index: 1;
+}
+/* line 481, sass/main.sass */
+#products .product-overview ul li .buy-reveal form {
+  position: absolute;
+  z-index: 0;
+  text-align: center;
+  width: 100%;
+  top: 0;
+  opacity: 0;
+}
+/* line 488, sass/main.sass */
+#products .product-overview ul li .buy-reveal form .price {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 36px;
+  line-height: 40px;
+  position: relative;
+  top: 2px;
+}
 
-/* line 451, sass/main.sass */
+/* line 498, sass/main.sass */
 .product-page-content .product-page-text .wine-specifications {
   padding: 0;
 }
-/* line 453, sass/main.sass */
+/* line 500, sass/main.sass */
 .product-page-content .product-page-text .wine-specifications li {
   list-style: none;
 }
-/* line 455, sass/main.sass */
+/* line 502, sass/main.sass */
 .product-page-content .page-image {
   position: relative;
 }
-/* line 457, sass/main.sass */
+/* line 504, sass/main.sass */
 .product-page-content .page-image img {
   float: right;
   margin-right: 5px;
   position: relative;
   z-index: 1;
 }
-/* line 463, sass/main.sass */
+/* line 510, sass/main.sass */
 .product-page-content .wine-page-image img {
   width: 195px;
 }
-/* line 465, sass/main.sass */
+/* line 512, sass/main.sass */
 .product-page-content .wine-page-image:before {
   content: "";
   display: block;
@@ -795,7 +858,7 @@ main#content .container {
   top: 110px;
   z-index: 0;
 }
-/* line 478, sass/main.sass */
+/* line 525, sass/main.sass */
 .product-page-content .product-navigation {
   padding-top: 35px;
   display: -webkit-box;
@@ -806,18 +869,18 @@ main#content .container {
   -ms-flex-pack: space-between;
   justify-content: space-between;
 }
-/* line 487, sass/main.sass */
+/* line 534, sass/main.sass */
 .product-page-content .product-navigation a {
   color: #B24629;
   text-decoration: none;
 }
-/* line 491, sass/main.sass */
+/* line 538, sass/main.sass */
 .product-page-content .product-navigation span:first-child a:after {
   padding-left: 5px;
   content: "»";
 }
 
-/* line 499, sass/main.sass */
+/* line 546, sass/main.sass */
 #awards .awards-list li {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -827,36 +890,36 @@ main#content .container {
   vertical-align: top;
   margin-bottom: 70px;
 }
-/* line 505, sass/main.sass */
+/* line 552, sass/main.sass */
 #awards .awards-list li:after {
   content: "";
   clear: both;
 }
-/* line 508, sass/main.sass */
+/* line 555, sass/main.sass */
 #awards .awards-list li .left-image {
   float: left;
   margin-right: 20px;
 }
-/* line 511, sass/main.sass */
+/* line 558, sass/main.sass */
 #awards .awards-list li .left-image img {
   width: 137px;
   border: 2px solid #889B9F;
 }
-/* line 514, sass/main.sass */
+/* line 561, sass/main.sass */
 #awards .awards-list li .right-content {
   float: left;
   width: 296px;
 }
-/* line 517, sass/main.sass */
+/* line 564, sass/main.sass */
 #awards .awards-list li .award-date {
   font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
   font-size: 44px;
 }
-/* line 520, sass/main.sass */
+/* line 567, sass/main.sass */
 #awards .awards-list li .award-description {
   padding-bottom: 20px;
 }
-/* line 522, sass/main.sass */
+/* line 569, sass/main.sass */
 #awards .awards-list li .award-score {
   background: #ED8F17;
   width: 60px;
@@ -871,47 +934,47 @@ main#content .container {
   vertical-align: middle;
   margin-right: 10px;
 }
-/* line 535, sass/main.sass */
+/* line 582, sass/main.sass */
 #awards .awards-list li .award-giver {
   display: inline-block;
   vertical-align: middle;
 }
 
-/* line 543, sass/main.sass */
+/* line 590, sass/main.sass */
 #news .container h1 {
   font-size: 45px;
 }
-/* line 546, sass/main.sass */
+/* line 593, sass/main.sass */
 #news .container .page-detail .news-image {
   float: right;
   margin-left: 20px;
 }
-/* line 550, sass/main.sass */
+/* line 597, sass/main.sass */
 #news .container .page-detail .news-content img {
   float: right;
   margin-left: 20px;
   margin-bottom: 20px;
 }
-/* line 555, sass/main.sass */
+/* line 602, sass/main.sass */
 #news .container .page-content .news-image {
   margin-bottom: 20px;
 }
-/* line 557, sass/main.sass */
+/* line 604, sass/main.sass */
 #news .container .page-content .page-text {
   border-bottom: 1px solid #E2E2E2;
   padding-bottom: 30px;
   margin-bottom: 30px;
 }
-/* line 558, sass/main.sass */
+/* line 605, sass/main.sass */
 #news .container .page-content .page-text:only-of-type, #news .container .page-content .page-text:last-child {
   border-bottom: none;
 }
-/* line 563, sass/main.sass */
+/* line 610, sass/main.sass */
 #news .container .pagination {
   clear: left;
   width: 596px;
 }
-/* line 566, sass/main.sass */
+/* line 613, sass/main.sass */
 #news .container .pagination a {
   display: block;
   padding: 6px 12px;
@@ -930,15 +993,15 @@ main#content .container {
   font-style: italic;
   text-decoration: none;
 }
-/* line 583, sass/main.sass */
+/* line 630, sass/main.sass */
 #news .container .pagination a:first-child {
   float: right;
 }
-/* line 585, sass/main.sass */
+/* line 632, sass/main.sass */
 #news .container .pagination a:last-child {
   float: left;
 }
-/* line 587, sass/main.sass */
+/* line 634, sass/main.sass */
 #news .container .pagination:after {
   content: "";
   clear: both;
@@ -946,11 +1009,11 @@ main#content .container {
   height: 1px;
   display: block;
 }
-/* line 594, sass/main.sass */
+/* line 641, sass/main.sass */
 #news .container .news-search-form form {
   position: relative;
 }
-/* line 596, sass/main.sass */
+/* line 643, sass/main.sass */
 #news .container .news-search-form form input[type=search] {
   width: 100%;
   border: none;
@@ -963,7 +1026,7 @@ main#content .container {
   font-size: 24px;
   text-indent: 8px;
 }
-/* line 607, sass/main.sass */
+/* line 654, sass/main.sass */
 #news .container .news-search-form form input[type=submit] {
   position: absolute;
   right: 0;
@@ -974,65 +1037,65 @@ main#content .container {
   background: #F48F1B url('/images/site/search.png?1468442016') no-repeat center center;
   text-indent: -10000px;
 }
-/* line 617, sass/main.sass */
+/* line 664, sass/main.sass */
 #news .container .news-search {
   width: 596px;
   min-height: 300px;
 }
-/* line 621, sass/main.sass */
+/* line 668, sass/main.sass */
 #news .container .news-search .result-listing {
   margin: 0;
   padding: 0;
 }
-/* line 624, sass/main.sass */
+/* line 671, sass/main.sass */
 #news .container .news-search .result-listing li {
   border-bottom: 1px solid #E2E2E2;
   list-style: none;
   padding: 14px 0;
   margin: 0;
 }
-/* line 629, sass/main.sass */
+/* line 676, sass/main.sass */
 #news .container .news-search .result-listing li:last-child {
   border-bottom: none;
 }
-/* line 631, sass/main.sass */
+/* line 678, sass/main.sass */
 #news .container .news-search .result-listing li img {
   float: left;
   margin-right: 25px;
 }
-/* line 634, sass/main.sass */
+/* line 681, sass/main.sass */
 #news .container .news-search .result-listing a {
   color: #333333;
   text-decoration: none;
 }
-/* line 637, sass/main.sass */
+/* line 684, sass/main.sass */
 #news .container .news-search .result-listing a span {
   color: #B24629;
   display: block;
 }
-/* line 640, sass/main.sass */
+/* line 687, sass/main.sass */
 #news .container .news-search .result-listing a span:last-child {
   color: #333333;
 }
-/* line 642, sass/main.sass */
+/* line 689, sass/main.sass */
 #news .container .news-search .no-results {
   font-size: 18px;
 }
-/* line 644, sass/main.sass */
+/* line 691, sass/main.sass */
 #news .container #news-sidebar {
   float: right;
   padding-left: 75px;
   width: 334px;
 }
-/* line 648, sass/main.sass */
+/* line 695, sass/main.sass */
 #news .container #news-sidebar a {
   color: #B24629;
 }
-/* line 650, sass/main.sass */
+/* line 697, sass/main.sass */
 #news .container #news-sidebar .news-sidebar-section {
   margin-bottom: 40px;
 }
-/* line 652, sass/main.sass */
+/* line 699, sass/main.sass */
 #news .container #news-sidebar h1 {
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
   color: #999999;
@@ -1041,17 +1104,17 @@ main#content .container {
   line-height: 52px;
   text-align: center;
 }
-/* line 659, sass/main.sass */
+/* line 706, sass/main.sass */
 #news .container #news-sidebar ul {
   padding: 0px;
 }
-/* line 661, sass/main.sass */
+/* line 708, sass/main.sass */
 #news .container #news-sidebar ul h4 {
   font-size: 14px;
   margin-bottom: 5px;
   margin-top: -4px;
 }
-/* line 665, sass/main.sass */
+/* line 712, sass/main.sass */
 #news .container #news-sidebar ul li {
   border-bottom: 1px solid #E2E2E2;
   list-style: none;
@@ -1059,7 +1122,7 @@ main#content .container {
   margin-bottom: 0;
   float: left;
 }
-/* line 671, sass/main.sass */
+/* line 718, sass/main.sass */
 #news .container #news-sidebar ul li a {
   font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
   text-decoration: none;
@@ -1067,21 +1130,21 @@ main#content .container {
   float: left;
   font-size: 20px;
 }
-/* line 677, sass/main.sass */
+/* line 724, sass/main.sass */
 #news .container #news-sidebar ul li a:hover {
   color: #ED8F17;
 }
-/* line 679, sass/main.sass */
+/* line 726, sass/main.sass */
 #news .container #news-sidebar ul li img {
   float: left;
   margin-right: 10px;
 }
-/* line 682, sass/main.sass */
+/* line 729, sass/main.sass */
 #news .container #news-sidebar #mc_embed_signup {
   padding: 25px 30px;
   background-color: #F3F3F3;
 }
-/* line 685, sass/main.sass */
+/* line 732, sass/main.sass */
 #news .container #news-sidebar #mc_embed_signup h2 {
   text-align: center;
   font-size: 20px;
@@ -1089,16 +1152,16 @@ main#content .container {
   padding: 0;
   margin-bottom: 25px;
 }
-/* line 691, sass/main.sass */
+/* line 738, sass/main.sass */
 #news .container #news-sidebar #mc_embed_signup .mc-field-group {
   margin-bottom: 15px;
 }
-/* line 693, sass/main.sass */
+/* line 740, sass/main.sass */
 #news .container #news-sidebar #mc_embed_signup .mc-field-group label {
   display: block;
   margin-bottom: 5px;
 }
-/* line 696, sass/main.sass */
+/* line 743, sass/main.sass */
 #news .container #news-sidebar #mc_embed_signup .mc-field-group input {
   width: 100%;
   padding: 5px;
@@ -1107,14 +1170,14 @@ main#content .container {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 701, sass/main.sass */
+/* line 748, sass/main.sass */
 #news .container #news-sidebar #mc_embed_signup .mc-field-group .mce_inline_error {
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 704, sass/main.sass */
+/* line 751, sass/main.sass */
 #news .container #news-sidebar #mc_embed_signup input[type="submit"] {
   -webkit-appearance: button;
   display: block;
@@ -1134,33 +1197,33 @@ main#content .container {
   text-align: center;
 }
 
-/* line 725, sass/main.sass */
+/* line 772, sass/main.sass */
 #contact .prefer_email {
   clear: both;
   padding-top: 30px;
 }
-/* line 728, sass/main.sass */
+/* line 775, sass/main.sass */
 #contact .prefer_email a {
   color: #B24629;
   text-decoration: none;
 }
-/* line 731, sass/main.sass */
+/* line 778, sass/main.sass */
 #contact .prefer_email a:hover {
   text-decoration: underline;
 }
-/* line 733, sass/main.sass */
+/* line 780, sass/main.sass */
 #contact .success {
   display: none;
 }
-/* line 735, sass/main.sass */
+/* line 782, sass/main.sass */
 #contact .success p {
   margin-top: 20px;
 }
-/* line 737, sass/main.sass */
+/* line 784, sass/main.sass */
 #contact .success strong {
   font-weight: bold;
 }
-/* line 739, sass/main.sass */
+/* line 786, sass/main.sass */
 #contact .errors {
   display: none;
   font-style: italic;
@@ -1169,44 +1232,44 @@ main#content .container {
   border-bottom: 1px solid #B24629;
   margin: 20px 0;
 }
-/* line 746, sass/main.sass */
+/* line 793, sass/main.sass */
 #contact .errors ul li {
   font-size: 14px;
   margin-bottom: 5px;
 }
-/* line 749, sass/main.sass */
+/* line 796, sass/main.sass */
 #contact .errors ul li:last-child {
   margin-bottom: 0;
 }
-/* line 751, sass/main.sass */
+/* line 798, sass/main.sass */
 #contact form {
   margin-top: 20px;
 }
-/* line 753, sass/main.sass */
+/* line 800, sass/main.sass */
 #contact form .form-left {
   float: left;
   width: 240px;
 }
-/* line 756, sass/main.sass */
+/* line 803, sass/main.sass */
 #contact form .form-right {
   float: left;
 }
-/* line 758, sass/main.sass */
+/* line 805, sass/main.sass */
 #contact form #location {
   display: none;
 }
-/* line 760, sass/main.sass */
+/* line 807, sass/main.sass */
 #contact label, #contact input, #contact button, #contact select, #contact textarea {
   font-size: 14px;
   font-weight: normal;
   line-height: 20px;
 }
-/* line 764, sass/main.sass */
+/* line 811, sass/main.sass */
 #contact .required {
   color: red;
   padding-left: 5px;
 }
-/* line 768, sass/main.sass */
+/* line 815, sass/main.sass */
 #contact input[type="submit"] {
   -webkit-appearance: button;
   display: block;
@@ -1224,12 +1287,12 @@ main#content .container {
   margin-top: 10px;
   width: 220px;
 }
-/* line 785, sass/main.sass */
+/* line 832, sass/main.sass */
 #contact label {
   display: block;
   margin-bottom: 5px;
 }
-/* line 789, sass/main.sass */
+/* line 836, sass/main.sass */
 #contact select, #contact textarea {
   display: inline-block;
   height: 20px;
@@ -1240,7 +1303,7 @@ main#content .container {
   color: #555555;
   vertical-align: middle;
 }
-/* line 801, sass/main.sass */
+/* line 848, sass/main.sass */
 #contact input[type="text"], #contact input[type="password"], #contact input[type="datetime"], #contact input[type="datetime-local"], #contact input[type="date"], #contact input[type="month"], #contact input[type="time"], #contact input[type="week"], #contact input[type="number"], #contact input[type="email"], #contact input[type="url"], #contact input[type="search"], #contact input[type="tel"], #contact input[type="color"] {
   display: inline-block;
   height: 20px;
@@ -1251,11 +1314,11 @@ main#content .container {
   color: #555555;
   vertical-align: middle;
 }
-/* line 811, sass/main.sass */
+/* line 858, sass/main.sass */
 #contact input {
   width: 206px;
 }
-/* line 814, sass/main.sass */
+/* line 861, sass/main.sass */
 #contact textarea {
   width: 340px;
   height: 140px;
@@ -1269,7 +1332,7 @@ main#content .container {
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
-/* line 828, sass/main.sass */
+/* line 875, sass/main.sass */
 #contact input[type="text"], #contact input[type="password"], #contact input[type="datetime"], #contact input[type="datetime-local"], #contact input[type="date"], #contact input[type="month"], #contact input[type="time"], #contact input[type="week"], #contact input[type="number"], #contact input[type="email"], #contact input[type="url"], #contact input[type="search"], #contact input[type="tel"], #contact input[type="color"] {
   background-color: #ffffff;
   border: 1px solid #cccccc;
@@ -1281,7 +1344,7 @@ main#content .container {
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
-/* line 839, sass/main.sass */
+/* line 886, sass/main.sass */
 #contact textarea:focus {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
@@ -1289,7 +1352,7 @@ main#content .container {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
-/* line 847, sass/main.sass */
+/* line 894, sass/main.sass */
 #contact input[type="text"]:focus, #contact input[type="password"]:focus, #contact input[type="datetime"]:focus, #contact input[type="datetime-local"]:focus, #contact input[type="date"]:focus, #contact input[type="month"]:focus, #contact input[type="time"]:focus, #contact input[type="week"]:focus, #contact input[type="number"]:focus, #contact input[type="email"]:focus, #contact input[type="url"]:focus, #contact input[type="search"]:focus, #contact input[type="tel"]:focus, #contact input[type="color"]:focus {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
@@ -1297,7 +1360,7 @@ main#content .container {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
-/* line 854, sass/main.sass */
+/* line 901, sass/main.sass */
 #contact .uneditable-input:focus {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
@@ -1305,7 +1368,7 @@ main#content .container {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
-/* line 862, sass/main.sass */
+/* line 909, sass/main.sass */
 #contact input[type="radio"], #contact input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;

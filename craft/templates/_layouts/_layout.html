@@ -26,6 +26,8 @@
 </head>
 
 <body id="{% if craft.request.getSegment(1) %}{{craft.request.getSegment(1)}}{% else %}home{% endif %}" >
+  {% set cart = craft.commerce.cart %}
+
   <!-- Header -->
   <header id="header">
 

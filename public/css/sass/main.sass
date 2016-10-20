@@ -445,6 +445,53 @@
           &:after
             padding-left: 5px
             content: "»"
+        .buy-reveal
+          margin-top: 10px
+          height: 40px
+          font-family: $sans
+          position: relative
+          &.active
+            form
+              opacity: 1
+            .faux-buy
+              margin-left: 60px
+              opacity: 0
+              pointer-events: none
+            .buy
+              margin-left: 40px
+          form, .buy
+            -webkit-transition: all 0.25s
+            -moz-transition: all 0.25s
+            -o-transition: all 0.25s
+            transition: all 0.25s
+          .buy, .faux-buy
+            @extend %button
+            display: inline-block
+            vertical-align: middle
+            height: 40px
+            font-size: 22px
+            line-height: 42px
+          .faux-buy
+            -webkit-transition: all 0.1s
+            -moz-transition: all 0.1s
+            -o-transition: all 0.1s
+            transition: all 0.1s
+            position: relative
+            z-index: 1
+          form
+            position: absolute
+            z-index: 0
+            text-align: center
+            width: 100%
+            top: 0
+            opacity: 0
+            .price
+              display: inline-block
+              vertical-align: middle
+              font-size: 36px
+              line-height: 40px
+              position: relative
+              top: 2px
 
 .product-page-content
   .product-page-text
