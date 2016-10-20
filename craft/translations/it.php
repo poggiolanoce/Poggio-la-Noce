@@ -44,10 +44,12 @@ return array(
     "Search Results" => "Risultati della ricerca",
     "No Results" => "Nessun risultato per la ricerca.",
     "Add to cart" => "Aggiungi al carrello",
+    "Out of Stock" => "Esaurito",
     "Cart" => "Carrello",
     "Purchase" => "Acquista",
     "Next" => "Il prossimo",
     "Are you 21" => "I am at least 21 years of age",
     "Are you in EU/US" => "I am shipping to an approved destination listed above",
-    "Confirm" => "Confirm"
+    "Confirm" => "Confirm",
+    "Buy" => "Acquistare"
 );
