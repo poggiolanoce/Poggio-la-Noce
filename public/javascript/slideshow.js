@@ -9,6 +9,7 @@
       "class": false
     };
     Slideshow = function(element, options) {
+      var video_players;
       this.element = $(element);
       this.settings = $.extend({}, defaults, options);
       this._defaults = defaults;
@@ -18,6 +19,7 @@
       this.is_transitioning = false;
       this.banner_dots = $('.dots li');
       this.banner_arrows = $('.arrows li');
+      video_players = [];
       this.start_autoplay = (function(_this) {
         return function() {
           return $.doTimeout('autoplay', _this.settings.slideshow_speed, function() {
@@ -42,7 +44,7 @@
         }
       };
       this.changeSlide = function(slide, automatic) {
-        var $active, $previously_active;
+        var $active, $old_video, $previously_active, player;
         $previously_active = this.element.children('.slide.active');
         $active = this.element.children('.slide').eq(slide);
         if ($previously_active === $active) {
@@ -53,6 +55,11 @@
         }
         if (automatic !== true && this.settings.autoplay) {
           this.stop_autoplay();
+        }
+        $old_video = $previously_active.find('iframe');
+        if ($old_video.length > 0) {
+          player = video_players[$old_video.data('index')];
+          player.stopVideo();
         }
         this.is_transitioning = true;
         this.current_slide = slide;
@@ -69,7 +76,31 @@
       this.finishChangeslide = (function(_this) {
         return function() {
           $('.previously_active').removeClass('previously_active');
-          return _this.is_transitioning = false;
+          _this.is_transitioning = false;
+          return _this.autoplayVideo();
+        };
+      })(this);
+      this.autoplayVideo = (function(_this) {
+        return function() {
+          var $new_video, player, player_ref;
+          $new_video = _this.element.children('.active').find('iframe');
+          player_ref = video_players[$new_video.data('index')];
+          if (player_ref) {
+            player_ref.playVideo();
+          }
+          if ($new_video.length > 0 && !player_ref) {
+            player = new YT.Player($new_video.get(0), {
+              events: {
+                'onReady': _this.onPlayerReady
+              }
+            });
+            return video_players.push(player);
+          }
+        };
+      })(this);
+      this.onPlayerReady = (function(_this) {
+        return function(event) {
+          return event.target.playVideo();
         };
       })(this);
       this.handleDotEvent = (function(_this) {
@@ -90,6 +121,7 @@
       this.init();
     };
     Slideshow.prototype.init = function() {
+      this.autoplayVideo();
       this.max_slide = this.element.children('.slide').length - 1;
       if (this.max_slide < 1) {
         return;

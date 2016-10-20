@@ -31,6 +31,7 @@ return array(
     "Reviews" => "Press Reviews & Ratings",
     "News And Updates" => "News And Updates",
     "News" => "News",
+    "Gallery" => "Gallery",
     "Recent Updates" => "Recent Updates",
     "Search Archives" => "Search Archives",
     "Search" => "Search",

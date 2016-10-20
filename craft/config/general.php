@@ -16,8 +16,8 @@ return array(
     'enableTemplateCaching' => false,
     'devMode'   => true,
     'environmentVariables' => array(
-        'siteUrl'  => SITE_URL,
-        'basePath' => BASEPATH
+      'siteUrl'  => SITE_URL,
+      'fileSystemPath' => BASEPATH
     ),
     'siteUrl' => array(
       'en_us' => SITE_URL . 'en/',
