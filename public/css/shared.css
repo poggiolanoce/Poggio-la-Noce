@@ -141,7 +141,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     cursor: pointer;
     text-align: center;
     text-indent: -10000px;
-    background: url('/images/site/close.svg?1475692222') no-repeat 0 0;
+    background: url('/images/site/close.svg?1476839585') no-repeat 0 0;
   }
   /* line 107, sass/_mixins.scss */
   .featherlight .featherlight-image {
@@ -218,7 +218,7 @@ header .logo a {
 header .navigation {
   padding-top: 93px;
   display: block;
-  width: 800px;
+  width: 850px;
   margin: 0 auto;
   text-align: justify;
 }

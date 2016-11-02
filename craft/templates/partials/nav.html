@@ -27,10 +27,10 @@
     {% if display_menu %}
     <ul class="navigation">
       <li><a href="{{ url('about') }}" {% if craft.request.getSegment(1) == 'about' %}class="active"{% endif %}>{{"About" | translate}}</a></li>
-      <li><a href="{{ url('philosophy') }}" {% if craft.request.getSegment(1) == 'philosophy' %}class="active"{% endif %}>{{"Philosophy" | translate}}</a></li>
-      <li><a href="{{ url('vineyard') }}" {% if craft.request.getSegment(1) == 'vineyard' %}class="active"{% endif %}>{{"Vineyard" | translate}}</a></li>
+      <li><a href="{{ url('vineyard') }}" {% if craft.request.getSegment(1) == 'vineyard' %}class="active"{% endif %}>{{"Vineyard & Winery" | translate}}</a></li>
       <li><a href="{{ url('products') }}" {% if craft.request.getSegment(1) == 'products' %}class="active"{% endif %}>{{"Products" | translate}}</a></li>
-      <li><a href="{{ url('news') }}" {% if craft.request.getSegment(1) == 'news' %}class="active"{% endif %}>{{"News" | translate}}</a></li>
+      <li><a href="{{ url('awards') }}" {% if craft.request.getSegment(1) == 'awards' %}class="active"{% endif %}>{{"Press & Awards" | translate}}</a></li>
+      <li><a href="{{ url('gallery') }}" {% if craft.request.getSegment(1) == 'gallery' %}class="active"{% endif %}>{{"Gallery" | translate}}</a></li>
       <li><a href="{{ url('contact') }}" {% if craft.request.getSegment(1) == 'contact' %}class="active"{% endif %}>{{"Contact" | translate}}</a></li>
     </ul>
     <div class="top-menu">
