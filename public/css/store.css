@@ -57,7 +57,7 @@
     cursor: pointer;
     text-align: center;
     text-indent: -10000px;
-    background: url('/images/site/close.svg?1475692222') no-repeat 0 0;
+    background: url('/images/site/close.svg?1476839585') no-repeat 0 0;
   }
   /* line 107, sass/_mixins.scss */
   .featherlight .featherlight-image {
@@ -807,20 +807,37 @@ img.product {
 
 /* line 558, sass/store.sass */
 .flash {
-  color: #ED8F17;
-  margin-bottom: 10px;
+  background-color: #ED8F17;
+  height: 35px;
+  line-height: 37px;
+  color: #fff;
+  padding: 0 10px;
+  margin: 20px 0 15px;
+  font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
+  font-size: 19px;
+  text-transform: uppercase;
+}
+/* line 568, sass/store.sass */
+.flash span {
+  margin-right: 10px;
+}
+/* line 570, sass/store.sass */
+#commerce #content .container .flash {
+  position: relative;
+  bottom: 30px;
+  margin-top: 0;
 }
 
-/* line 563, sass/store.sass */
+/* line 576, sass/store.sass */
 .has-error input {
   border: 1px solid #ED8F17;
 }
-/* line 565, sass/store.sass */
+/* line 578, sass/store.sass */
 .has-error .help-block {
   color: #ED8F17;
 }
 
-/* line 568, sass/store.sass */
+/* line 581, sass/store.sass */
 .address-select {
   background: #fff;
   border: 1px solid #eee;
@@ -828,78 +845,78 @@ img.product {
   position: relative;
   border-radius: 4px;
 }
-/* line 574, sass/store.sass */
+/* line 587, sass/store.sass */
 .address-select .radio {
   padding: 14px 15px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 575, sass/store.sass */
+/* line 588, sass/store.sass */
 .address-select .radio input {
   margin: 0 5px 0 0;
   position: relative;
   top: -1px;
 }
-/* line 583, sass/store.sass */
+/* line 596, sass/store.sass */
 .address-select ul.address-data {
   display: inline;
 }
-/* line 585, sass/store.sass */
+/* line 598, sass/store.sass */
 .address-select ul.address-data li {
   display: inline;
   display: inline;
 }
-/* line 588, sass/store.sass */
+/* line 601, sass/store.sass */
 .address-select ul.address-data li strong {
   display: none;
 }
-/* line 591, sass/store.sass */
+/* line 604, sass/store.sass */
 .address-select ul.address-data li span[data-key=firstName], .address-select ul.address-data li span[data-key=lastName] {
   font-weight: bold;
 }
-/* line 593, sass/store.sass */
+/* line 606, sass/store.sass */
 .address-select .actions {
   float: right;
   padding: 14px 15px;
   font-size: 0.9em;
 }
-/* line 597, sass/store.sass */
+/* line 610, sass/store.sass */
 .address-select .actions ul {
   margin: 0;
 }
-/* line 599, sass/store.sass */
+/* line 612, sass/store.sass */
 .address-select .actions ul li {
   display: inline-block;
   margin: 0 0 0 1em;
 }
-/* line 602, sass/store.sass */
+/* line 615, sass/store.sass */
 .address-select .actions ul li a {
   color: #999;
   text-decoration: underline;
 }
-/* line 605, sass/store.sass */
+/* line 618, sass/store.sass */
 .address-select .body {
   padding: 14px;
 }
 
-/* line 608, sass/store.sass */
+/* line 621, sass/store.sass */
 .hidden {
   display: none;
 }
 
-/* line 611, sass/store.sass */
+/* line 624, sass/store.sass */
 .product.row {
   border-bottom: 1px solid #fafafa;
   margin-bottom: 2.5rem;
 }
 
-/* line 615, sass/store.sass */
+/* line 628, sass/store.sass */
 .product-details {
   padding-top: 2rem;
 }
 
-/* line 618, sass/store.sass */
+/* line 631, sass/store.sass */
 .address-card {
   background-color: transparent;
   border-radius: 5px;
@@ -908,23 +925,23 @@ img.product {
   margin-bottom: 15px;
   position: relative;
 }
-/* line 625, sass/store.sass */
+/* line 638, sass/store.sass */
 .address-card form {
   display: inline;
   margin: 0px;
 }
-/* line 628, sass/store.sass */
+/* line 641, sass/store.sass */
 .address-card .edit {
   position: absolute;
   top: 20px;
   right: 20px;
 }
-/* line 632, sass/store.sass */
+/* line 645, sass/store.sass */
 .address-card ul {
   list-style: none;
 }
 
-/* line 635, sass/store.sass */
+/* line 648, sass/store.sass */
 .shipping-select {
   background: #fff;
   border: 1px solid #eee;
@@ -932,15 +949,15 @@ img.product {
   position: relative;
   border-radius: 4px;
 }
-/* line 641, sass/store.sass */
+/* line 654, sass/store.sass */
 .shipping-select input {
   margin: 0 5px 0 0;
 }
-/* line 643, sass/store.sass */
+/* line 656, sass/store.sass */
 .shipping-select label {
   padding: 10px 14px;
 }
-/* line 645, sass/store.sass */
+/* line 658, sass/store.sass */
 .shipping-select .price {
   float: right;
   padding: 4px 4px;
@@ -948,7 +965,7 @@ img.product {
   font-weight: normal;
 }
 
-/* line 651, sass/store.sass */
+/* line 664, sass/store.sass */
 .review-card {
   background-color: transparent;
   border-radius: 5px;
@@ -957,12 +974,12 @@ img.product {
   margin-bottom: 15px;
   position: relative;
 }
-/* line 658, sass/store.sass */
+/* line 671, sass/store.sass */
 .review-card ul {
   list-style: none;
   margin: 0;
 }
-/* line 661, sass/store.sass */
+/* line 674, sass/store.sass */
 .review-card ul li {
   border-top: 1px solid #E1E1E1;
   padding: 10px 0;

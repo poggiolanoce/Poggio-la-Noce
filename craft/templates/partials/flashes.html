@@ -1,0 +1,9 @@
+{% set errors = craft.session.getFlash('error') %}
+{% set notices = craft.session.getFlash('notice') %}
+
+{% if notices %}
+  <div class="flash"><span class="fa fa-exclamation-circle"></span>{{ notices }}</div>
+{% endif %}
+{% if errors %}
+  <div class="flash"><span class="fa fa-exclamation-circle"></span>{{ errors }}</div>
+{% endif %}

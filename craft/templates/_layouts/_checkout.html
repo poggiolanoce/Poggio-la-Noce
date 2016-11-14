@@ -7,8 +7,7 @@
     <div class="row">
       <div class="twelve columns">
 
-        <div class="flash">{{ craft.session.getFlash('notice') }}</div>
-        <div class="flash">{{ craft.session.getFlash('error') }}</div>
+        {% include 'partials/flashes.html' %}
 
         {% if cart.isEmpty %}
         <div class="flash">Your cart is empty.</div>
