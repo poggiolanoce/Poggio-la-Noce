@@ -18,6 +18,8 @@ header
     height: $header-tall
   #commerce &
     height: 120px
+    .logo
+      top: 22px
   border-bottom: $header-border solid $copper
   height: $header-short
   display: block
@@ -69,19 +71,23 @@ header
         border-bottom: 5px solid #fff
 
 .user-menu
-  position: absolute
-  top: 15px
-  left: 0
-  height: 25px
-  font-family: $sans
-  line-height: 26px
   color: white
-  text-transform: uppercase
+  font-family: $sans
   p
+    text-transform: capitalize
+    font-weight: 200
     margin-bottom: 0
+    font-size: 22px
+    margin-right: 22px
+    position: relative
+    top: 1px
+    display: inline-block
   a
+    text-transform: uppercase
     color: white
     text-decoration: none
+    span
+      margin-right: 5px
 
 .order-menu
   a
@@ -89,18 +95,29 @@ header
     margin-left: 5px
 
 .top-menu
-  position: absolute
+  @include box-sizing('border-box')
+  background: #000
+  height: 42px
+  line-height: 42px
+  padding: 0 15px
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
+  -ms-flex-flow: row wrap
+  flex-flow: row wrap
+  justify-content: space-between
+
+.options-menu
   text-transform: uppercase
-  top: 15px
-  right: 0
-  height: 25px
   font-family: $sans
+  height: 24px
   line-height: 26px
+  margin-top: 9px
   .localization
     display: inline-block
     vertical-align: top
     li
-      padding: 0 12px
+      padding: 0 9px
       height: 25px
       background: #fff
       color: $text-gray

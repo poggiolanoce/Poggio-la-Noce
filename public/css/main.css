@@ -180,7 +180,7 @@
 }
 /* line 60, sass/main.sass */
 .banners #awards-page-banner {
-  background-image: url('/images/banners/news-banner.jpg?1468441874');
+  background-image: url('/images/banners/news-banner.jpg?1478116388');
 }
 /* line 62, sass/main.sass */
 .banners #awards-page-banner .banner-headline {
@@ -188,7 +188,7 @@
 }
 /* line 64, sass/main.sass */
 .banners #news-page-banner {
-  background-image: url('/images/banners/news-banner-alt.jpg?1468441874');
+  background-image: url('/images/banners/news-banner-alt.jpg?1478116388');
 }
 /* line 66, sass/main.sass */
 .banners #news-page-banner .banner-headline {
@@ -849,7 +849,7 @@ main#content .container {
   display: block;
   width: 458px;
   height: 454px;
-  background-image: url('/images/site/wine-splat.png?1468442016');
+  background-image: url('/images/site/wine-splat.png?1478116388');
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: 458px 454px;
@@ -1034,7 +1034,7 @@ main#content .container {
   width: 48px;
   height: 48px;
   border: none;
-  background: #F48F1B url('/images/site/search.png?1468442016') no-repeat center center;
+  background: #F48F1B url('/images/site/search.png?1478116388') no-repeat center center;
   text-indent: -10000px;
 }
 /* line 664, sass/main.sass */
