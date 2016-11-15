@@ -23,9 +23,7 @@
 
   {% set cart = craft.commerce.cart %}
 
-  <header id="header">
-    {% include 'partials/nav.html' %}
-  </header>
+  {% include 'partials/header.html' with {'banners': false} %}
 
   {% block header %}
   <div id="header" class="container">
