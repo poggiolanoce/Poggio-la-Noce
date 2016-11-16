@@ -15,17 +15,21 @@
             <ul class="badges">
               {% for block in award.awardBadges %}
                 <li>
-                  {% if block.awardUrl is defined %}
+                  {% if block.awardUrl %}
                     <a href="{{ block.awardUrl }}">
                   {% endif %}
                   {% if block.type == "numericalAward" %}
-                      <h2>{{ block.wineScore }}</h2>
+                      <div class="award-badge-body">
+                        <h2>{{ block.wineScore }}</h2>
+                      </div>
                       <h3>{{ block.awardSponsor }}</h3>
                   {% elseif block.type == "imageAward" %}
-                      <img src="{{ block.awardImage.first().getUrl() }}" alt="">
+                      <div class="award-badge-body">
+                        <img src="{{ block.awardImage.first().getUrl() }}" alt="">
+                      </div>
                       <h3>{{ block.awardSponsor }}</h3>
                   {% endif %}
-                  {% if block.awardUrl is defined %}
+                  {% if block.awardUrl %}
                     </a>
                   {% endif %}
                 </li>
