@@ -19,7 +19,7 @@
                     <a href="{{ block.awardUrl }}">
                   {% endif %}
                   {% if block.type == "numericalAward" %}
-                      <h3>{{ block.wineScore }}</h3>
+                      <h2>{{ block.wineScore }}</h2>
                       <h3>{{ block.awardSponsor }}</h3>
                   {% elseif block.type == "imageAward" %}
                       <img src="{{ block.awardImage.first().getUrl() }}" alt="">
@@ -35,7 +35,7 @@
               {% for block in award.awardQuotes %}
                 <li>
                   <p>"{{ block.quoteBody }}"</p>
-                  <h3>— {{ block.quoteAuthor }}</h3>
+                  <h3>– {{ block.quoteAuthor }}</h3>
                 </li>
               {% endfor %}
             </ul>
