@@ -58,7 +58,7 @@ return array(
     "Shipping Reminder 2" => "If you do not see any available shipping options, please ensure that the shipping location is among the locations listed below.",
     "Approved US Dests" => "Approved US Destinations",
     "Approved EU Dests" => "Approved EU Destinations",
-    "Buy" => "Buy",
+    "Purchase" => "Purchase",
     "Logout" => "Log out",
     "Login" => "Login",
     "Welcome" => "Welcome"

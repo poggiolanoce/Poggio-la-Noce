@@ -438,7 +438,7 @@
         p
           font-size: 16px
           line-height: 24px
-        a.learn-more
+        a.learn-more, .faux-buy
           font-size: 16px
           color: $copper
           text-decoration: none
@@ -448,29 +448,30 @@
         .buy-reveal
           margin-top: 10px
           height: 40px
-          font-family: $sans
           position: relative
           &.active
             form
               opacity: 1
+            .buy
+              pointer-events: inherit
             .faux-buy
-              margin-left: 60px
               opacity: 0
               pointer-events: none
-            .buy
-              margin-left: 40px
           form, .buy
             -webkit-transition: all 0.25s
             -moz-transition: all 0.25s
             -o-transition: all 0.25s
             transition: all 0.25s
-          .buy, .faux-buy
+            font-family: $sans
+          .buy
             @extend %button
             display: inline-block
             vertical-align: middle
             height: 40px
             font-size: 22px
             line-height: 42px
+            margin-left: 40px
+            pointer-events: none
           .faux-buy
             -webkit-transition: all 0.1s
             -moz-transition: all 0.1s
@@ -478,6 +479,7 @@
             transition: all 0.1s
             position: relative
             z-index: 1
+            cursor: pointer
           form
             position: absolute
             z-index: 0
