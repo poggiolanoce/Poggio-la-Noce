@@ -17,7 +17,7 @@
       {% if item.defaultVariant.stock <= 0 and item.defaultVariant.unlimitedStock == false %}
         <input class="buy" type="submit" disabled="disabled" value="{{ "Out of Stock" | t }}" />
       {% else %}
-        <input class="buy" type="submit" value="{{ "Add to cart" | t }}" />
+        <input class="buy {% if unrestricted|default(false) %}unrestricted{% endif %}" type="submit" value="{{ "Add to cart" | t }}" />
       {% endif %}
     </form>
   </div>
