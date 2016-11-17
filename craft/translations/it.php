@@ -58,5 +58,8 @@ return array(
     "Shipping Reminder 2" => "If you do not see any available shipping options, please ensure that the shipping location is among the locations listed below.",
     "Approved US Dests" => "Destinazioni Approvati: United States",
     "Approved EU Dests" => "Destinazioni Approvato: Unione europea",
-    "Buy" => "Acquistare"
+    "Purchase" => "Acquistare",
+    "Logout" => "Disconnettersi",
+    "Login" => "Accesso",
+    "Welcome" => "Benvenuto"
 );

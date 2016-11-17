@@ -1,0 +1,15 @@
+{% set section = craft.request.getSegment(1) %}
+{% set subsection = craft.request.getSegment(2) %}
+{% set display_menu = section != 'commerce' or subsection == 'cart' %}
+
+<header id="header">
+
+  {% include 'partials/top_menu' %}
+  <div class="header-body">
+    {% include 'partials/nav' %}
+    {% if banners|default(true) %}
+      {% include 'partials/banners' %}
+    {% endif %}
+  </div>
+
+</header>

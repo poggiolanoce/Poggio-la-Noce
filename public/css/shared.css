@@ -168,24 +168,27 @@ body {
 /* line 16, sass/shared.sass */
 header {
   border-bottom: 30px solid #B24629;
-  height: 360px;
   display: block;
 }
-/* line 17, sass/shared.sass */
-#home header {
+/* line 19, sass/shared.sass */
+#home header .header-body {
   height: 770px;
 }
-/* line 19, sass/shared.sass */
-#commerce header {
+/* line 21, sass/shared.sass */
+#commerce header .header-body {
   height: 120px;
 }
-/* line 24, sass/shared.sass */
+/* line 23, sass/shared.sass */
 header .header-container {
   width: 1005px;
   margin: 0 auto;
   position: relative;
 }
-/* line 28, sass/shared.sass */
+/* line 27, sass/shared.sass */
+header .header-body {
+  height: 360px;
+}
+/* line 29, sass/shared.sass */
 header nav {
   background-color: rgba(0, 0, 0, 0.35);
   height: 120px;
@@ -193,28 +196,28 @@ header nav {
   z-index: 1;
   position: relative;
 }
-/* line 34, sass/shared.sass */
+/* line 35, sass/shared.sass */
 header .logo {
   width: 225px;
   height: 67px;
-  background: url('/images/site/logo.png?1468442015') no-repeat 0 0;
+  background: url('/images/site/logo.png?1478116388') no-repeat 0 0;
   background-size: 100%;
   position: absolute;
   left: 50%;
   top: 8px;
   margin-left: -112px;
 }
-/* line 35, sass/shared.sass */
+/* line 36, sass/shared.sass */
 header .logo h1, header .logo h3 {
   text-indent: -10000px;
 }
-/* line 37, sass/shared.sass */
+/* line 38, sass/shared.sass */
 header .logo a {
   width: 225px;
   height: 67px;
   display: block;
 }
-/* line 49, sass/shared.sass */
+/* line 50, sass/shared.sass */
 header .navigation {
   padding-top: 93px;
   display: block;
@@ -222,96 +225,117 @@ header .navigation {
   margin: 0 auto;
   text-align: justify;
 }
-/* line 55, sass/shared.sass */
+/* line 56, sass/shared.sass */
 header .navigation:after {
   width: 100%;
   display: inline-block;
   content: ".";
   visibility: hidden;
 }
-/* line 60, sass/shared.sass */
+/* line 61, sass/shared.sass */
 header .navigation li {
   display: inline-block;
   text-transform: uppercase;
 }
-/* line 63, sass/shared.sass */
+/* line 64, sass/shared.sass */
 header .navigation a {
   font-size: 17px;
   color: #fff;
   text-decoration: none;
   padding-bottom: 10px;
 }
-/* line 68, sass/shared.sass */
+/* line 69, sass/shared.sass */
 header .navigation a.active {
   border-bottom: 5px solid #fff;
 }
 
-/* line 71, sass/shared.sass */
+/* line 72, sass/shared.sass */
 .user-menu {
-  position: absolute;
-  top: 15px;
-  left: 0;
-  height: 25px;
-  font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
-  line-height: 26px;
   color: white;
-  text-transform: uppercase;
+  font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
 }
-/* line 80, sass/shared.sass */
+/* line 75, sass/shared.sass */
 .user-menu p {
+  text-transform: capitalize;
+  font-weight: 200;
   margin-bottom: 0;
+  font-size: 20px;
+  margin-right: 20px;
+  position: relative;
+  top: 1px;
+  display: inline-block;
 }
-/* line 82, sass/shared.sass */
+/* line 84, sass/shared.sass */
 .user-menu a {
+  text-transform: uppercase;
   color: white;
   text-decoration: none;
 }
+/* line 88, sass/shared.sass */
+.user-menu a span {
+  margin-right: 5px;
+}
 
-/* line 87, sass/shared.sass */
+/* line 92, sass/shared.sass */
 .order-menu a {
   color: white;
   margin-left: 5px;
 }
 
-/* line 91, sass/shared.sass */
+/* line 96, sass/shared.sass */
 .top-menu {
-  position: absolute;
-  text-transform: uppercase;
-  top: 15px;
-  right: 0;
-  height: 25px;
-  font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
-  line-height: 26px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #000;
+  height: 42px;
+  line-height: 42px;
+  padding: 0 15px;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
-/* line 99, sass/shared.sass */
-.top-menu .localization {
+
+/* line 109, sass/shared.sass */
+.options-menu {
+  text-transform: uppercase;
+  font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
+  height: 24px;
+  line-height: 26px;
+  margin-top: 9px;
+}
+/* line 115, sass/shared.sass */
+.options-menu .localization {
   display: inline-block;
   vertical-align: top;
 }
-/* line 102, sass/shared.sass */
-.top-menu .localization li {
-  padding: 0 12px;
+/* line 118, sass/shared.sass */
+.options-menu .localization li {
+  padding: 0 9px;
   height: 25px;
   background: #fff;
   color: #999999;
   float: left;
   display: block;
 }
-/* line 109, sass/shared.sass */
-.top-menu .localization li.active {
+/* line 125, sass/shared.sass */
+.options-menu .localization li.active {
   background: #B24629;
 }
-/* line 111, sass/shared.sass */
-.top-menu .localization li.active a {
+/* line 127, sass/shared.sass */
+.options-menu .localization li.active a {
   color: #fff;
 }
-/* line 113, sass/shared.sass */
-.top-menu .localization li a {
+/* line 129, sass/shared.sass */
+.options-menu .localization li a {
   text-decoration: none;
   color: #999999;
 }
-/* line 116, sass/shared.sass */
-.top-menu .cart {
+/* line 132, sass/shared.sass */
+.options-menu .cart {
   display: inline-block;
   vertical-align: top;
   margin-left: 15px;
@@ -321,19 +345,19 @@ header .navigation a.active {
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
   text-transform: uppercase;
 }
-/* line 125, sass/shared.sass */
-.top-menu .cart .fa {
+/* line 141, sass/shared.sass */
+.options-menu .cart .fa {
   padding-right: 4px;
 }
-/* line 127, sass/shared.sass */
-.top-menu .cart a {
+/* line 143, sass/shared.sass */
+.options-menu .cart a {
   color: white;
   text-decoration: none;
   display: block;
   height: 100%;
 }
-/* line 132, sass/shared.sass */
-.top-menu .cart a span {
+/* line 148, sass/shared.sass */
+.options-menu .cart a span {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -352,7 +376,7 @@ header .navigation a.active {
   text-align: center;
 }
 
-/* line 148, sass/shared.sass */
+/* line 164, sass/shared.sass */
 footer {
   text-align: center;
   text-transform: uppercase;
@@ -360,37 +384,37 @@ footer {
   margin-bottom: 50px;
   font-size: 14px;
 }
-/* line 149, sass/shared.sass */
+/* line 165, sass/shared.sass */
 #home footer {
   padding-top: 14px;
 }
-/* line 156, sass/shared.sass */
+/* line 172, sass/shared.sass */
 footer a {
   color: #333333;
   text-decoration: none;
 }
-/* line 159, sass/shared.sass */
+/* line 175, sass/shared.sass */
 footer a:hover {
   text-decoration: underline;
 }
-/* line 161, sass/shared.sass */
+/* line 177, sass/shared.sass */
 footer ul {
   margin-bottom: 10px;
 }
-/* line 163, sass/shared.sass */
+/* line 179, sass/shared.sass */
 footer ul li {
   display: inline-block;
   padding: 0 25px;
   border-right: 1px solid #333333;
 }
-/* line 167, sass/shared.sass */
+/* line 183, sass/shared.sass */
 footer ul li:last-child {
   border-right: none;
 }
-/* line 170, sass/shared.sass */
+/* line 186, sass/shared.sass */
 footer ul li.facebook a {
   text-indent: -10000px;
-  background-image: url('/images/site/facebook.png?1468442015');
+  background-image: url('/images/site/facebook.png?1478116388');
   width: 18px;
   height: 18px;
   position: relative;

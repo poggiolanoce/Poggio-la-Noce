@@ -23,16 +23,13 @@
 
   {% set cart = craft.commerce.cart %}
 
-  <header id="header">
-    {% include 'partials/nav.html' %}
-  </header>
+  {% include 'partials/header.html' with {'banners': false} %}
 
   {% block header %}
   <div id="header" class="container">
     <div class="row">
       <div class="twelve columns">
-        <div class="flash">{{ craft.session.getFlash('notice') }}</div>
-        <div class="flash">{{ craft.session.getFlash('error') }}</div>
+        {% include 'partials/flashes.html' %}
       </div>
     </div>
   </div>
