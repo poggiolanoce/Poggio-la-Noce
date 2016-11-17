@@ -46,9 +46,12 @@
 
           </div>
 
+          {% set award_image = award.bottleImage.first() %}
+          {% if award_image %}
           <figure class="right-image">
-            <img src="{{ award.bottleImage.first().getUrl() }}" alt="">
+            <img src="{{ award_image.getUrl() }}" alt="">
           </figure>
+          {% endif %}
         </li>
       {% endfor %}
     </div>
