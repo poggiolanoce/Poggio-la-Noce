@@ -6,24 +6,31 @@
   {% for entry in craft.entries.section('pages').slug(craft.request.getSegment(1)) %}
   <article class="page-content">
     <div class="page-image">
-      <img src="{{ entry.pageImage.first().getUrl() }}" alt="">
+      {% set images = entry.pageImage %}
+      {% for image in images %}
+        <img src="{{ image.getUrl() }}" alt="">
+      {% endfor %}
+
+      {% set galleries = entry.photoGallery %}
+      {% if galleries | length > 0 %}
+        <div class="page-galleries">
+          {% for gallery in galleries %}
+            {% include 'partials/gallery_launcher.html' with {
+              'title': gallery.galleryTitle,
+              'description': gallery.galleryDescription,
+              'prefix': 'photo-gallery',
+              'imageTransform': 'galleryThumb',
+              'asset': gallery.galleryImages.first()
+            }%}
+            {% include 'partials/gallery.html' with { 'type': 'photo' } %}
+          {% endfor %}
+      </div>
+      {% endif %}
     </div>
     <div class="page-text">
       <h1>{{ entry.pageSubtitle }}</h1>
       <div class="page-text-container">
         {{ entry.pageBody }}
-      </div>
-      <div class="page-galleries">
-        {% for gallery in entry.photoGallery %}
-          {% include 'partials/gallery_launcher.html' with {
-            'title': gallery.galleryTitle,
-            'description': gallery.galleryDescription,
-            'prefix': 'photo-gallery',
-            'imageTransform': 'galleryThumb',
-            'asset': gallery.galleryImages.first()
-          }%}
-        {% include 'partials/gallery.html' with { 'type': 'photo' } %}
-        {% endfor %}
       </div>
     </div>
   </article>
