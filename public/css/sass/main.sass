@@ -1,5 +1,6 @@
 @import "_mixins"
 @import "_variables"
+@import "_breakpoints"
 
 .banners
   height: 100%
@@ -286,9 +287,10 @@
 // Content Work
 
 .container
-  width: $medium-width
-  margin: 0 auto
-  position: relative
+  @include breakpoint($desktop)
+    width: $medium-width
+    margin: 0 auto
+    position: relative
   #home main#content &
     margin-top: 0
     margin-bottom: 0

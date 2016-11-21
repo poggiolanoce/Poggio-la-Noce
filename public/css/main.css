@@ -433,10 +433,12 @@
   letter-spacing: 0;
 }
 
-.container {
-  width: 1005px;
-  margin: 0 auto;
-  position: relative;
+@media only screen and (min-width: 1010px) {
+  .container {
+    width: 1005px;
+    margin: 0 auto;
+    position: relative;
+  }
 }
 #home main#content .container {
   margin-top: 0;

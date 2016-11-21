@@ -3,6 +3,7 @@
 @import "_reset"
 @import "_mixins"
 @import "_variables"
+@import "_breakpoints"
 
 body
   background-color: #fff
@@ -19,9 +20,12 @@ header
   #commerce & .header-body
     height: 120px
   .header-container
-    width: $medium-width
-    margin: 0 auto
-    position: relative
+    width: 100%
+
+    @include breakpoint($desktop)
+      width: $medium-width
+      margin: 0 auto
+      position: relative
   .header-body
     height: $header-short
   nav
@@ -48,9 +52,10 @@ header
   .navigation
     padding-top: 93px
     display: block
-    width: 850px
-    margin: 0 auto
-    text-align: justify
+    @include breakpoint($desktop)
+      text-align: justify
+      width: 850px
+      margin: 0 auto
     &:after
       width: 100%
       display: inline-block
@@ -158,31 +163,68 @@ header
 
 footer
   #home &
-    padding-top: 14px
+    padding-top: 15px
   text-align: center
   text-transform: uppercase
-  padding-top: 40px
-  margin-bottom: 50px
-  font-size: 14px
+  font-size: 13px
+  @include breakpoint($desktop)
+    font-size: 14px
+    line-height: 14px
+    padding-top: 40px
+    margin-bottom: 50px
+  p
+    margin-bottom: 10px
   a
     color: $black
     text-decoration: none
     &:hover
       text-decoration: underline
   ul
-    margin-bottom: 10px
+    margin-bottom: 40px
+    @include breakpoint($tablet)
+      font-size: 15px
+      width: 570px
+      margin: 0 auto
+      position: relative
+      margin-bottom: 70px
+    @include breakpoint("only screen and (min-width: 1140px)")
+      margin: 0
+      margin-bottom: 10px
+      width: inherit
     li
-      display: inline-block
-      padding: 0 25px
-      border-right: 1px solid $text-black
-      &:last-child
-        border-right: none
+      margin-bottom: 15px
+      vertical-align: middle
+      &.contact-phone, &.contact-email
+        display: inline-block
+      &.contact-phone
+        $padding: 10px
+        border-right: 1px solid $text-black
+        padding-right: $padding
+        margin-right: $padding
+      @include breakpoint($tablet)
+        margin-bottom: 12px
+        $padding: 20px
+        &.contact-phone
+          padding-right: $padding
+          margin-right: $padding
+        &.contact-email
+          border-right: 1px solid $text-black
+          padding-right: $padding
+          margin-right: $padding
+        &.contact-site, &.contact-address
+          display: inline-block
+        &.contact-site
+          border-right: 1px solid $text-black
+          padding-right: $padding
+          margin-right: $padding
       &.facebook
+        @include breakpoint($tablet)
+          display: inline-block
         a
+          width: 24px
+          height: 24px
           text-indent: -10000px
           background-image: url('/images/site/facebook.png')
-          width: 18px
-          height: 18px
           position: relative
           top: -2px
           display: inline-block

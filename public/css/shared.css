@@ -2903,9 +2903,14 @@ header {
   height: 120px;
 }
 header .header-container {
-  width: 1005px;
-  margin: 0 auto;
-  position: relative;
+  width: 100%;
+}
+@media only screen and (min-width: 1010px) {
+  header .header-container {
+    width: 1005px;
+    margin: 0 auto;
+    position: relative;
+  }
 }
 header .header-body {
   height: 360px;
@@ -2938,9 +2943,13 @@ header .logo a {
 header .navigation {
   padding-top: 93px;
   display: block;
-  width: 850px;
-  margin: 0 auto;
-  text-align: justify;
+}
+@media only screen and (min-width: 1010px) {
+  header .navigation {
+    text-align: justify;
+    width: 850px;
+    margin: 0 auto;
+  }
 }
 header .navigation:after {
   width: 100%;
@@ -3069,12 +3078,21 @@ header .navigation a.active {
 footer {
   text-align: center;
   text-transform: uppercase;
-  padding-top: 40px;
-  margin-bottom: 50px;
-  font-size: 14px;
+  font-size: 13px;
 }
 #home footer {
-  padding-top: 14px;
+  padding-top: 15px;
+}
+@media only screen and (min-width: 1010px) {
+  footer {
+    font-size: 14px;
+    line-height: 14px;
+    padding-top: 40px;
+    margin-bottom: 50px;
+  }
+}
+footer p {
+  margin-bottom: 10px;
 }
 footer a {
   color: #333333;
@@ -3084,21 +3102,68 @@ footer a:hover {
   text-decoration: underline;
 }
 footer ul {
-  margin-bottom: 10px;
+  margin-bottom: 40px;
+}
+@media only screen and (min-width: 768px) {
+  footer ul {
+    font-size: 15px;
+    width: 570px;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 70px;
+  }
+}
+@media only screen and (min-width: 1140px) {
+  footer ul {
+    margin: 0;
+    margin-bottom: 10px;
+    width: inherit;
+  }
 }
 footer ul li {
-  display: inline-block;
-  padding: 0 25px;
-  border-right: 1px solid #333333;
+  margin-bottom: 15px;
+  vertical-align: middle;
 }
-footer ul li:last-child {
-  border-right: none;
+footer ul li.contact-phone, footer ul li.contact-email {
+  display: inline-block;
+}
+footer ul li.contact-phone {
+  border-right: 1px solid #333333;
+  padding-right: 10px;
+  margin-right: 10px;
+}
+@media only screen and (min-width: 768px) {
+  footer ul li {
+    margin-bottom: 12px;
+  }
+  footer ul li.contact-phone {
+    padding-right: 20px;
+    margin-right: 20px;
+  }
+  footer ul li.contact-email {
+    border-right: 1px solid #333333;
+    padding-right: 20px;
+    margin-right: 20px;
+  }
+  footer ul li.contact-site, footer ul li.contact-address {
+    display: inline-block;
+  }
+  footer ul li.contact-site {
+    border-right: 1px solid #333333;
+    padding-right: 20px;
+    margin-right: 20px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  footer ul li.facebook {
+    display: inline-block;
+  }
 }
 footer ul li.facebook a {
+  width: 24px;
+  height: 24px;
   text-indent: -10000px;
   background-image: url("/images/site/facebook.png");
-  width: 18px;
-  height: 18px;
   position: relative;
   top: -2px;
   display: inline-block;
