@@ -43,11 +43,19 @@
       height: 93%
     .banner-headline
       font-family: $handwriting
-      font-size: 42px
-      line-height: 58px
+      font-size: 32px
+      line-height: 42px
       display: table-cell
       vertical-align: middle
       text-align: center
+      padding: 0 50px
+      @include breakpoint($tablet)
+        padding: 0 100px
+        font-size: 36px
+        line-height: 58px
+      @include breakpoint($desktop)
+        font-size: 42px
+        line-height: 58px
   #products-page-banner
     background-image: url('/images/banners/wine-banner.jpg')
     &.oils-banner
@@ -133,8 +141,11 @@
 .dots
   position: absolute
   z-index: 10
-  top: 657px
+  top: 420px
   left: 50%
+  transform: translateX(-50%)
+  @include breakpoint($tablet)
+    top: 657px
   li
     width: 22px
     height: 22px
@@ -188,6 +199,23 @@
     &.active
       opacity: 1
       display: block
+
+@include breakpoint($phone-only)
+  #home
+    .arrows
+      top: 427px
+      margin-top: -15px
+      li
+        width: 16px
+        height: 30px
+        background-size: auto 30px
+    .dots
+      li
+        width: 11px
+        height: 11px
+        &.active
+          width: 5px
+          height: 5px
 
 // Hidden video inside banners
 

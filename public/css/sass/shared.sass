@@ -17,6 +17,8 @@ header
   display: block
   #home & .header-body
     height: $header-tall
+    @include breakpoint($phone-only)
+      height: $header-tall-mobile
   #commerce & .header-body
     height: 120px
   .header-container

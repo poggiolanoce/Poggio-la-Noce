@@ -2899,6 +2899,11 @@ header {
 #home header .header-body {
   height: 770px;
 }
+@media only screen and (max-width: 767px) {
+  #home header .header-body {
+    height: 460px;
+  }
+}
 #commerce header .header-body {
   height: 120px;
 }
