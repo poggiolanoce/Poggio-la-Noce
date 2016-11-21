@@ -138,29 +138,29 @@
   text-align: center;
 }
 .banners #products-page-banner {
-  background-image: image-url("banners/wine-banner.jpg");
+  background-image: url("/images/banners/wine-banner.jpg");
 }
 .banners #products-page-banner.oils-banner {
-  background-image: image-url("banners/olive-oil-banner.jpg");
+  background-image: url("/images/banners/olive-oil-banner.jpg");
 }
 .banners #products-page-banner .banner-headline {
   font-size: 72px;
   text-transform: capitalize;
 }
 .banners #awards-page-banner {
-  background-image: image-url("banners/news-banner.jpg");
+  background-image: url("/images/banners/news-banner.jpg");
 }
 .banners #awards-page-banner .banner-headline {
   font-size: 72px;
 }
 .banners #news-page-banner {
-  background-image: image-url("banners/news-banner-alt.jpg");
+  background-image: url("/images/banners/news-banner-alt.jpg");
 }
 .banners #news-page-banner .banner-headline {
   font-size: 72px;
 }
 .banners #gallery-page-banner {
-  background-image: image-url("banners/contact_banner_photo_blur.png");
+  background-image: url("/images/banners/contact_banner_photo_blur.png");
 }
 .banners #gallery-page-banner .banner-headline {
   font-size: 72px;
@@ -342,7 +342,7 @@
   position: absolute;
   right: 35px;
   top: 35px;
-  background: image-url("site/close_black.svg") 0 0 no-repeat;
+  background: url("/images/site/close_black.svg") 0 0 no-repeat;
 }
 .shipping-confirmation h2 {
   font-size: 36px;
@@ -688,7 +688,7 @@ main#content .container {
   display: block;
   width: 458px;
   height: 454px;
-  background-image: image-url("site/wine-splat.png");
+  background-image: url("/images/site/wine-splat.png");
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: 458px 454px;
@@ -841,7 +841,7 @@ main#content .container {
   width: 48px;
   height: 48px;
   border: none;
-  background: #F48F1B image-url("site/search.png") no-repeat center center;
+  background: #F48F1B url("/images/site/search.png") no-repeat center center;
   text-indent: -10000px;
 }
 #news .container .news-search {
