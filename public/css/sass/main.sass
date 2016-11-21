@@ -147,21 +147,27 @@
   @include breakpoint($tablet)
     top: 657px
   li
-    width: 22px
-    height: 22px
     display: block
     cursor: pointer
     background-color: #fff
     border-radius: 50%
     margin-right: 8px
     display: inline-block
+    width: 11px
+    height: 11px
     &:last-child
       margin-right: 0
     &.active
       border: 3px solid #fff
-      width: 16px
-      height: 16px
       background-color: transparent
+      width: 5px
+      height: 5px
+    @include breakpoint($tablet)
+      width: 22px
+      height: 22px
+      &.active
+        width: 16px
+        height: 16px
 
 .arrows
   position: absolute
@@ -171,12 +177,12 @@
   margin-top: -30px
   width: 100%
   li
-    width: 32px
-    height: 60px
+    width: 16px
+    height: 30px
+    background-size: auto 30px
     display: block
     position: absolute
     @include hr-image('../images/site/arrows.png', '../images/site/arrows@2x.png')
-    background-size: auto 60px
     background-repeat: no-repeat
     text-indent: -10000px
     cursor: pointer
@@ -184,6 +190,10 @@
     transition-duration: 0.2s
     &:hover
       opacity: 0.6
+    @include breakpoint($tablet)
+      width: 32px
+      height: 60px
+      background-size: auto 60px
   li.previous
     background-position: top left
     left: 20px
@@ -205,17 +215,6 @@
     .arrows
       top: 427px
       margin-top: -15px
-      li
-        width: 16px
-        height: 30px
-        background-size: auto 30px
-    .dots
-      li
-        width: 11px
-        height: 11px
-        &.active
-          width: 5px
-          height: 5px
 
 // Hidden video inside banners
 

@@ -269,23 +269,33 @@
   }
 }
 .dots li {
-  width: 22px;
-  height: 22px;
   display: block;
   cursor: pointer;
   background-color: #fff;
   border-radius: 50%;
   margin-right: 8px;
   display: inline-block;
+  width: 11px;
+  height: 11px;
 }
 .dots li:last-child {
   margin-right: 0;
 }
 .dots li.active {
   border: 3px solid #fff;
-  width: 16px;
-  height: 16px;
   background-color: transparent;
+  width: 5px;
+  height: 5px;
+}
+@media only screen and (min-width: 768px) {
+  .dots li {
+    width: 22px;
+    height: 22px;
+  }
+  .dots li.active {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .arrows {
@@ -297,12 +307,12 @@
   width: 100%;
 }
 .arrows li {
-  width: 32px;
-  height: 60px;
+  width: 16px;
+  height: 30px;
+  background-size: auto 30px;
   display: block;
   position: absolute;
   background-image: url("../images/site/arrows.png");
-  background-size: auto 60px;
   background-repeat: no-repeat;
   text-indent: -10000px;
   cursor: pointer;
@@ -317,6 +327,13 @@
 }
 .arrows li:hover {
   opacity: 0.6;
+}
+@media only screen and (min-width: 768px) {
+  .arrows li {
+    width: 32px;
+    height: 60px;
+    background-size: auto 60px;
+  }
 }
 .arrows li.previous {
   background-position: top left;
@@ -341,19 +358,6 @@
   #home .arrows {
     top: 427px;
     margin-top: -15px;
-  }
-  #home .arrows li {
-    width: 16px;
-    height: 30px;
-    background-size: auto 30px;
-  }
-  #home .dots li {
-    width: 11px;
-    height: 11px;
-  }
-  #home .dots li.active {
-    width: 5px;
-    height: 5px;
   }
 }
 .hidden-video {
