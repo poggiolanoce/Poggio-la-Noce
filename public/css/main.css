@@ -888,7 +888,7 @@ main#content .container {
 #awards .awards-list .award-title {
   font-size: 72px;
   font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 /* line 553, sass/main.sass */
 #awards .awards-list li {
