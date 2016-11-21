@@ -1,6 +1,3 @@
-@import "compass/css3"
-@import "compass/utilities"
-
 @import "_mixins"
 @import "_variables"
 
@@ -24,12 +21,12 @@
       &.active
         opacity: 1
         z-index: 5
-        @include transition-property(opacity)
-        @include transition-duration(1s)
+        transition-property: opacity
+        transition-duration: 1s
       &.previously_active
         opacity: 1
   .banner
-    @include box-sizing('border-box')
+    box-sizing: border-box
     display: block
     padding-top: 115px
     height: 100%
@@ -101,10 +98,7 @@
     margin-bottom: 40px
     font-family: $handwriting
   .page-galleries
-    display: -ms-flexbox
-    display: -webkit-flex
     display: flex
-    -ms-flex-flow: row wrap
     flex-flow: row wrap
     width: calc(100% + 50px)
     margin-left: -25px
@@ -174,8 +168,8 @@
     background-repeat: no-repeat
     text-indent: -10000px
     cursor: pointer
-    @include transition-property(opacity)
-    @include transition-duration(0.2s)
+    transition-property: opacity
+    transition-duration: 0.2s
     &:hover
       opacity: 0.6
   li.previous
@@ -224,7 +218,7 @@
     margin-bottom: 22px
     font-family: $sans
   h3
-    @include box-sizing('border-box')
+    box-sizing: border-box
     font-family: $sans
     color: $copper
     text-transform: uppercase
@@ -272,10 +266,7 @@
       &.active
         display: block
     ul
-      display: -ms-flexbox
-      display: -webkit-flex
       display: flex
-      -ms-flex-flow: row wrap
       flex-flow: row wrap
       margin-top: 15px
       max-height: 95px
@@ -285,8 +276,6 @@
       padding-bottom: 15px
       color: $copper
       font-size: 14px
-      -webkit-box-flex: 0
-      -ms-flex: 0 1 20%
       flex: 0 1 20%
   .shipping-confirmation-confirm
     @extend %button
@@ -347,7 +336,7 @@
     h1
       margin-bottom: 35px
     h2
-      @include box-sizing('border-box')
+      box-sizing: border-box
       border-top: 1px solid $copper
       border-bottom: 1px solid $copper
       margin-bottom: -1px
@@ -408,12 +397,8 @@
   .product-overview
     margin-top: -170px
     ul
-      display: -webkit-box
-      display: -ms-flexbox
       display: flex
-      -ms-flex-flow: row wrap
       flex-flow: row wrap
-      -ms-flex-pack: center
       justify-content: center
       padding: 0
       border-top: 1px solid $copper
@@ -458,9 +443,6 @@
               opacity: 0
               pointer-events: none
           form, .buy
-            -webkit-transition: all 0.25s
-            -moz-transition: all 0.25s
-            -o-transition: all 0.25s
             transition: all 0.25s
             font-family: $sans
           .buy
@@ -473,9 +455,6 @@
             margin-left: 40px
             pointer-events: none
           .faux-buy
-            -webkit-transition: all 0.1s
-            -moz-transition: all 0.1s
-            -o-transition: all 0.1s
             transition: all 0.1s
             position: relative
             z-index: 1
@@ -526,12 +505,8 @@
       z-index: 0
   .product-navigation
     padding-top: 35px
-    display: -webkit-box
-    display: -ms-flexbox
     display: flex
-    -ms-flex-flow: row
     flex-flow: row
-    -ms-flex-pack: space-between
     justify-content: space-between
     a
       color: $copper
@@ -546,7 +521,7 @@
 #awards
   .awards-list
     li
-      @include box-sizing('border-box')
+      box-sizing: border-box
       width: 49%
       display: inline-block
       vertical-align: top
@@ -746,10 +721,10 @@
             width: 100%
             padding: 5px
             font-size: 14px
-            @include box-sizing('border-box')
+            box-sizing: border-box
           .mce_inline_error
             width: 100%
-            @include box-sizing('border-box')
+            box-sizing: border-box
         input[type="submit"]
           -webkit-appearance: button
           display: block
@@ -865,46 +840,30 @@
     height: 140px
     background-color: #ffffff
     border: 1px solid #cccccc
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s
-    -moz-transition: border linear 0.2s, box-shadow linear 0.2s
-    -o-transition: border linear 0.2s, box-shadow linear 0.2s
     transition: border linear 0.2s, box-shadow linear 0.2s
 
   input
     &[type="text"], &[type="password"], &[type="datetime"], &[type="datetime-local"], &[type="date"], &[type="month"], &[type="time"], &[type="week"], &[type="number"], &[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="color"]
       background-color: #ffffff
       border: 1px solid #cccccc
-      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
       box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-      -webkit-transition: border linear 0.2s, box-shadow linear 0.2s
-      -moz-transition: border linear 0.2s, box-shadow linear 0.2s
-      -o-transition: border linear 0.2s, box-shadow linear 0.2s
       transition: border linear 0.2s, box-shadow linear 0.2s
 
   textarea:focus
     border-color: rgba(82, 168, 236, 0.8)
     outline: 0
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
-    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
 
   input
     &[type="text"]:focus, &[type="password"]:focus, &[type="datetime"]:focus, &[type="datetime-local"]:focus, &[type="date"]:focus, &[type="month"]:focus, &[type="time"]:focus, &[type="week"]:focus, &[type="number"]:focus, &[type="email"]:focus, &[type="url"]:focus, &[type="search"]:focus, &[type="tel"]:focus, &[type="color"]:focus
       border-color: rgba(82, 168, 236, 0.8)
       outline: 0
-      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
-      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
       box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
 
   .uneditable-input:focus
     border-color: rgba(82, 168, 236, 0.8)
     outline: 0
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
-    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
 
   input

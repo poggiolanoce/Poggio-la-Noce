@@ -1,8 +1,6 @@
-@import "compass/reset"
-@import "compass/css3"
-@import "compass/utilities"
 @import "fonts"
 
+@import "_reset"
 @import "_mixins"
 @import "_variables"
 
@@ -94,15 +92,12 @@ header
     margin-left: 5px
 
 .top-menu
-  @include box-sizing('border-box')
+  box-sizing: border-box
   background: #000
   height: 42px
   line-height: 42px
   padding: 0 15px
-  display: -ms-flexbox
-  display: -webkit-flex
   display: flex
-  -ms-flex-flow: row wrap
   flex-flow: row wrap
   justify-content: space-between
 
@@ -146,7 +141,7 @@ header
       display: block
       height: 100%
       span
-        @include box-sizing('border-box')
+        box-sizing: border-box
         margin-left: 4px
         margin-top: 3px
         border-radius: 9px
