@@ -326,7 +326,11 @@
     margin-bottom: 40px
   h1
     font-family: $handwriting
-    font-size: 72px
+    font-size: 52px
+    @include breakpoint($tablet)
+      font-size: 62px
+    @include breakpoint($desktop)
+      font-size: 72px
   #wine h1
     font-size: 94px
   p
@@ -363,7 +367,9 @@
     float: left
     width: 596px
     h1
-      margin-bottom: 35px
+      margin-bottom: 20px
+      @include breakpoint($desktop)
+        margin-bottom: 35px
     h2
       box-sizing: border-box
       border-top: 1px solid $copper
