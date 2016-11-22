@@ -1,0 +1,9 @@
+{% set pageUri = craft.request.url|replace(siteUrl, '') %}
+<ul class="localization">
+  <li {% if craft.locale == 'en_us' %}class="active"{% endif %}>
+    <a href="{{ craft.config.siteUrl['en_us'] ~ pageUri }}" >EN</a>
+  </li>
+  <li {% if craft.locale == 'it' %}class="active"{% endif %}>
+    <a href="{{ craft.config.siteUrl['it'] ~ pageUri }}" >ITA</a>
+  </li>
+</ul>

@@ -1,4 +1,19 @@
 $(document).ready ->
+
+  $header = $('.header-container')
+  $navigation = $('.navigation')
+  $mobileOpen = $('.mobile-menu')
+  $mobileClose = $('.mobile-close')
+
+  $mobileOpen.on 'click', ()->
+    $header.addClass('open')
+
+  $navigation.add($mobileClose).on 'click', ()->
+    $header.removeClass('open')
+
+  $(window).resize ()->
+    $header.removeClass('open')
+
   $page_blocks = false
   $headlines = $('.page-text-container h2, .shipping-group h3')
 

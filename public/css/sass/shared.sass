@@ -23,56 +23,126 @@ header
     height: 120px
   .header-container
     width: 100%
-
     @include breakpoint($desktop)
       width: $medium-width
       margin: 0 auto
       position: relative
   .header-body
     height: $header-short
-  nav
-    background-color: rgba(0,0,0,0.35)
-    height: 120px
-    margin-bottom: -120px
-    z-index: 1
-    position: relative
-  .logo
-    h1, h3
-      text-indent: -10000px
-    a
-      width: 225px
-      height: 67px
+
+.mobile-controls
+  position: absolute
+  left: 12px
+  top: 12px
+  font-size: 24px
+  color: #fff
+  @include breakpoint($tablet)
+    display: none
+  & > i
+    cursor: pointer
+    position: absolute
+    left: 0
+    top: 0
+  .mobile-close
+    z-index: 2
+    font-size: 28px
+    display: none
+    .open &
       display: block
+  .mobile-menu
+    z-index: 0
+    .open &
+      display: none
+
+nav
+  background-color: rgba(0,0,0,0.35)
+  height: 120px
+  margin-bottom: -120px
+  z-index: 1
+  position: relative
+
+.logo
+  width: 225px
+  height: 67px
+  background: url('/images/site/logo.png') no-repeat 0 0
+  background-size: 100%
+  position: absolute
+  left: 50%
+  margin-left: -112px
+  top: 24px
+  @include breakpoint($tablet)
+    top: 8px
+  h1, h3
+    text-indent: -10000px
+  a
     width: 225px
     height: 67px
-    background: url('/images/site/logo.png') no-repeat 0 0
-    background-size: 100%
-    position: absolute
-    left: 50%
-    top: 8px
-    margin-left: -112px
-  .navigation
+    display: block
+
+.navigation
+  display: none
+  width: 100%
+  height: 100%
+  padding-top: 20px
+  background: rgba(black, 0.75)
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  text-align: center
+  z-index: 1
+  .open &
+    display: block
+  @include breakpoint($tablet)
     padding-top: 93px
     display: block
-    @include breakpoint($desktop)
-      text-align: justify
-      width: 850px
-      margin: 0 auto
-    &:after
-      width: 100%
-      display: inline-block
-      content: "."
-      visibility: hidden
+    width: auto
+    height: auto
+    background: none
+    position: relative
+    top: inherit
+    bottom: inherit
+    left: inherit
+    right: inherit
+    text-align: inherit
+    text-align: justify
+    width: 95%
+    margin: 0 auto
+  @include breakpoint($desktop)
+    width: 850px
+  &:after
+    width: 100%
+    display: inline-block
+    content: "."
+    visibility: hidden
+  .localization-tab
     li
+      padding: 0 20px
+      height: 34px
+      line-height: 37px
+      font-size: 22px
+    @include breakpoint($tablet)
+      display: none
+  & > li
+    margin-top: 40px
+    text-transform: uppercase
+    @include breakpoint($tablet)
+      margin-top: 0
       display: inline-block
-      text-transform: uppercase
-    a
-      font-size: 17px
+    & > a
+      font-size: 24px
       color: #fff
       text-decoration: none
-      padding-bottom: 10px
+      padding-bottom: 11px
       &.active
         border-bottom: 5px solid #fff
+      @include breakpoint($tablet)
+        font-size: 14px
+      @include breakpoint($desktop)
+        font-size: 17px
+        padding-bottom: 10px
+
 
 .user-menu
   color: white
@@ -115,22 +185,9 @@ header
   line-height: 26px
   margin-top: 9px
   .localization
-    display: inline-block
-    vertical-align: top
-    li
-      padding: 0 9px
-      height: 25px
-      background: #fff
-      color: $text-gray
-      float: left
+    display: none
+    @include breakpoint($tablet)
       display: block
-      &.active
-        background: $copper
-        a
-          color: #fff
-      a
-        text-decoration: none
-        color: $text-gray
   .cart
     display: inline-block
     vertical-align: top
@@ -162,6 +219,26 @@ header
         line-height: 20px
         font-size: 14px
         text-align: center
+
+.localization
+  display: inline-block
+  vertical-align: top
+  font-family: $sans
+  li
+    padding: 0 9px
+    height: 25px
+    background: #fff
+    color: $text-gray
+    float: left
+    display: block
+    line-height: 26px
+    &.active
+      background: $copper
+      a
+        color: #fff
+    a
+      text-decoration: none
+      color: $text-gray
 
 footer
   #home &
