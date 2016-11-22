@@ -900,7 +900,6 @@ main#content .container {
 .product-page-content .wine-page-image img {
   width: 100px;
   position: relative;
-  z-index: 1;
 }
 @media only screen and (min-width: 768px) {
   .product-page-content .wine-page-image img {
