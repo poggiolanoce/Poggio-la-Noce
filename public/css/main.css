@@ -386,6 +386,20 @@
 .hidden-gallery {
   display: none;
 }
+.hidden-gallery .arrows {
+  top: 50%;
+}
+@media only screen and (max-width: 767px) {
+  .hidden-gallery .arrows {
+    margin-top: -15px;
+  }
+  .hidden-gallery .arrows li.previous {
+    left: 10%;
+  }
+  .hidden-gallery .arrows li.next {
+    right: 10%;
+  }
+}
 
 .shipping-confirmation {
   max-width: 768px;

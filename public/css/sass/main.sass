@@ -235,6 +235,14 @@
 
 .hidden-gallery
   display: none
+  .arrows
+    top: 50%
+    @include breakpoint($phone-only)
+      margin-top: -15px
+      li.previous
+        left: 10%
+      li.next
+        right: 10%
 
 .shipping-confirmation
   max-width: 768px
