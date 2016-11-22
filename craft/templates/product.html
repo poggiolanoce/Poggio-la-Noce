@@ -7,7 +7,7 @@
   {% redirect craft.commerce.products.type('wine').order('postDate asc').first().url %}
 {% endif %}
 
-  <article class="page-content product-page-content">
+  <article class="page-content product-page-content standard-page">
 
     <div class="page-image {{craft.request.getSegment(2)}}-page-image">
       <img src="{{ product.bottleImage.first().getUrl() }}" alt="">

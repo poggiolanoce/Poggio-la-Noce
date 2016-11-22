@@ -73,6 +73,8 @@
     .banner-headline
       font-size: 48px
       @include breakpoint($tablet)
+        font-size: 62px
+      @include breakpoint($desktop)
         font-size: 72px
 
 .page-galleries
@@ -321,8 +323,13 @@
 
 // Content Work
 
+#content
+  position: relative
+
 .container
   margin: 0 20px
+  @include breakpoint($tablet)
+    margin: 0 40px
   @include breakpoint($desktop)
     width: $medium-width
     margin: 0 auto
@@ -333,7 +340,7 @@
   main#content &
     margin-top: 40px
     margin-bottom: 40px
-    @include breakpoint($tablet)
+    @include breakpoint($desktop)
       margin-top: 80px
   h1
     font-family: $handwriting
@@ -432,27 +439,50 @@
       display: flex
       justify-content: space-between
       .price
-        font-size: 48px
+        font-size: 40px
         flex-grow: 1
+        position: relative
+        top: 2px
+        @include breakpoint($tablet)
+          font-size: 48px
+          top: 0
       .input-group
-        margin-right: 30px
+        margin-right: 10px
+        @include breakpoint($tablet)
+          margin-right: 30px
         label
           display: block
-          font-size: 14px
+          font-size: 12px
           font-family: $serif
           padding-bottom: 2px
+          @include breakpoint($tablet)
+            font-size: 14px
       input[type=number]
-        font-size: 22px
+        font-size: 18px
         border: 1px solid rgba($text-black, 0.5)
         border-radius: 4px
         padding: 2px 4px
-        width: 60px
+        width: 40px
+        @include breakpoint($tablet)
+          width: 60px
+          font-size: 22px
       input[type=submit]
         @extend %button
+        height: 42px
+        line-height: 44px
+        padding: 0 15px
+        font-size: 22px
+        @include breakpoint($tablet)
+          height: 48px
+          line-height: normal
+          padding: 0 25px
+          font-size: 28px
 
 #products
   .product-overview
-    margin-top: -170px
+    margin-top: -140px
+    @include breakpoint($tablet)
+      margin-top: -170px
     ul
       display: flex
       flex-flow: row wrap
@@ -468,11 +498,19 @@
       li
         box-sizing: border-box
         padding: 0 25px 50px 25px
-        width: 33%
+        width: 100%
         text-align: center
         list-style: none
+        max-width: 400px
+        @include breakpoint($tablet)
+          width: 50%
+          max-width: inherit
+        @include breakpoint($desktop)
+          width: 33%
         img
-          height: 530px
+          height: 400px
+          @include breakpoint($desktop)
+            height: 530px
         h3
           font-family: $handwriting
           font-size: 48px
@@ -532,34 +570,62 @@
               top: 2px
 
 .product-page-content
+  margin-top: -140px
+  @include breakpoint($tablet)
+    margin-top: 0
+    display: flex
+    flex-flow: row
   .product-page-text
+    h1
+      text-align: center
+      margin-top: 15px
+      @include breakpoint($tablet)
+        margin-top: 0
+        text-align: left
     .wine-specifications
       padding: 0
       li
         list-style: none
-  .page-image
+  .wine-page-image
     position: relative
+    order: 0
+    @include breakpoint($tablet)
+      order: 2
+      width: 80px
+      flex-grow: 1
+    @include breakpoint($desktop)
+      padding-left: 75px
+      width: 334px
+      &:before
+        content: ""
+        display: block
+        width: 458px
+        height: 454px
+        background-image: url('/images/site/wine-splat.png')
+        background-position: 0 0
+        background-repeat: no-repeat
+        background-size: 458px 454px
+        position: absolute
+        right: -90px
+        top: 110px
+        z-index: 0
     img
-      float: right
-      margin-right: 5px
+      width: 100px
       position: relative
       z-index: 1
-  .wine-page-image
-    img
-      width: 195px
-    &:before
-      content: ""
-      display: block
-      width: 458px
-      height: 454px
-      background-image: url('/images/site/wine-splat.png')
-      background-position: 0 0
-      background-repeat: no-repeat
-      background-size: 458px 454px
-      position: absolute
-      right: -90px
-      top: 110px
-      z-index: 0
+      @include breakpoint($tablet)
+        width: 195px
+        margin: 0 auto
+        position: relative
+      @include breakpoint($desktop)
+        margin: 0
+  .product-page-text
+    width: 100%
+    @include breakpoint($tablet)
+      width: calc(100% - 240px)
+    @include breakpoint($desktop)
+      width: calc(100% - 410px)
+
   .product-navigation
     padding-top: 35px
     display: flex

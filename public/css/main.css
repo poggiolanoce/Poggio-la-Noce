@@ -174,6 +174,11 @@
 }
 @media only screen and (min-width: 768px) {
   .banners #products-page-banner .banner-headline, .banners #awards-page-banner .banner-headline, .banners #news-page-banner .banner-headline, .banners #gallery-page-banner .banner-headline {
+    font-size: 62px;
+  }
+}
+@media only screen and (min-width: 1010px) {
+  .banners #products-page-banner .banner-headline, .banners #awards-page-banner .banner-headline, .banners #news-page-banner .banner-headline, .banners #gallery-page-banner .banner-headline {
     font-size: 72px;
   }
 }
@@ -488,8 +493,17 @@
   letter-spacing: 0;
 }
 
+#content {
+  position: relative;
+}
+
 .container {
   margin: 0 20px;
+}
+@media only screen and (min-width: 768px) {
+  .container {
+    margin: 0 40px;
+  }
 }
 @media only screen and (min-width: 1010px) {
   .container {
@@ -506,7 +520,7 @@ main#content .container {
   margin-top: 40px;
   margin-bottom: 40px;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1010px) {
   main#content .container {
     margin-top: 80px;
   }
@@ -650,28 +664,71 @@ main#content .container {
   justify-content: space-between;
 }
 .page-content .add-to-cart form .price {
-  font-size: 48px;
+  font-size: 40px;
   flex-grow: 1;
+  position: relative;
+  top: 2px;
+}
+@media only screen and (min-width: 768px) {
+  .page-content .add-to-cart form .price {
+    font-size: 48px;
+    top: 0;
+  }
 }
 .page-content .add-to-cart form .input-group {
-  margin-right: 30px;
+  margin-right: 10px;
+}
+@media only screen and (min-width: 768px) {
+  .page-content .add-to-cart form .input-group {
+    margin-right: 30px;
+  }
 }
 .page-content .add-to-cart form .input-group label {
   display: block;
-  font-size: 14px;
+  font-size: 12px;
   font-family: "P22MackinacMedium", Georgia, serif;
   padding-bottom: 2px;
 }
+@media only screen and (min-width: 768px) {
+  .page-content .add-to-cart form .input-group label {
+    font-size: 14px;
+  }
+}
 .page-content .add-to-cart form input[type=number] {
-  font-size: 22px;
+  font-size: 18px;
   border: 1px solid rgba(51, 51, 51, 0.5);
   border-radius: 4px;
   padding: 2px 4px;
-  width: 60px;
+  width: 40px;
+}
+@media only screen and (min-width: 768px) {
+  .page-content .add-to-cart form input[type=number] {
+    width: 60px;
+    font-size: 22px;
+  }
+}
+.page-content .add-to-cart form input[type=submit] {
+  height: 42px;
+  line-height: 44px;
+  padding: 0 15px;
+  font-size: 22px;
+}
+@media only screen and (min-width: 768px) {
+  .page-content .add-to-cart form input[type=submit] {
+    height: 48px;
+    line-height: normal;
+    padding: 0 25px;
+    font-size: 28px;
+  }
 }
 
 #products .product-overview {
-  margin-top: -170px;
+  margin-top: -140px;
+}
+@media only screen and (min-width: 768px) {
+  #products .product-overview {
+    margin-top: -170px;
+  }
 }
 #products .product-overview ul {
   display: flex;
@@ -690,12 +747,29 @@ main#content .container {
 #products .product-overview ul li {
   box-sizing: border-box;
   padding: 0 25px 50px 25px;
-  width: 33%;
+  width: 100%;
   text-align: center;
   list-style: none;
+  max-width: 400px;
+}
+@media only screen and (min-width: 768px) {
+  #products .product-overview ul li {
+    width: 50%;
+    max-width: inherit;
+  }
+}
+@media only screen and (min-width: 1010px) {
+  #products .product-overview ul li {
+    width: 33%;
+  }
 }
 #products .product-overview ul li img {
-  height: 530px;
+  height: 400px;
+}
+@media only screen and (min-width: 1010px) {
+  #products .product-overview ul li img {
+    height: 530px;
+  }
 }
 #products .product-overview ul li h3 {
   font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
@@ -766,37 +840,92 @@ main#content .container {
   top: 2px;
 }
 
+.product-page-content {
+  margin-top: -140px;
+}
+@media only screen and (min-width: 768px) {
+  .product-page-content {
+    margin-top: 0;
+    display: flex;
+    flex-flow: row;
+  }
+}
+.product-page-content .product-page-text h1 {
+  text-align: center;
+  margin-top: 15px;
+}
+@media only screen and (min-width: 768px) {
+  .product-page-content .product-page-text h1 {
+    margin-top: 0;
+    text-align: left;
+  }
+}
 .product-page-content .product-page-text .wine-specifications {
   padding: 0;
 }
 .product-page-content .product-page-text .wine-specifications li {
   list-style: none;
 }
-.product-page-content .page-image {
+.product-page-content .wine-page-image {
   position: relative;
+  order: 0;
 }
-.product-page-content .page-image img {
-  float: right;
-  margin-right: 5px;
+@media only screen and (min-width: 768px) {
+  .product-page-content .wine-page-image {
+    order: 2;
+    width: 80px;
+    flex-grow: 1;
+  }
+}
+@media only screen and (min-width: 1010px) {
+  .product-page-content .wine-page-image {
+    padding-left: 75px;
+    width: 334px;
+  }
+  .product-page-content .wine-page-image:before {
+    content: "";
+    display: block;
+    width: 458px;
+    height: 454px;
+    background-image: url("/images/site/wine-splat.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 458px 454px;
+    position: absolute;
+    right: -90px;
+    top: 110px;
+    z-index: 0;
+  }
+}
+.product-page-content .wine-page-image img {
+  width: 100px;
   position: relative;
   z-index: 1;
 }
-.product-page-content .wine-page-image img {
-  width: 195px;
+@media only screen and (min-width: 768px) {
+  .product-page-content .wine-page-image img {
+    width: 195px;
+    margin: 0 auto;
+    position: relative;
+  }
 }
-.product-page-content .wine-page-image:before {
-  content: "";
-  display: block;
-  width: 458px;
-  height: 454px;
-  background-image: url("/images/site/wine-splat.png");
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  background-size: 458px 454px;
-  position: absolute;
-  right: -90px;
-  top: 110px;
-  z-index: 0;
+@media only screen and (min-width: 1010px) {
+  .product-page-content .wine-page-image img {
+    margin: 0;
+  }
+}
+.product-page-content .product-page-text {
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .product-page-content .product-page-text {
+    width: calc(100% - 240px);
+  }
+}
+@media only screen and (min-width: 1010px) {
+  .product-page-content .product-page-text {
+    width: calc(100% - 410px);
+  }
 }
 .product-page-content .product-navigation {
   padding-top: 35px;
