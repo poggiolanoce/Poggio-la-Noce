@@ -158,26 +158,24 @@
   background-image: url("/images/banners/olive-oil-banner.jpg");
 }
 .banners #products-page-banner .banner-headline {
-  font-size: 72px;
   text-transform: capitalize;
 }
 .banners #awards-page-banner {
   background-image: url("/images/banners/news-banner.jpg");
 }
-.banners #awards-page-banner .banner-headline {
-  font-size: 72px;
-}
 .banners #news-page-banner {
   background-image: url("/images/banners/news-banner-alt.jpg");
-}
-.banners #news-page-banner .banner-headline {
-  font-size: 72px;
 }
 .banners #gallery-page-banner {
   background-image: url("/images/banners/contact_banner_photo_blur.png");
 }
-.banners #gallery-page-banner .banner-headline {
-  font-size: 72px;
+.banners #products-page-banner .banner-headline, .banners #awards-page-banner .banner-headline, .banners #news-page-banner .banner-headline, .banners #gallery-page-banner .banner-headline {
+  font-size: 48px;
+}
+@media only screen and (min-width: 768px) {
+  .banners #products-page-banner .banner-headline, .banners #awards-page-banner .banner-headline, .banners #news-page-banner .banner-headline, .banners #gallery-page-banner .banner-headline {
+    font-size: 72px;
+  }
 }
 
 .page-galleries {
@@ -209,12 +207,26 @@
 
 #gallery h2 {
   text-align: center;
-  font-size: 72px;
-  margin-top: 25px;
-  padding-top: 50px;
+  font-size: 48px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-top: 40px;
   border-top: 1px solid #B24629;
-  margin-bottom: 40px;
   font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  #gallery h2 {
+    font-size: 62px;
+    margin-top: 25px;
+    margin-bottom: 40px;
+  }
+}
+@media only screen and (min-width: 1010px) {
+  #gallery h2 {
+    font-size: 72px;
+    padding-top: 50px;
+  }
 }
 #gallery .page-galleries {
   display: flex;
@@ -476,6 +488,9 @@
   letter-spacing: 0;
 }
 
+.container {
+  margin: 0 20px;
+}
 @media only screen and (min-width: 1010px) {
   .container {
     width: 1005px;
@@ -488,8 +503,13 @@
   margin-bottom: 0;
 }
 main#content .container {
-  margin-top: 80px;
+  margin-top: 40px;
   margin-bottom: 40px;
+}
+@media only screen and (min-width: 768px) {
+  main#content .container {
+    margin-top: 80px;
+  }
 }
 .container h1 {
   font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
@@ -530,6 +550,10 @@ main#content .container {
   margin-bottom: 10px;
 }
 
+.page-content.standard-page {
+  display: flex;
+  flex-flow: row wrap;
+}
 .page-content:after {
   content: "";
   clear: both;
@@ -538,16 +562,33 @@ main#content .container {
   display: block;
 }
 .page-content .page-image {
-  float: right;
-  padding-left: 75px;
-  width: 334px;
+  order: 2;
+  width: 100%;
+  text-align: center;
+}
+@media only screen and (min-width: 1010px) {
+  .page-content .page-image {
+    padding-left: 75px;
+    width: 334px;
+  }
 }
 .page-content .page-image img {
-  width: 334px;
+  width: 300px;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 1010px) {
+  .page-content .page-image img {
+    width: 334px;
+  }
 }
 .page-content .page-text {
-  float: left;
-  width: 596px;
+  order: 1;
+  width: 100%;
+}
+@media only screen and (min-width: 1010px) {
+  .page-content .page-text {
+    width: 596px;
+  }
 }
 .page-content .page-text h1 {
   margin-bottom: 20px;

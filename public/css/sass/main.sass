@@ -61,20 +61,19 @@
     &.oils-banner
       background-image: url('/images/banners/olive-oil-banner.jpg')
     .banner-headline
-      font-size: 72px
       text-transform: capitalize
   #awards-page-banner
     background-image: url('/images/banners/news-banner.jpg')
-    .banner-headline
-      font-size: 72px
   #news-page-banner
     background-image: url('/images/banners/news-banner-alt.jpg')
-    .banner-headline
-      font-size: 72px
   #gallery-page-banner
     background-image: url('/images/banners/contact_banner_photo_blur.png')
+
+  #products-page-banner, #awards-page-banner, #news-page-banner, #gallery-page-banner
     .banner-headline
-      font-size: 72px
+      font-size: 48px
+      @include breakpoint($tablet)
+        font-size: 72px
 
 .page-galleries
   margin-top: 25px
@@ -100,12 +99,21 @@
 #gallery
   h2
     text-align: center
-    font-size: 72px
-    margin-top: 25px
-    padding-top: 50px
+    font-size: 48px
+    margin-top: 20px
+    margin-bottom: 10px
+    padding-top: 40px
     border-top: 1px solid $copper
-    margin-bottom: 40px
     font-family: $handwriting
+    width: 100%
+    @include breakpoint($tablet)
+      font-size: 62px
+      margin-top: 25px
+      margin-bottom: 40px
+    @include breakpoint($desktop)
+      font-size: 72px
+      padding-top: 50px
+
   .page-galleries
     display: flex
     flex-flow: row wrap
@@ -314,6 +322,7 @@
 // Content Work
 
 .container
+  margin: 0 20px
   @include breakpoint($desktop)
     width: $medium-width
     margin: 0 auto
@@ -322,8 +331,10 @@
     margin-top: 0
     margin-bottom: 0
   main#content &
-    margin-top: 80px
+    margin-top: 40px
     margin-bottom: 40px
+    @include breakpoint($tablet)
+      margin-top: 80px
   h1
     font-family: $handwriting
     font-size: 52px
@@ -351,6 +362,9 @@
       margin-bottom: 10px
 
 .page-content
+  &.standard-page
+    display: flex
+    flex-flow: row wrap
   &:after
     content: ""
     clear: both
@@ -358,14 +372,22 @@
     height: 1px
     display: block
   .page-image
-    float: right
-    padding-left: 75px
-    width: 334px
-    img
+    order: 2
+    width: 100%
+    text-align: center
+    @include breakpoint($desktop)
+      padding-left: 75px
       width: 334px
+    img
+      width: 300px
+      margin: 0 auto
+      @include breakpoint($desktop)
+        width: 334px
   .page-text
-    float: left
-    width: 596px
+    order: 1
+    width: 100%
+    @include breakpoint($desktop)
+      width: 596px
     h1
       margin-bottom: 20px
       @include breakpoint($desktop)
