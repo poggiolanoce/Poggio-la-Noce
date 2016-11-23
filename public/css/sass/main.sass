@@ -876,6 +876,11 @@
 // Contact Page
 
 #contact
+  iframe
+    max-width: 100%
+    max-height: 300px
+    @include breakpoint($tablet)
+      max-height: inherit
   .prefer_email
     clear: both
     padding-top: 30px
@@ -904,11 +909,12 @@
         margin-bottom: 0
   form
     margin-top: 20px
-    .form-left
-      float: left
-      width: 240px
-    .form-right
-      float: left
+    position: relative
+    .message
+      @include breakpoint($tablet)
+        position: absolute
+        left: 240px
+        top: 0
     #location
       display: none
   label, input, button, select, textarea
@@ -918,7 +924,6 @@
   .required
     color: red
     padding-left: 5px
-
   input[type="submit"]
     -webkit-appearance: button
     display: block
@@ -935,11 +940,9 @@
     font-family: $serif
     margin-top: 10px
     width: 220px
-
   label
     display: block
     margin-bottom: 5px
-
   select, textarea
     display: inline-block
     height: 20px
@@ -950,17 +953,21 @@
     color: #555555
     vertical-align: middle
 
-
   input
     &[type="text"], &[type="password"], &[type="datetime"], &[type="datetime-local"], &[type="date"], &[type="month"], &[type="time"], &[type="week"], &[type="number"], &[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="color"]
       display: inline-block
-      height: 20px
+      height: 28px
       padding: 4px 6px
       margin-bottom: 10px
       font-size: 14px
       line-height: 20px
       color: #555555
       vertical-align: middle
+      box-sizing: border-box
+      width: 100%
+      max-width: 354px
+      @include breakpoint($tablet)
+        width: 218px
 
   input
     width: 206px

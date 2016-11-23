@@ -1217,6 +1217,15 @@ main#content .container {
   text-align: center;
 }
 
+#contact iframe {
+  max-width: 100%;
+  max-height: 300px;
+}
+@media only screen and (min-width: 768px) {
+  #contact iframe {
+    max-height: inherit;
+  }
+}
 #contact .prefer_email {
   clear: both;
   padding-top: 30px;
@@ -1254,13 +1263,14 @@ main#content .container {
 }
 #contact form {
   margin-top: 20px;
+  position: relative;
 }
-#contact form .form-left {
-  float: left;
-  width: 240px;
-}
-#contact form .form-right {
-  float: left;
+@media only screen and (min-width: 768px) {
+  #contact form .message {
+    position: absolute;
+    left: 240px;
+    top: 0;
+  }
 }
 #contact form #location {
   display: none;
@@ -1307,13 +1317,21 @@ main#content .container {
 }
 #contact input[type="text"], #contact input[type="password"], #contact input[type="datetime"], #contact input[type="datetime-local"], #contact input[type="date"], #contact input[type="month"], #contact input[type="time"], #contact input[type="week"], #contact input[type="number"], #contact input[type="email"], #contact input[type="url"], #contact input[type="search"], #contact input[type="tel"], #contact input[type="color"] {
   display: inline-block;
-  height: 20px;
+  height: 28px;
   padding: 4px 6px;
   margin-bottom: 10px;
   font-size: 14px;
   line-height: 20px;
   color: #555555;
   vertical-align: middle;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 354px;
+}
+@media only screen and (min-width: 768px) {
+  #contact input[type="text"], #contact input[type="password"], #contact input[type="datetime"], #contact input[type="datetime-local"], #contact input[type="date"], #contact input[type="month"], #contact input[type="time"], #contact input[type="week"], #contact input[type="number"], #contact input[type="email"], #contact input[type="url"], #contact input[type="search"], #contact input[type="tel"], #contact input[type="color"] {
+    width: 218px;
+  }
 }
 #contact input {
   width: 206px;
