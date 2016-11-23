@@ -328,6 +328,16 @@
       list-style: disc
       margin-bottom: 10px
 
+%wine-splat
+  content: ""
+  display: block
+  background-image: image-url('site/wine-splat.png')
+  background-position: 0 0
+  background-repeat: no-repeat
+  position: absolute
+  top: 110px
+  z-index: 0
+
 .page-content
   &:after
     content: ""
@@ -512,18 +522,11 @@
     img
       width: 195px
     &:before
-      content: ""
-      display: block
+      @extend %wine-splat
       width: 458px
       height: 454px
-      background-image: image-url('site/wine-splat.png')
-      background-position: 0 0
-      background-repeat: no-repeat
       background-size: 458px 454px
-      position: absolute
       right: -90px
-      top: 110px
-      z-index: 0
   .product-navigation
     padding-top: 35px
     display: -webkit-box
@@ -545,45 +548,91 @@
 
 #awards
   .awards-list
+    .award-title
+      font-size: 72px
+      font-family: $handwriting
+      margin-bottom: 30px
     li
-      @include box-sizing('border-box')
-      width: 49%
-      display: inline-block
-      vertical-align: top
       margin-bottom: 70px
+      list-style-type: none
       &:after
         content: ""
+        display: block
         clear: both
-      .left-image
+      .right-image
         float: left
-        margin-right: 20px
+        margin-left: 75px
+        width: 270px
+        text-align: right
         img
-          width: 137px
-          border: 2px solid #889B9F
-      .right-content
+          height: 540px
+          position: relative
+          z-index: 1
+        &:before
+          @extend %wine-splat
+          width: 345px
+          height: 400px
+          background-size: 348px auto
+          right: -80px
+      .left-content
         float: left
-        width: 296px
-      .award-date
-        font-family: $handwriting
-        font-size: 44px
-      .award-description
-        padding-bottom: 20px
-      .award-score
-        background: $orange
-        width: 60px
-        height: 60px
-        border-radius: 50%
-        display: inline-block
-        color: #fff
-        text-align: center
-        line-height: 60px
-        font-size: 36px
-        font-family: $sans
-        vertical-align: middle
-        margin-right: 10px
-      .award-giver
-        display: inline-block
-        vertical-align: middle
+        width: 660px
+        ul
+          padding: 0
+      .badges
+        a
+          text-decoration: none
+          color: #fff
+        li
+          color: #fff
+          display: inline-block
+          text-align: center
+          line-height: 160px
+          font-size: 24px
+          font-family: $sans
+          vertical-align: middle
+          position: relative
+          margin-right: 45px
+          margin-bottom: 45px
+          &:nth-child(3n)
+            margin-right: 0
+          .award-badge-body
+            height: 100%
+            display: block
+            background: $orange
+            width: 180px
+            height: 180px
+            margin: 0 auto
+            position: relative
+            border-radius: 50%
+          img
+            width: 100%
+          h2
+            font-size: 124px
+          h3
+            @include box-sizing('border-box')
+            bottom: 56px
+            position: relative
+            padding: 0 10px
+            line
+            height: 40px
+            margin-bottom: -40px
+            line-height: 34px
+            background-color: #fff
+            border-radius: 20px
+            border: $orange 4px solid
+            white-space: nowrap
+            color: #000
+
+      .quotes
+        li
+          margin-bottom: 40px
+          p
+            font-size: 18px
+            margin-bottom: 20px
+          h3
+            font-size: 28px
+            font-family: $sans
 
 // News Page
 
