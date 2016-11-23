@@ -614,17 +614,20 @@ main#content .container {
   order: 2;
   width: 100%;
   text-align: center;
+  margin-top: 25px;
 }
 @media only screen and (min-width: 1010px) {
   .page-content .page-image {
     padding-left: 75px;
     width: 334px;
+    margin-top: 0;
   }
 }
 .page-content .page-image > img {
   width: 300px;
   margin: 0 auto;
   margin-bottom: 25px;
+  display: block;
 }
 @media only screen and (min-width: 1010px) {
   .page-content .page-image > img {
@@ -919,8 +922,8 @@ main#content .container {
 @media only screen and (min-width: 768px) {
   .product-page-content .wine-page-image {
     order: 2;
-    width: 80px;
     flex-grow: 1;
+    width: 195px;
   }
 }
 @media only screen and (min-width: 1010px) {
@@ -940,13 +943,14 @@ main#content .container {
 @media only screen and (min-width: 768px) {
   .product-page-content .wine-page-image img {
     width: 195px;
-    margin: 0 auto;
     position: relative;
+    float: right;
   }
 }
 @media only screen and (min-width: 1010px) {
   .product-page-content .wine-page-image img {
-    margin: 0;
+    float: none;
+    margin: 0 auto;
   }
 }
 .product-page-content .product-page-text {

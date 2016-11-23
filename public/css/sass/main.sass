@@ -410,13 +410,16 @@
     order: 2
     width: 100%
     text-align: center
+    margin-top: 25px
     @include breakpoint($desktop)
       padding-left: 75px
       width: 334px
+      margin-top: 0
     & > img
       width: 300px
       margin: 0 auto
       margin-bottom: 25px
+      display: block
       @include breakpoint($desktop)
         width: 334px
   .page-text
@@ -629,8 +632,8 @@
       display: none
     @include breakpoint($tablet)
       order: 2
-      width: 80px
       flex-grow: 1
+      width: 195px
     @include breakpoint($desktop)
       padding-left: 75px
       width: 334px
@@ -642,10 +645,11 @@
       margin-bottom: 0
       @include breakpoint($tablet)
         width: 195px
-        margin: 0 auto
         position: relative
+        float: right
       @include breakpoint($desktop)
-        margin: 0
+        float: none
+        margin: 0 auto
   .product-page-text
     width: 100%
     @include breakpoint($tablet)
