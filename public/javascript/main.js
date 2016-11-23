@@ -55,7 +55,7 @@
       });
     });
     $pressed_button = false;
-    $trigger_requirements = $('.buy');
+    $trigger_requirements = $('.buy:not(.unrestricted)');
     $requirement_inputs = $('.agreement input');
     $age_confirmed = $('.shipping-confirmation-confirm');
     ageGate = function(e) {

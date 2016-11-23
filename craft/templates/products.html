@@ -17,7 +17,7 @@
     {% if oils | length > 0 %}
     <ul>
     {% for item in oils %}
-      {% include 'partials/product_preview.html' %}
+      {% include 'partials/product_preview.html' with {'unrestricted': true} %}
     {% endfor %}
     </ul>
     {% endif %}

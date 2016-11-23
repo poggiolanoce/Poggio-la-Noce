@@ -183,8 +183,9 @@
   }
 }
 
-.page-galleries {
-  margin-top: 25px;
+img + .page-galleries {
+  padding-top: 25px;
+  border-top: 1px solid #B24629;
 }
 .page-galleries [data-gallery] {
   cursor: pointer;
@@ -192,13 +193,15 @@
 .page-galleries [data-gallery] .gallery-description {
   display: inline-block;
   vertical-align: middle;
+  width: 200px;
 }
 .page-galleries [data-gallery] .gallery-description h4 {
-  font-size: 28px;
+  font-size: 24px;
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
 }
 .page-galleries [data-gallery] .gallery-description p {
   font-size: 14px;
+  line-height: 20px;
   margin-bottom: 0;
 }
 .page-galleries [data-gallery] img {
@@ -206,7 +209,7 @@
   vertical-align: middle;
   vertical-align: middle;
   display: inline-block;
-  width: 100px;
+  width: 110px;
   margin-right: 15px;
 }
 
@@ -240,10 +243,16 @@
   margin-left: -25px;
   justify-content: center;
   overflow: hidden;
+  border-top: none;
+  margin-top: 25px;
+  padding-top: 0;
 }
 #gallery .page-galleries [data-gallery] {
   width: 300px;
   margin: 0 25px 40px 25px;
+}
+#gallery .page-galleries .gallery-description {
+  width: auto;
 }
 #gallery .page-galleries img {
   width: 100%;
@@ -254,6 +263,7 @@
 }
 #gallery .page-galleries h4 {
   margin-bottom: 5px;
+  font-size: 28px;
 }
 #gallery .page-galleries p {
   line-height: 22px;
@@ -578,6 +588,17 @@ main#content .container {
   margin-bottom: 10px;
 }
 
+.product-page-content .wine-page-image:before, #awards .awards-list li .right-image:before {
+  content: "";
+  display: block;
+  background-image: url("/images/site/wine-splat.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 110px;
+  z-index: 0;
+}
+
 .page-content.standard-page {
   display: flex;
   flex-flow: row wrap;
@@ -600,12 +621,13 @@ main#content .container {
     width: 334px;
   }
 }
-.page-content .page-image img {
+.page-content .page-image > img {
   width: 300px;
   margin: 0 auto;
+  margin-bottom: 25px;
 }
 @media only screen and (min-width: 1010px) {
-  .page-content .page-image img {
+  .page-content .page-image > img {
     width: 334px;
   }
 }
@@ -617,6 +639,9 @@ main#content .container {
   .page-content .page-text {
     width: 596px;
   }
+}
+.page-content .page-text img {
+  max-width: 100%;
 }
 .page-content .page-text h1 {
   margin-bottom: 20px;
@@ -884,6 +909,13 @@ main#content .container {
   position: relative;
   order: 0;
 }
+.product-page-content .wine-page-image:before {
+  width: 458px;
+  height: 454px;
+  background-size: 458px 454px;
+  right: -90px;
+  display: none;
+}
 @media only screen and (min-width: 768px) {
   .product-page-content .wine-page-image {
     order: 2;
@@ -897,23 +929,13 @@ main#content .container {
     width: 334px;
   }
   .product-page-content .wine-page-image:before {
-    content: "";
     display: block;
-    width: 458px;
-    height: 454px;
-    background-image: url("/images/site/wine-splat.png");
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    background-size: 458px 454px;
-    position: absolute;
-    right: -90px;
-    top: 110px;
-    z-index: 0;
   }
 }
 .product-page-content .wine-page-image img {
   width: 100px;
   position: relative;
+  margin-bottom: 0;
 }
 @media only screen and (min-width: 768px) {
   .product-page-content .wine-page-image img {
@@ -955,53 +977,103 @@ main#content .container {
   content: "»";
 }
 
+#awards .awards-list .award-title {
+  font-size: 72px;
+  font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
+  margin-bottom: 30px;
+}
 #awards .awards-list li {
-  box-sizing: border-box;
-  width: 49%;
-  display: inline-block;
-  vertical-align: top;
   margin-bottom: 70px;
+  list-style-type: none;
 }
 #awards .awards-list li:after {
   content: "";
+  display: block;
   clear: both;
 }
-#awards .awards-list li .left-image {
+#awards .awards-list li .right-image {
   float: left;
-  margin-right: 20px;
+  margin-left: 75px;
+  width: 270px;
+  text-align: right;
 }
-#awards .awards-list li .left-image img {
-  width: 137px;
-  border: 2px solid #889B9F;
+#awards .awards-list li .right-image img {
+  height: 540px;
+  position: relative;
+  z-index: 1;
 }
-#awards .awards-list li .right-content {
+#awards .awards-list li .right-image:before {
+  width: 345px;
+  height: 400px;
+  background-size: 348px auto;
+  right: -80px;
+}
+#awards .awards-list li .left-content {
   float: left;
-  width: 296px;
+  width: 660px;
 }
-#awards .awards-list li .award-date {
-  font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
-  font-size: 44px;
+#awards .awards-list li .left-content ul {
+  padding: 0;
 }
-#awards .awards-list li .award-description {
-  padding-bottom: 20px;
-}
-#awards .awards-list li .award-score {
-  background: #ED8F17;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: inline-block;
+#awards .awards-list li .badges a {
+  text-decoration: none;
   color: #fff;
+}
+#awards .awards-list li .badges li {
+  color: #fff;
+  display: inline-block;
   text-align: center;
-  line-height: 60px;
-  font-size: 36px;
+  line-height: 160px;
+  font-size: 24px;
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
   vertical-align: middle;
-  margin-right: 10px;
+  position: relative;
+  margin-right: 45px;
+  margin-bottom: 45px;
 }
-#awards .awards-list li .award-giver {
-  display: inline-block;
-  vertical-align: middle;
+#awards .awards-list li .badges li:nth-child(3n) {
+  margin-right: 0;
+}
+#awards .awards-list li .badges li .award-badge-body {
+  height: 100%;
+  display: block;
+  background: #ED8F17;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 50%;
+}
+#awards .awards-list li .badges li img {
+  width: 100%;
+}
+#awards .awards-list li .badges li h2 {
+  font-size: 124px;
+}
+#awards .awards-list li .badges li h3 {
+  box-sizing: border-box;
+  bottom: 56px;
+  position: relative;
+  padding: 0 10px;
+  height: 40px;
+  margin-bottom: -40px;
+  line-height: 34px;
+  background-color: #fff;
+  border-radius: 20px;
+  border: #ED8F17 4px solid;
+  white-space: nowrap;
+  color: #000;
+}
+#awards .awards-list li .quotes li {
+  margin-bottom: 40px;
+}
+#awards .awards-list li .quotes li p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+#awards .awards-list li .quotes li h3 {
+  font-size: 28px;
+  font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
 }
 
 #news .container h1 {
