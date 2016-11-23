@@ -981,6 +981,16 @@ main#content .container {
   content: "»";
 }
 
+#awards .awards-list {
+  margin-top: -140px;
+  text-align: center;
+}
+@media only screen and (min-width: 768px) {
+  #awards .awards-list {
+    margin-top: 0;
+    text-align: left;
+  }
+}
 #awards .awards-list .award-title {
   font-size: 72px;
   font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
@@ -989,32 +999,74 @@ main#content .container {
 #awards .awards-list li {
   margin-bottom: 70px;
   list-style-type: none;
-}
-#awards .awards-list li:after {
-  content: "";
-  display: block;
-  clear: both;
+  display: flex;
+  flex-flow: row wrap;
 }
 #awards .awards-list li .right-image {
-  float: left;
-  margin-left: 75px;
-  width: 270px;
-  text-align: right;
+  order: 1;
+  flex-grow: 1;
+  text-align: center;
+  margin-bottom: 20px;
+}
+@media only screen and (min-width: 768px) {
+  #awards .awards-list li .right-image {
+    text-align: right;
+    flex-grow: inherit;
+    order: 2;
+    width: 180px;
+    margin-bottom: 0;
+  }
+}
+@media only screen and (min-width: 1010px) {
+  #awards .awards-list li .right-image {
+    margin-left: 75px;
+    width: 270px;
+  }
 }
 #awards .awards-list li .right-image img {
-  height: 540px;
+  width: 100px;
+  margin: 0 auto;
   position: relative;
   z-index: 1;
+}
+@media only screen and (min-width: 768px) {
+  #awards .awards-list li .right-image img {
+    width: 140px;
+    margin: 0;
+    float: right;
+  }
+}
+@media only screen and (min-width: 1010px) {
+  #awards .awards-list li .right-image img {
+    float: none;
+    margin: 0 auto;
+  }
 }
 #awards .awards-list li .right-image:before {
   width: 345px;
   height: 400px;
   background-size: 348px auto;
   right: -80px;
+  display: none;
+}
+@media only screen and (min-width: 1010px) {
+  #awards .awards-list li .right-image:before {
+    display: block;
+  }
 }
 #awards .awards-list li .left-content {
-  float: left;
-  width: 660px;
+  order: 2;
+}
+@media only screen and (min-width: 768px) {
+  #awards .awards-list li .left-content {
+    order: 1;
+    width: calc(100% - 180px);
+  }
+}
+@media only screen and (min-width: 1010px) {
+  #awards .awards-list li .left-content {
+    width: 660px;
+  }
 }
 #awards .awards-list li .left-content ul {
   padding: 0;
@@ -1027,13 +1079,19 @@ main#content .container {
   color: #fff;
   display: inline-block;
   text-align: center;
-  line-height: 160px;
-  font-size: 24px;
+  line-height: 105px;
+  font-size: 20px;
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
   vertical-align: middle;
   position: relative;
   margin-right: 45px;
   margin-bottom: 45px;
+}
+@media only screen and (min-width: 1010px) {
+  #awards .awards-list li .badges li {
+    font-size: 24px;
+    line-height: 160px;
+  }
 }
 #awards .awards-list li .badges li:nth-child(3n) {
   margin-right: 0;
@@ -1042,31 +1100,51 @@ main#content .container {
   height: 100%;
   display: block;
   background: #ED8F17;
-  width: 180px;
-  height: 180px;
+  width: 120px;
+  height: 120px;
   margin: 0 auto;
   position: relative;
   border-radius: 50%;
+}
+@media only screen and (min-width: 1010px) {
+  #awards .awards-list li .badges li .award-badge-body {
+    width: 180px;
+    height: 180px;
+  }
 }
 #awards .awards-list li .badges li img {
   width: 100%;
 }
 #awards .awards-list li .badges li h2 {
-  font-size: 124px;
+  font-size: 85px;
+}
+@media only screen and (min-width: 1010px) {
+  #awards .awards-list li .badges li h2 {
+    font-size: 124px;
+  }
 }
 #awards .awards-list li .badges li h3 {
   box-sizing: border-box;
-  bottom: 56px;
+  bottom: 36px;
   position: relative;
-  padding: 0 10px;
-  height: 40px;
-  margin-bottom: -40px;
-  line-height: 34px;
+  padding: 0 5px;
+  height: 32px;
+  margin-bottom: -32px;
+  line-height: 26px;
   background-color: #fff;
   border-radius: 20px;
   border: #ED8F17 4px solid;
   white-space: nowrap;
   color: #000;
+}
+@media only screen and (min-width: 1010px) {
+  #awards .awards-list li .badges li h3 {
+    padding: 0 10px;
+    height: 40px;
+    bottom: 56px;
+    margin-bottom: -40px;
+    line-height: 34px;
+  }
 }
 #awards .awards-list li .quotes li {
   margin-bottom: 40px;
@@ -1078,6 +1156,7 @@ main#content .container {
 #awards .awards-list li .quotes li h3 {
   font-size: 28px;
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
+  width: 100%;
 }
 
 #news .container h1 {

@@ -674,6 +674,11 @@
 
 #awards
   .awards-list
+    margin-top: -140px
+    text-align: center
+    @include breakpoint($tablet)
+      margin-top: 0
+      text-align: left
     .award-title
       font-size: 72px
       font-family: $handwriting
@@ -681,28 +686,52 @@
     li
       margin-bottom: 70px
       list-style-type: none
-      &:after
-        content: ""
-        display: block
-        clear: both
+      display: flex
+      flex-flow: row wrap
       .right-image
-        float: left
-        margin-left: 75px
-        width: 270px
-        text-align: right
+        order: 1
+        flex-grow: 1
+        text-align: center
+        margin-bottom: 20px
+        @include breakpoint($tablet)
+          text-align: right
+          flex-grow: inherit
+          order: 2
+          width: 180px
+          margin-bottom: 0
+        @include breakpoint($desktop)
+          margin-left: 75px
+          width: 270px
         img
-          height: 540px
+          width: 100px
+          margin: 0 auto
           position: relative
           z-index: 1
+          @include breakpoint($tablet)
+            width: 140px
+            margin: 0
+            float: right
+          @include breakpoint($desktop)
+            float: none
+            margin: 0 auto
         &:before
           @extend %wine-splat
           width: 345px
           height: 400px
           background-size: 348px auto
           right: -80px
+          display: none
+        @include breakpoint($desktop)
+          &:before
+            display: block
+
       .left-content
-        float: left
-        width: 660px
+        order: 2
+        @include breakpoint($tablet)
+          order: 1
+          width: calc(100% - 180px)
+        @include breakpoint($desktop)
+          width: 660px
         ul
           padding: 0
       .badges
@@ -713,41 +742,55 @@
           color: #fff
           display: inline-block
           text-align: center
-          line-height: 160px
-          font-size: 24px
+          line-height: 105px
+          font-size: 20px
           font-family: $sans
           vertical-align: middle
           position: relative
           margin-right: 45px
           margin-bottom: 45px
+          @include breakpoint($desktop)
+            font-size: 24px
+            line-height: 160px
           &:nth-child(3n)
             margin-right: 0
           .award-badge-body
             height: 100%
             display: block
             background: $orange
-            width: 180px
-            height: 180px
+            width: 120px
+            height: 120px
             margin: 0 auto
             position: relative
             border-radius: 50%
+            @include breakpoint($desktop)
+              width: 180px
+              height: 180px
           img
             width: 100%
           h2
-            font-size: 124px
+            font-size: 85px
+            @include breakpoint($desktop)
+              font-size: 124px
           h3
             box-sizing: border-box
-            bottom: 56px
+            bottom: 36px
             position: relative
-            padding: 0 10px
-            height: 40px
-            margin-bottom: -40px
-            line-height: 34px
+            padding: 0 5px
+            height: 32px
+            margin-bottom: -32px
+            line-height: 26px
             background-color: #fff
             border-radius: 20px
             border: $orange 4px solid
             white-space: nowrap
             color: #000
+            @include breakpoint($desktop)
+              padding: 0 10px
+              height: 40px
+              bottom: 56px
+              margin-bottom: -40px
+              line-height: 34px
 
       .quotes
         li
@@ -758,6 +801,7 @@
           h3
             font-size: 28px
             font-family: $sans
+            width: 100%
 
 // News Page
 
