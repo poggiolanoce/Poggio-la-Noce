@@ -992,9 +992,15 @@ main#content .container {
   }
 }
 #awards .awards-list .award-title {
-  font-size: 72px;
+  font-size: 48px;
   font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+@media only screen and (min-width: 768px) {
+  #awards .awards-list .award-title {
+    font-size: 72px;
+    margin-bottom: 30px;
+  }
 }
 #awards .awards-list li {
   margin-bottom: 70px;
@@ -1071,26 +1077,39 @@ main#content .container {
 #awards .awards-list li .left-content ul {
   padding: 0;
 }
+#awards .awards-list li .badges {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+@media only screen and (min-width: 768px) {
+  #awards .awards-list li .badges {
+    justify-content: flex-start;
+    margin-left: -15px;
+  }
+}
 #awards .awards-list li .badges a {
   text-decoration: none;
   color: #fff;
 }
 #awards .awards-list li .badges li {
   color: #fff;
-  display: inline-block;
   text-align: center;
   line-height: 105px;
   font-size: 20px;
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
   vertical-align: middle;
   position: relative;
-  margin-right: 45px;
-  margin-bottom: 45px;
+  margin: 0 15px 25px 15px;
+  display: inline-block;
 }
 @media only screen and (min-width: 1010px) {
   #awards .awards-list li .badges li {
     font-size: 24px;
     line-height: 160px;
+    margin: 0;
+    margin-right: 45px;
+    margin-bottom: 45px;
   }
 }
 #awards .awards-list li .badges li:nth-child(3n) {
@@ -1127,7 +1146,7 @@ main#content .container {
   box-sizing: border-box;
   bottom: 36px;
   position: relative;
-  padding: 0 5px;
+  padding: 0 7px;
   height: 32px;
   margin-bottom: -32px;
   line-height: 26px;
