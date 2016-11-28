@@ -345,6 +345,8 @@
   position: relative
   @include breakpoint($desktop)
     overflow-x: hidden
+  #products &
+    overflow-x: visible
 
 .container
   margin: 0 20px
@@ -517,7 +519,7 @@
 #products
   .product-overview
     margin-top: -140px
-    @include breakpoint($tablet)
+    @include breakpoint($desktop)
       margin-top: -170px
     ul
       display: flex

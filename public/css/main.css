@@ -525,6 +525,9 @@ img + .page-galleries {
     overflow-x: hidden;
   }
 }
+#products #content {
+  overflow-x: visible;
+}
 
 .container {
   margin: 0 20px;
@@ -772,7 +775,7 @@ main#content .container {
 #products .product-overview {
   margin-top: -140px;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1040px) {
   #products .product-overview {
     margin-top: -170px;
   }
