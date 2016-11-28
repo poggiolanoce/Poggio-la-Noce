@@ -54,7 +54,7 @@ return array(
     "Are you 21" => "I am at least 21 years of age",
     "Are you in EU/US" => "I am shipping to an approved destination listed above",
     "Confirm" => "Confirm",
-    "Shipping Reminder" => "As a reminder, we currently only ship to the locations listed below.",
+    "Shipping Reminder" => "As a reminder, we currently only ship wine to the locations listed below.",
     "Shipping Reminder 2" => "If you do not see any available shipping options, please ensure that the shipping location is among the locations listed below.",
     "Approved US Dests" => "Destinazioni Approvati: United States",
     "Approved EU Dests" => "Destinazioni Approvato: Unione europea",
