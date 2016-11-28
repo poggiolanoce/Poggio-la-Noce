@@ -698,6 +698,10 @@ main#content .container {
   text-transform: uppercase;
   font-size: 30px;
   line-height: 68px;
+  padding-right: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .page-content .page-text h2:after {
   content: "";
