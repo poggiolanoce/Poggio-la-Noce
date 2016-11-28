@@ -61,5 +61,7 @@ return array(
     "Purchase" => "Acquistare",
     "Logout" => "Disconnettersi",
     "Login" => "Accesso",
-    "Welcome" => "Benvenuto"
+    "Welcome" => "Benvenuto",
+    "No Items" => "You have no items in your cart. Add some on the",
+    "Products page" => "products page"
 );

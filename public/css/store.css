@@ -774,6 +774,10 @@ img.product {
   display: none;
 }
 
+.no-items {
+  text-align: center;
+}
+
 .product.row {
   border-bottom: 1px solid #fafafa;
   margin-bottom: 2.5rem;
