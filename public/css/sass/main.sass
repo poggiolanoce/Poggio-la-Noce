@@ -78,15 +78,22 @@
         font-size: 72px
 
 .page-galleries
+  display: flex
+  justify-content: center
   img + &
     padding-top: 25px
     border-top: 1px solid $copper
   [data-gallery]
     cursor: pointer
+    text-align: left
+    margin: 0 5%
     .gallery-description
       display: inline-block
-      vertical-align: middle
-      width: 200px
+      width: 170px
+      vertical-align: top
+      @include breakpoint($tablet)
+        width: 200px
+        vertical-align: middle
       h4
         font-size: 24px
         font-family: $sans
@@ -99,8 +106,10 @@
       vertical-align: middle
       vertical-align: middle
       display: inline-block
-      width: 110px
+      width: 90px
       margin-right: 15px
+      @include breakpoint($tablet)
+        width: 110px
 
 #gallery
   h2
@@ -121,15 +130,13 @@
       padding-top: 50px
 
   .page-galleries
-    display: flex
     flex-flow: row wrap
     width: calc(100% + 50px)
     margin-left: -25px
-    justify-content: center
-    overflow: hidden
-    border-top: none
     margin-top: 25px
     padding-top: 0
+    overflow: hidden
+    border-top: none
     [data-gallery]
       width: 300px
       margin: 0 25px 40px 25px
@@ -421,10 +428,13 @@
       width: 334px
       margin-top: 0
     & > img
-      width: 300px
+      max-width: 100%
       margin: 0 auto
       margin-bottom: 25px
       display: block
+      @include breakpoint($tablet)
+        width: 300px
+        max-width: inherit
       @include breakpoint($desktop)
         width: 334px
   .page-text
@@ -586,8 +596,10 @@
             height: 40px
             font-size: 22px
             line-height: 42px
-            margin-left: 40px
+            margin-left: 15px
             pointer-events: none
+            @include breakpoint($tablet)
+              margin-left: 40px
           .faux-buy
             transition: all 0.1s
             position: relative
@@ -716,7 +728,7 @@
           width: 100px
           margin: 0 auto
           position: relative
-          z-index: 1
+          z-index: 0
           @include breakpoint($tablet)
             width: 140px
             margin: 0
@@ -732,6 +744,7 @@
           background-size: 348px auto
           right: -80px
           display: none
+          z-index: -1
         @include breakpoint($desktop)
           &:before
             display: block
@@ -1107,6 +1120,7 @@
 
   textarea
     width: 340px
+    max-width: calc(100% - 12px)
     height: 140px
     background-color: #ffffff
     border: 1px solid #cccccc
