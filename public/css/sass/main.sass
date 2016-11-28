@@ -162,8 +162,9 @@
   position: absolute
   z-index: 10
   top: 420px
-  left: 50%
-  transform: translateX(-50%)
+  width: 100%
+  display: flex
+  justify-content: center
   @include breakpoint($tablet)
     top: 657px
   li
@@ -171,7 +172,7 @@
     cursor: pointer
     background-color: #fff
     border-radius: 50%
-    margin-right: 8px
+    margin-right: 12px
     display: inline-block
     width: 11px
     height: 11px
