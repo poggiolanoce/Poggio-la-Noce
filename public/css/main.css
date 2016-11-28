@@ -145,7 +145,7 @@
     line-height: 58px;
   }
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   .banners .banner .banner-headline {
     font-size: 42px;
     line-height: 58px;
@@ -177,7 +177,7 @@
     font-size: 62px;
   }
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   .banners #products-page-banner .banner-headline, .banners #awards-page-banner .banner-headline, .banners #news-page-banner .banner-headline, .banners #gallery-page-banner .banner-headline {
     font-size: 72px;
   }
@@ -230,7 +230,7 @@ img + .page-galleries {
     margin-bottom: 40px;
   }
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   #gallery h2 {
     font-size: 72px;
     padding-top: 50px;
@@ -529,7 +529,7 @@ img + .page-galleries {
     margin: 0 40px;
   }
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   .container {
     width: 1005px;
     margin: 0 auto;
@@ -544,7 +544,7 @@ main#content .container {
   margin-top: 40px;
   margin-bottom: 40px;
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   main#content .container {
     margin-top: 80px;
   }
@@ -558,7 +558,7 @@ main#content .container {
     font-size: 62px;
   }
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   .container h1 {
     font-size: 72px;
   }
@@ -616,7 +616,7 @@ main#content .container {
   text-align: center;
   margin-top: 25px;
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   .page-content .page-image {
     padding-left: 75px;
     width: 334px;
@@ -629,7 +629,7 @@ main#content .container {
   margin-bottom: 25px;
   display: block;
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   .page-content .page-image > img {
     width: 334px;
   }
@@ -638,7 +638,7 @@ main#content .container {
   order: 1;
   width: 100%;
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   .page-content .page-text {
     width: 596px;
   }
@@ -649,7 +649,7 @@ main#content .container {
 .page-content .page-text h1 {
   margin-bottom: 20px;
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   .page-content .page-text h1 {
     margin-bottom: 35px;
   }
@@ -800,7 +800,7 @@ main#content .container {
     max-width: inherit;
   }
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   #products .product-overview ul li {
     width: 33%;
   }
@@ -808,7 +808,7 @@ main#content .container {
 #products .product-overview ul li img {
   height: 400px;
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   #products .product-overview ul li img {
     height: 530px;
   }
@@ -926,7 +926,7 @@ main#content .container {
     width: 195px;
   }
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   .product-page-content .wine-page-image {
     padding-left: 75px;
     width: 334px;
@@ -947,7 +947,7 @@ main#content .container {
     float: right;
   }
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   .product-page-content .wine-page-image img {
     float: none;
     margin: 0 auto;
@@ -961,7 +961,7 @@ main#content .container {
     width: calc(100% - 240px);
   }
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   .product-page-content .product-page-text {
     width: calc(100% - 410px);
   }
@@ -1013,6 +1013,7 @@ main#content .container {
   flex-grow: 1;
   text-align: center;
   margin-bottom: 20px;
+  position: relative;
 }
 @media only screen and (min-width: 768px) {
   #awards .awards-list li .right-image {
@@ -1023,7 +1024,7 @@ main#content .container {
     margin-bottom: 0;
   }
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   #awards .awards-list li .right-image {
     margin-left: 75px;
     width: 270px;
@@ -1042,7 +1043,7 @@ main#content .container {
     float: right;
   }
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   #awards .awards-list li .right-image img {
     float: none;
     margin: 0 auto;
@@ -1055,7 +1056,7 @@ main#content .container {
   right: -80px;
   display: none;
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   #awards .awards-list li .right-image:before {
     display: block;
   }
@@ -1069,7 +1070,7 @@ main#content .container {
     width: calc(100% - 180px);
   }
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   #awards .awards-list li .left-content {
     width: 660px;
   }
@@ -1088,6 +1089,11 @@ main#content .container {
     margin-left: -15px;
   }
 }
+@media only screen and (min-width: 1040px) {
+  #awards .awards-list li .badges {
+    margin-left: 0;
+  }
+}
 #awards .awards-list li .badges a {
   text-decoration: none;
   color: #fff;
@@ -1103,7 +1109,7 @@ main#content .container {
   margin: 0 15px 25px 15px;
   display: inline-block;
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   #awards .awards-list li .badges li {
     font-size: 24px;
     line-height: 160px;
@@ -1125,7 +1131,7 @@ main#content .container {
   position: relative;
   border-radius: 50%;
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   #awards .awards-list li .badges li .award-badge-body {
     width: 180px;
     height: 180px;
@@ -1137,7 +1143,7 @@ main#content .container {
 #awards .awards-list li .badges li h2 {
   font-size: 85px;
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   #awards .awards-list li .badges li h2 {
     font-size: 124px;
   }
@@ -1156,7 +1162,7 @@ main#content .container {
   white-space: nowrap;
   color: #000;
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   #awards .awards-list li .badges li h3 {
     padding: 0 10px;
     height: 40px;

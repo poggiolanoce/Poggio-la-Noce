@@ -696,6 +696,7 @@
         flex-grow: 1
         text-align: center
         margin-bottom: 20px
+        position: relative
         @include breakpoint($tablet)
           text-align: right
           flex-grow: inherit
@@ -744,6 +745,8 @@
         @include breakpoint($tablet)
           justify-content: flex-start
           margin-left: -15px
+        @include breakpoint($desktop)
+          margin-left: 0
         a
           text-decoration: none
           color: #fff

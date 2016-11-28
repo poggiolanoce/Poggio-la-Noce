@@ -2910,7 +2910,7 @@ header {
 header .header-container {
   width: 100%;
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   header .header-container {
     width: 1005px;
     margin: 0 auto;
@@ -3021,7 +3021,7 @@ nav {
     margin: 0 auto;
   }
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   .navigation {
     width: 850px;
   }
@@ -3067,7 +3067,7 @@ nav {
     font-size: 14px;
   }
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   .navigation > li > a {
     font-size: 17px;
     padding-bottom: 10px;
@@ -3197,7 +3197,7 @@ footer {
 #home footer {
   padding-top: 15px;
 }
-@media only screen and (min-width: 1010px) {
+@media only screen and (min-width: 1040px) {
   footer {
     font-size: 14px;
     line-height: 14px;
