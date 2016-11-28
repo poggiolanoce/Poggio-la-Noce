@@ -343,6 +343,8 @@
 
 #content
   position: relative
+  @include breakpoint($desktop)
+    overflow-x: hidden
 
 .container
   margin: 0 20px
@@ -706,6 +708,7 @@
         @include breakpoint($desktop)
           margin-left: 75px
           width: 270px
+          text-align: center
         img
           width: 100px
           margin: 0 auto
@@ -720,6 +723,7 @@
             margin: 0 auto
         &:before
           @extend %wine-splat
+          left: -53px
           width: 345px
           height: 400px
           background-size: 348px auto
