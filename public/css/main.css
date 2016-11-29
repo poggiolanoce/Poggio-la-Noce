@@ -187,6 +187,7 @@
 
 .page-galleries {
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
 }
 img + .page-galleries {
@@ -196,7 +197,13 @@ img + .page-galleries {
 .page-galleries [data-gallery] {
   cursor: pointer;
   text-align: left;
-  margin: 0 5%;
+  margin: 0 5% 10px 5%;
+}
+@media only screen and (min-width: 768px) {
+  .page-galleries [data-gallery] {
+    margin: 0;
+    margin-bottom: 25px;
+  }
 }
 .page-galleries [data-gallery] .gallery-description {
   display: inline-block;
