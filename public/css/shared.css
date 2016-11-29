@@ -2918,7 +2918,12 @@ header .header-container {
   }
 }
 header .header-body {
-  height: 360px;
+  height: 320px;
+}
+@media only screen and (min-width: 768px) {
+  header .header-body {
+    height: 360px;
+  }
 }
 
 .mobile-controls {

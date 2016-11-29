@@ -29,7 +29,7 @@
   .banner
     box-sizing: border-box
     display: block
-    padding-top: 115px
+    padding-top: 120px
     height: 100%
     background-size: cover
     background-position: center center
@@ -40,22 +40,20 @@
       margin: 0 auto
       position: relative
       display: table
-      height: 93%
+      height: 98%
     .banner-headline
       font-family: $handwriting
-      font-size: 30px
-      line-height: 40px
+      font-size: 48px
+      line-height: 50px
       display: table-cell
       vertical-align: middle
       text-align: center
-      padding: 0 20px
       @include breakpoint($tablet)
-        padding: 0 100px
-        font-size: 36px
-        line-height: 58px
+        font-size: 60px
+        line-height: 70px
       @include breakpoint($desktop)
-        font-size: 42px
-        line-height: 58px
+        font-size: 72px
+        line-height: 80px
   #products-page-banner
     background-image: url('/images/banners/wine-banner.jpg')
     &.oils-banner
@@ -68,14 +66,6 @@
     background-image: url('/images/banners/news-banner-alt.jpg')
   #gallery-page-banner
     background-image: url('/images/banners/contact_banner_photo_blur.png')
-
-  #products-page-banner, #awards-page-banner, #news-page-banner, #gallery-page-banner
-    .banner-headline
-      font-size: 48px
-      @include breakpoint($tablet)
-        font-size: 62px
-      @include breakpoint($desktop)
-        font-size: 72px
 
 .page-galleries
   display: flex
