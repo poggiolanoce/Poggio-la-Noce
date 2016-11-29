@@ -48,6 +48,7 @@
   {% include 'partials/header.html' %}
 
   <!-- Inherited Main Content -->
+  {% if craft.request.getSegment(1) %}
   <main id="content" role="main">
     <div class="container">
       {% block content %}
@@ -55,6 +56,7 @@
       {% endblock %}
     </div>
   </main>
+  {% endif %}
 
   <!-- Age/Shipping Confirmation -->
   {% include 'partials/confirmation_modal.html' %}

@@ -3230,7 +3230,6 @@ footer ul {
 @media only screen and (min-width: 1140px) {
   footer ul {
     margin: 0;
-    margin-bottom: 10px;
     width: inherit;
   }
 }
