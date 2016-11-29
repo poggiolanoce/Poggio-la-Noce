@@ -3193,15 +3193,25 @@ footer {
   text-align: center;
   text-transform: uppercase;
   font-size: 13px;
+  border-top: 1px solid #B24629;
+  margin: 0 20px;
+  padding-top: 20px;
 }
 #home footer {
   padding-top: 15px;
 }
+@media only screen and (min-width: 768px) {
+  footer {
+    margin: 0 40px;
+  }
+}
 @media only screen and (min-width: 1040px) {
   footer {
+    border-top: none;
     font-size: 14px;
     line-height: 14px;
-    padding-top: 40px;
+    padding-top: 60px;
+    margin: 0;
     margin-bottom: 50px;
   }
 }
