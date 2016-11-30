@@ -25,34 +25,37 @@
 
   <article class="page-content">
 
-      <div class="page-galleries">
-      {% for gallery in photoGalleries %}
-        {% include 'partials/gallery_launcher.html' with {
-          'title': gallery.galleryTitle,
-          'description': gallery.galleryDescription,
-          'prefix': 'photo-gallery',
-          'imageTransform': 'galleryThumbLarge',
-          'asset': gallery.galleryImages.first()
-        }%}
-        {% include 'partials/gallery.html' with { 'type': 'photo' } %}
+      {% if photoGalleries|length > 0 %}
+        <div class="page-galleries">
+        {% for gallery in photoGalleries %}
+          {% include 'partials/gallery_launcher.html' with {
+            'title': gallery.galleryTitle,
+            'description': gallery.galleryDescription,
+            'prefix': 'photo-gallery',
+            'imageTransform': 'galleryThumbLarge',
+            'asset': gallery.galleryImages.first()
+          }%}
+          {% include 'partials/gallery.html' with { 'type': 'photo' } %}
         {% endfor %}
-      </div>
+        </div>
+      {% endif %}
 
-      <h2>Video Albums</h2>
+      {% if videoGalleries|length > 0 %}
+        <h2>Video Albums</h2>
 
-      <div class="page-galleries video-galleries">
-      {% for gallery in videoGalleries %}
-        {% include 'partials/gallery_launcher.html' with {
-          'title': gallery.galleryTitle,
-          'description': gallery.galleryDescription,
-          'prefix': 'video-gallery',
-          'imageTransform': 'galleryThumbVideo',
-          'asset': gallery.galleryPreviewImage.first()
-        }%}
-        {% include 'partials/gallery.html' with { 'type': 'video' } %}
-      {% endfor %}
-      </div>
-
+        <div class="page-galleries video-galleries">
+        {% for gallery in videoGalleries %}
+          {% include 'partials/gallery_launcher.html' with {
+            'title': gallery.galleryTitle,
+            'description': gallery.galleryDescription,
+            'prefix': 'video-gallery',
+            'imageTransform': 'galleryThumbVideo',
+            'asset': gallery.galleryPreviewImage.first()
+          }%}
+          {% include 'partials/gallery.html' with { 'type': 'video' } %}
+        {% endfor %}
+        </div>
+      {% endif %}
 
   </article>
 
