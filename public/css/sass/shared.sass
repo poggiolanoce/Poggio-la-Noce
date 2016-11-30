@@ -72,6 +72,7 @@ nav
   left: 50%
   margin-left: -112px
   top: 24px
+  z-index: 2
   @include breakpoint($tablet)
     top: 8px
   h1, h3
@@ -93,9 +94,9 @@ nav
   left: 0
   right: 0
   text-align: center
-  z-index: 1
   .open &
     display: block
+    z-index: 3
   @include breakpoint($tablet)
     padding-top: 93px
     display: block
