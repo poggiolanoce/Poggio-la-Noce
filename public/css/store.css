@@ -27,16 +27,18 @@
   .featherlight .featherlight-content {
     text-align: left;
     vertical-align: middle;
-    display: inline-block;
-    overflow: auto;
+    display: inline-flex;
+    overflow: hidden;
     min-width: 30%;
     margin-left: 5%;
     margin-right: 5%;
-    max-height: 85%;
-    max-width: 85%;
-    background: #fff;
+    height: 85%;
+    width: 85%;
     cursor: auto;
     white-space: normal;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
   .featherlight .featherlight-inner {
     display: block;
@@ -44,14 +46,14 @@
   .featherlight .featherlight-close-icon {
     position: absolute;
     z-index: 9999;
-    top: 50px;
-    right: 50px;
+    top: 20px;
+    right: 20px;
     line-height: 22px;
     width: 22px;
     cursor: pointer;
     text-align: center;
     text-indent: -10000px;
-    background: image-url("site/close.svg") no-repeat 0 0;
+    background: url("/images/site/close.svg") no-repeat 0 0;
   }
   .featherlight .featherlight-image {
     width: 100%;
