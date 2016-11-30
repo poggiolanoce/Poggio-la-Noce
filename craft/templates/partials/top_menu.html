@@ -12,15 +12,7 @@
 
   {% if display_menu %}
   <div class="options-menu">
-    {% set pageUri = craft.request.url|replace(siteUrl, '') %}
-    <ul class="localization">
-      <li {% if craft.locale == 'en_us' %}class="active"{% endif %}>
-        <a href="{{ craft.config.siteUrl['en_us'] ~ pageUri }}" >EN</a>
-      </li>
-      <li {% if craft.locale == 'it' %}class="active"{% endif %}>
-        <a href="{{ craft.config.siteUrl['it'] ~ pageUri }}" >ITA</a>
-      </li>
-    </ul>
+    {% include 'partials/language_portal' %}
     <div class="cart">
       <a class="{% if craft.request.getSegment(1) == 'cart' %}button-primary{% endif %}" href="{{ url('commerce/cart') }}">
         <i class="fa fa-shopping-cart"></i> {{ "Cart"|t }} <span>{{ cart.totalQty }}</span>

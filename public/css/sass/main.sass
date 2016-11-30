@@ -1,16 +1,26 @@
-@import "compass/css3"
-@import "compass/utilities"
-
 @import "_mixins"
 @import "_variables"
+@import "_breakpoints"
 
 .banners
   height: 100%
   position: relative
   z-index: 0
   #home &
-    .banner .banner-cta
-      bottom: 165px
+    .banner
+      .banner-headline-container
+        height: 93%
+      .banner-headline
+        font-size: 32px
+        line-height: 42px
+        padding: 0 20px
+        @include breakpoint($tablet)
+          padding: 0 100px
+          font-size: 36px
+          line-height: 58px
+        @include breakpoint($desktop)
+          font-size: 42px
+          line-height: 58px
   #commerce &
     display: none
   &.banner_slideshow
@@ -24,14 +34,14 @@
       &.active
         opacity: 1
         z-index: 5
-        @include transition-property(opacity)
-        @include transition-duration(1s)
+        transition-property: opacity
+        transition-duration: 1s
       &.previously_active
         opacity: 1
   .banner
-    @include box-sizing('border-box')
+    box-sizing: border-box
     display: block
-    padding-top: 115px
+    padding-top: 120px
     height: 100%
     background-size: cover
     background-position: center center
@@ -42,44 +52,53 @@
       margin: 0 auto
       position: relative
       display: table
-      height: 93%
+      height: 98%
     .banner-headline
       font-family: $handwriting
-      font-size: 42px
-      line-height: 58px
+      font-size: 48px
+      line-height: 50px
       display: table-cell
       vertical-align: middle
       text-align: center
+      @include breakpoint($tablet)
+        font-size: 60px
+        line-height: 70px
+      @include breakpoint($desktop)
+        font-size: 72px
+        line-height: 80px
   #products-page-banner
-    background-image: image-url('banners/wine-banner.jpg')
+    background-image: url('/images/banners/wine-banner.jpg')
     &.oils-banner
-      background-image: image-url('banners/olive-oil-banner.jpg')
+      background-image: url('/images/banners/olive-oil-banner.jpg')
     .banner-headline
-      font-size: 72px
       text-transform: capitalize
   #awards-page-banner
-    background-image: image-url('banners/news-banner.jpg')
-    .banner-headline
-      font-size: 72px
+    background-image: url('/images/banners/news-banner.jpg')
   #news-page-banner
-    background-image: image-url('banners/news-banner-alt.jpg')
-    .banner-headline
-      font-size: 72px
+    background-image: url('/images/banners/news-banner-alt.jpg')
   #gallery-page-banner
-    background-image: image-url('banners/contact_banner_photo_blur.png')
-    .banner-headline
-      font-size: 72px
+    background-image: url('/images/banners/contact_banner_photo_blur.png')
 
 .page-galleries
+  display: flex
+  flex-flow: row wrap
+  justify-content: center
   img + &
     padding-top: 25px
     border-top: 1px solid $copper
   [data-gallery]
     cursor: pointer
+    text-align: left
+    margin: 0 5% 25px 5%
+    @include breakpoint($tablet)
+      margin: 0
     .gallery-description
       display: inline-block
-      vertical-align: middle
-      width: 200px
+      width: 170px
+      vertical-align: top
+      @include breakpoint($tablet)
+        width: 200px
+        vertical-align: middle
       h4
         font-size: 24px
         font-family: $sans
@@ -92,31 +111,37 @@
       vertical-align: middle
       vertical-align: middle
       display: inline-block
-      width: 110px
+      width: 90px
       margin-right: 15px
+      @include breakpoint($tablet)
+        width: 110px
 
 #gallery
   h2
     text-align: center
-    font-size: 72px
-    margin-top: 25px
-    padding-top: 50px
+    font-size: 48px
+    margin-top: 20px
+    margin-bottom: 10px
+    padding-top: 40px
     border-top: 1px solid $copper
-    margin-bottom: 40px
     font-family: $handwriting
+    width: 100%
+    @include breakpoint($tablet)
+      font-size: 62px
+      margin-top: 25px
+      margin-bottom: 40px
+    @include breakpoint($desktop)
+      font-size: 72px
+      padding-top: 50px
+
   .page-galleries
-    display: -ms-flexbox
-    display: -webkit-flex
-    display: flex
-    -ms-flex-flow: row wrap
     flex-flow: row wrap
     width: calc(100% + 50px)
     margin-left: -25px
-    justify-content: center
-    overflow: hidden
-    border-top: none
     margin-top: 25px
     padding-top: 0
+    overflow: hidden
+    border-top: none
     [data-gallery]
       width: 300px
       margin: 0 25px 40px 25px
@@ -138,34 +163,48 @@
         height: 169px
 
 .gallery
-  width: 100%
+  iframe
+    max-width: 100%
+    max-height: 100%
   img
     max-width: 100%
+    max-height: 100%
     display: none
+    margin: 0 auto
     &.active
       display: block
 
 .dots
   position: absolute
   z-index: 10
-  top: 657px
-  left: 50%
+  top: 420px
+  width: 100%
+  display: flex
+  justify-content: center
+  @include breakpoint($tablet)
+    top: 657px
   li
-    width: 22px
-    height: 22px
     display: block
     cursor: pointer
     background-color: #fff
     border-radius: 50%
-    margin-right: 8px
+    margin-right: 12px
     display: inline-block
+    width: 11px
+    height: 11px
     &:last-child
       margin-right: 0
     &.active
       border: 3px solid #fff
-      width: 16px
-      height: 16px
       background-color: transparent
+      width: 5px
+      height: 5px
+    @include breakpoint($tablet)
+      width: 22px
+      height: 22px
+      &.active
+        width: 16px
+        height: 16px
 
 .arrows
   position: absolute
@@ -175,19 +214,23 @@
   margin-top: -30px
   width: 100%
   li
-    width: 32px
-    height: 60px
+    width: 16px
+    height: 30px
+    background-size: auto 30px
     display: block
     position: absolute
     @include hr-image('../images/site/arrows.png', '../images/site/arrows@2x.png')
-    background-size: auto 60px
     background-repeat: no-repeat
     text-indent: -10000px
     cursor: pointer
-    @include transition-property(opacity)
-    @include transition-duration(0.2s)
+    transition-property: opacity
+    transition-duration: 0.2s
     &:hover
       opacity: 0.6
+    @include breakpoint($tablet)
+      width: 32px
+      height: 60px
+      background-size: auto 60px
   li.previous
     background-position: top left
     left: 20px
@@ -204,6 +247,12 @@
       opacity: 1
       display: block
 
+@include breakpoint($phone-only)
+  #home
+    .arrows
+      top: 427px
+      margin-top: -15px
+
 // Hidden video inside banners
 
 .hidden-video
@@ -213,6 +262,14 @@
 
 .hidden-gallery
   display: none
+  .arrows
+    top: 50%
+    @include breakpoint($phone-only)
+      margin-top: -15px
+      li.previous
+        left: 10%
+      li.next
+        right: 10%
 
 .shipping-confirmation
   max-width: 768px
@@ -228,13 +285,13 @@
     position: absolute
     right: 35px
     top: 35px
-    background: image-url('site/close_black.svg') 0 0 no-repeat
+    background: url('/images/site/close_black.svg') 0 0 no-repeat
   h2
     font-size: 36px
     margin-bottom: 22px
     font-family: $sans
   h3
-    @include box-sizing('border-box')
+    box-sizing: border-box
     font-family: $sans
     color: $copper
     text-transform: uppercase
@@ -282,10 +339,7 @@
       &.active
         display: block
     ul
-      display: -ms-flexbox
-      display: -webkit-flex
       display: flex
-      -ms-flex-flow: row wrap
       flex-flow: row wrap
       margin-top: 15px
       max-height: 95px
@@ -295,8 +349,6 @@
       padding-bottom: 15px
       color: $copper
       font-size: 14px
-      -webkit-box-flex: 0
-      -ms-flex: 0 1 20%
       flex: 0 1 20%
   .shipping-confirmation-confirm
     @extend %button
@@ -306,19 +358,36 @@
 
 // Content Work
 
-.container
-  width: $medium-width
-  margin: 0 auto
+#content
   position: relative
+  @include breakpoint($desktop)
+    overflow-x: hidden
+  #products &
+    overflow-x: visible
+
+.container
+  margin: 0 20px
+  min-height: 35vh
+  @include breakpoint($tablet)
+    margin: 0 40px
+  @include breakpoint($desktop)
+    width: $medium-width
+    margin: 0 auto
+    position: relative
   #home main#content &
     margin-top: 0
     margin-bottom: 0
   main#content &
-    margin-top: 80px
-    margin-bottom: 40px
+    margin-top: 40px
+    @include breakpoint($desktop)
+      margin-top: 80px
   h1
     font-family: $handwriting
-    font-size: 72px
+    font-size: 52px
+    @include breakpoint($tablet)
+      font-size: 62px
+    @include breakpoint($desktop)
+      font-size: 72px
   #wine h1
     font-size: 94px
   p
@@ -341,7 +410,7 @@
 %wine-splat
   content: ""
   display: block
-  background-image: image-url('site/wine-splat.png')
+  background-image: url('/images/site/wine-splat.png')
   background-position: 0 0
   background-repeat: no-repeat
   position: absolute
@@ -349,6 +418,9 @@
   z-index: 0
 
 .page-content
+  &.standard-page
+    display: flex
+    flex-flow: row wrap
   &:after
     content: ""
     clear: both
@@ -356,21 +428,37 @@
     height: 1px
     display: block
   .page-image
-    float: right
-    padding-left: 75px
-    width: 334px
-    & > img
-      margin-bottom: 25px
+    order: 2
+    width: 100%
+    text-align: center
+    margin-top: 25px
+    @include breakpoint($desktop)
+      padding-left: 75px
       width: 334px
+      margin-top: 0
+    & > img
+      max-width: 100%
+      margin: 0 auto
+      margin-bottom: 25px
+      display: block
+      @include breakpoint($tablet)
+        width: 300px
+        max-width: inherit
+      @include breakpoint($desktop)
+        width: 334px
   .page-text
-    float: left
-    width: 596px
+    order: 1
+    width: 100%
+    @include breakpoint($desktop)
+      width: 596px
     img
       max-width: 100%
     h1
-      margin-bottom: 35px
+      margin-bottom: 20px
+      @include breakpoint($desktop)
+        margin-bottom: 35px
     h2
-      @include box-sizing('border-box')
+      box-sizing: border-box
       border-top: 1px solid $copper
       border-bottom: 1px solid $copper
       margin-bottom: -1px
@@ -381,6 +469,10 @@
       text-transform: uppercase
       font-size: 30px
       line-height: 68px
+      padding-right: 50px
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
       &:after
         content: ""
         width: 25px
@@ -409,34 +501,54 @@
       display: flex
       justify-content: space-between
       .price
-        font-size: 48px
+        font-size: 40px
         flex-grow: 1
+        position: relative
+        top: 2px
+        @include breakpoint($tablet)
+          font-size: 48px
+          top: 0
       .input-group
-        margin-right: 30px
+        margin-right: 10px
+        @include breakpoint($tablet)
+          margin-right: 30px
         label
           display: block
-          font-size: 14px
+          font-size: 12px
           font-family: $serif
           padding-bottom: 2px
+          @include breakpoint($tablet)
+            font-size: 14px
       input[type=number]
-        font-size: 22px
+        font-size: 18px
         border: 1px solid rgba($text-black, 0.5)
         border-radius: 4px
         padding: 2px 4px
-        width: 60px
+        width: 40px
+        -webkit-appearance: none
+        @include breakpoint($tablet)
+          width: 60px
+          font-size: 20px
       input[type=submit]
         @extend %button
+        height: 42px
+        line-height: 44px
+        padding: 0 15px
+        font-size: 22px
+        @include breakpoint($tablet)
+          height: 48px
+          line-height: normal
+          padding: 0 25px
+          font-size: 28px
 
 #products
   .product-overview
-    margin-top: -170px
+    margin-top: -140px
+    @include breakpoint($desktop)
+      margin-top: -170px
     ul
-      display: -webkit-box
-      display: -ms-flexbox
       display: flex
-      -ms-flex-flow: row wrap
       flex-flow: row wrap
-      -ms-flex-pack: center
       justify-content: center
       padding: 0
       border-top: 1px solid $copper
@@ -449,11 +561,19 @@
       li
         box-sizing: border-box
         padding: 0 25px 50px 25px
-        width: 33%
+        width: 100%
         text-align: center
         list-style: none
+        max-width: 400px
+        @include breakpoint($tablet)
+          width: 50%
+          max-width: inherit
+        @include breakpoint($desktop)
+          width: 33%
         img
-          height: 530px
+          height: 400px
+          @include breakpoint($desktop)
+            height: 530px
         h3
           font-family: $handwriting
           font-size: 48px
@@ -481,9 +601,6 @@
               opacity: 0
               pointer-events: none
           form, .buy
-            -webkit-transition: all 0.25s
-            -moz-transition: all 0.25s
-            -o-transition: all 0.25s
             transition: all 0.25s
             font-family: $sans
           .buy
@@ -493,12 +610,11 @@
             height: 40px
             font-size: 22px
             line-height: 42px
-            margin-left: 40px
+            margin-left: 15px
             pointer-events: none
+            @include breakpoint($tablet)
+              margin-left: 40px
           .faux-buy
-            -webkit-transition: all 0.1s
-            -moz-transition: all 0.1s
-            -o-transition: all 0.1s
             transition: all 0.1s
             position: relative
             z-index: 1
@@ -519,35 +635,63 @@
               top: 2px
 
 .product-page-content
+  margin-top: -140px
+  @include breakpoint($tablet)
+    margin-top: 0
+    display: flex
+    flex-flow: row
   .product-page-text
+    h1
+      text-align: center
+      margin-top: 15px
+      @include breakpoint($tablet)
+        margin-top: 0
+        text-align: left
     .wine-specifications
       padding: 0
       li
         list-style: none
-  .page-image
-    position: relative
-    img
-      float: right
-      margin-right: 5px
-      position: relative
-      z-index: 1
   .wine-page-image
-    img
-      width: 195px
+    position: relative
+    order: 0
     &:before
       @extend %wine-splat
       width: 458px
       height: 454px
       background-size: 458px 454px
       right: -90px
+      display: none
+    @include breakpoint($tablet)
+      order: 2
+      flex-grow: 1
+      width: 195px
+    @include breakpoint($desktop)
+      padding-left: 75px
+      width: 334px
+      &:before
+        display: block
+    img
+      width: 100px
+      position: relative
+      margin-bottom: 0
+      @include breakpoint($tablet)
+        width: 195px
+        position: relative
+        float: right
+      @include breakpoint($desktop)
+        float: none
+        margin: 0 auto
+  .product-page-text
+    width: 100%
+    @include breakpoint($tablet)
+      width: calc(100% - 240px)
+    @include breakpoint($desktop)
+      width: calc(100% - 410px)
+
   .product-navigation
     padding-top: 35px
-    display: -webkit-box
-    display: -ms-flexbox
     display: flex
-    -ms-flex-flow: row
     flex-flow: row
-    -ms-flex-pack: space-between
     justify-content: space-between
     a
       color: $copper
@@ -561,81 +705,140 @@
 
 #awards
   .awards-list
+    margin-top: -120px
+    text-align: center
+    @include breakpoint($tablet)
+      margin-top: 0
+      text-align: left
     .award-title
-      font-size: 72px
+      font-size: 48px
       font-family: $handwriting
-      margin-bottom: 30px
+      margin-bottom: 20px
+      @include breakpoint($tablet)
+        font-size: 72px
+        margin-bottom: 30px
     li
       margin-bottom: 70px
       list-style-type: none
-      &:after
-        content: ""
-        display: block
-        clear: both
+      display: flex
+      flex-flow: row wrap
       .right-image
-        float: left
-        margin-left: 75px
-        width: 270px
-        text-align: right
+        order: 1
+        flex-grow: 1
+        text-align: center
+        margin-bottom: 20px
+        position: relative
+        @include breakpoint($tablet)
+          text-align: right
+          flex-grow: inherit
+          order: 2
+          width: 180px
+          margin-bottom: 0
+        @include breakpoint($desktop)
+          margin-left: 75px
+          width: 270px
+          text-align: center
         img
-          height: 540px
+          width: 100px
+          margin: 0 auto
           position: relative
-          z-index: 1
+          z-index: 0
+          @include breakpoint($tablet)
+            width: 140px
+            margin: 0
+            float: right
+          @include breakpoint($desktop)
+            float: none
+            margin: 0 auto
         &:before
           @extend %wine-splat
+          left: -53px
           width: 345px
           height: 400px
           background-size: 348px auto
           right: -80px
+          display: none
+          z-index: -1
+        @include breakpoint($desktop)
+          &:before
+            display: block
+
       .left-content
-        float: left
-        width: 660px
+        order: 2
+        @include breakpoint($tablet)
+          order: 1
+          width: calc(100% - 180px)
+        @include breakpoint($desktop)
+          width: 660px
         ul
           padding: 0
       .badges
+        display: flex
+        flex-flow: row wrap
+        justify-content: center
+        @include breakpoint($tablet)
+          justify-content: flex-start
+          margin-left: -15px
+        @include breakpoint($desktop)
+          margin-left: 0
         a
           text-decoration: none
           color: #fff
         li
           color: #fff
-          display: inline-block
           text-align: center
-          line-height: 160px
-          font-size: 24px
+          line-height: 105px
+          font-size: 20px
           font-family: $sans
           vertical-align: middle
           position: relative
-          margin-right: 45px
-          margin-bottom: 45px
+          margin: 0 15px 25px 15px
+          display: inline-block
+          @include breakpoint($desktop)
+            font-size: 24px
+            line-height: 160px
+            margin: 0
+            margin-right: 45px
+            margin-bottom: 45px
           &:nth-child(3n)
             margin-right: 0
           .award-badge-body
             height: 100%
             display: block
             background: $orange
-            width: 180px
-            height: 180px
+            width: 120px
+            height: 120px
             margin: 0 auto
             position: relative
             border-radius: 50%
+            @include breakpoint($desktop)
+              width: 180px
+              height: 180px
           img
             width: 100%
           h2
-            font-size: 124px
+            font-size: 85px
+            @include breakpoint($desktop)
+              font-size: 124px
           h3
-            @include box-sizing('border-box')
-            bottom: 56px
+            box-sizing: border-box
+            bottom: 36px
             position: relative
-            padding: 0 10px
-            line
-            height: 40px
-            margin-bottom: -40px
-            line-height: 34px
+            padding: 0 7px
+            height: 32px
+            margin-bottom: -32px
+            line-height: 26px
             background-color: #fff
             border-radius: 20px
             border: $orange 4px solid
             white-space: nowrap
             color: #000
+            @include breakpoint($desktop)
+              padding: 0 10px
+              height: 40px
+              bottom: 56px
+              margin-bottom: -40px
+              line-height: 34px
 
       .quotes
         li
@@ -646,6 +849,7 @@
           h3
             font-size: 28px
             font-family: $sans
+            width: 100%
 
 // News Page
 
@@ -722,13 +926,12 @@
           width: 48px
           height: 48px
           border: none
-          background: #F48F1B image-url('site/search.png') no-repeat center center
+          background: #F48F1B url('/images/site/search.png') no-repeat center center
           text-indent: -10000px
 
     .news-search
       width: 596px
       min-height: 300px
-      .number-results
       .result-listing
         margin: 0
         padding: 0
@@ -808,10 +1011,10 @@
             width: 100%
             padding: 5px
             font-size: 14px
-            @include box-sizing('border-box')
+            box-sizing: border-box
           .mce_inline_error
             width: 100%
-            @include box-sizing('border-box')
+            box-sizing: border-box
         input[type="submit"]
           -webkit-appearance: button
           display: block
@@ -833,6 +1036,12 @@
 // Contact Page
 
 #contact
+  iframe
+    max-width: 100%
+    max-height: 300px
+    margin-bottom: 25px
+    @include breakpoint($tablet)
+      max-height: inherit
   .prefer_email
     clear: both
     padding-top: 30px
@@ -861,11 +1070,12 @@
         margin-bottom: 0
   form
     margin-top: 20px
-    .form-left
-      float: left
-      width: 240px
-    .form-right
-      float: left
+    position: relative
+    .message
+      @include breakpoint($tablet)
+        position: absolute
+        left: 240px
+        top: 0
     #location
       display: none
   label, input, button, select, textarea
@@ -875,7 +1085,6 @@
   .required
     color: red
     padding-left: 5px
-
   input[type="submit"]
     -webkit-appearance: button
     display: block
@@ -892,11 +1101,9 @@
     font-family: $serif
     margin-top: 10px
     width: 220px
-
   label
     display: block
     margin-bottom: 5px
-
   select, textarea
     display: inline-block
     height: 20px
@@ -907,66 +1114,55 @@
     color: #555555
     vertical-align: middle
 
-
   input
     &[type="text"], &[type="password"], &[type="datetime"], &[type="datetime-local"], &[type="date"], &[type="month"], &[type="time"], &[type="week"], &[type="number"], &[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="color"]
       display: inline-block
-      height: 20px
+      height: 28px
       padding: 4px 6px
       margin-bottom: 10px
       font-size: 14px
       line-height: 20px
       color: #555555
       vertical-align: middle
+      box-sizing: border-box
+      width: 100%
+      max-width: 354px
+      @include breakpoint($tablet)
+        width: 218px
 
   input
     width: 206px
 
   textarea
     width: 340px
+    max-width: calc(100% - 12px)
     height: 140px
     background-color: #ffffff
     border: 1px solid #cccccc
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s
-    -moz-transition: border linear 0.2s, box-shadow linear 0.2s
-    -o-transition: border linear 0.2s, box-shadow linear 0.2s
     transition: border linear 0.2s, box-shadow linear 0.2s
 
   input
     &[type="text"], &[type="password"], &[type="datetime"], &[type="datetime-local"], &[type="date"], &[type="month"], &[type="time"], &[type="week"], &[type="number"], &[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="color"]
       background-color: #ffffff
       border: 1px solid #cccccc
-      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
       box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-      -webkit-transition: border linear 0.2s, box-shadow linear 0.2s
-      -moz-transition: border linear 0.2s, box-shadow linear 0.2s
-      -o-transition: border linear 0.2s, box-shadow linear 0.2s
       transition: border linear 0.2s, box-shadow linear 0.2s
 
   textarea:focus
     border-color: rgba(82, 168, 236, 0.8)
     outline: 0
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
-    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
 
   input
     &[type="text"]:focus, &[type="password"]:focus, &[type="datetime"]:focus, &[type="datetime-local"]:focus, &[type="date"]:focus, &[type="month"]:focus, &[type="time"]:focus, &[type="week"]:focus, &[type="number"]:focus, &[type="email"]:focus, &[type="url"]:focus, &[type="search"]:focus, &[type="tel"]:focus, &[type="color"]:focus
       border-color: rgba(82, 168, 236, 0.8)
       outline: 0
-      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
-      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
       box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
 
   .uneditable-input:focus
     border-color: rgba(82, 168, 236, 0.8)
     outline: 0
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
-    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
 
   input

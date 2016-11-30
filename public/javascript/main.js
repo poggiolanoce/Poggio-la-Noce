@@ -1,6 +1,19 @@
 (function() {
   $(document).ready(function() {
-    var $age_confirmed, $headlines, $page_blocks, $pressed_button, $requirement_inputs, $trigger_requirements, ageGate, checkRequirements, clearErrors, populateErrors, verifiedAge;
+    var $age_confirmed, $header, $headlines, $mobileClose, $mobileOpen, $navigation, $page_blocks, $pressed_button, $requirement_inputs, $trigger_requirements, ageGate, checkRequirements, clearErrors, populateErrors, verifiedAge;
+    $header = $('.header-container');
+    $navigation = $('.navigation');
+    $mobileOpen = $('.mobile-menu');
+    $mobileClose = $('.mobile-close');
+    $mobileOpen.on('click', function() {
+      return $header.addClass('open');
+    });
+    $navigation.add($mobileClose).on('click', function() {
+      return $header.removeClass('open');
+    });
+    $(window).resize(function() {
+      return $header.removeClass('open');
+    });
     $page_blocks = false;
     $headlines = $('.page-text-container h2, .shipping-group h3');
     $headlines.on('click', function() {

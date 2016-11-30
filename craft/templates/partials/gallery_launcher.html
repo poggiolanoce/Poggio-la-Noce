@@ -3,7 +3,7 @@
     <img class="slide " src="{{ asset.getUrl(imageTransform) }}" alt="">
   {% endif %}
   <div class="gallery-description">
-    <h4>View {{ title }} Gallery</h4>
+    <h4>{{ title }}</h4>
     {% if description is defined %}
       <p>{{ description | hacksaw(words='10', append='...') }}</p>
     {% endif %}
