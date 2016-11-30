@@ -1,10 +1,9 @@
-@import "compass/reset"
-@import "compass/css3"
-@import "compass/utilities"
 @import "fonts"
 
+@import "_reset"
 @import "_mixins"
 @import "_variables"
+@import "_breakpoints"
 
 body
   background-color: #fff
@@ -18,56 +17,135 @@ header
   display: block
   #home & .header-body
     height: $header-tall
+    @include breakpoint($phone-only)
+      height: $header-tall-mobile
   #commerce & .header-body
     height: 120px
   .header-container
-    width: $medium-width
-    margin: 0 auto
-    position: relative
+    width: 100%
+    @include breakpoint($desktop)
+      width: $medium-width
+      margin: 0 auto
+      position: relative
   .header-body
-    height: $header-short
-  nav
-    background-color: rgba(0,0,0,0.35)
-    height: 120px
-    margin-bottom: -120px
-    z-index: 1
-    position: relative
-  .logo
-    h1, h3
-      text-indent: -10000px
-    a
-      width: 225px
-      height: 67px
+    height: $header-short - 40
+    @include breakpoint($tablet)
+      height: $header-short
+
+.mobile-controls
+  position: absolute
+  left: 12px
+  top: 12px
+  font-size: 24px
+  color: #fff
+  @include breakpoint($tablet)
+    display: none
+  & > i
+    cursor: pointer
+    position: absolute
+    left: 0
+    top: 0
+  .mobile-close
+    z-index: 2
+    font-size: 28px
+    display: none
+    .open &
       display: block
+  .mobile-menu
+    z-index: 0
+    .open &
+      display: none
+
+nav
+  background-color: rgba(0,0,0,0.35)
+  height: 120px
+  margin-bottom: -120px
+  z-index: 1
+  position: relative
+
+.logo
+  width: 225px
+  height: 67px
+  background: url('/images/site/logo.png') no-repeat 0 0
+  background-size: 100%
+  position: absolute
+  left: 50%
+  margin-left: -112px
+  top: 24px
+  z-index: 2
+  @include breakpoint($tablet)
+    top: 8px
+  h1, h3
+    text-indent: -10000px
+  a
     width: 225px
     height: 67px
-    background: image-url('site/logo.png') no-repeat 0 0
-    background-size: 100%
-    position: absolute
-    left: 50%
-    top: 8px
-    margin-left: -112px
-  .navigation
+    display: block
+
+.navigation
+  display: none
+  width: 100%
+  height: 100%
+  padding-top: 60px
+  background: rgba(black, 0.75)
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  text-align: center
+  .open &
+    display: block
+    z-index: 3
+  @include breakpoint($tablet)
     padding-top: 93px
     display: block
-    width: 850px
-    margin: 0 auto
+    width: auto
+    height: auto
+    background: none
+    position: relative
+    top: inherit
+    bottom: inherit
+    left: inherit
+    right: inherit
+    text-align: inherit
     text-align: justify
-    &:after
-      width: 100%
-      display: inline-block
-      content: "."
-      visibility: hidden
+    width: 95%
+    margin: 0 auto
+  @include breakpoint($desktop)
+    width: 850px
+  &:after
+    width: 100%
+    display: inline-block
+    content: "."
+    visibility: hidden
+  .localization-tab
     li
+      padding: 0 20px
+      height: 34px
+      line-height: 37px
+      font-size: 22px
+    @include breakpoint($tablet)
+      display: none
+  & > li
+    margin-bottom: 30px
+    text-transform: uppercase
+    @include breakpoint($tablet)
+      margin-top: 0
       display: inline-block
-      text-transform: uppercase
-    a
-      font-size: 17px
+    & > a
+      font-size: 24px
       color: #fff
       text-decoration: none
-      padding-bottom: 10px
+      padding-bottom: 11px
       &.active
         border-bottom: 5px solid #fff
+      @include breakpoint($tablet)
+        font-size: 14px
+      @include breakpoint($desktop)
+        font-size: 17px
+        padding-bottom: 10px
+
 
 .user-menu
   color: white
@@ -94,15 +172,12 @@ header
     margin-left: 5px
 
 .top-menu
-  @include box-sizing('border-box')
+  box-sizing: border-box
   background: #000
   height: 42px
   line-height: 42px
   padding: 0 15px
-  display: -ms-flexbox
-  display: -webkit-flex
   display: flex
-  -ms-flex-flow: row wrap
   flex-flow: row wrap
   justify-content: space-between
 
@@ -113,22 +188,9 @@ header
   line-height: 26px
   margin-top: 9px
   .localization
-    display: inline-block
-    vertical-align: top
-    li
-      padding: 0 9px
-      height: 25px
-      background: #fff
-      color: $text-gray
-      float: left
-      display: block
-      &.active
-        background: $copper
-        a
-          color: #fff
-      a
-        text-decoration: none
-        color: $text-gray
+    display: none
+    @include breakpoint($tablet)
+      display: inline-block
   .cart
     display: inline-block
     vertical-align: top
@@ -146,7 +208,7 @@ header
       display: block
       height: 100%
       span
-        @include box-sizing('border-box')
+        box-sizing: border-box
         margin-left: 4px
         margin-top: 3px
         border-radius: 9px
@@ -161,33 +223,96 @@ header
         font-size: 14px
         text-align: center
 
+.localization
+  display: inline-block
+  vertical-align: top
+  font-family: $sans
+  li
+    padding: 0 9px
+    height: 25px
+    background: #fff
+    color: $text-gray
+    float: left
+    display: block
+    line-height: 26px
+    &.active
+      background: $copper
+      a
+        color: #fff
+    a
+      text-decoration: none
+      color: $text-gray
+
 footer
   #home &
-    padding-top: 14px
+    padding-top: 15px
   text-align: center
   text-transform: uppercase
-  padding-top: 40px
-  margin-bottom: 50px
-  font-size: 14px
+  font-size: 13px
+  border-top: 1px solid $copper
+  margin: 0 20px
+  padding-top: 20px
+  @include breakpoint($tablet)
+    margin: 0 40px
+  @include breakpoint($desktop)
+    border-top: none
+    font-size: 14px
+    line-height: 14px
+    padding-top: 60px
+    margin: 0
+    margin-bottom: 50px
+  p
+    margin-bottom: 10px
   a
     color: $black
     text-decoration: none
     &:hover
       text-decoration: underline
   ul
-    margin-bottom: 10px
+    margin-bottom: 40px
+    @include breakpoint($tablet)
+      font-size: 15px
+      width: 570px
+      margin: 0 auto
+      position: relative
+      margin-bottom: 70px
+    @include breakpoint("only screen and (min-width: 1140px)")
+      margin: 0
+      width: inherit
     li
-      display: inline-block
-      padding: 0 25px
-      border-right: 1px solid $text-black
-      &:last-child
-        border-right: none
+      margin-bottom: 15px
+      vertical-align: middle
+      &.contact-phone, &.contact-email
+        display: inline-block
+      &.contact-phone
+        $padding: 7px
+        border-right: 1px solid $text-black
+        padding-right: $padding
+        margin-right: $padding
+      @include breakpoint($tablet)
+        margin-bottom: 12px
+        $padding: 20px
+        &.contact-phone
+          padding-right: $padding
+          margin-right: $padding
+        &.contact-email
+          border-right: 1px solid $text-black
+          padding-right: $padding
+          margin-right: $padding
+        &.contact-site, &.contact-address
+          display: inline-block
+        &.contact-site
+          border-right: 1px solid $text-black
+          padding-right: $padding
+          margin-right: $padding
       &.facebook
+        @include breakpoint($tablet)
+          display: inline-block
         a
+          width: 24px
+          height: 24px
           text-indent: -10000px
-          background-image: image-url('site/facebook.png')
-          width: 18px
-          height: 18px
+          background-image: url('/images/site/facebook.png')
           position: relative
           top: -2px
           display: inline-block

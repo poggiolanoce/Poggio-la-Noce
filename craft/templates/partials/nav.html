@@ -1,6 +1,11 @@
 <nav>
   <div class="header-container">
 
+    <div class="mobile-controls">
+      <i class="mobile-menu fa fa-bars" aria-hidden="true"></i>
+      <i class="mobile-close fa fa-times" aria-hidden="true"></i>
+    </div>
+
     <div class="logo">
       <a href="{{ siteUrl }}">
       <h1>{{ siteName }}</h1>
@@ -16,6 +21,9 @@
       <li><a href="{{ url('awards') }}" {% if craft.request.getSegment(1) == 'awards' %}class="active"{% endif %}>{{"Press & Awards" | translate}}</a></li>
       <li><a href="{{ url('gallery') }}" {% if craft.request.getSegment(1) == 'gallery' %}class="active"{% endif %}>{{"Gallery" | translate}}</a></li>
       <li><a href="{{ url('contact') }}" {% if craft.request.getSegment(1) == 'contact' %}class="active"{% endif %}>{{"Contact" | translate}}</a></li>
+      <li class="localization-tab">
+        {% include 'partials/language_portal' %}
+      </li>
     </ul>
     {% endif %}
   </div>

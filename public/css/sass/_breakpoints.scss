@@ -1,0 +1,30 @@
+// Breakpoints
+// ============================================================================
+$phone-threshold:       375px;
+$phone-large-threshold: 650px;
+$tablet-threshold:      768px;
+$desktop-threshold:     1040px;
+
+$phone:             unquote("only screen and (min-width: #{$phone-threshold})");
+$phone-only:        unquote("only screen and (max-width: #{$tablet-threshold - 1})");
+$phone-portrait:    unquote("only screen and (max-width: #{$phone-threshold})");
+$phone-landscape:   unquote("only screen and (min-width: #{$phone-threshold + 1})");
+
+$phone-large:       unquote("only screen and (min-width: #{$phone-large-threshold})");
+
+$tablet:            unquote("only screen and (min-width: #{$tablet-threshold})");
+$tablet-only:       unquote("only screen and (min-width: #{$tablet-threshold}) and (max-width: #{$desktop-threshold - 1})");
+$tablet-portrait:   unquote("only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)");
+$tablet-landscape:  unquote("only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape)");
+$tablet-and-below:  unquote("only screen and (max-width: #{$desktop-threshold - 1})");
+
+$desktop:           unquote("only screen and (min-width: #{$desktop-threshold})");
+$desktop-only:      unquote("only screen and (min-width: #{$desktop-threshold})");
+
+// Super simple breakpoint mixin
+// ============================================================================
+@mixin breakpoint($query) {
+  @media #{$query} {
+    @content;
+  }
+}

@@ -33,7 +33,7 @@
           <li class="previous">Previous</li>
           <li class="next">Next</li>
         </ul>
-        <ul class="dots" style="margin-left: -{{ (30 * entry.pageBanner|length)/2 }}px">
+        <ul class="dots">
           {% for banner in entry.pageBanner %}
             <li data-slide="{{ loop.index - 1}}" {% if loop.index == 1 %}class="active"{% endif %}></li>
           {% endfor %}
