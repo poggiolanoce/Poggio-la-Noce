@@ -207,6 +207,7 @@ img + .page-galleries {
 @media only screen and (min-width: 768px) {
   .page-galleries [data-gallery] {
     margin: 0;
+    margin-bottom: 25px;
   }
 }
 .page-galleries [data-gallery] .gallery-description {
