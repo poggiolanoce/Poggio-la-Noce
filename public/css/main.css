@@ -706,47 +706,59 @@ main#content .container {
   border-top: 1px solid #B24629;
   border-bottom: 1px solid #B24629;
   margin-bottom: -1px;
-  height: 68px;
   position: relative;
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
   color: #B24629;
   text-transform: uppercase;
   font-size: 30px;
-  line-height: 68px;
-  padding-right: 50px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  padding: 15px 0 14px;
 }
-.page-content .page-text h2:after {
-  content: "";
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  right: 18px;
-  top: 25px;
-  display: block;
-  background-image: url("../images/site/accordion.png");
-  background-size: 25px;
-  background-repeat: no-repeat;
-  background-position: 0 0;
+@media only screen and (min-width: 768px) {
+  .page-content .page-text h2 {
+    line-height: 68px;
+    padding: 0;
+    padding-right: 50px;
+    height: 68px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .page-content .page-text h2:after {
+    content: "";
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 18px;
+    top: 25px;
+    display: block;
+    background-image: url("../images/site/accordion.png");
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+  }
 }
-@media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
+@media only screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1.25), only screen and (min-width: 768px) and (-o-min-device-pixel-ratio: 5 / 4), only screen and (min-width: 768px) and (min-resolution: 120dpi) {
   .page-content .page-text h2:after {
     background-image: url("../images/site/accordion@2x.png");
     background-size: image-width("../images/site/accordion.png") image-height("../images/site/accordion.png");
   }
 }
-.page-content .page-text h2.active:after {
-  top: 20px;
-  background-position: 0 bottom;
+@media only screen and (min-width: 768px) {
+  .page-content .page-text h2.active:after {
+    top: 20px;
+    background-position: 0 bottom;
+  }
 }
 .page-content .page-text .page-text-block {
-  display: none;
   margin: 35px 0;
 }
-.page-content .page-text .page-text-block.active {
-  display: block;
+@media only screen and (min-width: 768px) {
+  .page-content .page-text .page-text-block {
+    display: none;
+  }
+  .page-content .page-text .page-text-block.active {
+    display: block;
+  }
 }
 .page-content .add-to-cart {
   position: relative;
