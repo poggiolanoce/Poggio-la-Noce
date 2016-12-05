@@ -450,6 +450,7 @@ img + .page-galleries {
   display: none;
   padding: 35px;
   position: relative;
+  background-color: #fff;
 }
 .shipping-confirmation .close {
   width: 22px;
