@@ -3235,12 +3235,14 @@ footer a:hover {
 }
 footer ul {
   margin-bottom: 40px;
+  width: 320px;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 @media only screen and (min-width: 768px) {
   footer ul {
     font-size: 15px;
     width: 570px;
-    margin: 0 auto;
     position: relative;
     margin-bottom: 70px;
   }
@@ -3285,18 +3287,30 @@ footer ul li.contact-phone {
     margin-right: 20px;
   }
 }
-@media only screen and (min-width: 768px) {
-  footer ul li.facebook {
-    display: inline-block;
-  }
-}
-footer ul li.facebook a {
+footer ul li.facebook a, footer ul li.instagram a {
   width: 24px;
   height: 24px;
   text-indent: -10000px;
   background-image: url("/images/site/facebook.png");
-  position: relative;
-  top: -2px;
-  display: inline-block;
+  display: block;
   background-size: 100%;
+}
+@media only screen and (min-width: 768px) {
+  footer ul li.facebook a, footer ul li.instagram a {
+    position: relative;
+    top: -2px;
+  }
+}
+footer ul li.facebook {
+  margin-right: 10px;
+  display: inline-block;
+}
+footer ul li.facebook a {
+  background-image: url("/images/site/facebook.png");
+}
+footer ul li.instagram {
+  display: inline-block;
+}
+footer ul li.instagram a {
+  background-image: url("/images/site/instagram.png");
 }

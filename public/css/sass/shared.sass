@@ -270,10 +270,12 @@ footer
       text-decoration: underline
   ul
     margin-bottom: 40px
+    width: 320px
+    margin: 0 auto
+    margin-bottom: 20px
     @include breakpoint($tablet)
       font-size: 15px
       width: 570px
-      margin: 0 auto
       position: relative
       margin-bottom: 70px
     @include breakpoint("only screen and (min-width: 1140px)")
@@ -305,15 +307,22 @@ footer
           border-right: 1px solid $text-black
           padding-right: $padding
           margin-right: $padding
-      &.facebook
+      &.facebook a, &.instagram a
+        width: 24px
+        height: 24px
+        text-indent: -10000px
+        background-image: url('/images/site/facebook.png')
+        display: block
+        background-size: 100%
         @include breakpoint($tablet)
-          display: inline-block
-        a
-          width: 24px
-          height: 24px
-          text-indent: -10000px
-          background-image: url('/images/site/facebook.png')
           position: relative
           top: -2px
-          display: inline-block
-          background-size: 100%
+      &.facebook
+        margin-right: 10px
+        display: inline-block
+        a
+          background-image: url('/images/site/facebook.png')
+      &.instagram
+        display: inline-block
+        a
+          background-image: url('/images/site/instagram.png')
