@@ -3225,6 +3225,12 @@ footer {
 }
 footer p {
   margin-bottom: 10px;
+  font-size: 10px;
+}
+@media only screen and (min-width: 375px) {
+  footer p {
+    font-size: 13px;
+  }
 }
 footer a {
   color: #333333;
@@ -3234,10 +3240,15 @@ footer a:hover {
   text-decoration: underline;
 }
 footer ul {
-  margin-bottom: 40px;
-  width: 320px;
-  margin: 0 auto;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
+  width: 245px;
+  font-size: 10px;
+}
+@media only screen and (min-width: 375px) {
+  footer ul {
+    width: 320px;
+    font-size: 13px;
+  }
 }
 @media only screen and (min-width: 768px) {
   footer ul {
