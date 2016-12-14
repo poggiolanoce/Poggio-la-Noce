@@ -227,6 +227,7 @@ class Commerce_OrdersService extends BaseApplicationComponent
         $orderRecord->couponCode = $order->couponCode;
         $orderRecord->baseDiscount = $order->baseDiscount;
         $orderRecord->baseShippingCost = $order->baseShippingCost;
+        $orderRecord->baseTax = $order->baseTax;
         $orderRecord->totalPrice = $order->totalPrice;
         $orderRecord->totalPaid = $order->totalPaid;
         $orderRecord->currency = $order->currency;
@@ -325,6 +326,7 @@ class Commerce_OrdersService extends BaseApplicationComponent
         // reset base totals
         $order->baseDiscount = 0;
         $order->baseShippingCost = 0;
+        $order->baseTax = 0;
         $order->itemTotal = 0;
         foreach ($lineItems as $key => $item)
         {
@@ -382,8 +384,9 @@ class Commerce_OrdersService extends BaseApplicationComponent
 
         $baseDiscount = $order->baseDiscount;
         $baseShipping = $order->baseShippingCost;
+        $baseTax = $order->baseTax;
         $itemTotal = $order->itemTotal;
-        $order->totalPrice = ($baseDiscount + $baseShipping + $itemTotal);
+        $order->totalPrice = ($baseDiscount + $baseShipping + $baseTax + $itemTotal);
 
         $same = (bool)$totalPrice == $order->totalPrice;
 
@@ -415,17 +418,33 @@ class Commerce_OrdersService extends BaseApplicationComponent
     private function getAdjusters()
     {
         $adjusters = [
-            new Commerce_ShippingAdjuster,
-            new Commerce_DiscountAdjuster,
-            new Commerce_TaxAdjuster,
+            200 => new Commerce_ShippingAdjuster,
+            400 => new Commerce_DiscountAdjuster,
+            600 => new Commerce_TaxAdjuster,
         ];
 
+        // Additional adjuster can be returned by the plugins.
         $additional = craft()->plugins->call('commerce_registerOrderAdjusters');
 
+        $orderIndex = 800;
         foreach ($additional as $additionalAdjusters)
         {
-            $adjusters = array_merge($adjusters, $additionalAdjusters);
+            foreach ($additionalAdjusters as $key => $additionalAdjuster)
+            {
+                $orderIndex += 1;
+
+                // Not expecting more than 100 adjusters per plugin.
+                if ($key < 100 || $key > 800)
+                {
+                    $additionalAdjusters[$orderIndex] = $additionalAdjusters[$key];
+                    unset($additionalAdjusters[$key]);
+                }
+            }
+
+            $adjusters = $adjusters + $additionalAdjusters;
         }
+
+        ksort($adjusters);
 
         return $adjusters;
     }
@@ -465,13 +484,13 @@ class Commerce_OrdersService extends BaseApplicationComponent
             return true;
         }
 
-        //raising event on order complete
-        $event = new Event($this, ['order' => $order]);
-        $this->onBeforeOrderComplete($event);
-
         $order->isCompleted = true;
         $order->dateOrdered = DateTimeHelper::currentTimeForDb();
         $order->orderStatusId = craft()->commerce_orderStatuses->getDefaultOrderStatusId();
+
+        //raising event on order complete
+        $event = new Event($this, ['order' => $order]);
+        $this->onBeforeOrderComplete($event);
 
         if ($this->saveOrder($order))
         {

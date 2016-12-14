@@ -28,6 +28,7 @@ class Commerce_BaseFrontEndController extends Commerce_BaseController
         $data['couponCode'] = $cart->couponCode;
         $data['itemTotal'] = $cart->itemTotal;
         $data['baseDiscount'] = $cart->baseDiscount;
+        $data['baseTax'] = $cart->baseTax;
         $data['baseShippingCost'] = $cart->baseShippingCost;
         $data['totalPrice'] = $cart->totalPrice;
         $data['totalPaid'] = $cart->totalPaid;
@@ -82,9 +83,12 @@ class Commerce_BaseFrontEndController extends Commerce_BaseController
             $lineItemData['price'] = $lineItem->price;
             $lineItemData['saleAmount'] = $lineItem->saleAmount;
             $lineItemData['salePrice'] = $lineItem->salePrice;
+            $lineItemData['qty'] = $lineItem->qty;
+            $lineItemData['subtotal'] = $lineItem->getSubtotal();
             $lineItemData['tax'] = $lineItem->tax;
             $lineItemData['shippingCost'] = $lineItem->shippingCost;
             $lineItemData['discount'] = $lineItem->discount;
+            $lineItemData['total'] = $lineItem->total;
             $lineItemData['weight'] = $lineItem->weight;
             $lineItemData['length'] = $lineItem->length;
             $lineItemData['height'] = $lineItem->height;
@@ -93,9 +97,10 @@ class Commerce_BaseFrontEndController extends Commerce_BaseController
             $lineItemData['qty'] = $lineItem->qty;
             $lineItemData['snapshot'] = $lineItem->snapshot;
             $lineItemData['note'] = $lineItem->note;
-            $lineItemData['purchasableId'] = $lineItem->purchasableId;
             $lineItemData['orderId'] = $lineItem->orderId;
+            $lineItemData['purchasableId'] = $lineItem->purchasableId;
             $lineItemData['taxCategoryId'] = $lineItem->taxCategoryId;
+            $lineItemData['shippingCategoryId'] = $lineItem->shippingCategoryId;
             $lineItemData['onSale'] = $lineItem->getOnSale();
             $lineItemData['options'] = $lineItem->options;
             $lineItemData['optionsSignature'] = $lineItem->optionsSignature;
@@ -118,6 +123,11 @@ class Commerce_BaseFrontEndController extends Commerce_BaseController
         }
         $data['adjustments'] = $adjustments;
         $data['totalAdjustments'] = count($adjustments);
+
+        if ($cart->getErrors())
+        {
+            $data['errors'] = $cart->getErrors();
+        }
 
         // remove un-needed base element attributes
         $remove = ['archived', 'cancelUrl', 'lft', 'level', 'rgt', 'slug', 'uri', 'root'];

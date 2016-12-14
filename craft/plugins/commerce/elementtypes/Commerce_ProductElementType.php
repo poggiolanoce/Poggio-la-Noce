@@ -486,10 +486,13 @@ class Commerce_ProductElementType extends Commerce_BaseElementType
                 $variantCriteria = craft()->elements->getCriteria('Commerce_Variant', $criteria->hasVariant);
             }
 
-	        $variantCriteria->limit = null;
-	        $productIds = craft()->elements->buildElementsQuery($variantCriteria)
-                ->selectDistinct('productId')
-                ->queryColumn();
+            $elementQuery = craft()->elements->buildElementsQuery($variantCriteria);
+            $productIds = null;
+            if ($elementQuery) {
+                $productIds = craft()->elements->buildElementsQuery($variantCriteria)
+                    ->selectDistinct('productId')
+                    ->queryColumn();
+            }
 
             if (!$productIds) {
                 return false;
@@ -523,6 +526,7 @@ class Commerce_ProductElementType extends Commerce_BaseElementType
 	    {
 		    $productsCriteria = craft()->elements->getCriteria('Commerce_Product', $criteria);
 		    $productsCriteria->hasSales = null;
+		    $productsCriteria->limit = null;
 		    $products = $productsCriteria->find();
 
 		    $productIds = [];

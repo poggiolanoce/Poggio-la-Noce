@@ -23,7 +23,7 @@ class Commerce_TaxAdjuster implements Commerce_AdjusterInterface
     const ADJUSTMENT_TYPE = 'Tax';
 
     /**
-     * @param Commerce_OrderModel $order
+     * @param Commerce_OrderModel      $order
      * @param Commerce_LineItemModel[] $lineItems
      *
      * @return \Craft\Commerce_OrderAdjustmentModel[]
@@ -32,19 +32,21 @@ class Commerce_TaxAdjuster implements Commerce_AdjusterInterface
     {
         $address = \Craft\craft()->commerce_addresses->getAddressById($order->shippingAddressId);
 
-        if (\Craft\craft()->config->get('useBillingAddressForTax','commerce'))
+        if (\Craft\craft()->config->get('useBillingAddressForTax', 'commerce'))
         {
             $address = \Craft\craft()->commerce_addresses->getAddressById($order->billingAddressId);
         }
 
         $adjustments = [];
-        $taxRates = \Craft\craft()->commerce_taxRates->getAllTaxRates([
-            'with' => ['taxZone', 'taxZone.countries', 'taxZone.states.country'],
-        ]);
+        $taxRates = \Craft\craft()->commerce_taxRates->getAllTaxRates(['with' => ['taxZone',
+            'taxZone.countries',
+            'taxZone.states.country'],]);
 
         /** @var Commerce_TaxRateModel $rate */
-        foreach ($taxRates as $rate) {
-            if ($adjustment = $this->getAdjustment($order, $lineItems, $address, $rate)) {
+        foreach ($taxRates as $rate)
+        {
+            if ($adjustment = $this->getAdjustment($order, $lineItems, $address, $rate))
+            {
                 $adjustments[] = $adjustment;
             }
         }
@@ -53,10 +55,10 @@ class Commerce_TaxAdjuster implements Commerce_AdjusterInterface
     }
 
     /**
-     * @param Commerce_OrderModel $order
+     * @param Commerce_OrderModel      $order
      * @param Commerce_LineItemModel[] $lineItems
-     * @param Commerce_AddressModel $address
-     * @param Commerce_TaxRateModel $taxRate
+     * @param Commerce_AddressModel    $address
+     * @param Commerce_TaxRateModel    $taxRate
      *
      * @return Commerce_OrderAdjustmentModel|false
      */
@@ -68,19 +70,46 @@ class Commerce_TaxAdjuster implements Commerce_AdjusterInterface
         $adjustment = new Commerce_OrderAdjustmentModel;
         $adjustment->type = self::ADJUSTMENT_TYPE;
         $adjustment->name = $taxRate->name;
-        $adjustment->description = $taxRate->rate * 100 . '%' . ($taxRate->include ? ' inc' : '');
+        $adjustment->description = $taxRate->rate * 100 .'%'.($taxRate->include ? ' inc' : '');
         $adjustment->orderId = $order->id;
         $adjustment->optionsJson = $taxRate->attributes;
 
         $affectedLineIds = [];
 
-        //checking address
-        if (!$this->matchAddress($address, $zone)) {
-            if ($taxRate->include) {
+        $removeVat = false;
+        // Valid VAT ID and Address Matches then do not apply this tax
+        if ($taxRate->isVat && ($address && $address->businessTaxId && $address->country))
+        {
+            $vatValidation = new Validation(['debug' => false]);
+
+            $validBusinessTaxIdData = \Craft\craft()->cache->get('commerce:validVatId:'.$address->businessTaxId);
+            if ($validBusinessTaxIdData || $vatValidation->checkNumber($address->businessTaxId))
+            {
+                // A valid vat ID from API was found, cache result.
+                if (!$validBusinessTaxIdData)
+                {
+                    $validBusinessTaxIdData = $vatValidation->getData();
+                    \Craft\craft()->cache->set('commerce:validVatId:'.$address->businessTaxId, $validBusinessTaxIdData);
+                }
+
+                if (isset($validBusinessTaxIdData['country']) && $validBusinessTaxIdData['country'] == $address->country->iso)
+                {
+                    $removeVat = true;
+                }
+            }
+        }
+
+        //checking addresses
+        if (!$this->matchAddress($address, $zone) || $removeVat)
+        {
+            if ($taxRate->include)
+            {
                 //excluding taxes included in price
                 $allRemovedTax = 0;
-                foreach ($lineItems as $item) {
-                    if ($item->taxCategoryId == $taxRate->taxCategoryId) {
+                foreach ($lineItems as $item)
+                {
+                    if ($item->taxCategoryId == $taxRate->taxCategoryId)
+                    {
                         $taxableAmount = $item->getTaxableSubtotal($taxRate->taxable);
                         $amount = -($taxableAmount - ($taxableAmount / (1 + $taxRate->rate)));
                         $amount = CommerceCurrencyHelper::round($amount);
@@ -91,9 +120,10 @@ class Commerce_TaxAdjuster implements Commerce_AdjusterInterface
                 }
 
                 // We need to display the adjustment that removed the included tax
-                $adjustment->name = $taxRate->name . " ". \Craft\Craft::t('Removed');
+                $adjustment->name = $taxRate->name." ".\Craft\Craft::t('Removed');
                 $adjustment->amount = $allRemovedTax;
-                $adjustment->optionsJson = array_merge(['lineItemsAffected'=>$affectedLineIds],$adjustment->optionsJson);
+                $adjustment->optionsJson = array_merge(['lineItemsAffected' => $affectedLineIds], $adjustment->optionsJson);
+
                 return $adjustment;
             }
 
@@ -103,39 +133,31 @@ class Commerce_TaxAdjuster implements Commerce_AdjusterInterface
         //checking items tax categories
         $itemsMatch = false;
 
-        // Valid VAT ID and Address Matches then do not apply this tax
-        if ($taxRate->isVat && ($address && $address->businessTaxId && $address->country))
-        {
-            $vatValidation = new Validation(['debug' => false]);
-
-            if ($vatValidation->checkNumber($address->businessTaxId))
-            {
-                $country = $vatValidation->getCountry();
-                if ($country == $address->country->iso)
-                {
-                    return false;
-                }
-            }
-        }
-
         foreach ($lineItems as $item)
         {
 
-            if ($item->taxCategoryId == $taxRate->taxCategoryId) {
+            if ($item->taxCategoryId == $taxRate->taxCategoryId)
+            {
                 $taxableAmount = $item->getTaxableSubtotal($taxRate->taxable);
-                if (!$taxRate->include) {
+                if (!$taxRate->include)
+                {
                     $amount = $taxRate->rate * $taxableAmount;
                     $itemTax = CommerceCurrencyHelper::round($amount);
-                } else {
+                }
+                else
+                {
                     $amount = $taxableAmount - ($taxableAmount / (1 + $taxRate->rate));
                     $itemTax = CommerceCurrencyHelper::round($amount);
                 }
 
                 $adjustment->amount += $itemTax;
 
-                if (!$taxRate->include) {
+                if (!$taxRate->include)
+                {
                     $item->tax += $itemTax;
-                }else{
+                }
+                else
+                {
                     $adjustment->included = true;
                     $item->taxIncluded += $itemTax;
                 }
@@ -145,7 +167,8 @@ class Commerce_TaxAdjuster implements Commerce_AdjusterInterface
             }
         }
 
-        $adjustment->optionsJson = array_merge(['lineItemsAffected'=>$affectedLineIds],$adjustment->optionsJson);
+        $adjustment->optionsJson = array_merge(['lineItemsAffected' => $affectedLineIds], $adjustment->optionsJson);
+
         return $itemsMatch ? $adjustment : false;
     }
 
@@ -158,17 +181,22 @@ class Commerce_TaxAdjuster implements Commerce_AdjusterInterface
     private function matchAddress(Commerce_AddressModel $address = null, Commerce_TaxZoneModel $zone)
     {
         //when having no address check default tax zones only
-        if (!$address) {
+        if (!$address)
+        {
             return $zone->default;
         }
 
-        if ($zone->countryBased) {
+        if ($zone->countryBased)
+        {
             $countryIds = $zone->getCountryIds();
 
-            if (in_array($address->countryId, $countryIds)) {
+            if (in_array($address->countryId, $countryIds))
+            {
                 return true;
             }
-        } else {
+        }
+        else
+        {
 
             $states = [];
             $countries = [];
@@ -178,15 +206,14 @@ class Commerce_TaxAdjuster implements Commerce_AdjusterInterface
                 $countries[] = $state->countryId;
             }
 
-            $countryAndStateMatch = (bool) (in_array($address->countryId, $countries) && in_array($address->stateId, $states));
-            $countryAndStateNameMatch = (bool) (in_array($address->countryId, $countries) && strcasecmp($state->name, $address->getStateText()) == 0);
-            $countryAndStateAbbrMatch = (bool) (in_array($address->countryId, $countries) && strcasecmp($state->abbreviation, $address->getStateText()) == 0);
+            $countryAndStateMatch = (bool)(in_array($address->countryId, $countries) && in_array($address->stateId, $states));
+            $countryAndStateNameMatch = (bool)(in_array($address->countryId, $countries) && strcasecmp($state->name, $address->getStateText()) == 0);
+            $countryAndStateAbbrMatch = (bool)(in_array($address->countryId, $countries) && strcasecmp($state->abbreviation, $address->getStateText()) == 0);
 
             if ($countryAndStateMatch || $countryAndStateNameMatch || $countryAndStateAbbrMatch)
             {
                 return true;
             }
-
         }
 
         return false;

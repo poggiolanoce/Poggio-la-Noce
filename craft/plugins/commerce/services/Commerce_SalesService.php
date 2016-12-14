@@ -167,6 +167,12 @@ class Commerce_SalesService extends BaseApplicationComponent
      */
     public function matchProductAndSale(Commerce_ProductModel $product, Commerce_SaleModel $sale)
     {
+        // can't match something not promotable
+        if (!$product->promotable)
+        {
+            return false;
+        }
+
         // Product ID match
         if (!$sale->allProducts && !in_array($product->id, $sale->getProductIds()))
         {
@@ -321,9 +327,12 @@ class Commerce_SalesService extends BaseApplicationComponent
             {
                 if ($sale->enabled)
                 {
-                    if ($sale->dateFrom == null || $sale->dateFrom <= DateTimeHelper::currentTimeForDb())
+                    $from = $sale->dateFrom;
+                    $to = $sale->dateTo;
+                    $now = new DateTime();
+                    if ($from == null || $from < $now)
                     {
-                        if ($sale->dateTo == null || $sale->dateTo >= DateTimeHelper::currentTimeForDb())
+                        if ($to == null || $to > $now)
                         {
                             $activeSales[] = $sale;
                         }

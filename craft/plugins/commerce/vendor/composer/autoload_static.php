@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitec20cfd7eddf07745c216848e69e6181
+class ComposerStaticInit3aca763270ea5b5318ea71cb3f5fb179
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -246,12 +246,14 @@ class ComposerStaticInitec20cfd7eddf07745c216848e69e6181
         'Commerce\\Gateways\\Omnipay\\Eway_RapidShared_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/Eway_RapidShared_GatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\Eway_Rapid_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/Eway_Rapid_GatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\FirstData_Connect_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/FirstData_Connect_GatewayAdapter.php',
+        'Commerce\\Gateways\\Omnipay\\FirstData_Payeezy_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/FirstData_Payeezy_GatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\GoCardless_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/GoCardless_GatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\Manual_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/Manual_GatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\Migs_ThreeParty_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/Migs_ThreeParty_GatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\Migs_TwoParty_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/Migs_TwoParty_GatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\Mollie_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/Mollie_GatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\MultiSafepay_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/MultiSafepay_GatewayAdapter.php',
+        'Commerce\\Gateways\\Omnipay\\MultiSafepay_RestGatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/MultiSafepay_RestGatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\NetBanx_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/NetBanx_GatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\NetBanx_Hosted_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/NetBanx_Hosted_GatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\Netaxept_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/Netaxept_GatewayAdapter.php',
@@ -1121,12 +1123,21 @@ class ComposerStaticInitec20cfd7eddf07745c216848e69e6181
         'Omnipay\\SagePay\\Message\\SharedVoidRequest' => __DIR__ . '/..' . '/omnipay/sagepay/src/Message/SharedVoidRequest.php',
         'Omnipay\\SagePay\\ServerGateway' => __DIR__ . '/..' . '/omnipay/sagepay/src/ServerGateway.php',
         'Omnipay\\SecurePay\\DirectPostGateway' => __DIR__ . '/..' . '/omnipay/securepay/src/DirectPostGateway.php',
+        'Omnipay\\SecurePay\\Message\\AbstractRequest' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/AbstractRequest.php',
         'Omnipay\\SecurePay\\Message\\DirectPostAbstractRequest' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/DirectPostAbstractRequest.php',
         'Omnipay\\SecurePay\\Message\\DirectPostAuthorizeRequest' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/DirectPostAuthorizeRequest.php',
         'Omnipay\\SecurePay\\Message\\DirectPostAuthorizeResponse' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/DirectPostAuthorizeResponse.php',
         'Omnipay\\SecurePay\\Message\\DirectPostCompletePurchaseRequest' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/DirectPostCompletePurchaseRequest.php',
         'Omnipay\\SecurePay\\Message\\DirectPostCompletePurchaseResponse' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/DirectPostCompletePurchaseResponse.php',
         'Omnipay\\SecurePay\\Message\\DirectPostPurchaseRequest' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/DirectPostPurchaseRequest.php',
+        'Omnipay\\SecurePay\\Message\\SecureXMLAbstractRequest' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/SecureXMLAbstractRequest.php',
+        'Omnipay\\SecurePay\\Message\\SecureXMLAuthorizeRequest' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/SecureXMLAuthorizeRequest.php',
+        'Omnipay\\SecurePay\\Message\\SecureXMLCaptureRequest' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/SecureXMLCaptureRequest.php',
+        'Omnipay\\SecurePay\\Message\\SecureXMLEchoTestRequest' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/SecureXMLEchoTestRequest.php',
+        'Omnipay\\SecurePay\\Message\\SecureXMLPurchaseRequest' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/SecureXMLPurchaseRequest.php',
+        'Omnipay\\SecurePay\\Message\\SecureXMLRefundRequest' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/SecureXMLRefundRequest.php',
+        'Omnipay\\SecurePay\\Message\\SecureXMLResponse' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/SecureXMLResponse.php',
+        'Omnipay\\SecurePay\\SecureXMLGateway' => __DIR__ . '/..' . '/omnipay/securepay/src/SecureXMLGateway.php',
         'Omnipay\\Stripe\\Gateway' => __DIR__ . '/..' . '/omnipay/stripe/src/Gateway.php',
         'Omnipay\\Stripe\\Message\\AbstractRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/AbstractRequest.php',
         'Omnipay\\Stripe\\Message\\AuthorizeRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/AuthorizeRequest.php',
@@ -1318,10 +1329,10 @@ class ComposerStaticInitec20cfd7eddf07745c216848e69e6181
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitec20cfd7eddf07745c216848e69e6181::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitec20cfd7eddf07745c216848e69e6181::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitec20cfd7eddf07745c216848e69e6181::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitec20cfd7eddf07745c216848e69e6181::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3aca763270ea5b5318ea71cb3f5fb179::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3aca763270ea5b5318ea71cb3f5fb179::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit3aca763270ea5b5318ea71cb3f5fb179::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit3aca763270ea5b5318ea71cb3f5fb179::$classMap;
 
         }, null, ClassLoader::class);
     }

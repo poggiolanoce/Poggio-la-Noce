@@ -147,12 +147,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/guzzle/guzzle3.git",
-            "reference": "b3f5050cb6270c7a728a0b74ac2de50a262b3e02"
+            "reference": "f7778ed85e3db90009d79725afd6c3a82dab32fe"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/b3f5050cb6270c7a728a0b74ac2de50a262b3e02",
-            "reference": "b3f5050cb6270c7a728a0b74ac2de50a262b3e02",
+            "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/f7778ed85e3db90009d79725afd6c3a82dab32fe",
+            "reference": "f7778ed85e3db90009d79725afd6c3a82dab32fe",
             "shasum": ""
         },
         "require": {
@@ -196,7 +196,7 @@
         "suggest": {
             "guzzlehttp/guzzle": "Guzzle 5 has moved to a new package name. The package you have installed, Guzzle 3, is deprecated."
         },
-        "time": "2015-04-29 17:06:53",
+        "time": "2016-10-26 18:22:07",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -245,12 +245,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "53ad9faffe141fbe8f98cd6a7fd9a5e84513f56c"
+            "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/53ad9faffe141fbe8f98cd6a7fd9a5e84513f56c",
-            "reference": "53ad9faffe141fbe8f98cd6a7fd9a5e84513f56c",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/e79d363049d1c2128f133a2667e4f4190904f7f4",
+            "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4",
             "shasum": ""
         },
         "require": {
@@ -259,11 +259,11 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2016-08-30 17:06:17",
+        "time": "2016-11-14 01:06:16",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.2-dev"
+                "dev-master": "1.3-dev"
             }
         },
         "installation-source": "source",
@@ -306,12 +306,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/http-foundation.git",
-            "reference": "47bb765b2181b1eba556efae03526ce4730176ae"
+            "reference": "33fc1f26c15ee23be2af9407795ce7affa37671a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/http-foundation/zipball/47bb765b2181b1eba556efae03526ce4730176ae",
-            "reference": "47bb765b2181b1eba556efae03526ce4730176ae",
+            "url": "https://api.github.com/repos/symfony/http-foundation/zipball/33fc1f26c15ee23be2af9407795ce7affa37671a",
+            "reference": "33fc1f26c15ee23be2af9407795ce7affa37671a",
             "shasum": ""
         },
         "require": {
@@ -321,11 +321,11 @@
         "require-dev": {
             "symfony/expression-language": "~2.8|~3.0"
         },
-        "time": "2016-10-18 04:30:21",
+        "time": "2016-11-27 04:22:04",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "3.2-dev"
+                "dev-master": "3.3-dev"
             }
         },
         "installation-source": "source",
@@ -361,12 +361,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-common.git",
-            "reference": "3c112d401a97be85fb9627f61ea2bb86581c6a60"
+            "reference": "54910f2ece6b1be64f5e53e2111dd1254d50ee49"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-common/zipball/3c112d401a97be85fb9627f61ea2bb86581c6a60",
-            "reference": "3c112d401a97be85fb9627f61ea2bb86581c6a60",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-common/zipball/54910f2ece6b1be64f5e53e2111dd1254d50ee49",
+            "reference": "54910f2ece6b1be64f5e53e2111dd1254d50ee49",
             "shasum": ""
         },
         "require": {
@@ -378,7 +378,7 @@
             "omnipay/tests": "~2.0",
             "squizlabs/php_codesniffer": "~1.5"
         },
-        "time": "2016-10-03 21:05:37",
+        "time": "2016-11-07 06:10:23",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -874,17 +874,17 @@
     },
     {
         "name": "omnipay/firstdata",
-        "version": "v2.3.0",
-        "version_normalized": "2.3.0.0",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-firstdata.git",
-            "reference": "e33826821db88d90886cad6c81a29452d3cf91a2"
+            "reference": "5bcac83ee7b622b0d937c99f43719c3fc7b21bba"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-firstdata/zipball/e33826821db88d90886cad6c81a29452d3cf91a2",
-            "reference": "e33826821db88d90886cad6c81a29452d3cf91a2",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-firstdata/zipball/5bcac83ee7b622b0d937c99f43719c3fc7b21bba",
+            "reference": "5bcac83ee7b622b0d937c99f43719c3fc7b21bba",
             "shasum": ""
         },
         "require": {
@@ -893,14 +893,14 @@
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2016-01-14 06:24:28",
+        "time": "2016-08-27 04:22:06",
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "2.0.x-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Omnipay\\FirstData\\": "src/"
@@ -1533,17 +1533,17 @@
     },
     {
         "name": "omnipay/paypal",
-        "version": "v2.6.1",
-        "version_normalized": "2.6.1.0",
+        "version": "v2.6.2",
+        "version_normalized": "2.6.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-paypal.git",
-            "reference": "942d616e87578330a4f48feab56430527889c07e"
+            "reference": "0f894c67112424e6259eb59f42ea35d4188b67e2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-paypal/zipball/942d616e87578330a4f48feab56430527889c07e",
-            "reference": "942d616e87578330a4f48feab56430527889c07e",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-paypal/zipball/0f894c67112424e6259eb59f42ea35d4188b67e2",
+            "reference": "0f894c67112424e6259eb59f42ea35d4188b67e2",
             "shasum": ""
         },
         "require": {
@@ -1552,7 +1552,7 @@
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2016-10-11 09:33:49",
+        "time": "2016-10-18 01:32:46",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1713,17 +1713,17 @@
     },
     {
         "name": "omnipay/securepay",
-        "version": "v2.1.0",
-        "version_normalized": "2.1.0.0",
+        "version": "v2.1.1",
+        "version_normalized": "2.1.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/omnipay/securepay.git",
-            "reference": "09503288fdb1efcd81bd0ac3c1800ce0ce13cc6e"
+            "url": "https://github.com/thephpleague/omnipay-securepay.git",
+            "reference": "e68954d455edc8337bb30e6c579d32b6e691d29a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/omnipay/securepay/zipball/09503288fdb1efcd81bd0ac3c1800ce0ce13cc6e",
-            "reference": "09503288fdb1efcd81bd0ac3c1800ce0ce13cc6e",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-securepay/zipball/e68954d455edc8337bb30e6c579d32b6e691d29a",
+            "reference": "e68954d455edc8337bb30e6c579d32b6e691d29a",
             "shasum": ""
         },
         "require": {
@@ -1732,7 +1732,7 @@
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2014-04-14 11:26:20",
+        "time": "2016-11-09 04:52:42",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1756,11 +1756,11 @@
             },
             {
                 "name": "Omnipay Contributors",
-                "homepage": "https://github.com/omnipay/securepay/contributors"
+                "homepage": "https://github.com/thephpleague/omnipay-securepay/contributors"
             }
         ],
         "description": "SecurePay driver for the Omnipay payment processing library",
-        "homepage": "https://github.com/omnipay/securepay",
+        "homepage": "https://github.com/thephpleague/omnipay-securepay",
         "keywords": [
             "gateway",
             "merchant",
