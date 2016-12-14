@@ -24,6 +24,9 @@ return array(
       'it' => SITE_URL . 'it/'
     )
   ),
+  '67.205.142.46' => array(
+    'devMode'   => false,
+  ),
   '.com' => array(
     'enableTemplateCaching' => true,
     'devMode'   => false
