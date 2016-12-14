@@ -9,9 +9,23 @@
     <div class="awards-list">
       {% for award in awards %}
         <li>
-          <div class="left-content">
+          <div class="left-content {% if award.newsBlurb %}full-content{% endif %}">
             <h4 class="award-title">{{ award.title }}</h4>
 
+            {% if award.newsBlurb %}
+              <div class="award-blurb">
+                {% set news_image = award.newsImage.first() %}
+                {% if news_image %}
+                <figure class="news-image">
+                  <img src="{{ news_image.getUrl() }}" alt="">
+                </figure>
+                {% endif %}
+
+                {{award.newsBlurb}}
+              </div>
+            {% endif %}
+
+            {% if award.awardBadges|length > 0 %}
             <ul class="badges">
               {% for block in award.awardBadges %}
                 <li>
@@ -35,6 +49,8 @@
                 </li>
               {% endfor %}
             </ul>
+            {% endif %}
+            {% if award.awardQuotes|length > 0 %}
             <ul class="quotes">
               {% for block in award.awardQuotes %}
                 <li>
@@ -43,15 +59,16 @@
                 </li>
               {% endfor %}
             </ul>
-
+            {% endif %}
           </div>
 
           {% set award_image = award.bottleImage.first() %}
           {% if award_image %}
-          <figure class="right-image">
+          <figure class="right-image wine-image">
             <img src="{{ award_image.getUrl() }}" alt="">
           </figure>
           {% endif %}
+
         </li>
       {% endfor %}
     </div>
