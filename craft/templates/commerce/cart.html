@@ -26,7 +26,7 @@
             <td>{{ adjustment.type }}
             </td>
             <td><strong>{{ adjustment.name }}</strong><br>({{ adjustment.description }})</td>
-            <td class="text-right">{{ adjustment.amount|currency(cart.currency) }}</td>
+            <td class="text-right">{{ adjustment.amount|currency(currencyCode) }}</td>
           </tr>
           {% endfor %}
 
@@ -45,11 +45,11 @@
             </td>
             <td class="text-right">
               {% if cart.totalDiscount != '0' %}
-                Total Discount: {{ cart.totalDiscount|currency(cart.currency) }}<br>
+                Total Discount: {{ cart.totalDiscount|currency(currencyCode) }}<br>
               {% endif %}
-              Total Shipping: {{ cart.totalShippingCost|currency(cart.currency) }}<br>
-              Total Tax: {{ cart.totalTax|currency(cart.currency) }}<br>
-              <h4>Total Price: {{ cart.totalPrice|currency(cart.currency) }}</h4>
+              Total Shipping: {{ cart.totalShippingCost|currency(currencyCode) }}<br>
+              Total Tax: {{ cart.totalTax|currency(currencyCode) }}<br>
+              <h4>Total Price: {{ cart.totalPrice|currency(currencyCode) }}</h4>
             </td>
           </tr>
 

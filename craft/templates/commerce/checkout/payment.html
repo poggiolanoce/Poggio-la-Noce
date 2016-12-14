@@ -177,7 +177,7 @@
               {% endif %}
 
               <!-- Submit -->
-              <button class="button button-primary" type="submit">Pay {{ cart.totalPrice|currency(cart.currency) }}
+              <button class="button button-primary" type="submit">Pay {{ cart.totalPrice|currency(currencyCode) }}
                 Now
               </button>
             </fieldset>
@@ -191,12 +191,12 @@
         <h5>Order Review</h5>
         <ul>
           <li>
-            <strong>Products</strong> {{ cart.itemTotal|currency(cart.currency) }}
+            <strong>Products</strong> {{ cart.itemTotal|currency(currencyCode) }}
           </li>
 
           {% for adjustment in cart.adjustments %}
             <li>
-              <strong>{{ adjustment.name }}</strong> {{ adjustment.amount|currency(cart.currency) }}
+              <strong>{{ adjustment.name }}</strong> {{ adjustment.amount|currency(currencyCode) }}
               ({{ adjustment.description }})
             </li>
           {% endfor %}
@@ -216,7 +216,7 @@
           {% endif %}
 
           <li>
-            <strong>Total:</strong> {{ cart.totalPrice|currency(cart.currency) }}
+            <strong>Total:</strong> {{ cart.totalPrice|currency(currencyCode) }}
           </li>
         </ul>
       </div>

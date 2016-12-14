@@ -24,15 +24,15 @@
   </td>
   <td class="text-right">
     {% if item.onSale %}
-      Sale Price {{ item.salePrice|currency(cart.currency) }}<br>
+      Sale Price {{ item.salePrice|currency(currencyCode) }}<br>
     {% else %}
-      Price: {{ item.price|currency(cart.currency) }}<br>
+      Price: {{ item.price|currency(currencyCode) }}<br>
     {% endif %}
 
     {% if item.discount != '0' %}
-      Discount: {{ item.discount|currency(cart.currency) }}<br>
+      Discount: {{ item.discount|currency(currencyCode) }}<br>
     {% endif %}
 
-    Total: {{ item.total|currency(cart.currency) }}<br>
+    Total: {{ item.total|currency(currencyCode) }}<br>
   </td>
 </tr>
