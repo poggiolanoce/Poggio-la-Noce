@@ -23,6 +23,19 @@
 
   {% set cart = craft.commerce.cart %}
 
+  <!-- Set region and currency based on IP and the Shipping Destinations in EU  -->
+  {% set regionCode = 'us'  %}
+  {% set currencyCode = 'USD' %}
+
+  {% set euroList = [] %}
+  {% for country in shippingConfirmation.shippingDestinationsInEu %}
+    {% set euroList = euroList|merge([country.value]) %}
+  {% endfor %}
+  {% if craft.geo.info.country_code in euroList %}
+    {% set regionCode = 'eu'  %}
+    {% set currencyCode = 'EUR'  %}
+  {% endif  %}
+
   {% include 'partials/header.html' with {'banners': false} %}
 
   {% block header %}
