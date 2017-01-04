@@ -630,7 +630,7 @@ main#content .container {
   margin-bottom: 10px;
 }
 
-.product-page-content .wine-page-image:before, #awards .awards-list li .right-image:before {
+.product-page-content .wine-page-image:before, #awards .awards-list li .right-image.wine-image:before {
   content: "";
   display: block;
   background-image: url("/images/site/wine-splat.png");
@@ -1078,9 +1078,26 @@ main#content .container {
   display: flex;
   flex-flow: row wrap;
 }
+#awards .awards-list li .award-blurb figure {
+  max-width: 80%;
+  margin: 15px auto;
+}
+#awards .awards-list li .award-blurb figure img {
+  max-width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  #awards .awards-list li .award-blurb figure {
+    margin: 0;
+    margin-bottom: 5px;
+    float: right;
+    width: 35%;
+    margin-left: 5%;
+    max-width: inherit;
+  }
+}
 #awards .awards-list li .right-image {
   order: 1;
-  flex-grow: 1;
+  width: 100%;
   text-align: center;
   margin-bottom: 20px;
   position: relative;
@@ -1101,26 +1118,26 @@ main#content .container {
     text-align: center;
   }
 }
-#awards .awards-list li .right-image img {
+#awards .awards-list li .right-image.wine-image img {
   width: 100px;
   margin: 0 auto;
   position: relative;
   z-index: 0;
 }
 @media only screen and (min-width: 768px) {
-  #awards .awards-list li .right-image img {
+  #awards .awards-list li .right-image.wine-image img {
     width: 140px;
     margin: 0;
     float: right;
   }
 }
 @media only screen and (min-width: 1040px) {
-  #awards .awards-list li .right-image img {
+  #awards .awards-list li .right-image.wine-image img {
     float: none;
     margin: 0 auto;
   }
 }
-#awards .awards-list li .right-image:before {
+#awards .awards-list li .right-image.wine-image:before {
   left: -53px;
   width: 345px;
   height: 400px;
@@ -1130,12 +1147,13 @@ main#content .container {
   z-index: -1;
 }
 @media only screen and (min-width: 1040px) {
-  #awards .awards-list li .right-image:before {
+  #awards .awards-list li .right-image.wine-image:before {
     display: block;
   }
 }
 #awards .awards-list li .left-content {
   order: 2;
+  width: 100%;
 }
 @media only screen and (min-width: 768px) {
   #awards .awards-list li .left-content {
@@ -1147,6 +1165,9 @@ main#content .container {
   #awards .awards-list li .left-content {
     width: 660px;
   }
+}
+#awards .awards-list li .left-content.full-content {
+  width: 100%;
 }
 #awards .awards-list li .left-content ul {
   padding: 0;
@@ -1250,224 +1271,12 @@ main#content .container {
 #awards .awards-list li .quotes li p {
   font-size: 18px;
   margin-bottom: 20px;
+  width: 100%;
 }
 #awards .awards-list li .quotes li h3 {
   font-size: 28px;
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
   width: 100%;
-}
-
-#news .container h1 {
-  font-size: 45px;
-}
-#news .container .page-detail .news-image {
-  float: right;
-  margin-left: 20px;
-}
-#news .container .page-detail .news-content img {
-  float: right;
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
-#news .container .page-content .news-image {
-  margin-bottom: 20px;
-}
-#news .container .page-content .page-text {
-  border-bottom: 1px solid #E2E2E2;
-  padding-bottom: 30px;
-  margin-bottom: 30px;
-}
-#news .container .page-content .page-text:only-of-type, #news .container .page-content .page-text:last-child {
-  border-bottom: none;
-}
-#news .container .pagination {
-  clear: left;
-  width: 596px;
-}
-#news .container .pagination a {
-  display: block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  text-align: center;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  color: #fff;
-  background: #ED8F17;
-  font-size: 16px;
-  line-height: 40px;
-  font-family: "P22MackinacMedium", Georgia, serif;
-  margin-top: 10px;
-  width: 220px;
-  font-style: italic;
-  text-decoration: none;
-}
-#news .container .pagination a:first-child {
-  float: right;
-}
-#news .container .pagination a:last-child {
-  float: left;
-}
-#news .container .pagination:after {
-  content: "";
-  clear: both;
-  width: 100%;
-  height: 1px;
-  display: block;
-}
-#news .container .news-search-form form {
-  position: relative;
-}
-#news .container .news-search-form form input[type=search] {
-  width: 100%;
-  border: none;
-  height: 48px;
-  line-height: 48px;
-  -webkit-appearance: none;
-  background-color: #E2E2E2;
-  font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
-  color: #999999;
-  font-size: 24px;
-  text-indent: 8px;
-}
-#news .container .news-search-form form input[type=submit] {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 48px;
-  height: 48px;
-  border: none;
-  background: #F48F1B url("/images/site/search.png") no-repeat center center;
-  text-indent: -10000px;
-}
-#news .container .news-search {
-  width: 596px;
-  min-height: 300px;
-}
-#news .container .news-search .result-listing {
-  margin: 0;
-  padding: 0;
-}
-#news .container .news-search .result-listing li {
-  border-bottom: 1px solid #E2E2E2;
-  list-style: none;
-  padding: 14px 0;
-  margin: 0;
-}
-#news .container .news-search .result-listing li:last-child {
-  border-bottom: none;
-}
-#news .container .news-search .result-listing li img {
-  float: left;
-  margin-right: 25px;
-}
-#news .container .news-search .result-listing a {
-  color: #333333;
-  text-decoration: none;
-}
-#news .container .news-search .result-listing a span {
-  color: #B24629;
-  display: block;
-}
-#news .container .news-search .result-listing a span:last-child {
-  color: #333333;
-}
-#news .container .news-search .no-results {
-  font-size: 18px;
-}
-#news .container #news-sidebar {
-  float: right;
-  padding-left: 75px;
-  width: 334px;
-}
-#news .container #news-sidebar a {
-  color: #B24629;
-}
-#news .container #news-sidebar .news-sidebar-section {
-  margin-bottom: 40px;
-}
-#news .container #news-sidebar h1 {
-  font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
-  color: #999999;
-  text-transform: uppercase;
-  font-size: 32px;
-  line-height: 52px;
-  text-align: center;
-}
-#news .container #news-sidebar ul {
-  padding: 0px;
-}
-#news .container #news-sidebar ul h4 {
-  font-size: 14px;
-  margin-bottom: 5px;
-  margin-top: -4px;
-}
-#news .container #news-sidebar ul li {
-  border-bottom: 1px solid #E2E2E2;
-  list-style: none;
-  padding: 14px 0;
-  margin-bottom: 0;
-  float: left;
-}
-#news .container #news-sidebar ul li a {
-  font-family: "Nickyshand", Tahoma, Geneva, sans-serif;
-  text-decoration: none;
-  color: #333333;
-  float: left;
-  font-size: 20px;
-}
-#news .container #news-sidebar ul li a:hover {
-  color: #ED8F17;
-}
-#news .container #news-sidebar ul li img {
-  float: left;
-  margin-right: 10px;
-}
-#news .container #news-sidebar #mc_embed_signup {
-  padding: 25px 30px;
-  background-color: #F3F3F3;
-}
-#news .container #news-sidebar #mc_embed_signup h2 {
-  text-align: center;
-  font-size: 20px;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 25px;
-}
-#news .container #news-sidebar #mc_embed_signup .mc-field-group {
-  margin-bottom: 15px;
-}
-#news .container #news-sidebar #mc_embed_signup .mc-field-group label {
-  display: block;
-  margin-bottom: 5px;
-}
-#news .container #news-sidebar #mc_embed_signup .mc-field-group input {
-  width: 100%;
-  padding: 5px;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-#news .container #news-sidebar #mc_embed_signup .mc-field-group .mce_inline_error {
-  width: 100%;
-  box-sizing: border-box;
-}
-#news .container #news-sidebar #mc_embed_signup input[type="submit"] {
-  -webkit-appearance: button;
-  display: block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  text-align: center;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  color: #fff;
-  background: #ED8F17;
-  font-size: 16px;
-  line-height: 20px;
-  font-family: "P22MackinacMedium", Georgia, serif;
-  width: 100%;
-  margin-top: 25px;
-  text-align: center;
 }
 
 #contact iframe {
