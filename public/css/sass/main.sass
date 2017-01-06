@@ -503,9 +503,23 @@
   .add-to-cart
     position: relative
     font-family: $sans
-    form
+    .vintage-select, .variant-form
       display: flex
       justify-content: space-between
+    .vintage-select
+      align-items: center
+      margin-top: -15px
+      padding-bottom: 20px
+      border-bottom: 1px solid rgba($copper, 0.25)
+      .vintage-select-label
+        text-transform: uppercase
+        margin: 0
+    .variant-form
+      &.hidden
+        display: none
+      &.current
+        display: flex
+        padding-top: 35px
       .price
         font-size: 40px
         flex-grow: 1
