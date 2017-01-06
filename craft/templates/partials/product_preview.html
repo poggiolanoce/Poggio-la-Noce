@@ -1,3 +1,10 @@
+{% set products = [] %}
+{% for variant in item.variants %}
+  {% if regionCode in variant.sku  %}
+    {% set products = products|merge([variant]) %}
+  {% endif %}
+{% endfor  %}
+
 <li>
   <a href="{{item.getUrl()}}"><img src="{{ item.bottleImage.first().url() }}" alt=""></a>
   <h3>{{ item.title }}</h3>
@@ -6,23 +13,27 @@
   <!--  -->
   <div class="buy-reveal">
     <a class="faux-buy">{{ "Purchase" | t }}</a>
-    <form method="POST">
-      <input type="hidden" name="action" value="commerce/cart/updateCart">
-      <input type="hidden" name="redirect" value="commerce/cart">
-      <input type="hidden" name="qty" value="1" min="1" max="10">
-      <input type="hidden" value="{{ currencyCode }}" name="paymentCurrency" >
-      {{ getCsrfInput() }}
-      {% for variant in item.variants %}
-        {% if regionCode in variant.sku  %}
+    {% for variant in products %}
+      {% if variant.sku matches '{(eu$)|(us$)}' %}
+        <form method="POST">
+          <input type="hidden" name="action" value="commerce/cart/updateCart">
+          <input type="hidden" name="redirect" value="commerce/cart">
+          <input type="hidden" name="qty" value="1" min="1" max="10">
+          <input type="hidden" value="{{ currencyCode }}" name="paymentCurrency" >
           <input type="hidden" value="{{ variant.purchasableId }}" name="purchasableId" />
+          {{ getCsrfInput() }}
           <span class="price">{{ variant.price|commerceCurrency(currencyCode,convert=true,format=true) }}</span>
           {% if item.defaultVariant.stock <= 0 and item.defaultVariant.unlimitedStock == false %}
             <input class="buy" type="submit" disabled="disabled" value="{{ "Out of Stock" | t }}" />
+            <a data-product="{{variant.sku}}" href="#">{{ "Notify me when this wine becomes available again" | t }}</a>
           {% else %}
             <input class="buy {% if unrestricted|default(false) %}unrestricted{% endif %}" type="submit" value="{{ "Add to cart" | t }}" />
           {% endif %}
+        </form>
+        {% if item.defaultVariant.stock <= 0 and item.defaultVariant.unlimitedStock == false %}
+          {% include 'partials/out_of_stock_modal.html' with {'product': item} %}
         {% endif %}
-      {% endfor  %}
-    </form>
+      {% endif %}
+    {% endfor  %}
   </div>
 </li>

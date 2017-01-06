@@ -7,7 +7,7 @@
 
 {% if products|length > 1%}
   <div class="vintage-select">
-    <p class="vintage-select-label">Choose vintage</p>
+    <p class="vintage-select-label">{{ "Choose vintage" | t }}</p>
     <select name="vintage-list">
       {% for variant in products %}
         {% set year = variant.sku|replace('/[^0-9+]/', '') %}
@@ -21,9 +21,11 @@
   </div>
   {% includejs %}
     var $forms = $('.variant-form');
+
     var selectForm = function() {
+      var formValue = $('[name="vintage-list"]').val();
       $forms.filter('.current').removeClass('current');
-      $('[data-sku="' + $('[name="vintage-list"]').val() + '"]').addClass('current');
+      $('[data-sku="' + formValue + '"]').addClass('current');
     }
 
     $('[name="vintage-list"]').on('change', selectForm)
@@ -44,7 +46,12 @@
       <input type="hidden" value="{{ variant.purchasableId }}" name="purchasableId" />
       <span class="price">{{ variant.price|commerceCurrency(currencyCode,convert=true,format=true) }}</span>
       {% if variant.stock <= 0 and variant.unlimitedStock == false%}
-        <input class="buy" type="submit" disabled="disabled" value="{{ "Out of Stock" | t }}" />
+        <div class="out-of-stock-notice">
+          <input class="buy" type="submit" disabled="disabled" value="{{ "Out of Stock" | t }}" />
+          {% if variant.sku matches '{(eu$)|(us$)}' %}
+            <a data-product="{{variant.sku}}" href="#">{{ "Notify me when this wine becomes available again" | t }}</a>
+          {% endif %}
+        </div>
       {% else %}
         <div class="input-group">
           <label for="qty">Qty:</label>
@@ -54,6 +61,10 @@
       {% endif %}
     </div>
   </form>
+
+  {% if variant.stock <= 0 and variant.unlimitedStock == false and variant.sku matches '{(eu$)|(us$)}' %}
+    {% include 'partials/out_of_stock_modal.html' %}
+  {% endif %}
 {% endfor  %}
 
 

@@ -272,7 +272,7 @@
       li.next
         right: 10%
 
-.shipping-confirmation
+.shipping-confirmation, .mc_embed_signup
   max-width: 768px
   max-height: 525px
   display: none
@@ -357,6 +357,29 @@
     text-decoration: none
     display: inline-block
     letter-spacing: 0
+
+.mc_embed_signup
+  .input-group
+    display: flex
+    align-items: center
+    margin-bottom: 10px
+  input[type=email]
+    -webkit-appearance: none
+    flex-grow: 1
+    height: 28px
+    padding: 4px 6px
+    font-size: 14px
+    line-height: 20px
+    border-radius: 5px
+    border: 1px solid rgba($black, 0.5)
+    color: #555555
+    margin-left: 10px
+  input[type=submit]
+    @extend %button
+    padding: 5px 15px
+    font-size: 24px
+    height: inherit
+    float: right
 
 // Content Work
 
@@ -560,6 +583,13 @@
           line-height: normal
           padding: 0 25px
           font-size: 28px
+      .out-of-stock-notice
+        text-align: right
+        a
+          margin-top: 5px
+          display: block
+          color: $copper
+          text-decoration: none
 
 #products
   .product-overview
@@ -653,6 +683,10 @@
               line-height: 40px
               position: relative
               top: 2px
+          a
+            display: block
+            color: $copper
+            text-decoration: none
 
 .product-page-content
   margin-top: -140px
