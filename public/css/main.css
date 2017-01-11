@@ -67,7 +67,7 @@
     padding: 0;
   }
 }
-.shipping-confirmation .shipping-confirmation-confirm, .page-content .add-to-cart form input[type=submit], #products .product-overview ul li .buy-reveal .buy {
+.shipping-confirmation .shipping-confirmation-confirm, .page-content .add-to-cart .variant-form input[type=submit], #products .product-overview ul li .buy-reveal .buy {
   box-sizing: border-box;
   cursor: pointer;
   height: 48px;
@@ -83,7 +83,7 @@
   border-radius: 0;
   -webkit-appearance: none;
 }
-.shipping-confirmation [disabled='disabled'].shipping-confirmation-confirm, .page-content .add-to-cart form input[disabled='disabled'][type=submit], #products .product-overview ul li .buy-reveal [disabled='disabled'].buy {
+.shipping-confirmation [disabled='disabled'].shipping-confirmation-confirm, .page-content .add-to-cart .variant-form input[disabled='disabled'][type=submit], #products .product-overview ul li .buy-reveal [disabled='disabled'].buy {
   background-color: rgba(51, 51, 51, 0.4);
   cursor: not-allowed;
 }
@@ -765,42 +765,59 @@ main#content .container {
   position: relative;
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
 }
-.page-content .add-to-cart form {
+.page-content .add-to-cart .vintage-select, .page-content .add-to-cart .variant-form {
   display: flex;
   justify-content: space-between;
 }
-.page-content .add-to-cart form .price {
+.page-content .add-to-cart .vintage-select {
+  align-items: center;
+  margin-top: -15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(178, 70, 41, 0.25);
+}
+.page-content .add-to-cart .vintage-select .vintage-select-label {
+  text-transform: uppercase;
+  margin: 0;
+}
+.page-content .add-to-cart .variant-form.hidden {
+  display: none;
+}
+.page-content .add-to-cart .variant-form.current {
+  display: flex;
+  padding-top: 35px;
+}
+.page-content .add-to-cart .variant-form .price {
   font-size: 40px;
   flex-grow: 1;
   position: relative;
   top: 2px;
 }
 @media only screen and (min-width: 768px) {
-  .page-content .add-to-cart form .price {
+  .page-content .add-to-cart .variant-form .price {
     font-size: 48px;
     top: 0;
   }
 }
-.page-content .add-to-cart form .input-group {
+.page-content .add-to-cart .variant-form .input-group {
   margin-right: 10px;
 }
 @media only screen and (min-width: 768px) {
-  .page-content .add-to-cart form .input-group {
+  .page-content .add-to-cart .variant-form .input-group {
     margin-right: 30px;
   }
 }
-.page-content .add-to-cart form .input-group label {
+.page-content .add-to-cart .variant-form .input-group label {
   display: block;
   font-size: 12px;
   font-family: "P22MackinacMedium", Georgia, serif;
   padding-bottom: 2px;
 }
 @media only screen and (min-width: 768px) {
-  .page-content .add-to-cart form .input-group label {
+  .page-content .add-to-cart .variant-form .input-group label {
     font-size: 14px;
   }
 }
-.page-content .add-to-cart form input[type=number] {
+.page-content .add-to-cart .variant-form input[type=number] {
   font-size: 18px;
   border: 1px solid rgba(51, 51, 51, 0.5);
   border-radius: 4px;
@@ -809,19 +826,19 @@ main#content .container {
   -webkit-appearance: none;
 }
 @media only screen and (min-width: 768px) {
-  .page-content .add-to-cart form input[type=number] {
+  .page-content .add-to-cart .variant-form input[type=number] {
     width: 60px;
     font-size: 20px;
   }
 }
-.page-content .add-to-cart form input[type=submit] {
+.page-content .add-to-cart .variant-form input[type=submit] {
   height: 42px;
   line-height: 44px;
   padding: 0 15px;
   font-size: 22px;
 }
 @media only screen and (min-width: 768px) {
-  .page-content .add-to-cart form input[type=submit] {
+  .page-content .add-to-cart .variant-form input[type=submit] {
     height: 48px;
     line-height: normal;
     padding: 0 25px;

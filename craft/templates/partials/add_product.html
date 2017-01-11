@@ -1,14 +1,48 @@
-<form method="POST">
-  <input type="hidden" name="action" value="commerce/cart/updateCart">
-  <input type="hidden" name="redirect" value="commerce/cart">
-  <input type="hidden" value="{{ currencyCode }}" name="paymentCurrency" >
+{% set products = [] %}
+{% for variant in product.variants %}
+  {% if regionCode in variant.sku  %}
+    {% set products = products|merge([variant]) %}
+  {% endif %}
+{% endfor  %}
 
-  {{ getCsrfInput() }}
+{% if products|length > 1%}
+  <div class="vintage-select">
+    <p class="vintage-select-label">Choose vintage</p>
+    <select name="vintage-list">
+      {% for variant in products %}
+        {% set year = variant.sku|replace('/[^0-9+]/', '') %}
+        {% if year %}
+          <option value="{{ variant.sku }}">{{ year }}</option>
+        {% else %}
+          <option selected="selected" value="{{ variant.sku }}">Current Year</option>
+        {% endif %}
+      {% endfor  %}
+    </select>
+  </div>
+  {% includejs %}
+    var $forms = $('.variant-form');
+    var selectForm = function() {
+      $forms.filter('.current').removeClass('current');
+      $('[data-sku="' + $('[name="vintage-list"]').val() + '"]').addClass('current');
+    }
 
-  {% for variant in product.variants %}
-    {% if regionCode in variant.sku  %}
-        <input type="hidden" value="{{ variant.purchasableId }}" name="purchasableId" />
-        <span class="price">{{ variant.price|commerceCurrency(currencyCode,convert=true,format=true) }}</span>
+    $('[name="vintage-list"]').on('change', selectForm)
+    selectForm();
+
+  {% endincludejs %}
+{% endif %}
+
+{% for variant in products %}
+  <form method="POST">
+    <input type="hidden" name="action" value="commerce/cart/updateCart">
+    <input type="hidden" name="redirect" value="commerce/cart">
+    <input type="hidden" value="{{ currencyCode }}" name="paymentCurrency" >
+
+    {{ getCsrfInput() }}
+
+    <div class="variant-form {% if products|length > 1%}hidden{% endif %}" data-sku="{{ variant.sku }}">
+      <input type="hidden" value="{{ variant.purchasableId }}" name="purchasableId" />
+      <span class="price">{{ variant.price|commerceCurrency(currencyCode,convert=true,format=true) }}</span>
       {% if variant.stock <= 0 and variant.unlimitedStock == false%}
         <input class="buy" type="submit" disabled="disabled" value="{{ "Out of Stock" | t }}" />
       {% else %}
@@ -18,10 +52,9 @@
         </div>
         <input class="buy" type="submit" value="{{ "Add to cart" | t }}" />
       {% endif %}
-    {% endif %}
-  {% endfor  %}
-
-</form>
+    </div>
+  </form>
+{% endfor  %}
 
 
 
