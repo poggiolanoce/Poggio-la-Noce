@@ -2972,13 +2972,19 @@ nav {
 .logo {
   width: 225px;
   height: 67px;
-  background: url("/images/site/logo.png") no-repeat 0 0;
+  background-image: url("../images/site/logo.png");
   background-size: 100%;
   position: absolute;
   left: 50%;
   margin-left: -112px;
   top: 24px;
   z-index: 2;
+}
+@media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
+  .logo {
+    background-image: url("../images/site/logo@2x.png");
+    background-size: image-width("../images/site/logo.png") image-height("../images/site/logo.png");
+  }
 }
 @media only screen and (min-width: 768px) {
   .logo {
