@@ -62,6 +62,8 @@ return array(
     "Logout" => "Disconnettersi",
     "Login" => "Accesso",
     "Welcome" => "Benvenuto",
-    "No Items" => "You have no items in your cart. Add some on the",
-    "Products page" => "products page"
+    "No Items" => "Translation Needed",
+    "Products page" => "pagina produtti",
+    "Choose vintage" => "Scegli annata",
+    "Notify me when item is back in stock" => "Notifica mi quando l'articolo sarà disponibile"
 );

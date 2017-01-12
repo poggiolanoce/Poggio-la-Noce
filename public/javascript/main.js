@@ -54,6 +54,13 @@
         }
       });
     });
+    $('a[data-product]').on('click', function(e) {
+      e.preventDefault();
+      return $.featherlight($("[data-product='modal-" + ($(this).data('product')) + "']"));
+    });
+    $('.mc_embed_signup input[type=submit]').on('click', function() {
+      return $.featherlight.close();
+    });
     $pressed_button = false;
     $trigger_requirements = $('.buy:not(.unrestricted)');
     $requirement_inputs = $('.agreement input');

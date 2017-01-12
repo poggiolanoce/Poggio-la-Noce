@@ -59,6 +59,13 @@ $(document).ready ->
       afterOpen: ()->
         @$content.find('.gallery').slideshow()
 
+  $('a[data-product]').on 'click', (e)->
+    e.preventDefault()
+    $.featherlight $("[data-product='modal-#{$(this).data('product')}']")
+
+  $('.mc_embed_signup input[type=submit]').on 'click', ()->
+    $.featherlight.close()
+
   # Age Requirement Form
   $pressed_button = false
   $trigger_requirements = $('.buy:not(.unrestricted)')
