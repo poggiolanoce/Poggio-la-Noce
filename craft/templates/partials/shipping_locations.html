@@ -1,19 +1,17 @@
-<div class="shipping-group">
-  <h3 class="active">{{ "Approved US Dests" | t }}</h3>
-  <div class="shipping-list active">
-    <ul>
-    {% for state in shippingConfirmation.shippingDestinationsInUs %}
-      <li>{{state.label}}</li>
-    {% endfor %}
-    </ul>
-  </div>
+{% set destinations = [] %}
+{% set destinations = destinations|merge([{title: "Approved US Dests", list: shippingConfirmation.shippingDestinationsInUs}]) %}
+{% set destinations = destinations|merge([{title: "Approved EU Dests", list: shippingConfirmation.shippingDestinationsInEu}]) %}
+{% if regionCode == 'eu' or craft.locale == 'it' %}{% set destinations = destinations|reverse %}{% endif %}
 
-  <h3>{{ "Approved EU Dests" | t }}</h3>
-  <div class="shipping-list">
+<div class="shipping-group">
+ {% for destination in destinations %}
+  <h3 {% if loop.first %}class="active"{% endif %}>{{ destination.title | t }}</h3>
+  <div class="shipping-list {% if loop.first %}active{% endif %}">
     <ul>
-    {% for country in shippingConfirmation.shippingDestinationsInEu %}
-      <li>{{country.label}}</li>
+    {% for place in destination.list %}
+      <li>{{place.label}}</li>
     {% endfor %}
     </ul>
   </div>
+  {% endfor %}
 </div>
