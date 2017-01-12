@@ -1,7 +1,7 @@
 {% set destinations = [] %}
 {% set destinations = destinations|merge([{title: "Approved US Dests", list: shippingConfirmation.shippingDestinationsInUs}]) %}
 {% set destinations = destinations|merge([{title: "Approved EU Dests", list: shippingConfirmation.shippingDestinationsInEu}]) %}
-{% if regionCode == 'eu' %}{% set destinations = destinations|reverse %}{% endif %}
+{% if regionCode == 'eu' or craft.locale == 'it' %}{% set destinations = destinations|reverse %}{% endif %}
 
 <div class="shipping-group">
  {% for destination in destinations %}
