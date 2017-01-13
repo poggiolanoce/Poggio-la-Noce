@@ -54,14 +54,14 @@
       <div class="banner-headline-container">
 
         {% if craft.request.getSegment(2) is empty %}
-          <div class="banner-headline">{{ "Our" | t }} {{ "Products" | t }}</div>
+          <div class="banner-headline">{{ "Wines" | t }}</div>
         {% elseif craft.request.getSegment(2) == "wine" %}
           <div class="banner-headline">
-            {{ "Our" | t }} {{ "Wines" | t }}: {{ product.title }}
+            {{ "Wines" | t }}: {{ product.title }}
           </div>
         {% else %}
           <div class="banner-headline">
-            {{ "Our" | t }} {{ product.title }}
+            {{ product.title }}
           </div>
         {% endif %}
       </div>
