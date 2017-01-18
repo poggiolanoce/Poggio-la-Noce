@@ -191,13 +191,12 @@
         <h5>Order Review</h5>
         <ul>
           <li>
-            <strong>Products</strong> {{ cart.itemTotal|currency(currencyCode) }}
+            <strong>Products</strong> {{ cart.itemSubtotal|currency(currencyCode) }}
           </li>
 
           {% for adjustment in cart.adjustments %}
             <li>
               <strong>{{ adjustment.name }}</strong> {{ adjustment.amount|currency(currencyCode) }}
-              ({{ adjustment.description }})
             </li>
           {% endfor %}
 

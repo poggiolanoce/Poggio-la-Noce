@@ -86,7 +86,7 @@
             <td colspan="4" class="text-right">
               Item Total: {{ order.itemTotal|currency(order.currency) }}<br>
               Base Discount: {{ order.baseDiscount|currency(order.currency) }}<br>
-              Base Shipping Cost: {{ order.baseShippingCost|currency(order.currency) }}<br>
+              Total shipping: {{ order.totalShippingCost|currency(order.currency) }}<br>
               <h4>Total: {{ order.totalPrice|currency(order.currency) }}</h4>
             </td>
           </tr>

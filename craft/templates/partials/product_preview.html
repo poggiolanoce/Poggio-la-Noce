@@ -9,7 +9,7 @@
   <a href="{{item.getUrl()}}"><img src="{{ item.bottleImage.first().url() }}" alt=""></a>
   <h3>{{ item.title }}</h3>
   <p>{{ item.wineSummary }}</p>
-  <a class="learn-more" href="{{item.getUrl()}}">Learn More</a>
+  <a class="learn-more" href="{{item.getUrl()}}">{{"Learn More" | t}}</a>
   <!--  -->
   <div class="buy-reveal">
     <a class="faux-buy">{{ "Purchase" | t }}</a>
