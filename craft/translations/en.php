@@ -64,5 +64,6 @@ return array(
     "No Items" => "You have no items in your cart. Add some on the",
     "Products page" => "products page",
     "Choose vintage" => "Choose vintage",
-    "Notify me when item is back in stock" => "Notify me when item is back in stock"
+    "Notify me when item is back in stock" => "Notify me when item is back in stock",
+    "Learn More" => "Learn More"
 );

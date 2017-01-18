@@ -17,10 +17,10 @@ return array(
     "Vinification" => "Vinificazione e Affinamento",
     "Additional" => "Ulteriori dettagli",
     "Watch" => "Guarda il video",
-    "About" => "L'azienda",
+    "About" => "Chi siamo",
     "Philosophy" => "Filosofia",
     "Vineyard" => "Il vigneto",
-    "Winery" => "Vinicola",
+    "Winery" => "L'azienda",
     "Wines" => "Vini",
     "Products" => "Vini & Olio",
     "Our" => "Il nostro",
@@ -30,7 +30,7 @@ return array(
     "Awards Menu" => "Recensioni",
     "Contact" => "Contatti",
     "Reviews" => "Commenti stampa e valutazioni",
-    "News" => 'Notizie',
+    "News" => 'News',
     "News And Updates" => "Notizie e Aggiornamenti",
     "Gallery" => "Galleria",
     "Recent Updates" => "Aggiornamenti recenti",
@@ -49,7 +49,7 @@ return array(
     "Out of Stock" => "Esaurito",
     "Cart" => "Carrello",
     "Purchase" => "Acquista",
-    "Next" => "Il prossimo",
+    "Next" => "Continua",
     "Are you 21" => "I am at least 21 years of age",
     "Are you in EU/US" => "I am shipping to an approved destination listed above",
     "Confirm" => "Confirm",
@@ -64,5 +64,7 @@ return array(
     "No Items" => "Translation Needed",
     "Products page" => "pagina produtti",
     "Choose vintage" => "Scegli annata",
-    "Notify me when item is back in stock" => "Notifica mi quando l'articolo sarà disponibile"
+    "Notify me when item is back in stock" => "Notifica mi quando l'articolo sarà disponibile",
+    "Learn More" => "Ulteriori informazioni"
+
 );
