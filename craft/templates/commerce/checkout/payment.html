@@ -191,7 +191,7 @@
         <h5>Order Review</h5>
         <ul>
           <li>
-            <strong>Products</strong> {{ cart.itemSubtotal|currency(currencyCode) }}
+            <strong>Subtotal: </strong> {{ cart.itemSubtotal|currency(currencyCode) }}
           </li>
 
           {% for adjustment in cart.adjustments %}
