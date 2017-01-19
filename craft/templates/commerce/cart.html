@@ -21,14 +21,7 @@
             {% include "commerce/_includes/cart_item" %}
           {% endfor %}
 
-          {% for adjustment in cart.adjustments %}
-          <tr>
-            <td>{{ adjustment.type }}
-            </td>
-            <td><strong>{{ adjustment.name }}</strong><br>({{ adjustment.description }})</td>
-            <td class="text-right">{{ adjustment.amount|currency(currencyCode) }}</td>
-          </tr>
-          {% endfor %}
+
 
           <tr>
             <td>
@@ -47,9 +40,8 @@
               {% if cart.totalDiscount != '0' %}
                 Total Discount: {{ cart.totalDiscount|currency(currencyCode) }}<br>
               {% endif %}
-              Total Shipping: {{ cart.totalShippingCost|currency(currencyCode) }}<br>
-              Total Tax: {{ cart.totalTax|currency(currencyCode) }}<br>
-              <h4>Total Price: {{ cart.totalPrice|currency(currencyCode) }}</h4>
+              <!-- Use itemPrice because there's no point in adding shipping or taxes before they're selected -->
+              <h4>Total: {{ cart.itemSubtotal|currency(currencyCode) }}</h4>
             </td>
           </tr>
 
