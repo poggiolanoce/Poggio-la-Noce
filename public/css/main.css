@@ -451,6 +451,7 @@ img + .page-galleries {
   padding: 35px;
   position: relative;
   background-color: #fff;
+  overflow-y: auto;
 }
 .shipping-confirmation .close, .mc_embed_signup .close {
   width: 22px;
@@ -518,9 +519,24 @@ img + .page-galleries {
 .shipping-confirmation .agreement li, .mc_embed_signup .agreement li {
   margin-bottom: 20px;
 }
-.shipping-confirmation .agreement li input, .shipping-confirmation .agreement li label, .mc_embed_signup .agreement li input, .mc_embed_signup .agreement li label {
-  vertical-align: middle;
-  display: inline-block;
+@media only screen and (min-width: 768px) {
+  .shipping-confirmation .agreement li input, .shipping-confirmation .agreement li label, .mc_embed_signup .agreement li input, .mc_embed_signup .agreement li label {
+    vertical-align: middle;
+    display: inline-block;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .shipping-confirmation .agreement li, .mc_embed_signup .agreement li {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .shipping-confirmation .agreement li input, .mc_embed_signup .agreement li input {
+    flex: 0 1 15px;
+  }
+  .shipping-confirmation .agreement li label, .mc_embed_signup .agreement li label {
+    line-height: 24px;
+    flex: 0 1 calc(100% - 25px);
+  }
 }
 .shipping-confirmation .shipping-group, .mc_embed_signup .shipping-group {
   margin-bottom: 22px;
@@ -543,12 +559,25 @@ img + .page-galleries {
   padding-bottom: 15px;
   color: #B24629;
   font-size: 14px;
-  flex: 0 1 20%;
+  flex: 0 1 50%;
+}
+@media only screen and (min-width: 768px) {
+  .shipping-confirmation .shipping-group li, .mc_embed_signup .shipping-group li {
+    flex: 0 1 33%;
+  }
+}
+@media only screen and (min-width: 1040px) {
+  .shipping-confirmation .shipping-group li, .mc_embed_signup .shipping-group li {
+    flex: 0 1 20%;
+  }
 }
 .shipping-confirmation .shipping-confirmation-confirm, .mc_embed_signup .shipping-confirmation-confirm {
   text-decoration: none;
   display: inline-block;
   letter-spacing: 0;
+}
+.shipping-confirmation a, .mc_embed_signup a {
+  color: #B24629;
 }
 
 .mc_embed_signup .input-group {
