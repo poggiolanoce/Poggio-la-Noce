@@ -23,14 +23,14 @@
           <input type="hidden" value="{{ variant.purchasableId }}" name="purchasableId" />
           {{ getCsrfInput() }}
           <span class="price">{{ variant.price|commerceCurrency(currencyCode,convert=true,format=true) }}</span>
-          {% if item.defaultVariant.stock <= 0 and item.defaultVariant.unlimitedStock == false %}
+          {% if variant.stock <= 0 and variant.unlimitedStock == false %}
             <input class="buy" type="submit" disabled="disabled" value="{{ "Out of Stock" | t }}" />
             <a data-product="{{variant.sku}}" href="#">{{ "Notify me when this wine becomes available again" | t }}</a>
           {% else %}
             <input class="buy {% if unrestricted|default(false) %}unrestricted{% endif %}" type="submit" value="{{ "Add to cart" | t }}" />
           {% endif %}
         </form>
-        {% if item.defaultVariant.stock <= 0 and item.defaultVariant.unlimitedStock == false %}
+        {% if variant.stock <= 0 and variant.unlimitedStock == false %}
           {% include 'partials/out_of_stock_modal.html' with {'product': item} %}
         {% endif %}
       {% endif %}
