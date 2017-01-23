@@ -5,7 +5,7 @@
   <div class="row">
 
     <div class="two-thirds column">
-      <h3>Payment</h3>
+      <h3>{{ "Payment" | t }}</h3>
 
       {#
       Using the update cart action you could allow the user to select the payment method here.
@@ -14,7 +14,7 @@
       #}
 
       {% if not craft.commerce.paymentMethods|length %}
-        <p>No payment methods available.</p>
+        <p>{{ "No payment methods available." | t }}</p>
       {% endif %}
 
       {% if craft.commerce.paymentMethods|length %}
@@ -25,7 +25,7 @@
                value="commerce/checkout/payment">
           {{ getCsrfInput() }}
 
-          <label for="paymentMethodId">Select a payment method:</label>
+          <label for="paymentMethodId">{{ "Select a payment method:" | t }}</label>
           <select id="paymentMethodId" name="paymentMethodId"
               class="form-control">
             {% for id,name in craft.commerce.paymentMethods %}
@@ -94,7 +94,7 @@
 
                 <!-- Card Holder Name -->
                 <div class="form-group {% if paymentForm is defined and (paymentForm.hasErrors('firstName') or paymentForm.hasErrors('firstName')) %}has-error{% endif %}">
-                  <label>Card Holder</label>
+                  <label>{{ "Card Holder" | t }}</label>
 
                   <div class="row">
                     <div class="six columns">
@@ -125,7 +125,7 @@
 
                 <!-- Card Number -->
                 <div class="form-group {% if paymentForm is defined and paymentForm.hasErrors('number') %}has-error{% endif %}">
-                  <label>Card Number</label>
+                  <label>{{ "Card Number" | t }}</label>
 
                   <input type="text" name="number"
                        maxlength="19"
@@ -138,7 +138,7 @@
 
                 <!-- Expiry-->
                 <div class="form-group {% if paymentForm is defined and (paymentForm.hasErrors('month') or paymentForm.hasErrors('year')) %}has-error{% endif %}">
-                  <label>Card Expiry Date</label>
+                  <label>{{ "Card Expiry Date" | t }}</label>
 
                   <select class="form-control" name="month">
                     {% for month in 1..12 %}
@@ -177,8 +177,8 @@
               {% endif %}
 
               <!-- Submit -->
-              <button class="button button-primary" type="submit">Pay {{ cart.totalPrice|currency(currencyCode) }}
-                Now
+              <button class="button button-primary" type="submit">{{ "Pay" | t }} {{ cart.totalPrice|currency(currencyCode) }}
+                {{ "Now" | t }}
               </button>
             </fieldset>
           {% endif %}
@@ -188,10 +188,10 @@
     <div class="one-third column">
 
       <div class="review-card">
-        <h5>Order Review</h5>
+        <h5>{{ "Order Review" | t }}</h5>
         <ul>
           <li>
-            <strong>Subtotal: </strong> {{ cart.itemSubtotal|currency(currencyCode) }}
+            <strong>{{ "Subtotal" | t }}</strong> {{ cart.itemSubtotal|currency(currencyCode) }}
           </li>
 
           {% for adjustment in cart.adjustments %}
@@ -210,12 +210,12 @@
             #}
 
             <li>
-              <strong>Shipping</strong> None selected. <a href="{{ url('commerce/checkout/shipping') }}">Choose a shipping method.</a>
+              <strong>{{ "Shipping" | t }}</strong> {{ "None selected." | t }} <a href="{{ url('commerce/checkout/shipping') }}">{{ "Choose a shipping method." | t }}</a>
             </li>
           {% endif %}
 
           <li>
-            <strong>Total:</strong> {{ cart.totalPrice|currency(currencyCode) }}
+            <strong>{{ "Total" | t }}:</strong> {{ cart.totalPrice|currency(currencyCode) }}
           </li>
         </ul>
       </div>

@@ -11,13 +11,13 @@
   <div class="row">
     <div class="twelve columns">
 
-      {% if currentUser %}<p><a href="{{ url('commerce/customer') }}">My Orders</a></p>{% endif %}
-      <h1>Order #{{ order.id }}</h1>
+      {% if currentUser %}<p><a href="{{ url('commerce/customer') }}">{{ "My Orders" | t }}</a></p>{% endif %}
+      <h1>{{ "Order" | t }} #{{ order.id }}</h1>
 
 
       <div class="row">
         <div class="four columns">
-          <h4>Details</h4>
+          <h4>{{ "Details" | t }}</h4>
 
           <ul>
             <li><strong>{{ "Customer"|t }}:</strong> {{ order.customer.email }}</li>
@@ -27,14 +27,14 @@
 
         </div>
         <div class="four columns">
-          <h4>Shipping Address</h4>
+          <h4>{{ "Shipping Address" | t }}</h4>
 
           {% if order.shippingAddress %}
           {% include 'commerce/_includes/addresses/address' with { address: order.shippingAddress } %}
           {% endif %}
         </div>
         <div class="four columns">
-          <h4>Billing Address</h4>
+          <h4>{{ "Billing Address" | t }}</h4>
           {% if order.billingAddress %}
           {% include 'commerce/_includes/addresses/address' with { address: order.billingAddress } %}
           {% endif %}
@@ -43,16 +43,16 @@
 
 
       {% if order.pdfUrl %}
-      <h4>Receipt (<a href="{{ order.getPdfUrl('receipt') }}">Download</a>)</h4>
+      <h4>{{ "Receipt" | t }} (<a href="{{ order.getPdfUrl('receipt') }}">{{ "Download" | t }}</a>)</h4>
       {% endif %}
 
       <table class="u-full-width">
         <thead>
           <tr>
-            <th>Item</th>
-            <th>Unit Price</th>
-            <th>Quantity</th>
-            <th class="text-right">Total</th>
+            <th>{{ "Item" | t }}</th>
+            <th>{{ "Unit Price" | t }}</th>
+            <th>{{ "Quantity" | t }}</th>
+            <th class="text-right">{{ "Total" | t }}</th>
           </tr>
         </thead>
         <tbody>
@@ -76,7 +76,7 @@
 
           {% for adjustment in order.adjustments %}
           <tr>
-            <td>{{ adjustment.type }}</td>
+            <td>{{ adjustment.type | t }}</td>
             <td colspan="2"><strong>{{ adjustment.name }}</strong><br>({{ adjustment.description }})</td>
             <td class="text-right">{{ adjustment.amount|currency(order.currency) }}</td>
           </tr>
@@ -84,10 +84,10 @@
 
           <tr>
             <td colspan="4" class="text-right">
-              Item Total: {{ order.itemTotal|currency(order.currency) }}<br>
-              Base Discount: {{ order.baseDiscount|currency(order.currency) }}<br>
-              Total shipping: {{ order.totalShippingCost|currency(order.currency) }}<br>
-              <h4>Total: {{ order.totalPrice|currency(order.currency) }}</h4>
+              {{ "Item" | t }} {{ "Total" | t }}: {{ order.itemTotal|currency(order.currency) }}<br>
+              {{ "Base" | t }} {{ "Discount" | t }}: {{ order.baseDiscount|currency(order.currency) }}<br>
+              {{ "Total" | t }} {{ "Shipping" | t }}: {{ order.totalShippingCost|currency(order.currency) }}<br>
+              <h4>{{ "Total" | t }}: {{ order.totalPrice|currency(order.currency) }}</h4>
             </td>
           </tr>
 
