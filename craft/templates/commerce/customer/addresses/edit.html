@@ -23,12 +23,12 @@
 
     {% include 'commerce/_includes/addresses/form' %}
 
-    <input type="submit" value="Save Address">
+    <input type="submit" value="{{ "Save Address" | t }}">
   </form>
   {% if redirect %}
-    <a href="/{{ redirect }}">Cancel</a>
+    <a href="/{{ redirect }}">{{ "Cancel" | t }}</a>
   {% else %}
-    <a href="/commerce/customer/addresses">Cancel</a>
+    <a href="{{ url('commerce/customer/addresses') }}">{{ "Cancel" | t }}</a>
   {% endif %}
 
 {% endblock %}

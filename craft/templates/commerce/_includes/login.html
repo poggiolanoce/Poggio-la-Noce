@@ -1,7 +1,7 @@
 <div class="row">
   <div class="six columns">
 
-    <h3>Already Registered ?</h3>
+    <h3>{{ "Already Registered?" | t }}</h3>
 
     <form method="post" accept-charset="UTF-8">
 
@@ -15,29 +15,29 @@
         <input type="hidden" name="redirect" value="{{ url('/') }}">
       {% endif %}
 
-      <label for="loginName">Email/Username</label>
+      <label for="loginName">{{ "Email" | t }}/{{ "Username" | t }}</label>
       <input id="loginName" class="u-full-width" type="text" name="loginName" placeholder="email@site.com"
       value="{{ craft.session.rememberedUsername }}">
 
-      <label for="password">Password</label>
+      <label for="password">{{ "Password" | t }}</label>
       <input id="password" class="u-full-width" type="password" name="password">
 
       <label>
         <input type="checkbox" name="rememberMe" value="1">
-        Remember me
+        {{ "Remember me" | t }}
       </label>
 
-      <input type="submit" value="Login" class="button button-primary"/>
+      <input type="submit" value="{{ "Login" | t }}" class="button button-primary"/>
 
     </form>
 
-    <p><a href="{{ url('forgot') }}">Forget your password?</a></p>
+    <p><a href="{{ url('forgot') }}">{{ "Forget your password?" | t }}</a></p>
 
   </div>
 
   <div class="six columns">
 
-    <h3>Create login</h3>
+    <h3>{{ "Create login" | t }}</h3>
 
     <form method="post" accept-charset="UTF-8">
 
@@ -58,7 +58,7 @@
 
       {% from _self import errorList %}
 
-      <label for="username">Username</label>
+      <label for="username">{{ "Username" | t }}</label>
       <input id="username" type="text" name="username" class="u-full-width"
       {%- if account is defined %} value="{{ account.username }}"{% endif -%}>
 
@@ -66,7 +66,7 @@
       {{ errorList(account.getErrors('username')) }}
       {% endif %}
 
-      <label for="email">Email</label>
+      <label for="email">{{ "Email" | t }}</label>
       <input id="email" type="text" name="email" class="u-full-width"
       {%- if account is defined %} value="{{ account.email }}"{% endif %}>
 
@@ -74,7 +74,7 @@
       {{ errorList(account.getErrors('email')) }}
       {% endif %}
 
-      <label for="password">Password</label>
+      <label for="password">{{ "Password" | t }}</label>
       <input id="password" type="password" class="u-full-width" name="password">
 
       {% if account is defined %}
@@ -82,7 +82,7 @@
       {% endif %}
       <br/>
 
-      <input type="submit" value="Register" class="button button-primary"/>
+      <input type="submit" value="{{ "Register" | t }}" class="button button-primary"/>
 
     </form>
 

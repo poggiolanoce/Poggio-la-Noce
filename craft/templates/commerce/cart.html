@@ -11,9 +11,9 @@
       <table class="u-full-width">
         <thead>
           <tr>
-            <th>Product</th>
-            <th>Qty</th>
-            <th class="text-right">Price</th>
+            <th>{{ "Product" | t }}</th>
+            <th>{{ "Qty" | t }}</th>
+            <th class="text-right">{{ "Price" | t }}</th>
           </tr>
         </thead>
         <tbody>
@@ -30,7 +30,7 @@
                 <input type="hidden" name="action" value="commerce/cart/removeAllLineItems"/>
                 <input type="hidden" name="redirect" value="commerce/cart"/>
                 {{ getCsrfInput() }}
-                <input class="button link" type="submit" value="Empty the Cart"/>
+                <input class="button link" type="submit" value="{{ "Empty the Cart" | t }}"/>
               </form>
 
             </td>
@@ -38,7 +38,7 @@
             </td>
             <td class="text-right">
               {% if cart.totalDiscount != '0' %}
-                Total Discount: {{ cart.totalDiscount|currency(currencyCode) }}<br>
+                {{ "Total" | t }} {{ "Discount" | t }}: {{ cart.totalDiscount|currency(currencyCode) }}<br>
               {% endif %}
               <!-- Use itemPrice because there's no point in adding shipping or taxes before they're selected -->
               <h4>Total: {{ cart.itemSubtotal|currency(currencyCode) }}</h4>
@@ -48,7 +48,7 @@
         </tbody>
       </table>
 
-      <a class="button button-primary" href="{{ url('commerce/checkout') }}">Checkout</a>
+      <a class="button button-primary" href="{{ url('commerce/checkout') }}">{{ "Checkout" | t }}</a>
       {% endif %}
 
       {% if not cart.lineItems|length %}

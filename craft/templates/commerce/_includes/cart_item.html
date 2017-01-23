@@ -7,7 +7,7 @@
       <input type="hidden" name="redirect" value="commerce/cart"/>
       {{ getCsrfInput() }}
       <input type="hidden" name="lineItemId" value="{{ item.id }}"/>
-      <input type="submit" class="button link" value="Remove"/>
+      <input type="submit" class="button link" value="{{ "Remove" | t }}"/>
     </form>
   </td>
   <td>
@@ -19,20 +19,20 @@
         <input  type="number" name="qty" min="1" value="{{ item.qty }}">
       </span>
       {{ getCsrfInput() }}
-      <input type="submit" class="button" value="Update"/>
+      <input type="submit" class="button" value="{{ "Update" | t }}"/>
     </form>
   </td>
   <td class="text-right">
     {% if item.onSale %}
-      Sale Price {{ item.salePrice|currency(currencyCode) }}<br>
+      {{ "Sale Price" | t }} {{ item.salePrice|currency(currencyCode) }}<br>
     {% else %}
-      Price: {{ item.price|currency(currencyCode) }}<br>
+      {{ "Price" | t }}: {{ item.price|currency(currencyCode) }}<br>
     {% endif %}
 
     {% if item.discount != '0' %}
-      Discount: {{ item.discount|currency(currencyCode) }}<br>
+      {{ "Discount" | t }}: {{ item.discount|currency(currencyCode) }}<br>
     {% endif %}
 
-    Subtotal: {{ item.subtotal|currency(currencyCode) }}<br>
+    {{ "Subtotal" | t }}: {{ item.subtotal|currency(currencyCode) }}<br>
   </td>
 </tr>
