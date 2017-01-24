@@ -106,12 +106,12 @@
 {# Use the option param passed into the pdf template to show different order pdf's depending on the context #}
 {% switch option %}
 {% case "receipt" %}
-    <h1>Receipt for Order #{{ order.number[:7] }}</h1>
+    <h1>Receipt for Order #{{ order.id }}</h1>
     {{ orderTable }}
 {% case "ajax" %}
     <h1>NA</h1>
 {% default %}
-    <h1>Order #{{ order.number[:7] }}</h1>
+    <h1>Order #{{ order.id }}</h1>
     {{ orderTable }}
 {% endswitch %}
 
