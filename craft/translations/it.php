@@ -64,8 +64,6 @@ return array(
     "Are you in EU/US" => "Translation Needed",
     "Confirm" => "Confirm",
     "Confirm Shipping Method" => "Translation Needed",
-    "Shipping Reminder" => "Attualmente spediamo unicamente nei paesi elencati qui di seguito.",
-    "Shipping Reminder 2" => "Per ulteriori informazioni a riguardo, non esitate a contattarci via email.",
     "Approved US Dests" => "Destinazioni Approvati: United States",
     "Approved EU Dests" => "Destinazioni Approvato: Unione europea",
     "Purchase" => "Acquistare",

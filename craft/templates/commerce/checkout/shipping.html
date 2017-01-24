@@ -8,8 +8,8 @@
     {% if not craft.commerce.availableShippingMethods|length %}
     <div class="two-thirds column">
       <div class="address-card address-reminder">
-        <p>{{ "Shipping Reminder" | t }}</p>
-        <p>{{ "Shipping Reminder 2" | t }}</p>
+        <p>{{ shippingConfirmation.noShippingOptionsTitle }}</p>
+        {{ shippingConfirmation.noShippingOptionsBody }}
         {% include 'partials/shipping_locations' %}
       </div>
     </div>

@@ -64,8 +64,6 @@ return array(
     "Are you in EU/US" => "I am shipping to an approved destination listed above",
     "Confirm" => "Confirm",
     "Confirm Shipping Method" => "Confirm Shipping Method",
-    "Shipping Reminder" => "As a reminder, we currently only ship wine to the locations listed below.",
-    "Shipping Reminder 2" => "If you do not see any available shipping options, please contact us via email.",
     "Approved US Dests" => "Approved US Destinations",
     "Approved EU Dests" => "Approved EU Destinations",
     "Purchase" => "Purchase",
