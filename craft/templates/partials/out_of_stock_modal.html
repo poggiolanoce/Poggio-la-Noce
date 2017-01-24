@@ -1,7 +1,7 @@
 <!-- Begin MailChimp Signup Form -->
 {% for block in product.mailchimpId.idList %}
   {% set id = block[craft.locale ~ 'MailchimpId'] %}
-  <div class="mc_embed_signup" data-product="modal-{{variant.sku}}">
+  <div class="mc_embed_signup modal" data-product="modal-{{variant.sku}}">
     <form action="//poggiolanoce.us10.list-manage.com/subscribe/post?u=ffb9c9236c7a0ef44f36a38bf&amp;id=5a5434138c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
       <div id="mc_embed_signup_scroll">
         <h2>{{ "Notify me when item is back in stock" | t }}</h2>

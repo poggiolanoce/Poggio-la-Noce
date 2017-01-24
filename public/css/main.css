@@ -67,7 +67,7 @@
     padding: 0;
   }
 }
-.shipping-confirmation .shipping-confirmation-confirm, .mc_embed_signup .shipping-confirmation-confirm, .mc_embed_signup input[type=submit], .page-content .add-to-cart .variant-form input[type=submit], #products .product-overview ul li .buy-reveal .buy {
+.modal .shipping-confirmation-confirm, .mc_embed_signup input[type=submit], .page-content .add-to-cart .variant-form input[type=submit], #products .product-overview ul li .buy-reveal .buy {
   box-sizing: border-box;
   cursor: pointer;
   height: 48px;
@@ -83,7 +83,7 @@
   border-radius: 0;
   -webkit-appearance: none;
 }
-.shipping-confirmation [disabled='disabled'].shipping-confirmation-confirm, .mc_embed_signup [disabled='disabled'].shipping-confirmation-confirm, .mc_embed_signup input[disabled='disabled'][type=submit], .page-content .add-to-cart .variant-form input[disabled='disabled'][type=submit], #products .product-overview ul li .buy-reveal [disabled='disabled'].buy {
+.modal [disabled='disabled'].shipping-confirmation-confirm, .mc_embed_signup input[disabled='disabled'][type=submit], .page-content .add-to-cart .variant-form input[disabled='disabled'][type=submit], #products .product-overview ul li .buy-reveal [disabled='disabled'].buy {
   background-color: rgba(51, 51, 51, 0.4);
   cursor: not-allowed;
 }
@@ -444,7 +444,7 @@ img + .page-galleries {
   }
 }
 
-.shipping-confirmation, .mc_embed_signup {
+.modal {
   max-width: 768px;
   max-height: 525px;
   display: none;
@@ -452,7 +452,7 @@ img + .page-galleries {
   position: relative;
   background-color: #fff;
 }
-.shipping-confirmation .close, .mc_embed_signup .close {
+.modal .close {
   width: 22px;
   height: 22px;
   cursor: pointer;
@@ -462,12 +462,12 @@ img + .page-galleries {
   top: 35px;
   background: url("/images/site/close_black.svg") 0 0 no-repeat;
 }
-.shipping-confirmation h2, .mc_embed_signup h2 {
+.modal h2 {
   font-size: 36px;
   margin-bottom: 22px;
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
 }
-.shipping-confirmation h3, .mc_embed_signup h3 {
+.modal h3 {
   box-sizing: border-box;
   font-family: "AlternateGothicCom-No2", Tahoma, Geneva, sans-serif;
   color: #B24629;
@@ -483,7 +483,7 @@ img + .page-galleries {
   font-size: 22px;
   line-height: 40px;
 }
-.shipping-confirmation h3:after, .mc_embed_signup h3:after {
+.modal h3:after {
   content: "";
   width: 20px;
   height: 20px;
@@ -497,55 +497,55 @@ img + .page-galleries {
   background-position: 0 0;
 }
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
-  .shipping-confirmation h3:after, .mc_embed_signup h3:after {
+  .modal h3:after {
     background-image: url("../images/site/accordion@2x.png");
     background-size: image-width("../images/site/accordion.png") image-height("../images/site/accordion.png");
   }
 }
-.shipping-confirmation h3.active:after, .mc_embed_signup h3.active:after {
+.modal h3.active:after {
   top: 10px;
   background-position: 0 bottom;
 }
-.shipping-confirmation p, .mc_embed_signup p {
+.modal p {
   margin-bottom: 22px;
   font-size: 18px;
   line-height: 28px;
 }
-.shipping-confirmation .agreement, .mc_embed_signup .agreement {
+.modal .agreement {
   margin-bottom: 22px;
   font-size: 18px;
 }
-.shipping-confirmation .agreement li, .mc_embed_signup .agreement li {
+.modal .agreement li {
   margin-bottom: 20px;
 }
-.shipping-confirmation .agreement li input, .shipping-confirmation .agreement li label, .mc_embed_signup .agreement li input, .mc_embed_signup .agreement li label {
+.modal .agreement li input, .modal .agreement li label {
   vertical-align: middle;
   display: inline-block;
 }
-.shipping-confirmation .shipping-group, .mc_embed_signup .shipping-group {
+.modal .shipping-group {
   margin-bottom: 22px;
 }
-.shipping-confirmation .shipping-group .shipping-list, .mc_embed_signup .shipping-group .shipping-list {
+.modal .shipping-group .shipping-list {
   display: none;
 }
-.shipping-confirmation .shipping-group .shipping-list.active, .mc_embed_signup .shipping-group .shipping-list.active {
+.modal .shipping-group .shipping-list.active {
   display: block;
 }
-.shipping-confirmation .shipping-group ul, .mc_embed_signup .shipping-group ul {
+.modal .shipping-group ul {
   display: flex;
   flex-flow: row wrap;
   margin-top: 15px;
   max-height: 95px;
   overflow-y: auto;
 }
-.shipping-confirmation .shipping-group li, .mc_embed_signup .shipping-group li {
+.modal .shipping-group li {
   display: inline-block;
   padding-bottom: 15px;
   color: #B24629;
   font-size: 14px;
   flex: 0 1 20%;
 }
-.shipping-confirmation .shipping-confirmation-confirm, .mc_embed_signup .shipping-confirmation-confirm {
+.modal .shipping-confirmation-confirm {
   text-decoration: none;
   display: inline-block;
   letter-spacing: 0;

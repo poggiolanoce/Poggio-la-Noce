@@ -8,10 +8,19 @@
 {% endif %}
 
 {% block main %}
+
   <div class="row">
     <div class="twelve columns">
 
       {% if currentUser %}<p><a href="{{ url('commerce/customer') }}">{{ "My Orders" | t }}</a></p>{% endif %}
+
+      {% if craft.request.urlReferrer matches '/checkout/' %}
+        <div class="order-confirmation">
+          <h2>{{ orderConfirmation.orderTitle }}</h2>
+          <p>{{ orderConfirmation.orderBody }}</p>
+        </div>
+      {% endif %}
+
       <h1>{{ "Order" | t }} #{{ order.id }}</h1>
 
 
