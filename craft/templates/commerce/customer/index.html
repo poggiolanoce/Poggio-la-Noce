@@ -22,7 +22,7 @@
           <tbody>
             {% for order in orders %}
             <tr>
-              <td><a href="{{ url('commerce/customer/order', { number: order.number }) }}">Order #{{ order.number }}</a></td>
+              <td><a href="{{ url('commerce/customer/order', { number: order.number }) }}">Order #{{ order.number[:7] }}</a></td>
               <td>{{ order.dateOrdered }}</td>
               <td>{{ order.totalQty }} {{ "items" | t }}</td>
               <td>{{ order.totalPrice|currency(order.currency) }}</td>
