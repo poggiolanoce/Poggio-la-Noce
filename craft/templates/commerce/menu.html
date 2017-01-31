@@ -1,0 +1,5 @@
+{% set referrer = craft.request.urlReferrer|split('/') %}
+{% set subsection = craft.request.getSegment(5) %}
+{% set display_menu = section != 'commerce' or subsection == 'cart' %}
+
+{% include 'partials/top_menu_interior' %}
