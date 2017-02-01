@@ -80,6 +80,10 @@ $(document).ready ->
       $.featherlight $('.shipping-confirmation'),
         otherClose: '.close'
         closeIcon: ''
+        afterOpen: ->
+          $('body').addClass('disable-scroll')
+        afterClose: ->
+          $('body').removeClass('disable-scroll')
 
   checkRequirements = (e)->
     if $('.agreement input').filter(':checked').length == 2

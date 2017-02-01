@@ -274,7 +274,7 @@
 
 .shipping-confirmation, .mc_embed_signup
   max-width: 768px
-  max-height: 525px
+  max-height: 530px
   display: none
   padding: 35px
   position: relative
@@ -293,6 +293,9 @@
     font-size: 36px
     margin-bottom: 22px
     font-family: $sans
+    @include breakpoint($phone-only)
+      font-size: 30px
+      margin-bottom: 18px
   h3
     box-sizing: border-box
     font-family: $sans
@@ -323,16 +326,22 @@
     &.active:after
       top: 10px
       background-position: 0 bottom
+    @include breakpoint($phone-only)
+      font-size: 20px
   p
     margin-bottom: 22px
     font-size: 18px
     line-height: 28px
+    @include breakpoint($phone-only)
+      font-size: 14px
+      line-height: 22px
   .agreement
     margin-bottom: 22px
     font-size: 18px
     li
-      margin-bottom: 20px
+      margin-bottom: 10px
       @include breakpoint($tablet)
+        margin-bottom: 20px
         input, label
           vertical-align: middle
           display: inline-block
@@ -344,6 +353,8 @@
         label
           line-height: 24px
           flex: 0 1 calc(100% - 25px)
+          @include breakpoint($phone-only)
+            font-size: 14px
 
   .shipping-group
     margin-bottom: 22px
@@ -397,6 +408,10 @@
     font-size: 24px
     height: inherit
     float: right
+
+.disable-scroll
+  height: 100%
+  overflow: hidden
 
 // Content Work
 
