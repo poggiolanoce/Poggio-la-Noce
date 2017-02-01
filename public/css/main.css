@@ -631,8 +631,20 @@ img + .page-galleries {
 }
 
 .disable-scroll {
-  height: 100%;
   overflow: hidden;
+}
+@media only screen and (max-width: 767px) {
+  .disable-scroll {
+    position: fixed;
+  }
+  .disable-scroll .featherlight-content, .disable-scroll .featherlight-inner {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0;
+  }
 }
 
 #content {

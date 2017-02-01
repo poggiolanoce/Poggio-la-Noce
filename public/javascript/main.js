@@ -72,7 +72,7 @@
         return $.featherlight($('.shipping-confirmation'), {
           otherClose: '.close',
           closeIcon: '',
-          afterOpen: function() {
+          beforeOpen: function() {
             return $('body').addClass('disable-scroll');
           },
           afterClose: function() {
