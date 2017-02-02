@@ -12,7 +12,7 @@
     <div class="twelve columns">
 
       {% if currentUser %}<p><a href="{{ url('commerce/customer') }}">{{ "My Orders" | t }}</a></p>{% endif %}
-      <h1>{{ "Order" | t }} #{{ order.id }}</h1>
+      <h1>{{ "Order" | t }} #{{ order.number[:7] }}</h1>
 
 
       <div class="row">
