@@ -18,13 +18,36 @@
     table.heading td{
         vertical-align: top;
     }
+    table {
+        margin-bottom: 5em;
+    }
+    th {
+        text-align: left;
+    }
+    #order-page .four ul, #order-page tr ul {
+        margin: 0;
+        padding: 0;
+    }
+    #order-page .four ul li, #order-page tr ul li {
+        margin: 0;
+        margin-bottom: 10px;
+        padding: 0;
+        list-style-type: none;
+    }
+    #order-page .four ul li strong, #order-page tr ul li strong {
+        display: block;
+    }
+    .u-full-width {
+        width: 100%;
+        box-sizing: border-box;
+    }
     </style>
 </head>
 
 <body>
 
 {% set orderTable %}
-    <div class="row">
+    <div class="row" id="order-page">
         <div class="twelve columns">
             <table class="u-full-width heading">
                 <tr>
@@ -33,7 +56,6 @@
                         <ul>
                             <li><strong>{{ "Customer"|t }}:</strong> {{ order.customer.email }}</li>
                             <li><strong>{{ "Total"|t }}:</strong> {{ order.totalPrice|currency(order.currency) }}</li>
-                            <li><strong>{{ "Paid"|t }}:</strong>{{ order.totalPaid|currency(order.currency) }} {{ order.datePaid|date('D dS M Y') }}</li>
                             <li><strong>{{ "Date"|t }}:</strong> {{ order.dateOrdered }}</li>
                         </ul>
                     </td>
@@ -65,7 +87,6 @@
                     <tr>
                         <td valign="top">
                             <strong>{{ item.description }}</strong><br>
-                            SKU: {{ item.sku }}
                         </td>
                         <td>
                             {% if item.onSale %}
@@ -75,7 +96,7 @@
                             {% endif %}
                         </td>
                         <td>{{ item.qty }}</td>
-                        <td class="text-right">{{ item.total|currency(order.currency) }}</td>
+                        <td class="text-right">{{ item.subTotal|currency(order.currency) }}</td>
                     </tr>
                 {% endfor %}
 
@@ -89,9 +110,6 @@
                 <tr><td colspan="2"><div class="paidLogo"><span>{{ 'PAID'|t }}</div></td><td colspan="2"></td></tr>
                 <tr>
                     <td colspan="4" class="text-right">
-                        Item Total: {{ order.itemTotal|currency(order.currency) }}<br>
-                        Base Discount: {{ order.baseDiscount|currency(order.currency) }}<br>
-                        Base Shipping Rate: {{ order.baseShippingCost|currency(order.currency) }}<br>
                         <h4>Total: {{ order.totalPrice|currency(order.currency) }}</h4>
                     </td>
                 </tr>

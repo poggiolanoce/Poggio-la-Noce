@@ -8,12 +8,20 @@
 {% endif %}
 
 {% block main %}
-  <div class="row">
+
+  <div class="row" id="order-page">
     <div class="twelve columns">
 
       {% if currentUser %}<p><a href="{{ url('commerce/customer') }}">{{ "My Orders" | t }}</a></p>{% endif %}
-      <h1>{{ "Order" | t }} #{{ order.number[:7] }}</h1>
 
+      {% if craft.request.urlReferrer matches '/checkout/' %}
+        <div class="order-confirmation">
+          <h2>{{ orderConfirmation.orderTitle }}</h2>
+          <p>{{ orderConfirmation.orderBody }}</p>
+        </div>
+      {% endif %}
+
+      <h1>{{ "Order" | t }} #{{ order.number[:7] }}</h1>
 
       <div class="row">
         <div class="four columns">
@@ -52,7 +60,7 @@
             <th>{{ "Item" | t }}</th>
             <th>{{ "Unit Price" | t }}</th>
             <th>{{ "Quantity" | t }}</th>
-            <th class="text-right">{{ "Total" | t }}</th>
+            <th class="text-right">{{ "Subtotal" | t }}</th>
           </tr>
         </thead>
         <tbody>
@@ -60,7 +68,6 @@
           <tr>
             <td>
               <strong>{{ item.description }}</strong><br>
-              SKU: {{ item.sku }}
             </td>
             <td>
               {% if item.onSale %}
@@ -70,7 +77,7 @@
               {% endif %}
             </td>
             <td>{{ item.qty }}</td>
-            <td class="text-right">{{ item.total|currency(order.currency) }}</td>
+            <td class="text-right">{{ item.subTotal|currency(order.currency) }}</td>
           </tr>
           {% endfor %}
 
@@ -84,15 +91,6 @@
 
           <tr>
             <td colspan="4" class="text-right">
-              {{ "Item" | t }} {{ "Total" | t }}: {{ order.itemTotal|currency(order.currency) }}<br>
-              {% if order.baseDiscount and order.baseDiscount != 0 %}
-                {{ "Base" | t }} {{ "Discount" | t }}: {{ order.baseDiscount|currency(order.currency) }}
-                <br>
-              {% endif %}
-              {% if order.totalShippingCost and order.totalShippingCost != 0 %}
-                {{ "Total" | t }} {{ "Shipping" | t }}: {{ order.totalShippingCost|currency(order.currency) }}
-                <br>
-              {% endif %}
               <h4>{{ "Total" | t }}: {{ order.totalPrice|currency(order.currency) }}</h4>
             </td>
           </tr>
