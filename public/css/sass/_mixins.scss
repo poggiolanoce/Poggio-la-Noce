@@ -64,7 +64,6 @@ $black: #000;
     z-index: 2;
     text-align: center;
     white-space: nowrap;
-    cursor: pointer;
     background: $color_mine_shaft_approx;
     background: rgba(0, 0, 0, 0);
     &:last-of-type {
@@ -87,7 +86,6 @@ $black: #000;
       margin-right: 5%;
       height: 85%;
       width: 85%;
-      cursor: auto;
       white-space: normal;
       flex-direction: row;
       align-items: center;
