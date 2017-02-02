@@ -29,7 +29,7 @@
 
           <ul>
             <li><strong>{{ "Customer"|t }}:</strong> {{ order.customer.email }}</li>
-            <li><strong>{{ "Total"|t }}:</strong> {{ order.totalPrice|currency(order.currency) }}</li>
+            <li><strong>{{ "Total"|t }}:</strong> {{ order.totalPrice|currency(order.paymentCurrency) }}</li>
             <li><strong>{{ "Date"|t }}:</strong> {{ order.dateOrdered }}</li>
           </ul>
 
@@ -71,13 +71,13 @@
             </td>
             <td>
               {% if item.onSale %}
-              <strike>{{ item.price|currency(order.currency) }}</strike>   {{ item.salePrice|currency(order.currency) }}
+              <strike>{{ item.price|currency(order.paymentCurrency) }}</strike>   {{ item.salePrice|currency(order.paymentCurrency) }}
               {% else %}
-              {{ item.price|currency(order.currency) }}
+              {{ item.price|currency(order.paymentCurrency) }}
               {% endif %}
             </td>
             <td>{{ item.qty }}</td>
-            <td class="text-right">{{ item.subTotal|currency(order.currency) }}</td>
+            <td class="text-right">{{ item.subTotal|currency(order.paymentCurrency) }}</td>
           </tr>
           {% endfor %}
 
@@ -85,13 +85,13 @@
           <tr>
             <td>{{ adjustment.type | t }}</td>
             <td colspan="2"><strong>{{ adjustment.name }}</strong></td>
-            <td class="text-right">{{ adjustment.amount|currency(order.currency) }}</td>
+            <td class="text-right">{{ adjustment.amount|currency(order.paymentCurrency) }}</td>
           </tr>
           {% endfor %}
 
           <tr>
             <td colspan="4" class="text-right">
-              <h4>{{ "Total" | t }}: {{ order.totalPrice|currency(order.currency) }}</h4>
+              <h4>{{ "Total" | t }}: {{ order.totalPrice|currency(order.paymentCurrency) }}</h4>
             </td>
           </tr>
 

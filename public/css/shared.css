@@ -3107,11 +3107,13 @@ nav {
   display: inline-block;
 }
 .user-menu a {
-  text-transform: uppercase;
   color: white;
   text-decoration: none;
 }
-.user-menu a span {
+.user-menu > a {
+  text-transform: uppercase;
+}
+.user-menu > a span {
   margin-right: 5px;
 }
 
