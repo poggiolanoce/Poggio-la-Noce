@@ -71,7 +71,13 @@
         $pressed_button = $(e.currentTarget);
         return $.featherlight($('.shipping-confirmation'), {
           otherClose: '.close',
-          closeIcon: ''
+          closeIcon: '',
+          beforeOpen: function() {
+            return $('body').addClass('disable-scroll');
+          },
+          afterClose: function() {
+            return $('body').removeClass('disable-scroll');
+          }
         });
       }
     };

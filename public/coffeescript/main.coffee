@@ -47,7 +47,6 @@ $(document).ready ->
 
     $(this).find('h2').eq(0).trigger('click')
 
-
   $('.banners').slideshow({
     autoplay: true,
     dots: true,
@@ -80,6 +79,10 @@ $(document).ready ->
       $.featherlight $('.shipping-confirmation'),
         otherClose: '.close'
         closeIcon: ''
+        beforeOpen: ->
+          $('body').addClass('disable-scroll')
+        afterClose: ->
+          $('body').removeClass('disable-scroll')
 
   checkRequirements = (e)->
     if $('.agreement input').filter(':checked').length == 2

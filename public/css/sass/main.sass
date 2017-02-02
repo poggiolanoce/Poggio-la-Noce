@@ -283,11 +283,12 @@
 
 .shipping-confirmation, .mc_embed_signup
   max-width: 768px
-  max-height: 525px
+  max-height: 530px
   display: none
   padding: 35px
   position: relative
   background-color: #fff
+  overflow-y: auto
   .close
     width: 22px
     height: 22px
@@ -301,6 +302,9 @@
     font-size: 36px
     margin-bottom: 22px
     font-family: $sans
+    @include breakpoint($phone-only)
+      font-size: 30px
+      margin-bottom: 18px
   h3
     box-sizing: border-box
     font-family: $sans
@@ -331,18 +335,36 @@
     &.active:after
       top: 10px
       background-position: 0 bottom
+    @include breakpoint($phone-only)
+      font-size: 20px
   p
     margin-bottom: 22px
     font-size: 18px
     line-height: 28px
+    @include breakpoint($phone-only)
+      font-size: 14px
+      line-height: 22px
   .agreement
     margin-bottom: 22px
     font-size: 18px
     li
-      margin-bottom: 20px
-      input, label
-        vertical-align: middle
-        display: inline-block
+      margin-bottom: 10px
+      @include breakpoint($tablet)
+        margin-bottom: 20px
+        input, label
+          vertical-align: middle
+          display: inline-block
+      @include breakpoint($phone-only)
+        display: flex
+        flex-flow: row wrap
+        input
+          flex: 0 1 15px
+        label
+          line-height: 24px
+          flex: 0 1 calc(100% - 25px)
+          @include breakpoint($phone-only)
+            font-size: 14px
+
   .shipping-group
     margin-bottom: 22px
     .shipping-list
@@ -360,12 +382,18 @@
       padding-bottom: 15px
       color: $copper
       font-size: 14px
-      flex: 0 1 20%
+      flex: 0 1 50%
+      @include breakpoint($tablet)
+        flex: 0 1 33%
+      @include breakpoint($desktop)
+        flex: 0 1 20%
   .shipping-confirmation-confirm
     @extend %button
     text-decoration: none
     display: inline-block
     letter-spacing: 0
+  a
+    color: $copper
 
 .mc_embed_signup
   .input-group
@@ -389,6 +417,18 @@
     font-size: 24px
     height: inherit
     float: right
+
+.disable-scroll
+  overflow: hidden
+  @include breakpoint($phone-only)
+    position: fixed
+    .featherlight-content, .featherlight-inner
+      max-width: 100%
+      max-height: 100%
+      width: 100%
+      height: 100%
+      box-sizing: border-box
+      margin: 0
 
 // Content Work
 
