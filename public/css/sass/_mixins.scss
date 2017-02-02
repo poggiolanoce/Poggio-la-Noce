@@ -90,6 +90,7 @@ $black: #000;
       flex-direction: row;
       align-items: center;
       justify-content: center;
+      position: relative;
       @include breakpoint($tablet) {
         max-height: 85%;
         max-width: 85%;
