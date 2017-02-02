@@ -1,6 +1,6 @@
 (function() {
   $(document).ready(function() {
-    var $age_confirmed, $header, $headlines, $mobileClose, $mobileOpen, $navigation, $page_blocks, $pressed_button, $requirement_inputs, $trigger_requirements, ageGate, checkRequirements, clearErrors, populateErrors, verifiedAge;
+    var $age_confirmed, $header, $headlines, $list_items, $mobileClose, $mobileOpen, $navigation, $page_blocks, $pressed_button, $requirement_inputs, $trigger_requirements, ageGate, checkRequirements, clearErrors, populateErrors, verifiedAge;
     $header = $('.header-container');
     $navigation = $('.navigation');
     $mobileOpen = $('.mobile-menu');
@@ -16,6 +16,11 @@
     });
     $page_blocks = false;
     $headlines = $('.page-text-container h2, .shipping-group h3');
+    $list_items = $('.page-content ul li .buy-reveal');
+    $list_items.find('.faux-buy').click(function() {
+      $list_items.filter('.active').removeClass('active');
+      return $(this).parent().addClass('active');
+    });
     $headlines.on('click', function() {
       var $parent_block, $sibling_headings, $sibling_text, $sibling_text_class;
       $parent_block = $(this).parent();
@@ -71,7 +76,13 @@
         $pressed_button = $(e.currentTarget);
         return $.featherlight($('.shipping-confirmation'), {
           otherClose: '.close',
-          closeIcon: ''
+          closeIcon: '',
+          beforeOpen: function() {
+            return $('body').addClass('disable-scroll');
+          },
+          afterClose: function() {
+            return $('body').removeClass('disable-scroll');
+          }
         });
       }
     };

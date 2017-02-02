@@ -15,36 +15,9 @@
     </div>
     {% endif %}
 
+
     {% if craft.commerce.availableShippingMethods|length %}
-    <div class="two-thirds column">
-      {% if craft.commerce.availableShippingMethods|length %}
-      <form method="POST">
-        <input type="hidden" name="action" value="commerce/cart/updateCart">
-        <input type="hidden" name="redirect" value="commerce/checkout/payment">
-        {{ getCsrfInput() }}
-
-        {% for handle, method in craft.commerce.availableShippingMethods %}
-        <div class="shipping-select">
-          <label>
-
-            <input type="radio" name="shippingMethod" value="{{ handle }}"
-            {% if handle == cart.shippingMethodHandle %}checked{% endif %} />
-            <strong>{{ method.name }}</strong>
-
-            <span class="price">
-              {{ method.amount|currency(currencyCode) }}
-            </span>
-          </label>
-        </div>
-        {% endfor %}
-        <span class="flash">{{ cart.getErrors('shippingMethod')|join }}</span>
-
-        <p><input type="submit" class="button button-primary" value="{{ "Confirm Shipping Method" | t }}"/></p>
-
-      </form>
-      {% endif %}
-
-    </div>
+      {% include 'partials/available_shipping' %}
     {% endif %}
 
     <div class="one-third column">
