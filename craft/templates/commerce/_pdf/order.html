@@ -55,7 +55,7 @@
                         <h5>Details</h5>
                         <ul>
                             <li><strong>{{ "Customer"|t }}:</strong> {{ order.customer.email }}</li>
-                            <li><strong>{{ "Total"|t }}:</strong> {{ order.totalPrice|currency(order.currency) }}</li>
+                            <li><strong>{{ "Total"|t }}:</strong> {{ order.totalPrice|currency(order.paymentCurrency) }}</li>
                             <li><strong>{{ "Date"|t }}:</strong> {{ order.dateOrdered }}</li>
                         </ul>
                     </td>
@@ -90,13 +90,13 @@
                         </td>
                         <td>
                             {% if item.onSale %}
-                                <strike>{{ item.price|currency(order.currency) }}</strike>   {{ item.salePrice|currency(order.currency) }}
+                                <strike>{{ item.price|currency(order.paymentCurrency) }}</strike>   {{ item.salePrice|currency(order.paymentCurrency) }}
                             {% else %}
-                                {{ item.price|currency(order.currency) }}
+                                {{ item.price|currency(order.paymentCurrency) }}
                             {% endif %}
                         </td>
                         <td>{{ item.qty }}</td>
-                        <td class="text-right">{{ item.subTotal|currency(order.currency) }}</td>
+                        <td class="text-right">{{ item.subTotal|currency(order.paymentCurrency) }}</td>
                     </tr>
                 {% endfor %}
 
@@ -104,13 +104,13 @@
                     <tr>
                         <td>{{ adjustment.type }}</td>
                         <td colspan="2"><strong>{{ adjustment.name }}</strong><br>({{ adjustment.description }})</td>
-                        <td class="text-right">{{ adjustment.amount|currency(order.currency) }}</td>
+                        <td class="text-right">{{ adjustment.amount|currency(order.paymentCurrency) }}</td>
                     </tr>
                 {% endfor %}
                 <tr><td colspan="2"><div class="paidLogo"><span>{{ 'PAID'|t }}</div></td><td colspan="2"></td></tr>
                 <tr>
                     <td colspan="4" class="text-right">
-                        <h4>Total: {{ order.totalPrice|currency(order.currency) }}</h4>
+                        <h4>Total: {{ order.totalPrice|currency(order.paymentCurrency) }}</h4>
                     </td>
                 </tr>
 

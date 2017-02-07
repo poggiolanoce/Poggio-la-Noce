@@ -2,7 +2,9 @@
   <div class="user-menu">
     {% if currentUser %}
       <p>
-        {{ 'Welcome' | t }}, {{ currentUser.username }}
+        <a href="{{ url('commerce/customer') }}">
+          {{ 'Welcome' | t }}, {{ currentUser.username }}
+        </a>
       </p>
       <a href="{{ logoutUrl }}"><span class="fa fa-sign-in"></span> {{ "Logout" | t }}</a>
     {% else %}
