@@ -41,6 +41,18 @@
         width: 100%;
         box-sizing: border-box;
     }
+    .body {
+      border-collapse: collapse;
+    }
+    .body thead tr {
+        border-bottom: 1em solid transparent;
+    }
+    td, th {
+        padding: 0 0.5em 0.5em 0;
+    }
+    h1, h2, h3 {
+      text-align: center;
+    }
     </style>
 </head>
 
@@ -73,7 +85,7 @@
                     </td>
                 </tr>
             </table>
-            <table class="u-full-width">
+            <table class="u-full-width body">
                 <thead>
                 <tr>
                     <th>Item</th>
@@ -122,17 +134,23 @@
 {% endset %}
 
 {# Use the option param passed into the pdf template to show different order pdf's depending on the context #}
-{% switch option %}
+{% switch option|default(false)%}
 {% case "receipt" %}
-    <h1>Receipt for Order #{{ order.number[:7] }}</h1>
+    <h1><img src="{% include 'commerce/_pdf/pdf_header.txt' %}" width="200" alt="Poggio La Noce"></h1>
+    <hr>
+    <h3>Order #{{ order.number[:7] }}</h3>
     {{ orderTable }}
-{% case "ajax" %}
-    <h1>NA</h1>
+{{ orderTable }}{% case "ajax" %}
+    {{ orderTable }}
 {% default %}
-    <h1>Order #{{ order.number[:7] }}</h1>
+    <h1><img src="{{ siteUrl|replace({'en': '', 'it': ''}) }}/images/site/logo_email.jpg" width="200" alt="Poggio La Noce"></h1>
+    <hr>
+    <h3>Order #{{ order.number[:7] }}</h3>
+    <p>Thank you for purchase. This email is a confirmation that we have received your order. Please file or save a copy for your records. We will be sending you a shipping confirmation email with your tracking information shortly.</p>
     {{ orderTable }}
 {% endswitch %}
 
 
 </body>
 </html>
+
