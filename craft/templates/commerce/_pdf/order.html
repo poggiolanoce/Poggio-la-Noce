@@ -115,7 +115,7 @@
                 {% for adjustment in order.adjustments %}
                     <tr>
                         <td>{{ adjustment.type }}</td>
-                        <td colspan="2"><strong>{{ adjustment.name }}</strong><br>({{ adjustment.description }})</td>
+                        <td colspan="2"><strong>{{ adjustment.name }}</strong></td>
                         <td class="text-right">{{ adjustment.amount|currency(order.paymentCurrency) }}</td>
                     </tr>
                 {% endfor %}
