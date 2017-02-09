@@ -3280,6 +3280,7 @@ footer > ul {
 footer > ul > li {
   margin-bottom: 15px;
   vertical-align: middle;
+  list-style-type: none;
 }
 footer > ul > li.contact-phone, footer > ul > li.contact-email {
   display: inline-block;

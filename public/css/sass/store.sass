@@ -17,6 +17,14 @@
   float: left
   box-sizing: border-box
 
+.cart-wrapper
+  max-width: 100%
+  overflow-y: scroll
+  form
+    margin-bottom: 0
+  @media (max-width: 370px)
+    font-size: 14px
+
 /* For devices larger than 400px */
 @media (min-width: 400px)
   .container
@@ -208,6 +216,10 @@ input
     border: 1px solid #bbb
     cursor: pointer
     box-sizing: border-box
+    @include breakpoint($phone-only)
+      font-size: 10px
+      padding: 0 15px
+
 
 .button .fa, button .fa
   font-size: 16px
@@ -296,6 +308,8 @@ input
     border-radius: 4px
     box-shadow: none
     box-sizing: border-box
+    @include breakpoint($phone-only)
+      width: 100%
 
 textarea, select
   height: 38px
@@ -402,6 +416,7 @@ th, td
   padding: 12px 15px
   text-align: left
   border-bottom: 1px solid #E1E1E1
+  vertical-align: top
 
 th:first-child, td:first-child
   padding-left: 0
@@ -696,6 +711,9 @@ img.product
  *–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 #order-page
+  @media (max-width: 370px)
+    th, td
+      padding: 5px
   .four ul
     margin: 0
     padding: 0
