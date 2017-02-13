@@ -247,6 +247,7 @@ nav
 footer
   #home &
     padding-top: 15px
+    border-top: none
   text-align: center
   text-transform: uppercase
   font-size: 13px
@@ -313,11 +314,10 @@ footer
           border-right: 1px solid $text-black
           padding-right: $padding
           margin-right: $padding
-      &.facebook a, &.instagram a
+      &.facebook a, &.instagram a, &.twitter a
         width: 24px
         height: 24px
         text-indent: -10000px
-        background-image: url('/images/site/facebook.png')
         display: block
         background-size: 100%
         @include breakpoint($tablet)
@@ -329,6 +329,11 @@ footer
         a
           background-image: url('/images/site/facebook.png')
       &.instagram
+        margin-right: 10px
         display: inline-block
         a
           background-image: url('/images/site/instagram.png')
+      &.twitter
+        display: inline-block
+        a
+          background-image: url('/images/site/twitter.png')
