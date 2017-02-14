@@ -5,9 +5,13 @@
     <li class="contact-address">{{ contactinformation.primaryAddress }}</li>
     <li class="contact-phone">{{ contactinformation.primaryPhone }}</li>
     <li class="contact-email"><a href="mailto:{{ contactinformation.primaryEmail }}">{{ contactinformation.primaryEmail }}</a></li>
-    <li class="facebook"><a href="{{ contactinformation.facebookUrl }}" target="_blank">Facebook</a></li>
-    <li class="instagram"><a href="{{ contactinformation.instagramUrl }}" target="_blank">Instagram</a></li>
-    <li class="twitter"><a href="{{ contactinformation.twitterUrl }}" target="_blank">Twitter</a></li>
+    <li class="social">
+      <ul>
+        <li class="facebook"><a href="{{ contactinformation.facebookUrl }}" target="_blank">Facebook</a></li>
+        <li class="instagram"><a href="{{ contactinformation.instagramUrl }}" target="_blank">Instagram</a></li>
+        <li class="twitter"><a href="{{ contactinformation.twitterUrl }}" target="_blank">Twitter</a></li>
+      </ul>
+    </li>
   </ul>
   <p>© {{ now.year }} {{ siteName }}. All rights reserved.</p>
 </footer>

@@ -3247,95 +3247,106 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
-footer ul {
+footer > ul {
   margin: 0 auto 20px;
   width: 245px;
   font-size: 10px;
 }
 @media only screen and (min-width: 375px) {
-  footer ul {
+  footer > ul {
     width: 320px;
     font-size: 13px;
   }
 }
 @media only screen and (min-width: 768px) {
-  footer ul {
+  footer > ul {
     font-size: 15px;
     width: 570px;
     position: relative;
     margin-bottom: 70px;
   }
 }
+@media only screen and (min-width: 1040px) {
+  footer > ul {
+    width: 605px;
+  }
+}
 @media only screen and (min-width: 1140px) {
-  footer ul {
+  footer > ul {
     margin: 0;
     width: inherit;
   }
 }
-footer ul li {
+footer > ul > li {
   margin-bottom: 15px;
   vertical-align: middle;
 }
-footer ul li.contact-phone, footer ul li.contact-email {
+footer > ul > li.contact-phone, footer > ul > li.contact-email {
   display: inline-block;
 }
-footer ul li.contact-phone {
+footer > ul > li.contact-phone {
   border-right: 1px solid #333333;
   padding-right: 7px;
   margin-right: 7px;
 }
 @media only screen and (min-width: 768px) {
-  footer ul li {
+  footer > ul > li {
     margin-bottom: 12px;
   }
-  footer ul li.contact-phone {
-    padding-right: 20px;
-    margin-right: 20px;
+  footer > ul > li.contact-phone {
+    padding-right: 7px;
+    margin-right: 7px;
   }
-  footer ul li.contact-email {
-    border-right: 1px solid #333333;
-    padding-right: 20px;
-    margin-right: 20px;
-  }
-  footer ul li.contact-site, footer ul li.contact-address {
+  footer > ul > li.contact-site, footer > ul > li.contact-address {
     display: inline-block;
   }
-  footer ul li.contact-site {
+  footer > ul > li.contact-site {
     border-right: 1px solid #333333;
-    padding-right: 20px;
-    margin-right: 20px;
+    padding-right: 7px;
+    margin-right: 7px;
   }
 }
-footer ul li.facebook a, footer ul li.instagram a, footer ul li.twitter a {
+@media only screen and (min-width: 1040px) {
+  footer > ul > li.contact-email {
+    border-right: 1px solid #333333;
+    padding-right: 7px;
+    margin-right: 7px;
+  }
+}
+footer > ul > li.social {
+  display: block;
+}
+@media only screen and (min-width: 768px) {
+  footer > ul > li.social {
+    position: relative;
+    top: -2px;
+  }
+}
+@media only screen and (min-width: 1040px) {
+  footer > ul > li.social {
+    display: inline-block;
+  }
+}
+footer > ul > li.social li {
+  display: inline-block;
+  margin-right: 10px;
+}
+footer > ul > li.social li a {
   width: 24px;
   height: 24px;
   text-indent: -10000px;
   display: block;
   background-size: 100%;
 }
-@media only screen and (min-width: 768px) {
-  footer ul li.facebook a, footer ul li.instagram a, footer ul li.twitter a {
-    position: relative;
-    top: -2px;
-  }
-}
-footer ul li.facebook {
-  margin-right: 10px;
-  display: inline-block;
-}
-footer ul li.facebook a {
+footer > ul > li.social .facebook a {
   background-image: url("/images/site/facebook.png");
 }
-footer ul li.instagram {
-  margin-right: 10px;
-  display: inline-block;
-}
-footer ul li.instagram a {
+footer > ul > li.social .instagram a {
   background-image: url("/images/site/instagram.png");
 }
-footer ul li.twitter {
-  display: inline-block;
+footer > ul > li.social .twitter {
+  margin-right: 0;
 }
-footer ul li.twitter a {
+footer > ul > li.social .twitter a {
   background-image: url("/images/site/twitter.png");
 }
