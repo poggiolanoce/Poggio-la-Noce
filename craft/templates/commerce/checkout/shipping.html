@@ -28,14 +28,13 @@
         {% else %}
         <p>{{ "No shipping address selected." | t }}</p>
         {% endif %}
-        {% if currentUser %}<a class="edit" href="{{ url('commerce/customer/addresses/edit?addressId={ cart.shippingAddressId }&redirect={ craft.request.path }') }}">{{ "Edit" | t }}</a>{% endif %}
+        {% if currentUser %}<a class="edit" href="{{ url('commerce/customer/addresses/edit?addressId=' ~ cart.shippingAddressId ~ '&redirect='~craft.request.path) }}">{{ "Edit" | t }}</a>{% endif %}
       </div>
       <div class="address-card">
         <h5 class="label">{{ "Billing Address" | t }}</h5>
         {% if cart.billingAddress %}
         {% include 'commerce/_includes/addresses/address' with {'address': cart.billingAddress} %}
-        {% if currentUser %}<a class="edit" href="{{ url('commerce/customer/addresses/edit?addressId={ cart.billingAddressId }&redirect={ craft.request.path }') }}">{{ "Edit" | t }}</a>{% endif %}
-        {% else %}
+        {% if currentUser %}<a class="edit" href="{{ url('commerce/customer/addresses/edit?addressId=' ~ cart.billingAddressId ~ '&redirect='~craft.request.path) }}">{{ "Edit" | t }}</a>{% endif %}
         <p>{{ "No billing address selected." | t }}</p>
         {% endif %}
       </div>

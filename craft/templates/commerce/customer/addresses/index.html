@@ -18,7 +18,7 @@
     {% endif %}
       <div class="address-card one-third column">
         {% include 'commerce/_includes/addresses/address' with {'address': address} %}
-        <a class="button button-primary" href="{{ url('commerce/customer/addresses/edit?addressId={ address.id }') }}">{{ "Edit" | t }}</a>
+        <a class="button button-primary" href="{{ url('commerce/customer/addresses/edit?addressId=' ~ address.id ) }}">{{ "Edit" | t }}</a>
         <form method="POST">
           <input type="hidden" name="action" value="commerce/customerAddresses/delete">
           <input type="hidden" name="id" value="{{ address.id }}"/>
