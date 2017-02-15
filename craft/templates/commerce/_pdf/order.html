@@ -140,7 +140,7 @@
     <hr>
     <h3>Order #{{ order.number[:7] }}</h3>
     {{ orderTable }}
-{{ orderTable }}{% case "ajax" %}
+{% case "ajax" %}
     {{ orderTable }}
 {% default %}
     <h1><img src="{{ siteUrl|replace({'en': '', 'it': ''}) }}/images/site/logo_email.jpg" width="200" alt="Poggio La Noce"></h1>
