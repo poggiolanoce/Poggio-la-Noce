@@ -247,6 +247,7 @@ nav
 footer
   #home &
     padding-top: 15px
+    border-top: none
   text-align: center
   text-transform: uppercase
   font-size: 13px
@@ -272,7 +273,7 @@ footer
     text-decoration: none
     &:hover
       text-decoration: underline
-  ul
+  & > ul
     margin: 0 auto 20px
     width: 245px
     font-size: 10px
@@ -284,10 +285,13 @@ footer
       width: 570px
       position: relative
       margin-bottom: 70px
+    @include breakpoint($desktop)
+      width: 605px
     @include breakpoint("only screen and (min-width: 1140px)")
       margin: 0
       width: inherit
-    li
+    & > li
+      $padding: 20px
       margin-bottom: 15px
       vertical-align: middle
       &.contact-phone, &.contact-email
@@ -299,12 +303,7 @@ footer
         margin-right: $padding
       @include breakpoint($tablet)
         margin-bottom: 12px
-        $padding: 20px
         &.contact-phone
-          padding-right: $padding
-          margin-right: $padding
-        &.contact-email
-          border-right: 1px solid $text-black
           padding-right: $padding
           margin-right: $padding
         &.contact-site, &.contact-address
@@ -313,22 +312,32 @@ footer
           border-right: 1px solid $text-black
           padding-right: $padding
           margin-right: $padding
-      &.facebook a, &.instagram a
-        width: 24px
-        height: 24px
-        text-indent: -10000px
-        background-image: url('/images/site/facebook.png')
+      @include breakpoint($desktop)
+        &.contact-email
+          border-right: 1px solid $text-black
+          padding-right: $padding
+          margin-right: $padding
+      &.social
         display: block
-        background-size: 100%
         @include breakpoint($tablet)
           position: relative
           top: -2px
-      &.facebook
-        margin-right: 10px
-        display: inline-block
-        a
+        @include breakpoint($desktop)
+          display: inline-block
+        li
+          display: inline-block
+          margin-right: 10px
+        li a
+          width: 24px
+          height: 24px
+          text-indent: -10000px
+          display: block
+          background-size: 100%
+        .facebook a
           background-image: url('/images/site/facebook.png')
-      &.instagram
-        display: inline-block
-        a
+        .instagram a
           background-image: url('/images/site/instagram.png')
+        .twitter
+          margin-right: 0
+          a
+            background-image: url('/images/site/twitter.png')

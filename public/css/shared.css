@@ -150,36 +150,40 @@
 .fa-rotate-90 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
   -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 
 .fa-rotate-180 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
   -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
 .fa-rotate-270 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
   -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
   transform: rotate(270deg);
 }
 
 .fa-flip-horizontal {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
   -webkit-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
   transform: scale(-1, 1);
 }
 
 .fa-flip-vertical {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
   -webkit-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
   transform: scale(1, -1);
 }
 
 :root .fa-rotate-90, :root .fa-rotate-180, :root .fa-rotate-270, :root .fa-flip-horizontal, :root .fa-flip-vertical {
-  -webkit-filter: none;
-          filter: none;
+  filter: none;
 }
 
 .fa-stack {
@@ -2843,8 +2847,6 @@ table {
   .featherlight .featherlight-content {
     text-align: left;
     vertical-align: middle;
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
     display: inline-flex;
     overflow: hidden;
     min-width: 30%;
@@ -2853,16 +2855,9 @@ table {
     height: 85%;
     width: 85%;
     white-space: normal;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     position: relative;
   }
   .featherlight .featherlight-inner {
@@ -2984,7 +2979,7 @@ nav {
   top: 24px;
   z-index: 2;
 }
-@media print, (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+@media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
   .logo {
     background-image: url("../images/site/logo@2x.png");
     background-size: image-width("../images/site/logo.png") image-height("../images/site/logo.png");
@@ -3128,14 +3123,9 @@ nav {
   height: 42px;
   line-height: 42px;
   padding: 0 15px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-flow: row wrap;
-      flex-flow: row wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 
 .options-menu {
@@ -3224,6 +3214,7 @@ footer {
 }
 #home footer {
   padding-top: 15px;
+  border-top: none;
 }
 @media only screen and (min-width: 768px) {
   footer {
@@ -3256,89 +3247,106 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
-footer ul {
+footer > ul {
   margin: 0 auto 20px;
   width: 245px;
   font-size: 10px;
 }
 @media only screen and (min-width: 375px) {
-  footer ul {
+  footer > ul {
     width: 320px;
     font-size: 13px;
   }
 }
 @media only screen and (min-width: 768px) {
-  footer ul {
+  footer > ul {
     font-size: 15px;
     width: 570px;
     position: relative;
     margin-bottom: 70px;
   }
 }
+@media only screen and (min-width: 1040px) {
+  footer > ul {
+    width: 605px;
+  }
+}
 @media only screen and (min-width: 1140px) {
-  footer ul {
+  footer > ul {
     margin: 0;
     width: inherit;
   }
 }
-footer ul li {
+footer > ul > li {
   margin-bottom: 15px;
   vertical-align: middle;
 }
-footer ul li.contact-phone, footer ul li.contact-email {
+footer > ul > li.contact-phone, footer > ul > li.contact-email {
   display: inline-block;
 }
-footer ul li.contact-phone {
+footer > ul > li.contact-phone {
   border-right: 1px solid #333333;
   padding-right: 7px;
   margin-right: 7px;
 }
 @media only screen and (min-width: 768px) {
-  footer ul li {
+  footer > ul > li {
     margin-bottom: 12px;
   }
-  footer ul li.contact-phone {
-    padding-right: 20px;
-    margin-right: 20px;
+  footer > ul > li.contact-phone {
+    padding-right: 7px;
+    margin-right: 7px;
   }
-  footer ul li.contact-email {
-    border-right: 1px solid #333333;
-    padding-right: 20px;
-    margin-right: 20px;
-  }
-  footer ul li.contact-site, footer ul li.contact-address {
+  footer > ul > li.contact-site, footer > ul > li.contact-address {
     display: inline-block;
   }
-  footer ul li.contact-site {
+  footer > ul > li.contact-site {
     border-right: 1px solid #333333;
-    padding-right: 20px;
-    margin-right: 20px;
+    padding-right: 7px;
+    margin-right: 7px;
   }
 }
-footer ul li.facebook a, footer ul li.instagram a {
-  width: 24px;
-  height: 24px;
-  text-indent: -10000px;
-  background-image: url("/images/site/facebook.png");
+@media only screen and (min-width: 1040px) {
+  footer > ul > li.contact-email {
+    border-right: 1px solid #333333;
+    padding-right: 7px;
+    margin-right: 7px;
+  }
+}
+footer > ul > li.social {
   display: block;
-  background-size: 100%;
 }
 @media only screen and (min-width: 768px) {
-  footer ul li.facebook a, footer ul li.instagram a {
+  footer > ul > li.social {
     position: relative;
     top: -2px;
   }
 }
-footer ul li.facebook {
-  margin-right: 10px;
-  display: inline-block;
+@media only screen and (min-width: 1040px) {
+  footer > ul > li.social {
+    display: inline-block;
+  }
 }
-footer ul li.facebook a {
+footer > ul > li.social li {
+  display: inline-block;
+  margin-right: 10px;
+}
+footer > ul > li.social li a {
+  width: 24px;
+  height: 24px;
+  text-indent: -10000px;
+  display: block;
+  background-size: 100%;
+}
+footer > ul > li.social .facebook a {
   background-image: url("/images/site/facebook.png");
 }
-footer ul li.instagram {
-  display: inline-block;
-}
-footer ul li.instagram a {
+footer > ul > li.social .instagram a {
   background-image: url("/images/site/instagram.png");
+}
+footer > ul > li.social .twitter {
+  margin-right: 0;
+}
+footer > ul > li.social .twitter a {
+  background-image: url("/images/site/twitter.png");
 }
