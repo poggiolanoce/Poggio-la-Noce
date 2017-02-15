@@ -83,6 +83,32 @@
   box-sizing: border-box;
 }
 
+.checkout-action {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+@media (max-width: 600px) {
+  .checkout-action {
+    justify-content: center;
+  }
+  .checkout-action a {
+    margin-bottom: 10px;
+  }
+}
+.checkout-action .button {
+  margin-bottom: 0;
+}
+.checkout-action .return-to-cart {
+  text-decoration: none;
+}
+.checkout-action .return-to-cart:before {
+  padding-right: 5px;
+  content: "«";
+}
+
 .cart-wrapper {
   max-width: 100%;
   overflow-y: scroll;
