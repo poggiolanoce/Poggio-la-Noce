@@ -128,7 +128,7 @@ return array(
     "Continue as Guest" => "Continue as Guest",
     "Remove" => "Remove",
     "Update" => "Update",
-    "Empty the Cart" => "Empty the Cart",
+    "Empty the Cart" => "Empty cart",
     "Submit" => "Submit",
     "Edit" => "Edit",
     "New" => "New",

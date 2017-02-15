@@ -54,49 +54,52 @@
       <h4>{{ "Receipt" | t }} (<a href="{{ order.getPdfUrl('receipt') }}">{{ "Download" | t }}</a>)</h4>
       {% endif %}
 
-      <table class="u-full-width">
-        <thead>
-          <tr>
-            <th>{{ "Item" | t }}</th>
-            <th>{{ "Unit Price" | t }}</th>
-            <th>{{ "Quantity" | t }}</th>
-            <th class="text-right">{{ "Subtotal" | t }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for item in order.lineItems %}
-          <tr>
-            <td>
-              <strong>{{ item.description }}</strong><br>
-            </td>
-            <td>
-              {% if item.onSale %}
-              <strike>{{ item.price|currency(order.paymentCurrency) }}</strike>   {{ item.salePrice|currency(order.paymentCurrency) }}
-              {% else %}
-              {{ item.price|currency(order.paymentCurrency) }}
-              {% endif %}
-            </td>
-            <td>{{ item.qty }}</td>
-            <td class="text-right">{{ item.subTotal|currency(order.paymentCurrency) }}</td>
-          </tr>
-          {% endfor %}
+      <div class="cart-wrapper">
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>{{ "Item" | t }}</th>
+              <th>{{ "Unit Price" | t }}</th>
+              <th>{{ "Quantity" | t }}</th>
+              <th class="text-right">{{ "Subtotal" | t }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in order.lineItems %}
+            <tr>
+              <td>
+                <strong>{{ item.description }}</strong><br>
+              </td>
+              <td>
+                {% if item.onSale %}
+                <strike>{{ item.price|currency(order.paymentCurrency) }}</strike>   {{ item.salePrice|currency(order.paymentCurrency) }}
+                {% else %}
+                {{ item.price|currency(order.paymentCurrency) }}
+                {% endif %}
+              </td>
+              <td>{{ item.qty }}</td>
+              <td class="text-right">{{ item.subTotal|currency(order.paymentCurrency) }}</td>
+            </tr>
+            {% endfor %}
 
-          {% for adjustment in order.adjustments %}
-          <tr>
-            <td>{{ adjustment.type | t }}</td>
-            <td colspan="2"><strong>{{ adjustment.name }}</strong></td>
-            <td class="text-right">{{ adjustment.amount|currency(order.paymentCurrency) }}</td>
-          </tr>
-          {% endfor %}
+            {% for adjustment in order.adjustments %}
+            <tr>
+              <td>{{ adjustment.type | t }}</td>
+              <td colspan="2"><strong>{{ adjustment.name }}</strong></td>
+              <td class="text-right">{{ adjustment.amount|currency(order.paymentCurrency) }}</td>
+            </tr>
+            {% endfor %}
 
-          <tr>
-            <td colspan="4" class="text-right">
-              <h4>{{ "Total" | t }}: {{ order.totalPrice|currency(order.paymentCurrency) }}</h4>
-            </td>
-          </tr>
+            <tr>
+              <td colspan="4" class="text-right">
+                <h4>{{ "Total" | t }}: {{ order.totalPrice|currency(order.paymentCurrency) }}</h4>
+              </td>
+            </tr>
 
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
+
 
     </div>
   </div>
