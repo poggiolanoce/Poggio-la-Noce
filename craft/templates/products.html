@@ -1,7 +1,7 @@
 {% extends "_layouts/_layout" %}
 
 {% block content %}
-{% cache globally using key craft.request.path %}
+{% cache using key "products-" ~ regionCode ~ "-" ~ craft.locale %}
 
   <article class="page-content product-overview">
     {% set wines = craft.commerce.products.type('wine').order('postDate asc') %}

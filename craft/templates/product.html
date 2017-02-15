@@ -1,7 +1,7 @@
 {% extends "_layouts/_layout" %}
 
 {% block content %}
-{% cache globally using key craft.request.path %}
+{% cache using key "product-" ~ regionCode ~ "-" ~ craft.locale %}
 
 {% if product is not defined %}
   {% redirect craft.commerce.products.type('wine').order('postDate asc').first().url %}
