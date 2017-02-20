@@ -30,7 +30,7 @@
               class="form-control">
             {% for id,name in craft.commerce.paymentMethods %}
               <option value="{{ id }}"
-                  {% if id == cart.paymentMethodId %}selected{% endif %}>{{ name }}</option>
+                  {% if id == cart.paymentMethodId %}selected{% endif %}>{{ name | t }}</option>
             {% endfor %}
           </select>
 
@@ -73,7 +73,10 @@
                 data-description="Purchase" {# This is not used for order description in stripe - see Craft Commerce general settings #}
                 data-email="{{ cart.email }}"
                 data-amount="{{ cart.totalPrice * 100 }}"
-                data-locale="auto">
+                data-locale="{{craft.locale}}"
+                data-label="{{ 'Pay with Card' | t }}"
+                data-currency="{{currencyCode}}"
+                >
             </script>
           {% endif %}
 
