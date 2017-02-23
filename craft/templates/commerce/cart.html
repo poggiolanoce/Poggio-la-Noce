@@ -47,7 +47,10 @@
         </table>
       </div>
 
-      <a class="button button-primary" href="{{ url('commerce/checkout') }}">{{ "Checkout" | t }}</a>
+      <div class="checkout-action">
+        <a href="{{ url('products') }}" class="return-to-cart">{{ "Back to Wines" | t }}</a>
+        <a class="button button-primary" href="{{ url('commerce/checkout') }}">{{ "Checkout" | t }}</a>
+      </div>
       {% endif %}
 
       {% if not cart.lineItems|length %}

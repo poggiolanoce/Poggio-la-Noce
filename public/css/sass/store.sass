@@ -17,6 +17,24 @@
   float: left
   box-sizing: border-box
 
+.checkout-action
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: center
+  padding-bottom: 20px
+  @media (max-width: 600px)
+    justify-content: center
+    a
+      margin-bottom: 10px
+  .button
+    margin-bottom: 0
+  .return-to-cart
+    text-decoration: none
+    &:before
+      padding-right: 5px
+      content: "«"
+
 .cart-wrapper
   max-width: 100%
   overflow-y: scroll

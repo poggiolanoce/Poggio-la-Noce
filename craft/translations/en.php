@@ -145,5 +145,6 @@ return array(
     "Choose a shipping method." => "Choose a shipping method.",
     "Choose vintage" => "Choose vintage",
     "Notify me when item is back in stock" => "Notify me when item is back in stock",
-    "Learn More" => "Learn More"
+    "Learn More" => "Learn More",
+    "Back to Wines" => "Back to Wines"
 );

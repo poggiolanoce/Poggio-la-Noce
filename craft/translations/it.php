@@ -146,5 +146,6 @@ return array(
     "Products page" => "pagina produtti",
     "Choose vintage" => "Scegli annata",
     "Notify me when item is back in stock" => "Notifica mi quando l'articolo sarà disponibile",
-    "Learn More" => "Ulteriori informazioni"
+    "Learn More" => "Ulteriori informazioni",
+    "Back to Wines" => "Translation Needed"
 );
