@@ -39,7 +39,7 @@
                   {{ "Total" | t }} {{ "Discount" | t }}: {{ cart.totalDiscount|currency(currencyCode) }}<br>
                 {% endif %}
                 <!-- Use itemPrice because there's no point in adding shipping or taxes before they're selected -->
-                <h4>Total: {{ cart.itemSubtotal|currency(currencyCode) }}</h4>
+                <h4>{{ "Total" | t }}: {{ cart.itemSubtotal|currency(currencyCode) }}</h4>
               </td>
             </tr>
 
@@ -54,7 +54,7 @@
       {% endif %}
 
       {% if not cart.lineItems|length %}
-        <p class="no-items">{{ 'No Items' | t }} <a href="/products">{{ 'Products page' | t }}</a>.</p>
+        <p class="no-items">{{ 'No Items' | t }} <a href="{{ url('products') }}">{{ 'Products page' | t }}</a>.</p>
       {% endif %}
 
     </div>
