@@ -147,5 +147,7 @@ return array(
     "Choose vintage" => "Scegli annata",
     "Notify me when item is back in stock" => "Notifica mi quando l'articolo sarà disponibile",
     "Learn More" => "Ulteriori informazioni",
-    "Back to Wines" => "Translation Needed"
+    "Back to Wines" => "Ritorna ai vini",
+    "Credit Card" => "Carta di Credito",
+    "Pay with Card" => "Paga con la carta"
 );
