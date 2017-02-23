@@ -69,7 +69,7 @@
                 src="//checkout.stripe.com/checkout.js"
                 class="stripe-button"
                 data-key="{{ cart.paymentMethod.settings.publishableKey ?? '' }}"
-                data-name="Craft Commerce"
+                data-name="Poggio La Noce"
                 data-description="Purchase" {# This is not used for order description in stripe - see Craft Commerce general settings #}
                 data-email="{{ cart.email }}"
                 data-amount="{{ cart.totalPrice * 100 }}"
