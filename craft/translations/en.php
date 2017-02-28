@@ -148,5 +148,6 @@ return array(
     "Learn More" => "Learn More",
     "Back to Wines" => "Back to Wines",
     "Credit Card" => "Credit Card",
-    "Pay with Card" => "Pay with Card"
+    "Pay with Card" => "Pay with Card",
+    "Customer" => "Customer"
 );

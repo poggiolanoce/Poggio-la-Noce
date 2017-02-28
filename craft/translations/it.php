@@ -62,7 +62,7 @@ return array(
     "Next" => "Continua",
     "Are you 21" => "Sono maggiorenne",
     "Are you in EU/US" => "Il vino sarà spedito ad una destinazione sopra elencata",
-    "Confirm" => "Confirm",
+    "Confirm" => "Conferma",
     "Confirm Shipping Method" => "Conferma metodo spedizione",
     "Shipping Reminder" => "Attualmente spediamo unicamente nei paesi elencati qui di seguito.",
     "Shipping Reminder 2" => "Per ulteriori informazioni a riguardo, non esitate a contattarci via email.",
@@ -149,5 +149,10 @@ return array(
     "Learn More" => "Ulteriori informazioni",
     "Back to Wines" => "Ritorna ai vini",
     "Credit Card" => "Carta di Credito",
-    "Pay with Card" => "Paga con la carta"
+    "Pay with Card" => "Paga con la carta",
+    "Cart updated." => "Carrello aggiornato.",
+    'Line item removed.' => 'Carrello aggiornato.',
+    'Line item updated.' => 'Carrello aggiornato.',
+    'Line items removed.' => 'Carrello aggiornato.',
+    "Customer" => "Cliente"
 );
