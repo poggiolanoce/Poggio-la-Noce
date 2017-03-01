@@ -1189,7 +1189,6 @@ main#content .container {
 }
 
 #awards .awards-list {
-  margin-top: -120px;
   text-align: center;
 }
 @media only screen and (min-width: 768px) {
@@ -1305,6 +1304,9 @@ main#content .container {
 }
 #awards .awards-list li .left-content.full-content {
   width: 100%;
+}
+#awards .awards-list li .left-content.full-content h4 {
+  font-size: 50px;
 }
 #awards .awards-list li .left-content ul {
   padding: 0;
