@@ -15,7 +15,7 @@ return array(
     'autoLoginAfterAccountActivation' => true,
     'enableTemplateCaching' => false,
     'devMode' => true,
-    'tokenParam' => 'token',
+    'tokenParam' => 'craftToken',
     'environmentVariables' => array(
       'siteUrl'  => SITE_URL,
       'fileSystemPath' => BASEPATH
