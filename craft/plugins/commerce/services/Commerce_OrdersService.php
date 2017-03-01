@@ -346,29 +346,29 @@ class Commerce_OrdersService extends BaseApplicationComponent
             $order->itemTotal += $item->getTotal();
         }
 
-        /** @var Commerce_OrderAdjustmentModel[] $adjustments */
-        $adjustments = [];
-        foreach ($this->getAdjusters() as $adjuster)
-        {
-            $adjustments = array_merge($adjustments, $adjuster->adjust($order, $lineItems));
-        }
+        $order->setLineItems($lineItems);
 
-        //refreshing adjustments
+        // reset adjustments
+        $order->setAdjustments([]);
         craft()->commerce_orderAdjustments->deleteAllOrderAdjustmentsByOrderId($order->id);
 
-        foreach ($adjustments as $adjustment)
+        // collect new adjustments
+        foreach ($this->getAdjusters($order) as $adjuster)
+        {
+            $adjustments = $adjuster->adjust($order, $lineItems);
+            $order->setAdjustments(array_merge($order->getAdjustments(), $adjustments));
+        }
+
+        // save new adjustment models
+        foreach ($order->getAdjustments() as $adjustment)
         {
             $result = craft()->commerce_orderAdjustments->saveOrderAdjustment($adjustment);
             if (!$result)
             {
                 $errors = $adjustment->getAllErrors();
-                throw new Exception('Error saving order adjustment: '.implode(', ',
-                        $errors));
+                throw new Exception('Error saving order adjustment: '.implode(', ', $errors));
             }
         }
-
-        $order->setAdjustments($adjustments);
-        $order->setLineItems($lineItems);
 
         //recalculating order amount and saving items
         $order->itemTotal = 0;
@@ -413,9 +413,10 @@ class Commerce_OrdersService extends BaseApplicationComponent
     }
 
     /**
+     * @param Commerce_OrderModel $order
      * @return Commerce_AdjusterInterface[]
      */
-    private function getAdjusters()
+    private function getAdjusters($order = null)
     {
         $adjusters = [
             200 => new Commerce_ShippingAdjuster,
@@ -424,7 +425,7 @@ class Commerce_OrdersService extends BaseApplicationComponent
         ];
 
         // Additional adjuster can be returned by the plugins.
-        $additional = craft()->plugins->call('commerce_registerOrderAdjusters');
+        $additional = craft()->plugins->call('commerce_registerOrderAdjusters', [&$adjusters, $order]);
 
         $orderIndex = 800;
         foreach ($additional as $additionalAdjusters)
@@ -445,6 +446,9 @@ class Commerce_OrdersService extends BaseApplicationComponent
         }
 
         ksort($adjusters);
+
+        // Allow plugins to modify the adjusters
+        craft()->plugins->call('commerce_modifyOrderAdjusters', [&$adjusters, $order]);
 
         return $adjusters;
     }

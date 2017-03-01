@@ -559,43 +559,40 @@ class Commerce_CartService extends BaseApplicationComponent
     /**
      * Removes all carts that are incomplete and older than the config setting.
      *
-     * @return int
+     * @return int The number of carts purged from the database
      * @throws \Exception
      */
     public function purgeIncompleteCarts()
     {
-        $carts = $this->getCartsToPurge();
-        if ($carts)
-        {
-            $ids = array_map(function (Commerce_OrderModel $cart)
-            {
-                return $cart->id;
-            }, $carts);
-            craft()->elements->deleteElementById($ids);
+        $doPurge = craft()->config->get('purgeInactiveCarts', 'commerce');
+        $cartIds = $this->getCartsIdsToPurge();
 
-            return count($ids);
+        if ($cartIds && $doPurge)
+        {
+            craft()->elements->deleteElementById($cartIds);
+            return count($cartIds);
         }
 
         return 0;
     }
 
     /**
-     * Which Carts need to be deleted
+     * Which Carts IDs need to be deleted
      *
-     * @return Commerce_OrderModel[]
+     * @return int[]
      */
-    private function getCartsToPurge()
+    private function getCartsIdsToPurge()
     {
-
         $configInterval = craft()->config->get('purgeInactiveCartsDuration', 'commerce');
         $edge = new \DateTime();
         $interval = new \DateInterval($configInterval);
         $interval->invert = 1;
         $edge->add($interval);
 
-        $records = Commerce_OrderRecord::model()->findAllByAttributes(['isCompleted'=>false],'dateUpdated <= :edge', ['edge' => $edge->format('Y-m-d H:i:s')]);
-
-        return Commerce_OrderModel::populateModels($records);
+        return Craft::app()->db->createCommand()->select('orders.id')
+            ->from('commerce_orders orders')
+            ->where('isCompleted=:isCompleted AND dateUpdated <= :edge', [':isCompleted' => 'not 1','edge' => $edge->format('Y-m-d H:i:s')])
+            ->queryColumn();
     }
 
     /**

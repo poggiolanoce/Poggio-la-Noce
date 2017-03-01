@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit51954b1af11f1368fa19dae12d3e18ac
+class ComposerStaticInit627de1cf12e9ecf57daefe3e5eca7e8b
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -1252,6 +1252,8 @@ class ComposerStaticInit51954b1af11f1368fa19dae12d3e18ac
         'Symfony\\Component\\HttpFoundation\\BinaryFileResponse' => __DIR__ . '/..' . '/symfony/http-foundation/BinaryFileResponse.php',
         'Symfony\\Component\\HttpFoundation\\Cookie' => __DIR__ . '/..' . '/symfony/http-foundation/Cookie.php',
         'Symfony\\Component\\HttpFoundation\\Exception\\ConflictingHeadersException' => __DIR__ . '/..' . '/symfony/http-foundation/Exception/ConflictingHeadersException.php',
+        'Symfony\\Component\\HttpFoundation\\Exception\\RequestExceptionInterface' => __DIR__ . '/..' . '/symfony/http-foundation/Exception/RequestExceptionInterface.php',
+        'Symfony\\Component\\HttpFoundation\\Exception\\SuspiciousOperationException' => __DIR__ . '/..' . '/symfony/http-foundation/Exception/SuspiciousOperationException.php',
         'Symfony\\Component\\HttpFoundation\\ExpressionRequestMatcher' => __DIR__ . '/..' . '/symfony/http-foundation/ExpressionRequestMatcher.php',
         'Symfony\\Component\\HttpFoundation\\FileBag' => __DIR__ . '/..' . '/symfony/http-foundation/FileBag.php',
         'Symfony\\Component\\HttpFoundation\\File\\Exception\\AccessDeniedException' => __DIR__ . '/..' . '/symfony/http-foundation/File/Exception/AccessDeniedException.php',
@@ -1267,6 +1269,7 @@ class ComposerStaticInit51954b1af11f1368fa19dae12d3e18ac
         'Symfony\\Component\\HttpFoundation\\File\\MimeType\\MimeTypeExtensionGuesser' => __DIR__ . '/..' . '/symfony/http-foundation/File/MimeType/MimeTypeExtensionGuesser.php',
         'Symfony\\Component\\HttpFoundation\\File\\MimeType\\MimeTypeGuesser' => __DIR__ . '/..' . '/symfony/http-foundation/File/MimeType/MimeTypeGuesser.php',
         'Symfony\\Component\\HttpFoundation\\File\\MimeType\\MimeTypeGuesserInterface' => __DIR__ . '/..' . '/symfony/http-foundation/File/MimeType/MimeTypeGuesserInterface.php',
+        'Symfony\\Component\\HttpFoundation\\File\\Stream' => __DIR__ . '/..' . '/symfony/http-foundation/File/Stream.php',
         'Symfony\\Component\\HttpFoundation\\File\\UploadedFile' => __DIR__ . '/..' . '/symfony/http-foundation/File/UploadedFile.php',
         'Symfony\\Component\\HttpFoundation\\HeaderBag' => __DIR__ . '/..' . '/symfony/http-foundation/HeaderBag.php',
         'Symfony\\Component\\HttpFoundation\\IpUtils' => __DIR__ . '/..' . '/symfony/http-foundation/IpUtils.php',
@@ -1329,10 +1332,10 @@ class ComposerStaticInit51954b1af11f1368fa19dae12d3e18ac
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit51954b1af11f1368fa19dae12d3e18ac::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit51954b1af11f1368fa19dae12d3e18ac::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit51954b1af11f1368fa19dae12d3e18ac::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit51954b1af11f1368fa19dae12d3e18ac::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit627de1cf12e9ecf57daefe3e5eca7e8b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit627de1cf12e9ecf57daefe3e5eca7e8b::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit627de1cf12e9ecf57daefe3e5eca7e8b::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit627de1cf12e9ecf57daefe3e5eca7e8b::$classMap;
 
         }, null, ClassLoader::class);
     }
