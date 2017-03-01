@@ -14,7 +14,8 @@ return array(
     'generateTransformsBeforePageLoad' => true,
     'autoLoginAfterAccountActivation' => true,
     'enableTemplateCaching' => false,
-    'devMode'   => true,
+    'devMode' => true,
+    'tokenParam' => 'token',
     'environmentVariables' => array(
       'siteUrl'  => SITE_URL,
       'fileSystemPath' => BASEPATH
