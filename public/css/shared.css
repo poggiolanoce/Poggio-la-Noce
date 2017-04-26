@@ -3139,6 +3139,9 @@ nav {
   line-height: 26px;
   margin-top: 9px;
 }
+.options-menu .localization {
+  display: none;
+}
 @media only screen and (min-width: 768px) {
   .options-menu .localization {
     display: inline-block;
