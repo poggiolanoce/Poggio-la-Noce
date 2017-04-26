@@ -1,32 +1,5 @@
 <div class="top-menu">
-  <div class="user-menu">
-    {% if currentUser %}
-      <p>
-        <a href="{{ url('commerce/customer') }}">
-          {{ 'Welcome' | t }}, {{ currentUser.username }}
-        </a>
-      </p>
-      <a href="{{ logoutUrl }}"><span class="fa fa-sign-in"></span> {{ "Logout" | t }}</a>
-    {% else %}
-      <a href="{{ loginUrl }}"><span class="fa fa-sign-out"></span> {{ "Login" | t }}</a>
-    {% endif %}
-  </div>
-
-  {% if display_menu %}
   <div class="options-menu">
     {% include 'partials/language_portal' %}
-    <div class="cart">
-      <a class="{% if craft.request.getSegment(1) == 'cart' %}button-primary{% endif %}" href="{{ url('commerce/cart') }}">
-        <i class="fa fa-shopping-cart"></i> {{ "Cart"|t }} <span>{{ cart.totalQty }}</span>
-      </a>
-    </div>
   </div>
-  {% elseif not display_menu and currentUser %}
-    <div class="options-menu order-menu">
-      {% if currentUser %}
-        <a href="{{ url('commerce/customer') }}">{{ "My Orders"|t }}</a>
-        <a href="{{ url('commerce/customer/addresses') }}">{{ "My Addresses"|t }}</a>
-      {% endif %}
-    </div>
-  {% endif %}
 </div>

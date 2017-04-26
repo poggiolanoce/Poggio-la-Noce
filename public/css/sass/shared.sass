@@ -174,13 +174,17 @@ nav
 
 .top-menu
   box-sizing: border-box
-  background: #000
   height: 42px
+  margin-bottom: -42px
+  z-index: 2
+  position: relative
   line-height: 42px
   padding: 0 15px
   display: flex
+  width: 20%
+  float: right
   flex-flow: row wrap
-  justify-content: space-between
+  justify-content: flex-end
 
 .options-menu
   text-transform: uppercase
@@ -189,7 +193,6 @@ nav
   line-height: 26px
   margin-top: 9px
   .localization
-    display: none
     @include breakpoint($tablet)
       display: inline-block
   .cart

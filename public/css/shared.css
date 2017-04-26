@@ -3119,13 +3119,17 @@ nav {
 
 .top-menu {
   box-sizing: border-box;
-  background: #000;
   height: 42px;
+  margin-bottom: -42px;
+  z-index: 2;
+  position: relative;
   line-height: 42px;
   padding: 0 15px;
   display: flex;
+  width: 20%;
+  float: right;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .options-menu {
@@ -3134,9 +3138,6 @@ nav {
   height: 24px;
   line-height: 26px;
   margin-top: 9px;
-}
-.options-menu .localization {
-  display: none;
 }
 @media only screen and (min-width: 768px) {
   .options-menu .localization {
