@@ -4,7 +4,7 @@
 define('URI_SCHEME', ( isset($_SERVER['HTTPS'] ) ) ? "https://" : "http://" );
 
 // The site url
-define('SITE_URL', URI_SCHEME . $_SERVER['SERVER_NAME'] . '/');
+define('SITE_URL', 'http://www.poggiolanoce.com/');
 
 // The site basepath
 define('BASEPATH', realpath(CRAFT_BASE_PATH . '/../') . '/');

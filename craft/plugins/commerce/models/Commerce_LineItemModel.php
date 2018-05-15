@@ -230,7 +230,7 @@ class Commerce_LineItemModel extends BaseModel
      */
     public function getOnSale()
     {
-        return is_null($this->salePrice) ? false : ($this->salePrice != $this->price);
+        return null === $this->salePrice ? false : (CommerceCurrencyHelper::round($this->salePrice) != CommerceCurrencyHelper::round($this->price));
     }
 
     /**
@@ -238,7 +238,7 @@ class Commerce_LineItemModel extends BaseModel
      */
     public function getDescription()
     {
-        return $this->snapshot['description'];
+        return HtmlHelper::decode($this->snapshot['description']);
     }
 
     /**
@@ -246,7 +246,7 @@ class Commerce_LineItemModel extends BaseModel
      */
     public function getSku()
     {
-        return $this->snapshot['sku'];
+        return HtmlHelper::decode($this->snapshot['sku']);
     }
 
     /**

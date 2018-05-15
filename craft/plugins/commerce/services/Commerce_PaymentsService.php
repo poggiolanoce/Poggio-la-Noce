@@ -215,10 +215,6 @@ class Commerce_PaymentsService extends BaseApplicationComponent
             $billingAddress = $order->billingAddress;
             if ($billingAddress)
             {
-                // Set top level names to the billing names
-                $card->setFirstName($billingAddress->firstName);
-                $card->setLastName($billingAddress->lastName);
-
                 $card->setBillingFirstName($billingAddress->firstName);
                 $card->setBillingLastName($billingAddress->lastName);
                 $card->setBillingAddress1($billingAddress->address1);
@@ -255,10 +251,12 @@ class Commerce_PaymentsService extends BaseApplicationComponent
                 $card->setShippingAddress2($shippingAddress->address2);
                 $card->setShippingCity($shippingAddress->city);
                 $card->setShippingPostcode($shippingAddress->zipCode);
+
                 if ($shippingAddress->getCountry())
                 {
                     $card->setShippingCountry($shippingAddress->getCountry()->iso);
                 }
+                
                 if ($shippingAddress->getState())
                 {
                     $state = $shippingAddress->getState()->abbreviation ?: $shippingAddress->getState()->name;
@@ -268,7 +266,7 @@ class Commerce_PaymentsService extends BaseApplicationComponent
                 {
                     $card->setShippingState($shippingAddress->getStateText());
                 }
-                $card->setShippingState($shippingAddress->getStateText());
+
                 $card->setShippingPhone($shippingAddress->phone);
                 $card->setShippingCompany($shippingAddress->businessName);
             }
@@ -326,9 +324,6 @@ class Commerce_PaymentsService extends BaseApplicationComponent
         // custom gateways may wish to access the order directly
         $request['order'] = $transaction->order;
         $request['orderId'] = $transaction->order->id;
-
-        // Stripe only params
-        $request['receiptEmail'] = $transaction->order->email;
 
         // Paypal only params
         $request['noShipping'] = 1;
@@ -598,7 +593,7 @@ class Commerce_PaymentsService extends BaseApplicationComponent
         ResponseInterface $response
     )
     {
-        if ($response->isSuccessful())
+        if ($response->isSuccessful() && !$response->isRedirect())
         {
             $transaction->status = Commerce_TransactionRecord::STATUS_SUCCESS;
         }
@@ -758,6 +753,7 @@ class Commerce_PaymentsService extends BaseApplicationComponent
         {
             if ($transaction->status == Commerce_TransactionRecord::STATUS_SUCCESS)
             {
+                craft()->commerce_orders->updateOrderPaidTotal($transaction->order);
                 return true;
             }
             else

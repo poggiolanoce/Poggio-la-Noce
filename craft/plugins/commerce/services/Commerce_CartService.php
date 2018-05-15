@@ -1,7 +1,6 @@
 <?php
 namespace Craft;
 
-use Commerce\Helpers\CommerceDbHelper;
 
 /**
  * Cart service.
@@ -34,19 +33,18 @@ class Commerce_CartService extends BaseApplicationComponent
      */
     public function addToCart($order, $purchasableId, $qty = 1, $note = '', $options = [], &$error = '')
     {
-        CommerceDbHelper::beginStackedTransaction();
 
         $isNewLineItem = false;
 
         //saving current cart if it's new and empty
-        if (!$order->id)
+        if (!$order->id && !craft()->commerce_orders->saveOrder($order))
         {
-            if (!craft()->commerce_orders->saveOrder($order))
-            {
-                CommerceDbHelper::rollbackStackedTransaction();
-                throw new Exception(Craft::t('Error on creating empty cart'));
-            }
+            $error = Craft::t('Could not save the cart.');
+
+            return false;
         }
+
+        $transaction = craft()->db->getCurrentTransaction() === null ? craft()->db->beginTransaction() : null;
 
         //filling item model
         $lineItem = craft()->commerce_lineItems->getLineItemByOrderPurchasableOptions($order->id, $purchasableId, $options);
@@ -87,7 +85,10 @@ class Commerce_CartService extends BaseApplicationComponent
 
                 if (!$event->performAction)
                 {
-                    CommerceDbHelper::rollbackStackedTransaction();
+                    if ($transaction !== null)
+                    {
+                        $transaction->rollback();
+                    }
 
                     return false;
                 }
@@ -103,7 +104,10 @@ class Commerce_CartService extends BaseApplicationComponent
 
                     craft()->commerce_orders->saveOrder($order);
 
-                    CommerceDbHelper::commitStackedTransaction();
+                    if ($transaction !== null)
+                    {
+                        $transaction->commit();
+                    }
 
                     //raising event
                     $event = new Event($this, ['lineItem' => $lineItem, 'order' => $order,]);
@@ -115,11 +119,17 @@ class Commerce_CartService extends BaseApplicationComponent
         }
         catch (\Exception $e)
         {
-            CommerceDbHelper::rollbackStackedTransaction();
+            if ($transaction !== null)
+            {
+                $transaction->rollback();
+            }
             throw $e;
         }
 
-        CommerceDbHelper::rollbackStackedTransaction();
+        if ($transaction !== null)
+        {
+            $transaction->rollback();
+        }
 
         $errors = $lineItem->getAllErrors();
         $error = array_pop($errors);
@@ -218,7 +228,7 @@ class Commerce_CartService extends BaseApplicationComponent
      * @throws Exception
      * @throws \Exception
      */
-    public function setPaymentCurrency($order, $currency, $error)
+    public function setPaymentCurrency($order, $currency, &$error = '')
     {
         $currency = craft()->commerce_paymentCurrencies->getPaymentCurrencyByIso($currency);
 
@@ -250,7 +260,7 @@ class Commerce_CartService extends BaseApplicationComponent
      * @throws Exception
      * @throws \Exception
      */
-    public function setShippingMethod(Commerce_OrderModel $cart, $shippingMethod, &$error = "")
+    public function setShippingMethod(Commerce_OrderModel $cart, $shippingMethod, &$error = '')
     {
         $methods = craft()->commerce_shippingMethods->getAvailableShippingMethods($cart);
 
@@ -283,7 +293,7 @@ class Commerce_CartService extends BaseApplicationComponent
     {
         $method = craft()->commerce_paymentMethods->getPaymentMethodById($paymentMethodId);
 
-        if (!$method)
+        if (!$method || !$method->frontendEnabled)
         {
             $error = Craft::t('Payment method does not exist or is not allowed.');
 
@@ -374,7 +384,13 @@ class Commerce_CartService extends BaseApplicationComponent
             $this->_cart->currency = craft()->commerce_paymentCurrencies->getPrimaryPaymentCurrencyIso();
 
             // Payment currency is always set to the stores primary currency unless it is set to an allowed currency.
-            $currencies = \array_column(craft()->commerce_paymentCurrencies->getAllPaymentCurrencies(), 'iso');
+            $allCurrencies = craft()->commerce_paymentCurrencies->getAllPaymentCurrencies();
+            $currencies = [];
+
+            foreach ($allCurrencies as $currency)
+            {
+                $currencies[] = $currency->iso;
+            }
 
             if (defined('COMMERCE_PAYMENT_CURRENCY'))
             {
@@ -385,7 +401,35 @@ class Commerce_CartService extends BaseApplicationComponent
                 }
             }
 
-            $this->_cart->paymentCurrency = $this->_cart->paymentCurrency ?: craft()->commerce_paymentCurrencies->getPrimaryPaymentCurrencyIso();
+            // If payment currency is not set or not available anymore, default to the primary currency
+            if (!in_array($this->_cart->paymentCurrency, $currencies))
+            {
+                $this->_cart->paymentCurrency = craft()->commerce_paymentCurrencies->getPrimaryPaymentCurrencyIso();
+            }
+
+            if (
+                $autoSetAddresses = craft()->config->get('autoSetNewCartAddresses', 'commerce') &&
+                $customer = craft()->commerce_customers->getCustomerById($this->_cart->customerId)
+            )
+            {
+                if (
+                    !$this->_cart->shippingAddressId &&
+                    ($lastShippingAddressId = $customer->lastUsedShippingAddressId) &&
+                    ($address = craft()->commerce_addresses->getAddressById($lastShippingAddressId))
+                )
+                {
+                    $this->_cart->shippingAddressId = $address->id;
+                }
+
+                if (
+                    !$this->_cart->billingAddressId &&
+                    ($lastBillingAddressId = $customer->lastUsedBillingAddressId) &&
+                    ($address = craft()->commerce_addresses->getAddressById($lastBillingAddressId))
+                )
+                {
+                    $this->_cart->billingAddressId = $address->id;
+                }
+            }
 
             // Update the cart if the customer has changed and recalculate the cart.
             $customer = craft()->commerce_customers->getCustomer();
@@ -453,7 +497,7 @@ class Commerce_CartService extends BaseApplicationComponent
         }
         else
         {
-            CommerceDbHelper::beginStackedTransaction();
+            $transaction = craft()->db->getCurrentTransaction() === null ? craft()->db->beginTransaction() : null;
             try
             {
                 $lineItems = $cart->getLineItems();
@@ -474,13 +518,19 @@ class Commerce_CartService extends BaseApplicationComponent
             }
             catch (\Exception $e)
             {
-                CommerceDbHelper::rollbackStackedTransaction();
+                if ($transaction !== null)
+                {
+                    $transaction->rollback();
+                }
                 CommercePlugin::log($e->getMessage(), LogLevel::Error, true);
 
                 return false;
             }
 
-            CommerceDbHelper::commitStackedTransaction();
+            if ($transaction !== null)
+            {
+                $transaction->commit();
+            }
         }
 
         return true;
@@ -541,7 +591,7 @@ class Commerce_CartService extends BaseApplicationComponent
      */
     public function clearCart(Commerce_OrderModel $cart)
     {
-        CommerceDbHelper::beginStackedTransaction();
+        $transaction = craft()->db->getCurrentTransaction() === null ? craft()->db->beginTransaction() : null;
         try
         {
             craft()->commerce_lineItems->deleteAllLineItemsByOrderId($cart->id);
@@ -549,11 +599,17 @@ class Commerce_CartService extends BaseApplicationComponent
         }
         catch (\Exception $e)
         {
-            CommerceDbHelper::rollbackStackedTransaction();
+            if ($transaction !== null)
+            {
+                $transaction->rollback();
+            }
             throw $e;
         }
 
-        CommerceDbHelper::commitStackedTransaction();
+        if ($transaction !== null)
+        {
+            $transaction->commit();
+        }
     }
 
     /**
@@ -612,6 +668,7 @@ class Commerce_CartService extends BaseApplicationComponent
                     orders.itemTotal,
                     orders.baseDiscount,
                     orders.baseTax,
+                    orders.baseTaxIncluded,
                     orders.baseShippingCost,
                     orders.totalPrice,
                     orders.totalPaid,

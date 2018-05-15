@@ -1,7 +1,6 @@
 <?php
 namespace Craft;
 
-use Commerce\Helpers\CommerceDbHelper;
 
 /**
  * Customer service.
@@ -145,6 +144,12 @@ class Commerce_CustomersService extends BaseApplicationComponent
         $customerRecord->userId = $customer->userId;
         $customerRecord->lastUsedBillingAddressId = $customer->lastUsedBillingAddressId;
         $customerRecord->lastUsedShippingAddressId = $customer->lastUsedShippingAddressId;
+
+        // If the customer is attached to a user, always use the user's email address.
+        if($user = craft()->users->getUserById($customer->userId))
+        {
+            $customerRecord->email = $customer->email = $user->email;
+        }
 
         $customerRecord->validate();
         $customer->addErrors($customerRecord->getErrors());
@@ -422,7 +427,7 @@ class Commerce_CustomersService extends BaseApplicationComponent
      */
     public function consolidateOrdersToUser($username)
     {
-        CommerceDbHelper::beginStackedTransaction();
+        $transaction = craft()->db->getCurrentTransaction() === null ? craft()->db->beginTransaction() : null;
 
         try
         {
@@ -456,14 +461,20 @@ class Commerce_CustomersService extends BaseApplicationComponent
                 }
             }
 
-            CommerceDbHelper::commitStackedTransaction();
+            if ($transaction !== null)
+            {
+                $transaction->commit();
+            }
 
             return true;
         }
         catch (\Exception $e)
         {
             CommercePlugin::log("Could not consolidate orders to username: ".$username.". Reason: ".$e->getMessage());
-            CommerceDbHelper::rollbackStackedTransaction();
+            if ($transaction !== null)
+            {
+                $transaction->rollback();
+            }
         }
     }
 

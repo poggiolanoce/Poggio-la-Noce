@@ -1,30 +1,115 @@
 [
     {
-        "name": "phenx/php-font-lib",
-        "version": "0.2.2",
-        "version_normalized": "0.2.2.0",
+        "name": "sabberworm/php-css-parser",
+        "version": "6.0.1",
+        "version_normalized": "6.0.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/PhenX/php-font-lib.git",
-            "reference": "c30c7fc00a6b0d863e9bb4c5d5dd015298b2dc82"
+            "url": "https://github.com/sabberworm/PHP-CSS-Parser.git",
+            "reference": "9ea4b00c569b19f731d0c2e0e802055877ff40c2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/PhenX/php-font-lib/zipball/c30c7fc00a6b0d863e9bb4c5d5dd015298b2dc82",
-            "reference": "c30c7fc00a6b0d863e9bb4c5d5dd015298b2dc82",
+            "url": "https://api.github.com/repos/sabberworm/PHP-CSS-Parser/zipball/9ea4b00c569b19f731d0c2e0e802055877ff40c2",
+            "reference": "9ea4b00c569b19f731d0c2e0e802055877ff40c2",
             "shasum": ""
         },
-        "time": "2014-02-01T15:22:28+00:00",
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "time": "2015-08-24T08:48:52+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
-            "classmap": [
-                "classes/"
-            ]
+            "psr-0": {
+                "Sabberworm\\CSS": "lib/"
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "LGPL"
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Raphael Schweikert"
+            }
+        ],
+        "description": "Parser for CSS Files written in PHP",
+        "homepage": "http://www.sabberworm.com/blog/2010/6/10/php-css-parser",
+        "keywords": [
+            "css",
+            "parser",
+            "stylesheet"
+        ]
+    },
+    {
+        "name": "phenx/php-svg-lib",
+        "version": "v0.2",
+        "version_normalized": "0.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PhenX/php-svg-lib.git",
+            "reference": "de291bec8449b89acfe85691b5c71434797959dc"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PhenX/php-svg-lib/zipball/de291bec8449b89acfe85691b5c71434797959dc",
+            "reference": "de291bec8449b89acfe85691b5c71434797959dc",
+            "shasum": ""
+        },
+        "require": {
+            "sabberworm/php-css-parser": "6.0.*"
+        },
+        "time": "2016-12-13T20:25:45+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Svg\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Ménager",
+                "email": "fabien.menager@gmail.com"
+            }
+        ],
+        "description": "A library to read, parse and export to PDF SVG files.",
+        "homepage": "https://github.com/PhenX/php-svg-lib"
+    },
+    {
+        "name": "phenx/php-font-lib",
+        "version": "0.5",
+        "version_normalized": "0.5.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PhenX/php-font-lib.git",
+            "reference": "19ad2bebc35be028fcc0221025fcbf3d436a3962"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PhenX/php-font-lib/zipball/19ad2bebc35be028fcc0221025fcbf3d436a3962",
+            "reference": "19ad2bebc35be028fcc0221025fcbf3d436a3962",
+            "shasum": ""
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^4.8"
+        },
+        "time": "2017-02-11T10:58:43+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "FontLib\\": "src/FontLib"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-3.0"
         ],
         "authors": [
             {
@@ -37,33 +122,50 @@
     },
     {
         "name": "dompdf/dompdf",
-        "version": "v0.6.1",
-        "version_normalized": "0.6.1.0",
+        "version": "v0.8.0",
+        "version_normalized": "0.8.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/dompdf/dompdf.git",
-            "reference": "cf7d8a0a27270418850cc7d7ea532159e5eeb3eb"
+            "reference": "0f418c6b58fdeafc2a0e80eb1fa5e644e185089c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/dompdf/dompdf/zipball/cf7d8a0a27270418850cc7d7ea532159e5eeb3eb",
-            "reference": "cf7d8a0a27270418850cc7d7ea532159e5eeb3eb",
+            "url": "https://api.github.com/repos/dompdf/dompdf/zipball/0f418c6b58fdeafc2a0e80eb1fa5e644e185089c",
+            "reference": "0f418c6b58fdeafc2a0e80eb1fa5e644e185089c",
             "shasum": ""
         },
         "require": {
-            "phenx/php-font-lib": "0.2.*"
+            "ext-dom": "*",
+            "ext-gd": "*",
+            "ext-mbstring": "*",
+            "phenx/php-font-lib": "0.5.*",
+            "phenx/php-svg-lib": "0.2.*",
+            "php": ">=5.3.0"
         },
-        "time": "2014-03-11T01:59:52+00:00",
+        "require-dev": {
+            "phpunit/phpunit": "4.8.*",
+            "squizlabs/php_codesniffer": "2.*"
+        },
+        "time": "2017-02-16T02:40:40+00:00",
         "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-develop": "0.7-dev"
+            }
+        },
         "installation-source": "dist",
         "autoload": {
+            "psr-4": {
+                "Dompdf\\": "src/"
+            },
             "classmap": [
-                "include/"
+                "lib/"
             ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "LGPL"
+            "LGPL-2.1"
         ],
         "authors": [
             {
@@ -73,6 +175,10 @@
             {
                 "name": "Brian Sweeney",
                 "email": "eclecticgeek@gmail.com"
+            },
+            {
+                "name": "Gabriel Bull",
+                "email": "me@gabrielbull.com"
             }
         ],
         "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
@@ -85,12 +191,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/event-dispatcher.git",
-            "reference": "74877977f90fb9c3e46378d5764217c55f32df34"
+            "reference": "1377400fd641d7d1935981546aaef780ecd5bf6d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/74877977f90fb9c3e46378d5764217c55f32df34",
-            "reference": "74877977f90fb9c3e46378d5764217c55f32df34",
+            "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/1377400fd641d7d1935981546aaef780ecd5bf6d",
+            "reference": "1377400fd641d7d1935981546aaef780ecd5bf6d",
             "shasum": ""
         },
         "require": {
@@ -98,7 +204,7 @@
         },
         "require-dev": {
             "psr/log": "~1.0",
-            "symfony/config": "~2.0,>=2.0.5|~3.0.0",
+            "symfony/config": "^2.0.5|~3.0.0",
             "symfony/dependency-injection": "~2.6|~3.0.0",
             "symfony/expression-language": "~2.6|~3.0.0",
             "symfony/stopwatch": "~2.3|~3.0.0"
@@ -107,7 +213,7 @@
             "symfony/dependency-injection": "",
             "symfony/http-kernel": ""
         },
-        "time": "2017-01-02T20:30:24+00:00",
+        "time": "2017-06-02T07:47:27+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -245,12 +351,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4"
+            "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/e79d363049d1c2128f133a2667e4f4190904f7f4",
-            "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
+            "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
             "shasum": ""
         },
         "require": {
@@ -259,11 +365,11 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2016-11-14T01:06:16+00:00",
+        "time": "2017-06-14T15:44:48+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.3-dev"
+                "dev-master": "1.5-dev"
             }
         },
         "installation-source": "source",
@@ -301,17 +407,17 @@
     },
     {
         "name": "symfony/http-foundation",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "3.4.x-dev",
+        "version_normalized": "3.4.9999999.9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/http-foundation.git",
-            "reference": "d003867e0f7dfdbbcd1225a7e089c022d5b37c59"
+            "reference": "0c4bf18214f040537c47ff8ecabdf10278bdf689"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/http-foundation/zipball/d003867e0f7dfdbbcd1225a7e089c022d5b37c59",
-            "reference": "d003867e0f7dfdbbcd1225a7e089c022d5b37c59",
+            "url": "https://api.github.com/repos/symfony/http-foundation/zipball/0c4bf18214f040537c47ff8ecabdf10278bdf689",
+            "reference": "0c4bf18214f040537c47ff8ecabdf10278bdf689",
             "shasum": ""
         },
         "require": {
@@ -319,13 +425,13 @@
             "symfony/polyfill-mbstring": "~1.1"
         },
         "require-dev": {
-            "symfony/expression-language": "~2.8|~3.0"
+            "symfony/expression-language": "~2.8|~3.0|~4.0"
         },
-        "time": "2017-01-18T09:20:49+00:00",
+        "time": "2017-07-21T11:05:08+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "3.3-dev"
+                "dev-master": "3.4-dev"
             }
         },
         "installation-source": "source",
@@ -356,8 +462,8 @@
     },
     {
         "name": "omnipay/common",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "2.5.x-dev",
+        "version_normalized": "2.5.9999999.9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-common.git",
@@ -517,17 +623,17 @@
     },
     {
         "name": "omnipay/authorizenet",
-        "version": "2.4.2",
-        "version_normalized": "2.4.2.0",
+        "version": "2.5.0",
+        "version_normalized": "2.5.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-authorizenet.git",
-            "reference": "6e1990f5d22f0f8e4dfe363b89c9776d0d803c34"
+            "reference": "229bdb205384f2e3bf844cdf258927895b4858d5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-authorizenet/zipball/6e1990f5d22f0f8e4dfe363b89c9776d0d803c34",
-            "reference": "6e1990f5d22f0f8e4dfe363b89c9776d0d803c34",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-authorizenet/zipball/229bdb205384f2e3bf844cdf258927895b4858d5",
+            "reference": "229bdb205384f2e3bf844cdf258927895b4858d5",
             "shasum": ""
         },
         "require": {
@@ -536,7 +642,7 @@
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2016-07-16T21:00:00+00:00",
+        "time": "2017-03-07T14:00:14+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -578,17 +684,17 @@
     },
     {
         "name": "omnipay/buckaroo",
-        "version": "v2.1",
-        "version_normalized": "2.1.0.0",
+        "version": "v2.2.0",
+        "version_normalized": "2.2.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-buckaroo.git",
-            "reference": "7fccd4382ba87f6535cb399892c687928615dad7"
+            "reference": "b1d74b4121a9c889fe8cc77715e6cffb14b8833c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-buckaroo/zipball/7fccd4382ba87f6535cb399892c687928615dad7",
-            "reference": "7fccd4382ba87f6535cb399892c687928615dad7",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-buckaroo/zipball/b1d74b4121a9c889fe8cc77715e6cffb14b8833c",
+            "reference": "b1d74b4121a9c889fe8cc77715e6cffb14b8833c",
             "shasum": ""
         },
         "require": {
@@ -597,7 +703,7 @@
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2016-08-10T04:41:17+00:00",
+        "time": "2017-05-30T09:43:42+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -702,12 +808,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-coinbase.git",
-            "reference": "69c4f07d88ef3bdb2b42cd90234b358b641dfa29"
+            "reference": "1046f0a40de69281d413ac191689e8c1329b76d4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-coinbase/zipball/69c4f07d88ef3bdb2b42cd90234b358b641dfa29",
-            "reference": "69c4f07d88ef3bdb2b42cd90234b358b641dfa29",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-coinbase/zipball/1046f0a40de69281d413ac191689e8c1329b76d4",
+            "reference": "1046f0a40de69281d413ac191689e8c1329b76d4",
             "shasum": ""
         },
         "require": {
@@ -716,7 +822,7 @@
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2015-03-06T05:35:39+00:00",
+        "time": "2017-07-01T03:37:43+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1053,17 +1159,17 @@
     },
     {
         "name": "omnipay/migs",
-        "version": "v2.2.1",
-        "version_normalized": "2.2.1.0",
+        "version": "v2.2.2",
+        "version_normalized": "2.2.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-migs.git",
-            "reference": "c15be0960ae578d60cabc7c0a2895da41430821f"
+            "reference": "0f79c818a150e73497efbe5e097ac4377d8f9717"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-migs/zipball/c15be0960ae578d60cabc7c0a2895da41430821f",
-            "reference": "c15be0960ae578d60cabc7c0a2895da41430821f",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-migs/zipball/0f79c818a150e73497efbe5e097ac4377d8f9717",
+            "reference": "0f79c818a150e73497efbe5e097ac4377d8f9717",
             "shasum": ""
         },
         "require": {
@@ -1072,7 +1178,7 @@
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2016-09-22T01:58:30+00:00",
+        "time": "2017-06-07T07:52:47+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1113,17 +1219,17 @@
     },
     {
         "name": "omnipay/mollie",
-        "version": "v3.1",
-        "version_normalized": "3.1.0.0",
+        "version": "3.2.x-dev",
+        "version_normalized": "3.2.9999999.9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-mollie.git",
-            "reference": "66342a755df2d01954f753ee59656115da6f57d0"
+            "reference": "8a81a9980a3de726e6badb2ca0edc3728bba6c95"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-mollie/zipball/66342a755df2d01954f753ee59656115da6f57d0",
-            "reference": "66342a755df2d01954f753ee59656115da6f57d0",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-mollie/zipball/8a81a9980a3de726e6badb2ca0edc3728bba6c95",
+            "reference": "8a81a9980a3de726e6badb2ca0edc3728bba6c95",
             "shasum": ""
         },
         "require": {
@@ -1132,14 +1238,14 @@
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2016-09-14T09:25:40+00:00",
+        "time": "2016-10-11T09:44:09+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "2.0.x-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Omnipay\\Mollie\\": "src/"
@@ -1172,17 +1278,17 @@
     },
     {
         "name": "omnipay/multisafepay",
-        "version": "v2.3.1",
-        "version_normalized": "2.3.1.0",
+        "version": "v2.3.6",
+        "version_normalized": "2.3.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-multisafepay.git",
-            "reference": "01cfa7115ab7b3c79633e8137f802891c02640f2"
+            "reference": "6d7a6d64fa0e124b90767e505ea105f4c3ecbadd"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-multisafepay/zipball/01cfa7115ab7b3c79633e8137f802891c02640f2",
-            "reference": "01cfa7115ab7b3c79633e8137f802891c02640f2",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-multisafepay/zipball/6d7a6d64fa0e124b90767e505ea105f4c3ecbadd",
+            "reference": "6d7a6d64fa0e124b90767e505ea105f4c3ecbadd",
             "shasum": ""
         },
         "require": {
@@ -1191,7 +1297,7 @@
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2016-03-21T02:10:38+00:00",
+        "time": "2017-05-28T06:28:10+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1409,17 +1515,17 @@
     },
     {
         "name": "omnipay/payflow",
-        "version": "v2.2.1",
-        "version_normalized": "2.2.1.0",
+        "version": "v2.2.2",
+        "version_normalized": "2.2.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-payflow.git",
-            "reference": "4a89c0450b356fca57c0ee4d3ea08145ea93449f"
+            "reference": "8dbfaf9accc1c2b388c9ab89c4b30176396c973a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-payflow/zipball/4a89c0450b356fca57c0ee4d3ea08145ea93449f",
-            "reference": "4a89c0450b356fca57c0ee4d3ea08145ea93449f",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-payflow/zipball/8dbfaf9accc1c2b388c9ab89c4b30176396c973a",
+            "reference": "8dbfaf9accc1c2b388c9ab89c4b30176396c973a",
             "shasum": ""
         },
         "require": {
@@ -1428,7 +1534,7 @@
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2016-07-30T08:33:58+00:00",
+        "time": "2017-05-12T08:10:23+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1468,17 +1574,17 @@
     },
     {
         "name": "omnipay/paymentexpress",
-        "version": "v2.2.0",
-        "version_normalized": "2.2.0.0",
+        "version": "v2.2.1",
+        "version_normalized": "2.2.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-paymentexpress.git",
-            "reference": "5707f016cd2a6fa735f325c40ff3b5fbe29452ea"
+            "reference": "b97178ba0f0da85c6d0873c3da24f5677d557b3f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-paymentexpress/zipball/5707f016cd2a6fa735f325c40ff3b5fbe29452ea",
-            "reference": "5707f016cd2a6fa735f325c40ff3b5fbe29452ea",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-paymentexpress/zipball/b97178ba0f0da85c6d0873c3da24f5677d557b3f",
+            "reference": "b97178ba0f0da85c6d0873c3da24f5677d557b3f",
             "shasum": ""
         },
         "require": {
@@ -1487,7 +1593,7 @@
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2016-05-02T13:46:54+00:00",
+        "time": "2017-05-12T08:22:36+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1772,17 +1878,17 @@
     },
     {
         "name": "omnipay/stripe",
-        "version": "v2.4.2",
-        "version_normalized": "2.4.2.0",
+        "version": "V2.4.7",
+        "version_normalized": "2.4.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-stripe.git",
-            "reference": "50bdec8d7d1562c52dd56928243be4a04bcf20e6"
+            "reference": "26a33414a75939af75064022112005d5e51fc9ea"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-stripe/zipball/50bdec8d7d1562c52dd56928243be4a04bcf20e6",
-            "reference": "50bdec8d7d1562c52dd56928243be4a04bcf20e6",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-stripe/zipball/26a33414a75939af75064022112005d5e51fc9ea",
+            "reference": "26a33414a75939af75064022112005d5e51fc9ea",
             "shasum": ""
         },
         "require": {
@@ -1791,7 +1897,7 @@
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2016-12-15T09:42:45+00:00",
+        "time": "2017-07-14T09:22:01+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1890,17 +1996,17 @@
     },
     {
         "name": "omnipay/worldpay",
-        "version": "v2.2",
-        "version_normalized": "2.2.0.0",
+        "version": "v2.2.1",
+        "version_normalized": "2.2.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-worldpay.git",
-            "reference": "26ead4ca2c6ec45c9a3b3dad0be8880e0b1df083"
+            "reference": "be0b5c31f5a0457b913281aa2d6072b62fd9e65c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-worldpay/zipball/26ead4ca2c6ec45c9a3b3dad0be8880e0b1df083",
-            "reference": "26ead4ca2c6ec45c9a3b3dad0be8880e0b1df083",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-worldpay/zipball/be0b5c31f5a0457b913281aa2d6072b62fd9e65c",
+            "reference": "be0b5c31f5a0457b913281aa2d6072b62fd9e65c",
             "shasum": ""
         },
         "require": {
@@ -1909,7 +2015,7 @@
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2016-01-28T12:55:58+00:00",
+        "time": "2017-06-15T07:04:25+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1998,53 +2104,6 @@
             "conversion",
             "data",
             "measurements"
-        ]
-    },
-    {
-        "name": "ramsey/array_column",
-        "version": "1.1.3",
-        "version_normalized": "1.1.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ramsey/array_column.git",
-            "reference": "f8e52eb28e67eb50e613b451dd916abcf783c1db"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ramsey/array_column/zipball/f8e52eb28e67eb50e613b451dd916abcf783c1db",
-            "reference": "f8e52eb28e67eb50e613b451dd916abcf783c1db",
-            "shasum": ""
-        },
-        "require-dev": {
-            "jakub-onderka/php-parallel-lint": "0.8.*",
-            "phpunit/phpunit": "~4.5",
-            "satooshi/php-coveralls": "0.6.*",
-            "squizlabs/php_codesniffer": "~2.2"
-        },
-        "time": "2015-03-20T22:07:39+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "src/array_column.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Ben Ramsey",
-                "homepage": "http://benramsey.com"
-            }
-        ],
-        "description": "Provides functionality for array_column() to projects using PHP earlier than version 5.5.",
-        "homepage": "https://github.com/ramsey/array_column",
-        "keywords": [
-            "array",
-            "array_column",
-            "column"
         ]
     },
     {

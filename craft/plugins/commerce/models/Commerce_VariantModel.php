@@ -2,6 +2,7 @@
 namespace Craft;
 
 use Commerce\Base\Purchasable as BasePurchasable;
+use Commerce\Helpers\CommerceCurrencyHelper;
 
 /**
  * Class Commerce_VariantModel
@@ -189,7 +190,7 @@ class Commerce_VariantModel extends BasePurchasable
      */
     public function getOnSale()
     {
-        return is_null($this->salePrice) ? false : ($this->salePrice != $this->price);
+        return $this->salePrice === null ? false : (CommerceCurrencyHelper::round($this->salePrice) != CommerceCurrencyHelper::round($this->price));
     }
 
     /**
@@ -322,6 +323,16 @@ class Commerce_VariantModel extends BasePurchasable
     }
 
     /**
+     * Does this variants have stock?
+     *
+     * @return bool
+     */
+    public function hasStock()
+    {
+        return (bool)($this->stock > 0 || $this->unlimitedStock);
+    }
+
+    /**
      * Does this variants product has free shipping set.
      *
      * @return bool
@@ -361,12 +372,21 @@ class Commerce_VariantModel extends BasePurchasable
                 {
                     $qty[$item->purchasableId] = 0;
                 }
+
+                // count new line items
+                if($lineItem->id === null)
+                {
+                    $qty[$item->purchasableId] += $lineItem->qty;
+                }
+
+                // count updated line items
                 if ($item->id == $lineItem->id)
                 {
                     $qty[$item->purchasableId] += $lineItem->qty;
                 }
                 else
                 {
+                    // count other line items with same purchasableId
                     $qty[$item->purchasableId] += $item->qty;
                 }
             }
@@ -433,10 +453,10 @@ class Commerce_VariantModel extends BasePurchasable
             $lineItem->qty = $this->stock;
         }
 
-        $lineItem->weight = $this->weight * 1; //converting nulls
-        $lineItem->height = $this->height * 1; //converting nulls
-        $lineItem->length = $this->length * 1; //converting nulls
-        $lineItem->width = $this->width * 1; //converting nulls
+        $lineItem->weight = (float) $this->weight;
+        $lineItem->height = (float) $this->height;
+        $lineItem->length = (float) $this->length;
+        $lineItem->width = (float) $this->width;
 
         $sales = craft()->commerce_sales->getSalesForVariant($this);
 

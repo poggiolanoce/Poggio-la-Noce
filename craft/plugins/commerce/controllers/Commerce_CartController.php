@@ -25,7 +25,7 @@ class Commerce_CartController extends Commerce_BaseFrontEndController
 
         $cart = craft()->commerce_cart->getCart();
         $lineItemId = craft()->request->getPost('lineItemId');
-        $qty = craft()->request->getPost('qty', 0);
+        $qty = craft()->request->getPost('qty');
         $note = craft()->request->getPost('note');
 
         $cart->setContentFromPost('fields');
@@ -50,8 +50,9 @@ class Commerce_CartController extends Commerce_BaseFrontEndController
             $this->redirectToPostedUrl();
         }
 
-        $lineItem->qty = $qty;
-        $lineItem->note = $note;
+        // Only update if it was provided in the POST data
+        $lineItem->qty = ($qty === null) ? $lineItem->qty : (int) $qty;
+        $lineItem->note = ($note === null) ? $lineItem->note : $note;
 
         // If the options param exists, set it
         if (!is_null(craft()->request->getPost('options')))
@@ -246,11 +247,9 @@ class Commerce_CartController extends Commerce_BaseFrontEndController
             $shippingAddress->setAttributes(craft()->request->getParam('shippingAddress'));
             if (!$sameAddress)
             {
-                if ($billingAddressId = craft()->request->getParam('billingAddressId'))
-                {
-                    $billingAddress = craft()->commerce_addresses->getAddressById($billingAddressId);
-                }
-                else
+                $billingAddressId = craft()->request->getParam('billingAddressId');
+                $billingAddress = craft()->commerce_addresses->getAddressById($billingAddressId);
+                if (!$billingAddress)   
                 {
                     $billingAddress = new Commerce_AddressModel();
                     $billingAddress->setAttributes(craft()->request->getParam('billingAddress'));

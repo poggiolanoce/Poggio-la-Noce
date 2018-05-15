@@ -116,6 +116,7 @@ class Commerce_DiscountsController extends Commerce_BaseCpController
             'code',
             'perUserLimit',
             'perEmailLimit',
+            'percentageOffSubject',
             'totalUseLimit'
         ];
         foreach ($fields as $field) {
@@ -127,7 +128,7 @@ class Commerce_DiscountsController extends Commerce_BaseCpController
             'perItemDiscount'
         ];
         foreach ($discountAmountsFields as $field) {
-            $discount->$field = craft()->request->getPost($field) * -1;
+            $discount->$field = (float) craft()->request->getPost($field) * -1;
         }
 
         $dateFields = [
@@ -142,10 +143,10 @@ class Commerce_DiscountsController extends Commerce_BaseCpController
         $percentDiscountAmount = craft()->request->getPost('percentDiscount');
         $localeData = craft()->i18n->getLocaleData();
         $percentSign = $localeData->getNumberSymbol('percentSign');
-        if (strpos($percentDiscountAmount, $percentSign) or floatval($percentDiscountAmount) >= 1) {
-            $discount->percentDiscount = floatval($percentDiscountAmount) / -100;
+        if (strpos($percentDiscountAmount, $percentSign) or (float) $percentDiscountAmount >= 1) {
+            $discount->percentDiscount = (float) $percentDiscountAmount / -100;
         } else {
-            $discount->percentDiscount = floatval($percentDiscountAmount) * -1;
+            $discount->percentDiscount = (float) $percentDiscountAmount * -1;
         }
 
         $products = craft()->request->getPost('products', []);

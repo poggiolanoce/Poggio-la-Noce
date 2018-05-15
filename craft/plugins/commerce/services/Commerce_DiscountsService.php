@@ -1,7 +1,6 @@
 <?php
 namespace Craft;
 
-use Commerce\Helpers\CommerceDbHelper;
 
 /**
  * Discount service.
@@ -158,9 +157,9 @@ class Commerce_DiscountsService extends BaseApplicationComponent
                 $usedCount = 0;
                 foreach ($previousOrders as $order)
                 {
-                    if ($order->couponCode == $code)
+                    if (strcasecmp($order->couponCode, $code) == 0)
                     {
-                        $usedCount = $usedCount + 1;
+                        $usedCount += 1;
                     }
                 }
 
@@ -254,18 +253,6 @@ class Commerce_DiscountsService extends BaseApplicationComponent
             }
         }
 
-        if (!$discount->allGroups)
-        {
-            $customer = $lineItem->getOrder()->getCustomer();
-            $user = $customer ? $customer->getUser() : null;
-            $userGroups = $this->getCurrentUserGroupIds($user);
-            if (!$user || !array_intersect($userGroups, $discount->getGroupIds()))
-            {
-                return false;
-            }
-        }
-
-
         //raising event
         $event = new Event($this, ['lineItem' => $lineItem, 'discount' => $discount]);
         $this->onBeforeMatchLineItem($event);
@@ -303,7 +290,7 @@ class Commerce_DiscountsService extends BaseApplicationComponent
             $record = new Commerce_DiscountRecord();
         }
 
-        $fields = ['id', 'name', 'description', 'dateFrom', 'dateTo', 'enabled', 'stopProcessing', 'purchaseTotal', 'purchaseQty', 'maxPurchaseQty', 'baseDiscount', 'perItemDiscount', 'percentDiscount', 'freeShipping', 'excludeOnSale', 'perUserLimit', 'perEmailLimit', 'totalUseLimit'];
+        $fields = ['id', 'name', 'description', 'dateFrom', 'dateTo', 'enabled', 'stopProcessing', 'purchaseTotal', 'purchaseQty', 'maxPurchaseQty', 'baseDiscount', 'perItemDiscount', 'percentDiscount', 'percentageOffSubject', 'freeShipping', 'excludeOnSale', 'perUserLimit', 'perEmailLimit', 'totalUseLimit'];
         foreach ($fields as $field)
         {
             $record->$field = $model->$field;
@@ -319,7 +306,7 @@ class Commerce_DiscountsService extends BaseApplicationComponent
         $record->validate();
         $model->addErrors($record->getErrors());
 
-        CommerceDbHelper::beginStackedTransaction();
+        $transaction = craft()->db->getCurrentTransaction() === null ? craft()->db->beginTransaction() : null;
         try
         {
             if (!$model->hasErrors())
@@ -352,18 +339,27 @@ class Commerce_DiscountsService extends BaseApplicationComponent
                     $relation->insert();
                 }
 
-                CommerceDbHelper::commitStackedTransaction();
+                if ($transaction !== null)
+                {
+                    $transaction->commit();
+                }
 
                 return true;
             }
         }
         catch (\Exception $e)
         {
-            CommerceDbHelper::rollbackStackedTransaction();
+            if ($transaction !== null)
+            {
+                $transaction->rollback();
+            }
             throw $e;
         }
 
-        CommerceDbHelper::rollbackStackedTransaction();
+        if ($transaction !== null)
+        {
+            $transaction->rollback();
+        }
 
         return false;
     }
@@ -459,7 +455,7 @@ class Commerce_DiscountsService extends BaseApplicationComponent
 
     /**
      * Before matching a lineitem
-     * Event params: addres(Commerce_AddressModel)
+     * Event params: address(Commerce_AddressModel)
      *
      * @param \CEvent $event
      *
