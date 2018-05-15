@@ -17,7 +17,7 @@
     <ul class="navigation">
       <li><a href="{{ url('about') }}" {% if craft.request.getSegment(1) == 'about' %}class="active"{% endif %}>{{menuItems.aboutLink | translate}}</a></li>
       <li><a href="{{ url('vineyard') }}" {% if craft.request.getSegment(1) == 'vineyard' %}class="active"{% endif %}>{{menuItems.vineyardLink | translate}}</a></li>
-      <li><a href="{{ url('products') }}" {% if craft.request.getSegment(1) == 'products' %}class="active"{% endif %}>{{{menuItems.productsLink | translate}}</a></li>
+      <li><a href="{{ url('products') }}" {% if craft.request.getSegment(1) == 'products' %}class="active"{% endif %}>{{menuItems.productsLink | translate}}</a></li>
       <li><a href="{{ url('awards') }}" {% if craft.request.getSegment(1) == 'awards' %}class="active"{% endif %}>{{menuItems.awardsLink | translate}}</a></li>
       <li><a href="{{ url('gallery') }}" {% if craft.request.getSegment(1) == 'gallery' %}class="active"{% endif %}>{{menuItems.galleryLink | translate}}</a></li>
       <li><a href="{{ url('contact') }}" {% if craft.request.getSegment(1) == 'contact' %}class="active"{% endif %}>{{menuItems.contactLink | translate}}</a></li>
