@@ -23,6 +23,7 @@ public/.sass-cache
 public/node_modules
 
 craft/storage/runtime/*
+craft/storage/backups/*
 
 public/package.json
 public/images/*
