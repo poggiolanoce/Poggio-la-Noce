@@ -2930,7 +2930,7 @@ header .header-body {
 .mobile-controls {
   position: absolute;
   left: 12px;
-  top: 12px;
+  top: 18px;
   font-size: 24px;
   color: #fff;
 }
@@ -2967,6 +2967,13 @@ nav {
   z-index: 1;
   position: relative;
 }
+@media only screen and (max-width: 767px) {
+  nav {
+    position: fixed;
+    height: 70px;
+    width: 100%;
+  }
+}
 
 .logo {
   width: 225px;
@@ -2983,6 +2990,14 @@ nav {
   .logo {
     background-image: url("../images/site/logo@2x.png");
     background-size: image-width("../images/site/logo.png") image-height("../images/site/logo.png");
+  }
+}
+@media only screen and (max-width: 767px) {
+  .logo {
+    background-size: 75%;
+    background-position: center;
+    background-repeat: no-repeat;
+    top: 0px;
   }
 }
 @media only screen and (min-width: 768px) {
