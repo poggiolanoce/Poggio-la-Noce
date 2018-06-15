@@ -19,8 +19,8 @@ CVS
 
 # our noise
 
-public/.sass-cache
-public/node_modules
+public/.sass-cache/
+public/node_modules/
 
 craft/storage/runtime/*
 craft/storage/backups/*

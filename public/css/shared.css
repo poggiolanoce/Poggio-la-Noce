@@ -2985,6 +2985,7 @@ nav {
   margin-left: -112px;
   top: 24px;
   z-index: 2;
+  background-repeat: no-repeat;
 }
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
   .logo {
@@ -2996,13 +2997,12 @@ nav {
   .logo {
     background-size: 75%;
     background-position: center;
-    background-repeat: no-repeat;
     top: 0px;
   }
 }
 @media only screen and (min-width: 768px) {
   .logo {
-    top: 8px;
+    top: 20px;
   }
 }
 .logo h1, .logo h3 {
