@@ -1,0 +1,54 @@
+[
+  {
+    "version": "1.3.0",
+    "downloadUrl": "https://github.com/lukeholder/craft-geo/archive/1.3.zip",
+    "date": "2015-03-25T11:00:00-4:00",
+    "notes": [
+      "Bump version"
+    ]
+  },
+  {
+    "version": "1.4.0",
+    "downloadUrl": "https://github.com/lukeholder/craft-geo/archive/1.4.zip",
+    "date": "2017-08-30T11:00:00-4:00",
+    "notes": [
+      "[Added] IP anonymizer",
+      "[Fixed] Removed deprecated service (telize.com)"
+    ]
+  },
+  {
+    "version": "1.5.0",
+    "downloadUrl": "https://github.com/lukeholder/craft-geo/archive/1.5.0.zip",
+    "date": "2018-10-08T11:00:00-18:00",
+    "notes": [
+      "[Added] New configuration key `ipApiKey`",
+      "[Improved] Updated `Geo_LocationService` to use [ipapi.com](https://ipapi.com) for geo IP lookup. Requires a free account to use. The previous `geoip.nekudo.com` api service was discontinued and became the new `api.ipapi.com`. [See announcement](https://github.com/nekudocom/shiny_geoip/blob/master/README.md#readme).",
+      "[Improved] Use IP Anonymizer from [`geertw/php-ip-anonymizer`](https://github.com/geertw/php-ip-anonymizer) via composer.",
+      "[Fixed] `defaultIp` in `config.php` is now set to `8.8.8.8`."
+    ]
+  },
+  {
+    "version": "1.5.1",
+    "downloadUrl": "https://github.com/lukeholder/craft-geo/archive/1.5.1.zip",
+    "date": "2018-10-08T11:00:00-20:35",
+    "notes": [
+      "[Added] `ipApiKey` can now be set in the Craft control panel. If it is set in the `config/geo.php` it will override the control panel setting and add a warning."
+    ]
+  },
+  {
+    "version": "1.5.2",
+    "downloadUrl": "https://github.com/lukeholder/craft-geo/archive/1.5.2.zip",
+    "date": "2018-10-08T11:00:00-22:52",
+    "notes": [
+      "[Added] `defaultIp` and `cacheTime` can now be set in the Craft control panel."
+    ]
+  },
+  {
+    "version": "1.5.3",
+    "downloadUrl": "https://github.com/lukeholder/craft-geo/archive/1.5.3.zip",
+    "date": "2018-10-08T11:00:00-23:25",
+    "notes": [
+      "[Fixed] Plugin wasn’t reading values from the control panel settings but only the config file. The config file can still be used but the plugin now respects any keys set in the control panel."
+    ]
+  }
+]

@@ -1,0 +1,62 @@
+{% import "_includes/forms" as forms %}
+{% includeCssResource "geo/css/Geo.css" %}
+
+{% macro configWarning(setting) -%}
+	{{ "This is being overridden by the <code>{setting}</code> config setting in your <code>geo.php</code> config file."|t({
+		setting: setting
+	})|raw }}
+{%- endmacro %}
+
+{% from _self import configWarning %}
+
+{{ forms.textField({
+	first:        true,
+	autofocus:    true,
+	label:        'Default IP Address'|t,
+	instructions: 'The IP address to be used when `devMode` is enabled or viewing the site from the server such as for local development.'|t,
+	id:           'defaultIp',
+	name:         'defaultIp',
+	class:        'code',
+	type:         'text',
+	value:        settings['defaultIp'],
+	disabled:     (craft.config.get('defaultIp', 'geo') is not sameas(null)),
+	warning:      (craft.config.get('defaultIp', 'geo') is not sameas(null)) ? configWarning('defaultIp'),
+	errors:       settings.getErrors('defaultIp')
+}) }}
+
+{{ forms.textField({
+	label:        'Cache Time'|t,
+	instructions: 'The number of seconds that a geo IP lookup should be cached.'|t,
+	id:           'cacheTime',
+	name:         'cacheTime',
+	class:        'code',
+	type:         'text',
+	value:        settings['cacheTime'],
+	disabled:     (craft.config.get('cacheTime', 'geo') is not sameas(null)),
+	warning:      (craft.config.get('cacheTime', 'geo') is not sameas(null)) ? configWarning('cacheTime'),
+	errors:       settings.getErrors('cacheTime')
+}) }}
+
+{{ forms.textField({
+	label:        'ipapi.com API Access Key'|t,
+	instructions: 'This key can be obtained by <a href="https://ipapi.com/product">signing up for a free ipapi.com account</a>.'|t,
+	required:     true,
+	id:           'ipApiKey',
+	name:         'ipApiKey',
+	class:        'code',
+	type:         'text',
+	value:        settings['ipApiKey'],
+	disabled:     (craft.config.get('ipApiKey', 'geo') is not sameas(null)),
+	warning:      (craft.config.get('ipApiKey', 'geo') is not sameas(null)) ? configWarning('ipApiKey'),
+	errors:       settings.getErrors('ipApiKey')
+}) }}
+
+<hr>
+
+<div class="plugin-footer">
+	<div class="footer-right">
+		<div class="plugin-credit">
+			<p>{{ craft.geo.getPluginName }} {{ craft.geo.getPluginVersion }} &bull; <a href="{{ craft.geo.getPluginUrl }}" target="_blank">GitHub</a></p>
+		</div>
+	</div>
+</div>
