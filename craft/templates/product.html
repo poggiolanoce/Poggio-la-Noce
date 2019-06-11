@@ -26,6 +26,12 @@
           | replace('/(?<=>)(?!<[a^>])(.*?):/', "<strong>$1:</strong>")
           | raw }}
         {% endif %}
+
+        <h2>{{ "Purchase" | t }}</h2>
+        <div class="add-to-cart">
+          {% include 'partials/add_product.html' %}
+        </div>
+
       </div>
       <div class="product-navigation">
           {% set matched = false %}
