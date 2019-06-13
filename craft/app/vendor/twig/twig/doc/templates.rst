@@ -59,6 +59,7 @@ Many IDEs support syntax highlighting and auto-completion for Twig:
 * *Notepad++* via the `Notepad++ Twig Highlighter`_
 * *Emacs* via `web-mode.el`_
 * *Atom* via the `PHP-twig for atom`_
+* *Visual Studio Code* via the `Twig pack`_
 
 Also, `TwigFiddle`_ is an online service that allows you to execute Twig templates
 from a browser; it supports all versions of Twig.
@@ -195,6 +196,8 @@ progression of integers:
 Go to the :doc:`functions<functions/index>` page to learn more about the
 built-in functions.
 
+.. _named-arguments:
+
 Named Arguments
 ---------------
 
@@ -312,8 +315,8 @@ will be available in the included template too:
 
 The included template ``render_box.html`` is able to access the ``box`` variable.
 
-The filename of the template depends on the template loader. For instance, the
-``Twig_Loader_Filesystem`` allows you to access other templates by giving the
+The name of the template depends on the template loader. For instance, the
+``\Twig\Loader\FilesystemLoader`` allows you to access other templates by giving the
 filename. You can access templates in subdirectories with a slash:
 
 .. code-block:: jinja
@@ -423,10 +426,8 @@ everything by default.
 
 Twig supports both, automatic escaping is enabled by default.
 
-.. note::
-
-    Automatic escaping is only supported if the *escaper* extension has been
-    enabled (which is the default).
+The automatic escaping strategy can be configured via the
+:ref:`autoescape<environment_options>` option and defaults to ``html``.
 
 Working with Manual Escaping
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -556,11 +557,12 @@ even if you're not working with PHP you should feel comfortable with it.
 
 .. note::
 
-    The operator precedence is as follows, with the lowest-precedence
-    operators listed first: ``b-and``, ``b-xor``, ``b-or``, ``or``, ``and``,
-    ``==``, ``!=``, ``<``, ``>``, ``>=``, ``<=``, ``in``, ``matches``,
-    ``starts with``, ``ends with``, ``..``, ``+``, ``-``, ``~``, ``*``, ``/``,
-    ``//``, ``%``, ``is``, ``**``, ``|``, ``[]``, and ``.``:
+    The operator precedence is as follows, with the lowest-precedence operators
+    listed first: ``?:`` (ternary operator), ``b-and``, ``b-xor``, ``b-or``,
+    ``or``, ``and``, ``==``, ``!=``, ``<``, ``>``, ``>=``, ``<=``, ``in``,
+    ``matches``, ``starts with``, ``ends with``, ``..``, ``+``, ``-``, ``~``,
+    ``*``, ``/``, ``//``, ``%``, ``is`` (tests), ``**``, ``??``, ``|``
+    (filters), ``[]``, and ``.``.
 
     .. code-block:: jinja
 
@@ -612,7 +614,8 @@ exist:
     { 2: 'foo', 4: 'bar' }
 
     {# keys as expressions (the expression must be enclosed into parentheses) -- as of Twig 1.5 #}
-    { (1 + 1): 'foo', (a ~ 'b'): 'bar' }
+    {% set foo = 'foo' %}
+    { (foo): 'foo', (1 + 1): 'bar', (foo ~ 'b'): 'baz' }
 
 * ``true`` / ``false``: ``true`` represents the true value, ``false``
   represents the false value.
@@ -659,6 +662,8 @@ but exists for completeness' sake. The following operators are supported:
 * ``**``: Raises the left operand to the power of the right operand. ``{{ 2 **
   3 }}`` would return ``8``.
 
+.. _template_logic:
+
 Logic
 ~~~~~
 
@@ -674,7 +679,7 @@ You can combine multiple expressions with the following operators:
 
 .. note::
 
-    Twig also support bitwise operators (``b-and``, ``b-xor``, and ``b-or``).
+    Twig also supports bitwise operators (``b-and``, ``b-xor``, and ``b-or``).
 
 .. note::
 
@@ -894,15 +899,16 @@ Extension<creating_extensions>` chapter.
 
 .. _`Twig bundle`:                https://github.com/Anomareh/PHP-Twig.tmbundle
 .. _`Jinja syntax plugin`:        http://jinja.pocoo.org/docs/integration/#vim
-.. _`vim-twig plugin`:            https://github.com/evidens/vim-twig
+.. _`vim-twig plugin`:            https://github.com/lumiliet/vim-twig
 .. _`Twig syntax plugin`:         http://plugins.netbeans.org/plugin/37069/php-twig
 .. _`Twig plugin`:                https://github.com/pulse00/Twig-Eclipse-Plugin
 .. _`Twig language definition`:   https://github.com/gabrielcorpse/gedit-twig-template-language
-.. _`extension repository`:       http://github.com/twigphp/Twig-extensions
+.. _`extension repository`:       https://github.com/twigphp/Twig-extensions
 .. _`Twig syntax mode`:           https://github.com/bobthecow/Twig-HTML.mode
 .. _`other Twig syntax mode`:     https://github.com/muxx/Twig-HTML.mode
 .. _`Notepad++ Twig Highlighter`: https://github.com/Banane9/notepadplusplus-twig
 .. _`web-mode.el`:                http://web-mode.org/
-.. _`regular expressions`:        http://php.net/manual/en/pcre.pattern.php
+.. _`regular expressions`:        https://secure.php.net/manual/en/pcre.pattern.php
 .. _`PHP-twig for atom`:          https://github.com/reesef/php-twig
-.. _`TwigFiddle`:                 http://twigfiddle.com/
+.. _`TwigFiddle`:                 https://twigfiddle.com/
+.. _`Twig pack`:                  https://marketplace.visualstudio.com/items?itemName=bajdzis.vscode-twig-pack
