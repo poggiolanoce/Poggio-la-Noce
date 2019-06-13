@@ -16,6 +16,7 @@ return array(
     'enableTemplateCaching' => false,
     'devMode' => true,
     'tokenParam' => 'craftToken',
+    'omitScriptNameInUrls' => true,
     'environmentVariables' => array(
       'siteUrl'  => SITE_URL,
       'fileSystemPath' => BASEPATH
