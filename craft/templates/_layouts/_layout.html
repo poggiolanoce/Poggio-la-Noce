@@ -21,21 +21,22 @@
 
 </head>
 
-<body id="{% if craft.request.getSegment(1) %}{{craft.request.getSegment(1)}}{% else %}home{% endif %}" >
-  {% set cart = craft.commerce.cart %}
+{% set cart = craft.commerce.cart %}
 
-  <!-- Set region and currency based on IP and the Shipping Destinations in EU  -->
-  {% set regionCode = 'us'  %}
-  {% set currencyCode = 'USD' %}
+<!-- Set region and currency based on IP and the Shipping Destinations in EU  -->
+{% set regionCode = 'us'  %}
+{% set currencyCode = 'USD' %}
 
-  {% set euroList = [] %}
-  {% for country in shippingConfirmation.shippingDestinationsInEu %}
-    {% set euroList = euroList|merge([country.value]) %}
-  {% endfor %}
-  {% if craft.geo.info.country_code in euroList %}
-    {% set regionCode = 'eu'  %}
-    {% set currencyCode = 'EUR'  %}
-  {% endif  %}
+{% set euroList = [] %}
+{% for country in shippingConfirmation.shippingDestinationsInEu %}
+  {% set euroList = euroList|merge([country.value]) %}
+{% endfor %}
+{% if craft.geo.info.country_code in euroList %}
+  {% set regionCode = 'eu'  %}
+  {% set currencyCode = 'EUR'  %}
+{% endif  %}
+
+<body id="{% if craft.request.getSegment(1) %}{{craft.request.getSegment(1)}}{% else %}home{% endif %}" class="region-{{regionCode}} currency-{{currencyCode}}" >
 
   <!-- Header -->
   {% include 'partials/header.html' %}
