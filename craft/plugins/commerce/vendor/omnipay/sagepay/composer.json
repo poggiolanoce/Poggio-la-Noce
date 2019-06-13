@@ -25,17 +25,15 @@
         }
     ],
     "autoload": {
-        "psr-4": { "Omnipay\\SagePay\\" : "src/" }
+        "psr-4": {
+            "Omnipay\\SagePay\\" : "src/"
+        }
     },
     "require": {
-        "omnipay/common": "~2.0"
+        "php": ">=5.4",
+        "omnipay/common": "~2.4"
     },
     "require-dev": {
         "omnipay/tests": "~2.0"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.0.x-dev"
-        }
     }
 }

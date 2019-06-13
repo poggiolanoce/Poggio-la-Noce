@@ -7,4 +7,9 @@ class AuthorizeNet_SIM_GatewayAdapter extends \Commerce\Gateways\OffsiteGatewayA
     {
         return 'AuthorizeNet_SIM';
     }
+
+    public function useNotifyUrl()
+    {
+        return true;
+    }
 }

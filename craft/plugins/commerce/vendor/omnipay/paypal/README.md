@@ -2,7 +2,7 @@
 
 **PayPal driver for the Omnipay PHP payment processing library**
 
-[![Build Status](https://travis-ci.org/thephpleague/omnipay-paypal.png?branch=master)](https://travis-ci.org/thephpleague/omnipay-paypal)
+[![Build Status](https://travis-ci.org/thephpleague/omnipay-paypal.png?branch=2.x)](https://travis-ci.org/thephpleague/omnipay-paypal)
 [![Latest Stable Version](https://poser.pugx.org/omnipay/paypal/version.png)](https://packagist.org/packages/omnipay/paypal)
 [![Total Downloads](https://poser.pugx.org/omnipay/paypal/d/total.png)](https://packagist.org/packages/omnipay/paypal)
 
@@ -32,6 +32,7 @@ And run composer to update your dependencies:
 The following gateways are provided by this package:
 
 * PayPal_Express (PayPal Express Checkout)
+* PayPal_ExpressInContext (PayPal Express In-Context Checkout)
 * PayPal_Pro (PayPal Website Payments Pro)
 * PayPal_Rest (Paypal Rest API)
 

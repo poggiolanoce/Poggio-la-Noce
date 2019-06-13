@@ -96,6 +96,11 @@ class Commerce_OrderModel extends BaseElementModel
     private $_recalcuate = true;
 
     /**
+     * @var string $_email
+     */
+    private $_email;
+
+    /**
      * We need to have getters functions have maximum priority.
      * This was in the ModelRelationTrait so it needs to stay for backwards compatibility.
      * @param string $name
@@ -281,7 +286,7 @@ class Commerce_OrderModel extends BaseElementModel
     {
         $totalPaid = CommerceCurrencyHelper::round($this->totalPaid);
         $totalPrice = CommerceCurrencyHelper::round($this->totalPrice);
-        
+
         return $totalPrice - $totalPaid;
     }
 
@@ -461,7 +466,7 @@ class Commerce_OrderModel extends BaseElementModel
 
         return $value;
     }
-    
+
     /**
      * Returns the total of adjustments made to order.
      * @return float|int
@@ -549,6 +554,10 @@ class Commerce_OrderModel extends BaseElementModel
      */
     public function setShippingAddress(Commerce_AddressModel $address)
     {
+        if ($address->id)
+        {
+           $this->shippingAddressId = $address->id;
+        }
         $this->_shippingAddress = $address;
     }
 
@@ -570,6 +579,10 @@ class Commerce_OrderModel extends BaseElementModel
      */
     public function setBillingAddress(Commerce_AddressModel $address)
     {
+        if ($address->id)
+        {
+            $this->billingAddressId = $address->id;
+        }
         $this->_billingAddress = $address;
     }
 
@@ -624,12 +637,46 @@ class Commerce_OrderModel extends BaseElementModel
     }
 
     /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        if ($this->getCustomer() && $this->getCustomer()->getUser())
+        {
+            $this->setEmail($this->getCustomer()->getUser()->email);
+        }
+
+        return $this->_email;
+    }
+
+    /**
+     * @param $value
+     */
+    public function setEmail($value)
+    {
+        $this->_email = $value;
+    }
+
+    /**
+     * @param mixed $row
+     *
+     * @return Commerce_OrderModel
+     */
+    public static function populateModel($row)
+    {
+        /** @var Commerce_OrderModel $model */
+        $model = parent::populateModel($row);
+        $model->setEmail($row['email']);
+        return $model;
+    }
+
+    /**
      * @deprecated
      * @return bool
      */
     public function showAddress()
     {
-        craft()->deprecator->log('Commerce_OrderModel::showAddress():removed', 'You should no longer use `cart.showAddress` in twig to determine whether to show the address form. Do your own check in twig like this `{% if cart.linItems|length > 0 %}`');
+        craft()->deprecator->log('Commerce_OrderModel::showAddress():removed', 'You should no longer use `cart.showAddress` in twig to determine whether to show the address form. Do your own check in twig like this `{% if cart.lineItems|length > 0 %}`');
 
         return count($this->getLineItems()) > 0;
     }
@@ -640,7 +687,7 @@ class Commerce_OrderModel extends BaseElementModel
      */
     public function showPayment()
     {
-        craft()->deprecator->log('Commerce_OrderModel::showPayment():removed', 'You should no longer use `cart.showPayment` in twig to determine whether to show the payment form. Do your own check in twig like this `{% if cart.linItems|length > 0 and cart.billingAddressId and cart.shippingAddressId %}`');
+        craft()->deprecator->log('Commerce_OrderModel::showPayment():removed', 'You should no longer use `cart.showPayment` in twig to determine whether to show the payment form. Do your own check in twig like this `{% if cart.lineItems|length > 0 and cart.billingAddressId and cart.shippingAddressId %}`');
 
         return count($this->getLineItems()) > 0 && $this->billingAddressId && $this->shippingAddressId;
     }
@@ -697,7 +744,6 @@ class Commerce_OrderModel extends BaseElementModel
                 'decimals' => 4,
                 'default' => 0
             ],
-            'email' => AttributeType::String,
             'isCompleted' => AttributeType::Bool,
             'dateOrdered' => AttributeType::DateTime,
             'datePaid' => AttributeType::DateTime,

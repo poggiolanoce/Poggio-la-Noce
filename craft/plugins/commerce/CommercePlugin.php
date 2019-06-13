@@ -32,6 +32,13 @@ class CommercePlugin extends BasePlugin
             $this->includeCpResources();
             craft()->templates->hook('commerce.prepCpTemplate', array($this, 'prepCpTemplate'));
         }
+
+        // Send the X-Powered-By header?
+        if (craft()->config->get('sendPoweredByHeader'))
+        {
+            $original = HeaderHelper::getHeader('X-Powered-By');
+            HeaderHelper::setHeader(array('X-Powered-By' => $original.($original ? ', ' : '').'Craft Commerce'));
+        }
     }
 
     /**
@@ -169,7 +176,11 @@ class CommercePlugin extends BasePlugin
                         'm170227_010101_Commerce_RemoveNameUniquenessFromShippingRules',
                         'm170411_010101_Commerce_AdditionalTaxRateTaxables',
                         'm170411_010102_Commerce_OrderBaseTaxIncluded',
-                        'm170426_010101_Commerce_IncreaseTaxRateDecimal'
+                        'm170426_010101_Commerce_IncreaseTaxRateDecimal',
+                        'm170609_010101_Commerce_AddRecieptEmailSettingToStripeGateway',
+                        'm170727_010101_Commerce_AddPercentageOffOption',
+                        'm170801_010101_Commerce_DropCustomerEmail',
+                        'm171122_010101_Commerce_IncreaseTaxRateDecimalAgain'
                     );
 
                     foreach ($migrations as $migrationClass) {
@@ -313,7 +324,7 @@ class CommercePlugin extends BasePlugin
      */
     public function getVersion()
     {
-        return '1.2.1346';
+        return '1.2.1368';
     }
 
     /**
@@ -323,7 +334,7 @@ class CommercePlugin extends BasePlugin
      */
     public function getSchemaVersion()
     {
-        return '1.2.79';
+        return '1.2.81';
     }
 
     /**
@@ -467,7 +478,10 @@ class CommercePlugin extends BasePlugin
             $context['subnav']['promotions'] = array('label' => Craft::t('Promotions'), 'url' => 'commerce/promotions');
         }
 
-        if (craft()->userSession->isAdmin()) {
+        $manageShipping = craft()->userSession->checkPermission('commerce-manageShipping');
+        $manageTaxes = craft()->userSession->checkPermission('commerce-manageTaxes');
+
+        if (craft()->userSession->isAdmin() || $manageShipping || $manageTaxes) {
             $context['subnav']['settings'] = array('label' => Craft::t('Settings'), 'url' => 'commerce/settings');
         }
     }
@@ -491,6 +505,8 @@ class CommercePlugin extends BasePlugin
             'commerce-manageProducts' => array('label' => Craft::t('Manage products'), 'nested' => $productTypePermissions),
             'commerce-manageOrders' => array('label' => Craft::t('Manage orders')),
             'commerce-managePromotions' => array('label' => Craft::t('Manage promotions')),
+            'commerce-manageShipping' => array('label' => Craft::t('Manage shipping')),
+            'commerce-manageTaxes' => array('label' => Craft::t('Manage taxes')),
         );
     }
 

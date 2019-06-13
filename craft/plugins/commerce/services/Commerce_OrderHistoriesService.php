@@ -78,6 +78,18 @@ class Commerce_OrderHistoriesService extends BaseApplicationComponent
      */
     public function createOrderHistoryFromOrder(Commerce_OrderModel $order, $oldStatusId)
     {
+        // Get all order history records
+        $records = Commerce_OrderHistoryRecord::model()->findAllByAttributes([
+            'orderId' => $order->id,
+        ],['order' => 'dateCreated desc']);
+
+        // Does this same order history change exist? If so, succeed without triggering real changes.
+        // This fix was designed to stop multiple complete order 3rd party requests from triggering the same order status change record creation twice.
+        if ($records && ($records[0]->prevStatusId == $oldStatusId && $records[0]->newStatusId == $order->orderStatusId))
+        {
+            return true;
+        }
+
         $orderHistoryModel = new Commerce_OrderHistoryModel();
         $orderHistoryModel->orderId = $order->id;
         $orderHistoryModel->prevStatusId = $oldStatusId;

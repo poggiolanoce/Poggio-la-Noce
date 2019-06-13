@@ -6,8 +6,11 @@ use Omnipay\Tests\TestCase;
 
 class DirectAuthorizeRequestTest extends TestCase
 {
+    // VISA incurrs a surcharge of 2.5% when used.
+    const SURCHARGE_XML = '<surcharges><surcharge><paymentType>VISA</paymentType><percentage>2.50</percentage></surcharge></surcharges>';
+
     /**
-     * @var \Omnipay\Common\Message\AbstractRequest $request
+     * @var DirectAuthorizeRequest
      */
     protected $request;
 
@@ -21,6 +24,7 @@ class DirectAuthorizeRequestTest extends TestCase
                 'amount' => '12.00',
                 'currency' => 'GBP',
                 'transactionId' => '123',
+                'surchargeXml' => self::SURCHARGE_XML,
                 'card' => $this->getValidCard(),
             )
         );
@@ -33,7 +37,16 @@ class DirectAuthorizeRequestTest extends TestCase
         $this->assertSame('E', $data['AccountType']);
         $this->assertSame(0, $data['ApplyAVSCV2']);
         $this->assertSame(0, $data['Apply3DSecure']);
-        $this->assertSame(0, $data['CreateToken']);
+
+        $this->assertSame('DEFERRED', $data['TxType']);
+        $this->assertSame('vspdirect-register', $this->request->getService());
+
+        // If we have not explicitly set the CreateToken flag, then it remains
+        // undefined. This allows it to default when creating a transaction
+        // according to whether we are using a single-use token or a more
+        // permanent cardReference.
+
+        $this->assertNull($data['CreateToken']);
     }
 
     public function testGetData()
@@ -44,6 +57,9 @@ class DirectAuthorizeRequestTest extends TestCase
         $this->request->setDescription('food');
         $this->request->setClientIp('127.0.0.1');
         $this->request->setReferrerId('3F7A4119-8671-464F-A091-9E59EB47B80C');
+        $this->request->setVendorData('Vendor secret codes');
+        $this->request->setCardholderName('Mr E User');
+        $this->request->setCreateToken(true);
 
         $data = $this->request->getData();
 
@@ -56,6 +72,10 @@ class DirectAuthorizeRequestTest extends TestCase
         $this->assertSame(2, $data['ApplyAVSCV2']);
         $this->assertSame(3, $data['Apply3DSecure']);
         $this->assertSame('3F7A4119-8671-464F-A091-9E59EB47B80C', $data['ReferrerID']);
+        $this->assertSame('Vendor secret codes', $data['VendorData']);
+        $this->assertSame('Mr E User', $data['CardHolder']);
+        $this->assertSame(1, $data['CreateToken']);
+        $this->assertSame(self::SURCHARGE_XML, $data['surchargeXml']);
     }
 
     public function testNoBasket()
@@ -86,6 +106,34 @@ class DirectAuthorizeRequestTest extends TestCase
             . '<description>Name</description><quantity>1</quantity>'
             . '<unitNetAmount>1.23</unitNetAmount><unitTaxAmount>0.00</unitTaxAmount>'
             . '<unitGrossAmount>1.23</unitGrossAmount><totalGrossAmount>1.23</totalGrossAmount>'
+            . '</item></basket>';
+
+        $this->request->setItems($items);
+
+        $data = $this->request->getData();
+
+        // The element does exist, and must contain the basket XML, with optional XML header and
+        // trailing newlines.
+        $this->assertArrayHasKey('BasketXML', $data);
+        $this->assertContains($basketXml, $data['BasketXML']);
+    }
+
+    public function testBasketExtendItem()
+    {
+        $items = new \Omnipay\Common\ItemBag(array(
+            new \Omnipay\SagePay\Extend\Item(array(
+                'name' => 'Name',
+                'description' => 'Description',
+                'quantity' => 1,
+                'price' => 1.23,
+                'vat' => 0.205,
+            ))
+        ));
+
+        $basketXml = '<basket><item>'
+            . '<description>Name</description><quantity>1</quantity>'
+            . '<unitNetAmount>1.23</unitNetAmount><unitTaxAmount>0.205</unitTaxAmount>'
+            . '<unitGrossAmount>1.435</unitGrossAmount><totalGrossAmount>1.435</totalGrossAmount>'
             . '</item></basket>';
 
         $this->request->setItems($items);
@@ -168,7 +216,8 @@ class DirectAuthorizeRequestTest extends TestCase
         $this->request->getCard()->setNumber('4929000000006');
         $data = $this->request->getData();
 
-        $this->assertSame('visa', $data['CardType']);
+        // The card type to be sent is always upper case.
+        $this->assertSame('VISA', $data['CardType']);
     }
 
     public function testGetDataMastercard()
@@ -176,7 +225,8 @@ class DirectAuthorizeRequestTest extends TestCase
         $this->request->getCard()->setNumber('5404000000000001');
         $data = $this->request->getData();
 
-        $this->assertSame('mc', $data['CardType']);
+        // The card type to be sent is always upper case.
+        $this->assertSame('MC', $data['CardType']);
     }
 
     public function testGetDataDinersClub()
@@ -184,7 +234,8 @@ class DirectAuthorizeRequestTest extends TestCase
         $this->request->getCard()->setNumber('30569309025904');
         $data = $this->request->getData();
 
-        $this->assertSame('dc', $data['CardType']);
+        // This card type does not involve any mapping.
+        $this->assertSame('DC', $data['CardType']);
     }
 
     public function testGetDataNullBillingAddress2()
@@ -265,6 +316,74 @@ class DirectAuthorizeRequestTest extends TestCase
         $this->assertContains($expected, $data['BasketXML'], 'Basket XML does not match the expected output');
     }
 
+    public function testNonXmlBasket()
+    {
+        $this->request->setUseOldBasketFormat(true);
+        $items = new \Omnipay\Common\ItemBag(array(
+            new \Omnipay\SagePay\Extend\Item(array(
+                'name' => "Pioneer NSDV99 DVD-Surround Sound System",
+                'quantity' => 3,
+                'price' => 4.35,
+            )),
+        ));
+        $this->request->setItems($items);
+        $data = $this->request->getData();
+        $this->assertArrayNotHasKey('BasketXML', $data);
+        $this->assertSame('1:Pioneer NSDV99 DVD-Surround Sound System:3:4.35::4.35:13.05', $data['Basket']);
+    }
+    public function testNonXmlBasketWithVat()
+    {
+        $this->request->setUseOldBasketFormat(true);
+        $items = new \Omnipay\Common\ItemBag(array(
+            new \Omnipay\SagePay\Extend\Item(array(
+                'name' => "Pioneer NSDV99 DVD-Surround Sound System",
+                'quantity' => 3,
+                'price' => 4.35,
+                'vat' => 2
+            )),
+        ));
+        $this->request->setItems($items);
+        $data = $this->request->getData();
+        $this->assertArrayHasKey('Basket', $data);
+        $this->assertArrayNotHasKey('BasketXML', $data);
+        $this->assertSame('1:Pioneer NSDV99 DVD-Surround Sound System:3:4.35:2:6.35:19.05', $data['Basket']);
+    }
+    public function testNonXmlBasketWithProductCode()
+    {
+        $this->request->setUseOldBasketFormat(true);
+        $items = new \Omnipay\Common\ItemBag(array(
+            new \Omnipay\SagePay\Extend\Item(array(
+                'name' => "Pioneer NSDV99 DVD-Surround Sound System",
+                'quantity' => 3,
+                'price' => 4.35,
+                'vat' => 2,
+                'productCode' => 'DVD-123'
+            )),
+        ));
+        $this->request->setItems($items);
+        $data = $this->request->getData();
+        $this->assertSame('1:[DVD-123]Pioneer NSDV99 DVD-Surround Sound System:3:4.35:2:6.35:19.05', $data['Basket']);
+    }
+    public function testNonXmlBasketWithSpecialAndNonSpecialCharacters()
+    {
+        $this->request->setUseOldBasketFormat(true);
+        $items = new \Omnipay\Common\ItemBag(array(
+            new \Omnipay\SagePay\Extend\Item(array(
+                // [] and ::: are reserved
+                'name' => "[SKU-ABC]Pioneer::: NSDV99 DVD-Surround Sound System .-{};_@()",
+                'quantity' => 3,
+                'price' => 4.35,
+                'vat' => 2,
+            )),
+        ));
+        $this->request->setItems($items);
+        $data = $this->request->getData();
+        $this->assertSame('1:[SKU-ABC]Pioneer NSDV99 DVD-Surround Sound System .-{};_@():3:4.35:2:6.35:19.05', $data['Basket']);
+    }
+
+    /**
+     * 
+     */
     public function testCreateTokenCanBeSetInRequest()
     {
         $this->request->setCreateToken(true);
@@ -291,8 +410,27 @@ class DirectAuthorizeRequestTest extends TestCase
 
         $data = $this->request->getData();
         $this->assertSame($token, $data['Token']);
+
+        // If using a "token" then it is assumed to be single-use by default.
+        $this->assertSame(0, $data['StoreToken']);
     }
 
+    public function testExistingCardReferenceCanBeSet()
+    {
+        $token = '{ABCDEF}';
+        $this->request->setCardReference($token);
+
+        $data = $this->request->getData();
+        $this->assertSame($token, $data['Token']);
+
+        // If using a "cardReference" then it is assumed to be permanent by default.
+        $this->assertSame(1, $data['StoreToken']);
+    }
+
+    /**
+     * This has been turned on its head: if a token is provided, then that
+     * takes priority and the "createToken" flag is ignored.
+     */
     public function testExistingTokenCannotBeSetIfCreateTokenIsTrue()
     {
         $this->request->setCreateToken(true);
@@ -300,8 +438,8 @@ class DirectAuthorizeRequestTest extends TestCase
 
         $data = $this->request->getData();
 
-        $this->assertArrayNotHasKey('Token', $data);
-        $this->assertSame(1, $data['CreateToken']);
+        $this->assertArrayNotHasKey('CreateToken', $data);
+        $this->assertSame('{ABCDEF}', $data['Token']);
     }
 
     public function testStoreTokenCanOnlyBeSetIfExistingTokenIsSetInRequest()

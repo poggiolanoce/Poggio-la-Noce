@@ -326,18 +326,16 @@ class Commerce_CartService extends BaseApplicationComponent
             return false;
         }
 
+        if ($cart->getCustomer() && $cart->getCustomer()->getUser())
+        {
+            $error = Craft::t('Can not set email on cart as a logged in and registered user.');
+            return false;
+        }
+
         try
         {
-            // we need to force a persisted customer so get a customer id
-            $this->getCart()->customerId = craft()->commerce_customers->getCustomerId();
-            $customer = craft()->commerce_customers->getCustomer();
-            if (!$customer->userId)
-            {
-                $customer->email = $email;
-                craft()->commerce_customers->saveCustomer($customer);
-                $cart->email = $customer->email;
-                craft()->commerce_orders->saveOrder($cart);
-            }
+            $cart->setEmail($email);
+            craft()->commerce_orders->saveOrder($cart);
         }
         catch (Exception $e)
         {
@@ -407,36 +405,50 @@ class Commerce_CartService extends BaseApplicationComponent
                 $this->_cart->paymentCurrency = craft()->commerce_paymentCurrencies->getPrimaryPaymentCurrencyIso();
             }
 
-            if (
-                $autoSetAddresses = craft()->config->get('autoSetNewCartAddresses', 'commerce') &&
-                $customer = craft()->commerce_customers->getCustomerById($this->_cart->customerId)
-            )
+            // Does a plugin want to set a default shipping address
+            if(!$this->_cart->shippingAddressId) {
+                $defaultShippingAddress = craft()->plugins->callFirst('commerce_defaultCartShippingAddress', [$this->_cart]);
+                if ($defaultShippingAddress) {
+                    $this->_cart->setShippingAddress($defaultShippingAddress);
+                }
+            }
+
+            if (!$this->_cart->billingAddressId) {
+                $defaultBillingAddress = craft()->plugins->callFirst('commerce_defaultCartBillingAddress', [$this->_cart]);
+                if ($defaultBillingAddress) {
+                    $this->_cart->setBillingAddress($defaultBillingAddress);
+                }
+            }
+
+            if ($autoSetAddresses = craft()->config->get('autoSetNewCartAddresses', 'commerce') && $customer = craft()->commerce_customers->getCustomerById($this->_cart->customerId))
             {
                 if (
                     !$this->_cart->shippingAddressId &&
                     ($lastShippingAddressId = $customer->lastUsedShippingAddressId) &&
                     ($address = craft()->commerce_addresses->getAddressById($lastShippingAddressId))
-                )
-                {
-                    $this->_cart->shippingAddressId = $address->id;
+                ) {
+                    $this->_cart->setShippingAddress($address);
                 }
 
                 if (
                     !$this->_cart->billingAddressId &&
                     ($lastBillingAddressId = $customer->lastUsedBillingAddressId) &&
                     ($address = craft()->commerce_addresses->getAddressById($lastBillingAddressId))
-                )
-                {
-                    $this->_cart->billingAddressId = $address->id;
+                ) {
+                    $this->_cart->setBillingAddress($address);
                 }
             }
 
             // Update the cart if the customer has changed and recalculate the cart.
             $customer = craft()->commerce_customers->getCustomer();
-            if (!$this->_cart->isEmpty() && $this->_cart->customerId != $customer->id)
+            if ($this->_cart->customerId && $this->_cart->customerId != $customer->id)
             {
                 $this->_cart->customerId = $customer->id;
-                $this->_cart->email = $customer->email;
+                if($customer->getUser())
+                {
+                    $this->_cart->setEmail($customer->getUser()->email);
+                }
+
                 $this->_cart->billingAddressId = null;
                 $this->_cart->shippingAddressId = null;
                 craft()->commerce_orders->saveOrder($this->_cart);
@@ -462,6 +474,8 @@ class Commerce_CartService extends BaseApplicationComponent
             $cartExpiry = date_create('@0')->add($interval)->getTimestamp();
             craft()->userSession->saveCookie($cookieId, $cartNumber, $cartExpiry);
         }
+
+
 
         return $cartNumber;
     }

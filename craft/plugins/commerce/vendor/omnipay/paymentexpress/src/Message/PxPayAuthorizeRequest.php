@@ -193,7 +193,7 @@ class PxPayAuthorizeRequest extends AbstractRequest
         $data->AmountInput = $this->getAmount();
         $data->CurrencyInput = $this->getCurrency();
         $data->UrlSuccess = $this->getReturnUrl();
-        $data->UrlFail = $this->getReturnUrl();
+        $data->UrlFail = $this->getCancelUrl() ?: $this->getReturnUrl();
 
         if ($this->getDescription()) {
             $data->MerchantReference = $this->getDescription();
@@ -244,5 +244,15 @@ class PxPayAuthorizeRequest extends AbstractRequest
     protected function createResponse($data)
     {
         return $this->response = new PxPayAuthorizeResponse($this, $data);
+    }
+
+    /**
+     * Get the request return URL.
+     *
+     * @return string
+     */
+    public function getReturnUrl()
+    {
+        return htmlentities($this->getParameter('returnUrl'));
     }
 }

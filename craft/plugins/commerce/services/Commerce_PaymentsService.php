@@ -3,10 +3,13 @@ namespace Craft;
 
 use Commerce\Gateways\PaymentFormModels\BasePaymentFormModel;
 use Commerce\Helpers\CommerceCurrencyHelper;
+use Omnipay\AuthorizeNet\Message\SIMCompleteAuthorizeResponse;
+use Omnipay\AuthorizeNet\SIMGateway;
 use Omnipay\Common\CreditCard;
 use Omnipay\Common\ItemBag;
 use Omnipay\Common\Message\RequestInterface;
 use Omnipay\Common\Message\ResponseInterface;
+use Omnipay\SagePay\Message\ServerNotifyResponse;
 
 /**
  * Payments service.
@@ -256,7 +259,7 @@ class Commerce_PaymentsService extends BaseApplicationComponent
                 {
                     $card->setShippingCountry($shippingAddress->getCountry()->iso);
                 }
-                
+
                 if ($shippingAddress->getState())
                 {
                     $state = $shippingAddress->getState()->abbreviation ?: $shippingAddress->getState()->name;
@@ -297,9 +300,14 @@ class Commerce_PaymentsService extends BaseApplicationComponent
             'description'          => Craft::t('Order').' #'.$transaction->orderId,
             'clientIp'             => craft()->request->getIpAddress(),
             'transactionReference' => $transaction->hash,
-            'returnUrl'            => UrlHelper::getActionUrl('commerce/payments/completePayment', ['commerceTransactionId' => $transaction->id, 'commerceTransactionHash' => $transaction->hash]),
             'cancelUrl'            => UrlHelper::getSiteUrl($transaction->order->cancelUrl),
         ];
+
+        // If this is a CP request, we don't want the cpTrigger in the url
+        $cpTrigger = craft()->config->get('cpTrigger');
+        $url = UrlHelper::getActionUrl('commerce/payments/completePayment', ['commerceTransactionId' => $transaction->id, 'commerceTransactionHash' => $transaction->hash]);
+        $returnUrl = str_replace($cpTrigger.'/','',$url);
+        $request['returnUrl'] = $returnUrl;
 
         // Each gateway adapter needs to know whether to use our acceptNotification handler because most omnipay gateways
         // implement the notification API differently. Hoping Omnipay v3 will improve this.
@@ -628,7 +636,7 @@ class Commerce_PaymentsService extends BaseApplicationComponent
         $transaction = $this->processCaptureOrRefund($transaction, Commerce_TransactionRecord::TYPE_CAPTURE);
 
         //raising event
-        $event = new Event($this, ['transaction' => $transaction,]);
+        $event = new Event($this, ['transaction' => $transaction]);
         $this->onCaptureTransaction($event);
 
         return $transaction;
@@ -784,9 +792,10 @@ class Commerce_PaymentsService extends BaseApplicationComponent
         // If MOLLIE, the transactionReference will be theirs
         // Netbanx Hosted requires the transactionReference is the same
         // Authorize.net SIM https://github.com/thephpleague/omnipay-authorizenet/issues/19
-        // TODO: Move this into the gateway adapter.
+        // Affirm is added as a special consideration or legacy user using a 3rd party gateway. https://app.frontapp.com/open/cnv_zraqmj
+        // TODO: Move this into the gateway adapter. (Has been fixed in Commerce 2)
         $handle = $transaction->paymentMethod->getGatewayAdapter()->handle();
-        if ($handle == 'Mollie_Ideal' || $handle == 'Mollie' || $handle == 'NetBanx_Hosted' || $handle == 'AuthorizeNet_SIM')
+        if ($handle == 'Mollie_Ideal' || $handle == 'Mollie' || $handle == 'NetBanx_Hosted' || $handle == 'Affirm')
         {
             $params['transactionReference'] = $transaction->reference;
         }
@@ -809,42 +818,13 @@ class Commerce_PaymentsService extends BaseApplicationComponent
         // For gateways that call us directly and usually do not like redirects.
         // TODO: Move this into the gateway adapter interface.
         $gateways = array(
-            'AuthorizeNet_SIM',
             'Realex_Redirect',
             'SecurePay_DirectPost',
             'WorldPay',
         );
 
         if (in_array($transaction->paymentMethod->getGatewayAdapter()->handle(), $gateways)) {
-
-            // Need to turn devMode off so the redirect template does not have any debug data attached.
-            craft()->config->set('devMode', false);
-
-            // We redirect to a place that take us back to the completePayment endpoint, but this is ok
-            // as complete payment can return early if the transaction was marked successful the previous time.
-            $url = UrlHelper::getActionUrl('commerce/payments/completePayment', ['commerceTransactionId' => $transaction->id, 'commerceTransactionHash' => $transaction->hash]);
-            $url = htmlspecialchars($url, ENT_QUOTES);
-
-            $template = <<<EOF
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="refresh" content="1;URL=$url" />
-    <title>Redirecting...</title>
-</head>
-<body onload="document.payment.submit();">
-    <p>Please wait while we redirect you back...</p>
-    <form name="payment" action="$url" method="post">
-        <p><input type="submit" value="Continue" /></p>
-    </form>
-</body>
-</html>
-EOF;
-
-            ob_start();
-            echo $template;
-            craft()->end();
-
+            $this->_redirectToCompletePayment($transaction);
         }
 
         if ($success && $redirect && $transaction->status == Commerce_TransactionRecord::STATUS_REDIRECT)
@@ -857,68 +837,21 @@ EOF;
 
     /**
      * This is a special handler for gateway which support the notification API in Omnipay.
-     * TODO: Currently only tested with SagePay. Will likely need to be modified for other gateways with different notification API
+     * TODO: Currently only tested with SagePay and Auth.net. Will likely need to be modified for other gateways with different notification API
      *
-     * @param $transactionHash
+     * @param $transaction
      */
-    public function acceptNotification($transactionHash)
+    public function acceptNotification($transaction)
     {
-        $transaction = craft()->commerce_transactions->getTransactionByHash($transactionHash);
-
-        // We need to turn devMode off because the gateways return text strings and we don't want `<script..` tags appending on the end.
-        craft()->config->set('devMode', false);
-
-        // load payment driver
-        $gateway = $transaction->paymentMethod->getGateway();
-
-        $request = $gateway->acceptNotification();
-
-        $request->setTransactionReference($transaction->reference);
-
-        $response = $request->send();
-
-        if (!$request->isValid())
+        if ($transaction->paymentMethod->getGatewayAdapter()->handle() == 'AuthorizeNet_SIM')
         {
-            $url = UrlHelper::getSiteUrl($transaction->order->cancelUrl);
-            CommercePlugin::log('Notification request is not valid: '.json_encode($request->getData(), JSON_PRETTY_PRINT),LogLevel::Info,true);
-            $response->invalid($url, 'Signature not valid - goodbye');
+            $this->_acceptNotificationAuthNet($transaction);
         }
 
-        // All raw data - just log it for later analysis:
-        $request->getData();
-
-        $status = $request->getTransactionStatus();
-
-        if ($status == $request::STATUS_COMPLETED)
+        if ($transaction->paymentMethod->getGatewayAdapter()->handle() == 'SagePay_Server')
         {
-            $transaction->status = Commerce_TransactionRecord::STATUS_SUCCESS;
+            $this->_acceptNotificationSageServer($transaction);
         }
-        elseif ($status == $request::STATUS_PENDING)
-        {
-            $transaction->pending = Commerce_TransactionRecord::STATUS_SUCCESS;
-        }
-        elseif ($status == $request::STATUS_FAILED)
-        {
-            $transaction->status = Commerce_TransactionRecord::STATUS_FAILED;
-        }
-
-        $transaction->response = $response->getData();
-        $transaction->code = $response->getCode();
-        $transaction->reference = $request->getTransactionReference();
-        $transaction->message = $request->getMessage();
-        $this->saveTransaction($transaction);
-
-        if ($transaction->status == Commerce_TransactionRecord::STATUS_SUCCESS)
-        {
-            craft()->commerce_orders->updateOrderPaidTotal($transaction->order);
-        }
-
-        $url = UrlHelper::getActionUrl('commerce/payments/completePayment', ['commerceTransactionId'   => $transaction->id,
-                                                                             'commerceTransactionHash' => $transaction->hash]);
-
-        CommercePlugin::log('Confirming Notification: '.json_encode($request->getData(), JSON_PRETTY_PRINT),LogLevel::Info,true);
-
-        $response->confirm($url);
     }
 
     /**
@@ -1004,5 +937,139 @@ EOF;
         $response = $request->send();
 
         return $response;
+    }
+
+    /**
+     * @param $transaction
+     * @throws Exception
+     */
+    private function _acceptNotificationAuthNet($transaction)
+    {
+        // Load payment driver for the transaction we are trying to complete
+        $gateway = $transaction->paymentMethod->getGateway();
+
+        /** @var SIMGateway $request */
+        $request = $gateway->completeAuthorize();
+
+        $request->setTransactionReference($transaction->reference);
+        $request->setAmount($transaction->paymentAmount);
+
+        /** @var SIMCompleteAuthorizeResponse $response */
+        $response = $request->send();
+
+        if ($response->isSuccessful()) {
+            $transaction->status = Commerce_TransactionRecord::STATUS_SUCCESS;
+            $transaction->message = $response->getMessage();
+        } elseif ($response->isError()) {
+            $transaction->status = Commerce_TransactionRecord::STATUS_FAILED;
+            $transaction->message = $response->getMessage() . ' '. $response->getReasonCode();
+        } elseif ($response->getCode() == SIMCompleteAuthorizeResponse::RESPONSE_CODE_DECLINED)
+        {
+            $transaction->status = Commerce_TransactionRecord::STATUS_FAILED;
+            $transaction->message = $response->getMessage() . ' '. $response->getReasonCode();
+        } elseif ($response->getCode() == SIMCompleteAuthorizeResponse::RESPONSE_CODE_REVIEW)
+        {
+            $transaction->status = Commerce_TransactionRecord::STATUS_FAILED;
+            $transaction->message = $response->getMessage() . ' '. $response->getReasonCode();
+        }
+
+        $transaction->response = $response->getData();
+        $transaction->code = $response->getCode();
+        $transaction->reference = $response->getTransactionReference();
+        $this->saveTransaction($transaction);
+
+        $this->_redirectToCompletePayment($transaction);
+    }
+
+    /**
+     * @param $transaction
+     * @throws Exception
+     */
+    private function _acceptNotificationSageServer($transaction)
+    {
+        // We need to turn devMode off because the gateways return text strings and we don't want `<script..` tags appending on the end.
+        craft()->config->set('devMode', false);
+
+        // load payment driver
+        $gateway = $transaction->paymentMethod->getGateway();
+
+        $request = $gateway->acceptNotification();
+
+        $request->setTransactionReference($transaction->reference);
+
+        $response = $request->send();
+
+        if (!$request->isValid()) {
+            $url = UrlHelper::getSiteUrl($transaction->order->cancelUrl);
+            CommercePlugin::log('Notification request is not valid: ' . json_encode($request->getData(), JSON_PRETTY_PRINT), LogLevel::Info, true);
+            $response->invalid($url, 'Signature not valid - goodbye');
+        }
+
+        // All raw data - just log it for later analysis:
+        $request->getData();
+
+        $status = $request->getTransactionStatus();
+
+        if ($status == $request::STATUS_COMPLETED) {
+            $transaction->status = Commerce_TransactionRecord::STATUS_SUCCESS;
+        } elseif ($status == $request::STATUS_PENDING) {
+            $transaction->pending = Commerce_TransactionRecord::STATUS_SUCCESS;
+        } elseif ($status == $request::STATUS_FAILED) {
+            $transaction->status = Commerce_TransactionRecord::STATUS_FAILED;
+        }
+
+        /** @var ServerNotifyResponse response */
+        $transaction->response = $response->getData();
+        $transaction->code = $response->getCode();
+        $transaction->reference = $response->getTransactionReference();
+        $transaction->message = $response->getMessage();
+        $this->saveTransaction($transaction);
+
+        if ($transaction->status == Commerce_TransactionRecord::STATUS_SUCCESS) {
+            craft()->commerce_orders->updateOrderPaidTotal($transaction->order);
+        }
+
+        $url = UrlHelper::getActionUrl('commerce/payments/completePayment', [
+            'commerceTransactionId' => $transaction->id,
+            'commerceTransactionHash' => $transaction->hash
+        ]);
+
+        CommercePlugin::log('Confirming Notification: ' . json_encode($request->getData(), JSON_PRETTY_PRINT), LogLevel::Info, true);
+
+        $response->confirm($url);
+    }
+
+    /**
+     * @param $transaction
+     */
+    private function _redirectToCompletePayment($transaction)
+    {
+        // Need to turn devMode off so the redirect template does not have any debug data attached.
+        craft()->config->set('devMode', false);
+
+        // We redirect to a place that take us back to the completePayment endpoint, but this is ok
+        // as complete payment can return early if the transaction was marked successful the previous time.
+        $url = UrlHelper::getActionUrl('commerce/payments/completePayment', ['commerceTransactionId' => $transaction->id, 'commerceTransactionHash' => $transaction->hash]);
+        $url = htmlspecialchars($url, ENT_QUOTES);
+
+        $template = <<<EOF
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="1;URL=$url" />
+    <title>Redirecting...</title>
+</head>
+<body onload="document.payment.submit();">
+    <p>Please wait while we redirect you back...</p>
+    <form name="payment" action="$url" method="post">
+        <p><input type="submit" value="Continue" /></p>
+    </form>
+</body>
+</html>
+EOF;
+
+        ob_start();
+        echo $template;
+        craft()->end();
     }
 }

@@ -19,7 +19,6 @@ use Commerce\Helpers\CommerceCurrencyHelper;
  */
 class Commerce_OrdersService extends BaseApplicationComponent
 {
-
     /**
      * @var
      */
@@ -175,11 +174,6 @@ class Commerce_OrdersService extends BaseApplicationComponent
             $order->customerId = craft()->commerce_customers->getCustomerId();
         }
 
-        $order->email = craft()->commerce_customers->getCustomerById($order->customerId)->email;
-
-        // Will not adjust a completed order, we don't want totals to change.
-        $this->calculateAdjustments($order);
-
         $oldStatusId = $orderRecord->orderStatusId;
 
         //raising event
@@ -188,9 +182,12 @@ class Commerce_OrdersService extends BaseApplicationComponent
         ]);
         $this->onBeforeSaveOrder($event);
 
+        // Will not adjust a completed order, we don't want totals to change.
+        $this->calculateAdjustments($order);
+
         $orderRecord->number = $order->number;
         $orderRecord->itemTotal = $order->itemTotal;
-        $orderRecord->email = $order->email;
+        $orderRecord->email = $order->getEmail();
         $orderRecord->isCompleted = $order->isCompleted;
         $orderRecord->dateOrdered = $order->dateOrdered;
         $orderRecord->datePaid = $order->datePaid;
@@ -242,11 +239,9 @@ class Commerce_OrdersService extends BaseApplicationComponent
                     $this->onSaveOrder($event);
 
                     //creating order history record
-                    if ($orderRecord->id && $oldStatusId != $orderRecord->orderStatusId)
+                    if ($orderRecord->id  && $oldStatusId != $orderRecord->orderStatusId)
                     {
-                        if (!craft()->commerce_orderHistories->createOrderHistoryFromOrder($order,
-                            $oldStatusId)
-                        )
+                        if (!craft()->commerce_orderHistories->createOrderHistoryFromOrder($order, $oldStatusId))
                         {
                             CommercePlugin::log('Error saving order history after Order save.', LogLevel::Error);
                             throw new Exception('Error saving order history');
@@ -412,22 +407,25 @@ class Commerce_OrdersService extends BaseApplicationComponent
         // Additional adjuster can be returned by the plugins.
         $additional = craft()->plugins->call('commerce_registerOrderAdjusters', [&$adjusters, $order]);
 
-        $orderIndex = 800;
+        $defaultIndex = 800;
         foreach ($additional as $additionalAdjusters)
         {
             foreach ($additionalAdjusters as $key => $additionalAdjuster)
             {
-                $orderIndex += 1;
+                $defaultIndex += 1;
 
                 // Not expecting more than 100 adjusters per plugin.
                 if ($key < 100 || $key > 800)
                 {
-                    $additionalAdjusters[$orderIndex] = $additionalAdjusters[$key];
+                    $additionalAdjusters[$defaultIndex] = $additionalAdjusters[$key];
                     unset($additionalAdjusters[$key]);
                 }
             }
 
-            $adjusters = $adjusters + $additionalAdjusters;
+            foreach ($additionalAdjusters as $key => $additionalAdjuster)
+            {
+                $adjusters[$key] = $additionalAdjuster;
+            }
         }
 
         ksort($adjusters);

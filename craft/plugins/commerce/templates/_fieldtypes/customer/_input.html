@@ -60,8 +60,8 @@
 .address-heading-label { margin-bottom:4px; }
 {% endincludecss %}
 {% includejs %}
-window.countries = JSON.parse('{{ craft.commerce.countries|json_encode|raw }}');
-window.states = JSON.parse('{{ craft.commerce.states|json_encode|raw }}');
+window.countries = {{ craft.commerce.countries|values|json_encode|raw }};
+window.states = {{ craft.commerce.states|values|json_encode|raw }};
 
 $(".address-box").each(function(){
     new Craft.Commerce.AddressBox($(this),{});
