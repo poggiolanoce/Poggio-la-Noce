@@ -692,8 +692,9 @@
           height: 40px
           position: relative
           &.active
-            form
+            form:first-of-type
               opacity: 1
+              display: block
             .buy
               pointer-events: inherit
             .faux-buy
@@ -725,6 +726,7 @@
             width: 100%
             top: 0
             opacity: 0
+            display: none
             .price
               display: inline-block
               vertical-align: middle

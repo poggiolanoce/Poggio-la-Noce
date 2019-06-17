@@ -1033,8 +1033,9 @@ main#content .container {
   height: 40px;
   position: relative;
 }
-#products .product-overview ul li .buy-reveal.active form {
+#products .product-overview ul li .buy-reveal.active form:first-of-type {
   opacity: 1;
+  display: block;
 }
 #products .product-overview ul li .buy-reveal.active .buy {
   pointer-events: inherit;
@@ -1074,6 +1075,7 @@ main#content .container {
   width: 100%;
   top: 0;
   opacity: 0;
+  display: none;
 }
 #products .product-overview ul li .buy-reveal form .price {
   display: inline-block;
