@@ -1,6 +1,6 @@
 (function() {
   $(document).ready(function() {
-    var $age_confirmed, $header, $headlines, $list_items, $mobileClose, $mobileOpen, $navigation, $page_blocks, $pressed_button, $requirement_inputs, $trigger_requirements, ageGate, checkRequirements, clearErrors, populateErrors, verifiedAge;
+    var $age_confirmed, $forms, $header, $headlines, $list_items, $mobileClose, $mobileOpen, $navigation, $page_blocks, $pressed_button, $requirement_inputs, $trigger_requirements, ageGate, checkRequirements, clearErrors, populateErrors, selectForm, verifiedAge;
     $header = $('.header-container');
     $navigation = $('.navigation');
     $mobileOpen = $('.mobile-menu');
@@ -21,6 +21,15 @@
       $list_items.filter('.active').removeClass('active');
       return $(this).parent().addClass('active');
     });
+    $forms = $('.variant-form');
+    selectForm = function() {
+      var formValue;
+      formValue = $('[name="vintage-list"]').val();
+      $forms.filter('.current').removeClass('current');
+      $('[data-sku="' + formValue + '"]').addClass('current');
+    };
+    $('[name="vintage-list"]').on('change', selectForm);
+    selectForm();
     $headlines.on('click', function() {
       var $parent_block, $sibling_headings, $sibling_text, $sibling_text_class;
       $parent_block = $(this).parent();

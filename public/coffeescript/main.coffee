@@ -23,6 +23,19 @@ $(document).ready ->
     $list_items.filter('.active').removeClass 'active'
     $(@).parent().addClass 'active'
 
+  # Vintage picker
+  $forms = $('.variant-form')
+
+  selectForm = ->
+    formValue = $('[name="vintage-list"]').val()
+    $forms.filter('.current').removeClass 'current'
+    $('[data-sku="' + formValue + '"]').addClass 'current'
+    return
+
+  $('[name="vintage-list"]').on 'change', selectForm
+  selectForm()
+
+
   # Make each section active when clicked
   $headlines.on 'click', ()->
     $parent_block = $(this).parent()

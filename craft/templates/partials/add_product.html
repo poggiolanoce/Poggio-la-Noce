@@ -19,19 +19,6 @@
       {% endfor  %}
     </select>
   </div>
-  {% includejs %}
-    var $forms = $('.variant-form');
-
-    var selectForm = function() {
-      var formValue = $('[name="vintage-list"]').val();
-      $forms.filter('.current').removeClass('current');
-      $('[data-sku="' + formValue + '"]').addClass('current');
-    }
-
-    $('[name="vintage-list"]').on('change', selectForm)
-    selectForm();
-
-  {% endincludejs %}
 {% endif %}
 
 {% for variant in products %}
