@@ -1,10 +1,7 @@
 <?php
 
-// Ensure our urls have the right scheme
-define('URI_SCHEME', ( isset($_SERVER['HTTPS'] ) ) ? "https://" : "http://" );
-
 // The site url
-define('SITE_URL', URI_SCHEME . $_SERVER['SERVER_NAME'] . '/');
+define('SITE_URL', "https://" . $_SERVER['SERVER_NAME'] . '/');
 
 // The site basepath
 define('BASEPATH', realpath(CRAFT_BASE_PATH . '/../') . '/');
