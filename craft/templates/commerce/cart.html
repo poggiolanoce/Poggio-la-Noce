@@ -29,6 +29,7 @@
                   <input type="hidden" name="redirect" value="commerce/cart"/>
                   {{ getCsrfInput() }}
                   <input class="button link" type="submit" value="{{ "Empty the Cart" | t }}"/>
+                  <input type="hidden" name="cartUpdatedNotice" value="Added coupon code.">
                 </form>
               </td>
               <td>
