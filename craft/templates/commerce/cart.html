@@ -29,9 +29,6 @@
                   <input type="hidden" name="redirect" value="commerce/cart"/>
                   {{ getCsrfInput() }}
                   <input class="button link" type="submit" value="{{ "Empty the Cart" | t }}"/>
-                  <input type="hidden" name="action" value="commerce/cart/update-cart">
-                  <input type="hidden" name="cartUpdatedNotice" value="Added coupon code.">
-
                 </form>
               </td>
               <td>
@@ -40,6 +37,7 @@
                 <form method="POST">
                    <input type="hidden" name="action" value="commerce/cart/updateCart">
                    <input type="hidden" name="redirect" value="commerce/cart">
+                   <input type="hidden" name="cartUpdatedNotice" value="Added coupon code.">
                    {{ getCsrfInput() }}
                    <span class="{% if cart.getError('couponCode') %}has-error{% endif %}">
                    <input type="text" name="couponCode" class="{% if cart.getError('couponCode') %}has-error{% endif %}" value="{{ cart.couponCode }}" placeholder="{{ "Coupon Code"|t }}">
@@ -48,9 +46,12 @@
               </form>
                 {% if cart.totalDiscount != '0' %}
                   {{ "Total" | t }} {{ "Discount" | t }}: {{ cart.totalDiscount|currency(currencyCode) }}<br>
-                {% endif %}
+                  <h4>{{ "Total" | t }}: {{ cart.totalPrice |currency(currencyCode) }}</h4>
+                  {% else  %}
                 <!-- Use itemPrice because there's no point in adding shipping or taxes before they're selected -->
                 <h4>{{ "Total" | t }}: {{ cart.itemSubtotal|currency(currencyCode) }}</h4>
+                {% endif %}
+
               </td>
             </tr>
 
