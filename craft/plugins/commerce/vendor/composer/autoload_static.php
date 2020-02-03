@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitdc13f1c06f8f2c403139e86269990572
+class ComposerStaticInit3ac0a00a59520bcb7f68df5c6ab0f528
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -48,6 +48,10 @@ class ComposerStaticInitdc13f1c06f8f2c403139e86269990572
             'Omnipay\\CardSave\\' => 17,
             'Omnipay\\Buckaroo\\' => 17,
             'Omnipay\\AuthorizeNet\\' => 21,
+        ),
+        'M' => 
+        array (
+            'Money\\' => 6,
         ),
         'F' => 
         array (
@@ -180,6 +184,10 @@ class ComposerStaticInitdc13f1c06f8f2c403139e86269990572
         array (
             0 => __DIR__ . '/..' . '/omnipay/authorizenet/src',
         ),
+        'Money\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/moneyphp/money/src',
+        ),
         'FontLib\\' => 
         array (
             0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
@@ -278,6 +286,7 @@ class ComposerStaticInitdc13f1c06f8f2c403139e86269990572
         'Commerce\\Gateways\\Omnipay\\SagePay_Server_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/SagePay_Server_GatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\SecurePay_DirectPost_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/SecurePay_DirectPost_GatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\Stripe_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/Stripe_GatewayAdapter.php',
+        'Commerce\\Gateways\\Omnipay\\Stripe_PaymentIntentsGatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/Stripe_PaymentIntentsGatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\TargetPay_Directebanking_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/TargetPay_Directebanking_GatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\TargetPay_Ideal_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/TargetPay_Ideal_GatewayAdapter.php',
         'Commerce\\Gateways\\Omnipay\\TargetPay_Mrcash_GatewayAdapter' => __DIR__ . '/../../..' . '/commerce/Commerce/Gateways/Omnipay/TargetPay_Mrcash_GatewayAdapter.php',
@@ -821,6 +830,46 @@ class ComposerStaticInitdc13f1c06f8f2c403139e86269990572
         'HTML5_Parser' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Parser.php',
         'HTML5_Tokenizer' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Tokenizer.php',
         'HTML5_TreeBuilder' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/TreeBuilder.php',
+        'Money\\Calculator' => __DIR__ . '/..' . '/moneyphp/money/src/Calculator.php',
+        'Money\\Calculator\\BcMathCalculator' => __DIR__ . '/..' . '/moneyphp/money/src/Calculator/BcMathCalculator.php',
+        'Money\\Calculator\\GmpCalculator' => __DIR__ . '/..' . '/moneyphp/money/src/Calculator/GmpCalculator.php',
+        'Money\\Calculator\\PhpCalculator' => __DIR__ . '/..' . '/moneyphp/money/src/Calculator/PhpCalculator.php',
+        'Money\\Converter' => __DIR__ . '/..' . '/moneyphp/money/src/Converter.php',
+        'Money\\Currencies' => __DIR__ . '/..' . '/moneyphp/money/src/Currencies.php',
+        'Money\\Currencies\\AggregateCurrencies' => __DIR__ . '/..' . '/moneyphp/money/src/Currencies/AggregateCurrencies.php',
+        'Money\\Currencies\\BitcoinCurrencies' => __DIR__ . '/..' . '/moneyphp/money/src/Currencies/BitcoinCurrencies.php',
+        'Money\\Currencies\\CachedCurrencies' => __DIR__ . '/..' . '/moneyphp/money/src/Currencies/CachedCurrencies.php',
+        'Money\\Currencies\\CurrencyList' => __DIR__ . '/..' . '/moneyphp/money/src/Currencies/CurrencyList.php',
+        'Money\\Currencies\\ISOCurrencies' => __DIR__ . '/..' . '/moneyphp/money/src/Currencies/ISOCurrencies.php',
+        'Money\\Currency' => __DIR__ . '/..' . '/moneyphp/money/src/Currency.php',
+        'Money\\CurrencyPair' => __DIR__ . '/..' . '/moneyphp/money/src/CurrencyPair.php',
+        'Money\\Exception' => __DIR__ . '/..' . '/moneyphp/money/src/Exception.php',
+        'Money\\Exception\\FormatterException' => __DIR__ . '/..' . '/moneyphp/money/src/Exception/FormatterException.php',
+        'Money\\Exception\\ParserException' => __DIR__ . '/..' . '/moneyphp/money/src/Exception/ParserException.php',
+        'Money\\Exception\\UnknownCurrencyException' => __DIR__ . '/..' . '/moneyphp/money/src/Exception/UnknownCurrencyException.php',
+        'Money\\Exception\\UnresolvableCurrencyPairException' => __DIR__ . '/..' . '/moneyphp/money/src/Exception/UnresolvableCurrencyPairException.php',
+        'Money\\Exchange' => __DIR__ . '/..' . '/moneyphp/money/src/Exchange.php',
+        'Money\\Exchange\\ExchangerExchange' => __DIR__ . '/..' . '/moneyphp/money/src/Exchange/ExchangerExchange.php',
+        'Money\\Exchange\\FixedExchange' => __DIR__ . '/..' . '/moneyphp/money/src/Exchange/FixedExchange.php',
+        'Money\\Exchange\\IndirectExchange' => __DIR__ . '/..' . '/moneyphp/money/src/Exchange/IndirectExchange.php',
+        'Money\\Exchange\\ReversedCurrenciesExchange' => __DIR__ . '/..' . '/moneyphp/money/src/Exchange/ReversedCurrenciesExchange.php',
+        'Money\\Exchange\\SwapExchange' => __DIR__ . '/..' . '/moneyphp/money/src/Exchange/SwapExchange.php',
+        'Money\\Formatter\\AggregateMoneyFormatter' => __DIR__ . '/..' . '/moneyphp/money/src/Formatter/AggregateMoneyFormatter.php',
+        'Money\\Formatter\\BitcoinMoneyFormatter' => __DIR__ . '/..' . '/moneyphp/money/src/Formatter/BitcoinMoneyFormatter.php',
+        'Money\\Formatter\\DecimalMoneyFormatter' => __DIR__ . '/..' . '/moneyphp/money/src/Formatter/DecimalMoneyFormatter.php',
+        'Money\\Formatter\\IntlLocalizedDecimalFormatter' => __DIR__ . '/..' . '/moneyphp/money/src/Formatter/IntlLocalizedDecimalFormatter.php',
+        'Money\\Formatter\\IntlMoneyFormatter' => __DIR__ . '/..' . '/moneyphp/money/src/Formatter/IntlMoneyFormatter.php',
+        'Money\\Money' => __DIR__ . '/..' . '/moneyphp/money/src/Money.php',
+        'Money\\MoneyFactory' => __DIR__ . '/..' . '/moneyphp/money/src/MoneyFactory.php',
+        'Money\\MoneyFormatter' => __DIR__ . '/..' . '/moneyphp/money/src/MoneyFormatter.php',
+        'Money\\MoneyParser' => __DIR__ . '/..' . '/moneyphp/money/src/MoneyParser.php',
+        'Money\\Number' => __DIR__ . '/..' . '/moneyphp/money/src/Number.php',
+        'Money\\PHPUnit\\Comparator' => __DIR__ . '/..' . '/moneyphp/money/src/PHPUnit/Comparator.php',
+        'Money\\Parser\\AggregateMoneyParser' => __DIR__ . '/..' . '/moneyphp/money/src/Parser/AggregateMoneyParser.php',
+        'Money\\Parser\\BitcoinMoneyParser' => __DIR__ . '/..' . '/moneyphp/money/src/Parser/BitcoinMoneyParser.php',
+        'Money\\Parser\\DecimalMoneyParser' => __DIR__ . '/..' . '/moneyphp/money/src/Parser/DecimalMoneyParser.php',
+        'Money\\Parser\\IntlLocalizedDecimalParser' => __DIR__ . '/..' . '/moneyphp/money/src/Parser/IntlLocalizedDecimalParser.php',
+        'Money\\Parser\\IntlMoneyParser' => __DIR__ . '/..' . '/moneyphp/money/src/Parser/IntlMoneyParser.php',
         'Omnipay\\AuthorizeNet\\AIMGateway' => __DIR__ . '/..' . '/omnipay/authorizenet/src/AIMGateway.php',
         'Omnipay\\AuthorizeNet\\CIMGateway' => __DIR__ . '/..' . '/omnipay/authorizenet/src/CIMGateway.php',
         'Omnipay\\AuthorizeNet\\DPMGateway' => __DIR__ . '/..' . '/omnipay/authorizenet/src/DPMGateway.php',
@@ -1237,6 +1286,7 @@ class ComposerStaticInitdc13f1c06f8f2c403139e86269990572
         'Omnipay\\SecurePay\\Message\\SecureXMLRefundRequest' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/SecureXMLRefundRequest.php',
         'Omnipay\\SecurePay\\Message\\SecureXMLResponse' => __DIR__ . '/..' . '/omnipay/securepay/src/Message/SecureXMLResponse.php',
         'Omnipay\\SecurePay\\SecureXMLGateway' => __DIR__ . '/..' . '/omnipay/securepay/src/SecureXMLGateway.php',
+        'Omnipay\\Stripe\\AbstractGateway' => __DIR__ . '/..' . '/omnipay/stripe/src/AbstractGateway.php',
         'Omnipay\\Stripe\\Gateway' => __DIR__ . '/..' . '/omnipay/stripe/src/Gateway.php',
         'Omnipay\\Stripe\\Message\\AbstractRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/AbstractRequest.php',
         'Omnipay\\Stripe\\Message\\AuthorizeRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/AuthorizeRequest.php',
@@ -1265,6 +1315,17 @@ class ComposerStaticInitdc13f1c06f8f2c403139e86269990572
         'Omnipay\\Stripe\\Message\\FetchTransactionRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/FetchTransactionRequest.php',
         'Omnipay\\Stripe\\Message\\ListInvoicesRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/ListInvoicesRequest.php',
         'Omnipay\\Stripe\\Message\\ListPlansRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/ListPlansRequest.php',
+        'Omnipay\\Stripe\\Message\\PaymentIntents\\AbstractRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/PaymentIntents/AbstractRequest.php',
+        'Omnipay\\Stripe\\Message\\PaymentIntents\\AttachPaymentMethodRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/PaymentIntents/AttachPaymentMethodRequest.php',
+        'Omnipay\\Stripe\\Message\\PaymentIntents\\AuthorizeRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/PaymentIntents/AuthorizeRequest.php',
+        'Omnipay\\Stripe\\Message\\PaymentIntents\\CaptureRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/PaymentIntents/CaptureRequest.php',
+        'Omnipay\\Stripe\\Message\\PaymentIntents\\ConfirmPaymentIntentRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/PaymentIntents/ConfirmPaymentIntentRequest.php',
+        'Omnipay\\Stripe\\Message\\PaymentIntents\\CreatePaymentMethodRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/PaymentIntents/CreatePaymentMethodRequest.php',
+        'Omnipay\\Stripe\\Message\\PaymentIntents\\DetachPaymentMethodRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/PaymentIntents/DetachPaymentMethodRequest.php',
+        'Omnipay\\Stripe\\Message\\PaymentIntents\\FetchPaymentIntentRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/PaymentIntents/FetchPaymentIntentRequest.php',
+        'Omnipay\\Stripe\\Message\\PaymentIntents\\PurchaseRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/PaymentIntents/PurchaseRequest.php',
+        'Omnipay\\Stripe\\Message\\PaymentIntents\\Response' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/PaymentIntents/Response.php',
+        'Omnipay\\Stripe\\Message\\PaymentIntents\\UpdatePaymentMethodRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/PaymentIntents/UpdatePaymentMethodRequest.php',
         'Omnipay\\Stripe\\Message\\PurchaseRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/PurchaseRequest.php',
         'Omnipay\\Stripe\\Message\\RefundRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/RefundRequest.php',
         'Omnipay\\Stripe\\Message\\Response' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/Response.php',
@@ -1280,6 +1341,7 @@ class ComposerStaticInitdc13f1c06f8f2c403139e86269990572
         'Omnipay\\Stripe\\Message\\UpdateCustomerRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/UpdateCustomerRequest.php',
         'Omnipay\\Stripe\\Message\\UpdateSubscriptionRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/UpdateSubscriptionRequest.php',
         'Omnipay\\Stripe\\Message\\VoidRequest' => __DIR__ . '/..' . '/omnipay/stripe/src/Message/VoidRequest.php',
+        'Omnipay\\Stripe\\PaymentIntentsGateway' => __DIR__ . '/..' . '/omnipay/stripe/src/PaymentIntentsGateway.php',
         'Omnipay\\TargetPay\\AbstractGateway' => __DIR__ . '/..' . '/omnipay/targetpay/src/AbstractGateway.php',
         'Omnipay\\TargetPay\\DirectebankingGateway' => __DIR__ . '/..' . '/omnipay/targetpay/src/DirectebankingGateway.php',
         'Omnipay\\TargetPay\\IdealGateway' => __DIR__ . '/..' . '/omnipay/targetpay/src/IdealGateway.php',
@@ -1486,10 +1548,10 @@ class ComposerStaticInitdc13f1c06f8f2c403139e86269990572
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitdc13f1c06f8f2c403139e86269990572::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitdc13f1c06f8f2c403139e86269990572::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitdc13f1c06f8f2c403139e86269990572::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitdc13f1c06f8f2c403139e86269990572::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3ac0a00a59520bcb7f68df5c6ab0f528::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3ac0a00a59520bcb7f68df5c6ab0f528::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit3ac0a00a59520bcb7f68df5c6ab0f528::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit3ac0a00a59520bcb7f68df5c6ab0f528::$classMap;
 
         }, null, ClassLoader::class);
     }

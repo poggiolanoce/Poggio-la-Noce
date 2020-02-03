@@ -128,32 +128,36 @@
     },
     {
         "name": "dompdf/dompdf",
-        "version": "v0.8.2",
-        "version_normalized": "0.8.2.0",
+        "version": "v0.8.3",
+        "version_normalized": "0.8.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/dompdf/dompdf.git",
-            "reference": "5113accd9ae5d466077cce5208dcf3fb871bf8f6"
+            "reference": "75f13c700009be21a1965dc2c5b68a8708c22ba2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/dompdf/dompdf/zipball/5113accd9ae5d466077cce5208dcf3fb871bf8f6",
-            "reference": "5113accd9ae5d466077cce5208dcf3fb871bf8f6",
+            "url": "https://api.github.com/repos/dompdf/dompdf/zipball/75f13c700009be21a1965dc2c5b68a8708c22ba2",
+            "reference": "75f13c700009be21a1965dc2c5b68a8708c22ba2",
             "shasum": ""
         },
         "require": {
             "ext-dom": "*",
-            "ext-gd": "*",
             "ext-mbstring": "*",
             "phenx/php-font-lib": "0.5.*",
             "phenx/php-svg-lib": "0.3.*",
             "php": ">=5.4.0"
         },
         "require-dev": {
-            "phpunit/phpunit": "4.8.*",
+            "phpunit/phpunit": "^4.8|^5.5|^6.5",
             "squizlabs/php_codesniffer": "2.*"
         },
-        "time": "2017-11-26T14:49:08+00:00",
+        "suggest": {
+            "ext-gd": "Needed to process images",
+            "ext-gmagick": "Improves image processing performance",
+            "ext-imagick": "Improves image processing performance"
+        },
+        "time": "2018-12-14T02:40:31+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -352,17 +356,17 @@
     },
     {
         "name": "symfony/polyfill-mbstring",
-        "version": "v1.10.0",
-        "version_normalized": "1.10.0.0",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
+            "reference": "fe5e94c604826c35a32fa832f35bd036b6799609"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
-            "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fe5e94c604826c35a32fa832f35bd036b6799609",
+            "reference": "fe5e94c604826c35a32fa832f35bd036b6799609",
             "shasum": ""
         },
         "require": {
@@ -371,14 +375,14 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2018-09-21T13:07:52+00:00",
+        "time": "2019-02-06T07:57:58+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.9-dev"
+                "dev-master": "1.11-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Symfony\\Polyfill\\Mbstring\\": ""
@@ -986,17 +990,17 @@
     },
     {
         "name": "omnipay/firstdata",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "v2.4.1",
+        "version_normalized": "2.4.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-firstdata.git",
-            "reference": "5bcac83ee7b622b0d937c99f43719c3fc7b21bba"
+            "reference": "addb59b381cb31609071201506ad54bf2402668a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-firstdata/zipball/5bcac83ee7b622b0d937c99f43719c3fc7b21bba",
-            "reference": "5bcac83ee7b622b0d937c99f43719c3fc7b21bba",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-firstdata/zipball/addb59b381cb31609071201506ad54bf2402668a",
+            "reference": "addb59b381cb31609071201506ad54bf2402668a",
             "shasum": ""
         },
         "require": {
@@ -1005,14 +1009,14 @@
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2016-08-27T04:22:06+00:00",
+        "time": "2019-01-27T20:05:45+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "2.0.x-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Omnipay\\FirstData\\": "src/"
@@ -1344,17 +1348,17 @@
     },
     {
         "name": "omnipay/netaxept",
-        "version": "v2.3.0",
-        "version_normalized": "2.3.0.0",
+        "version": "v2.4.0",
+        "version_normalized": "2.4.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/omnipay-netaxept.git",
-            "reference": "a15ab75a338726536880b9ac0c1e6071a81342f9"
+            "reference": "4cefa26d47af97fc1fefa2a651ea5eea25d23af8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-netaxept/zipball/a15ab75a338726536880b9ac0c1e6071a81342f9",
-            "reference": "a15ab75a338726536880b9ac0c1e6071a81342f9",
+            "url": "https://api.github.com/repos/thephpleague/omnipay-netaxept/zipball/4cefa26d47af97fc1fefa2a651ea5eea25d23af8",
+            "reference": "4cefa26d47af97fc1fefa2a651ea5eea25d23af8",
             "shasum": ""
         },
         "require": {
@@ -1363,7 +1367,7 @@
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2015-05-08T15:13:17+00:00",
+        "time": "2018-05-14T08:46:15+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1879,31 +1883,116 @@
         ]
     },
     {
-        "name": "omnipay/stripe",
-        "version": "2.x-dev",
-        "version_normalized": "2.9999999.9999999.9999999-dev",
+        "name": "moneyphp/money",
+        "version": "v3.2.1",
+        "version_normalized": "3.2.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/thephpleague/omnipay-stripe.git",
-            "reference": "bc6afb30d84a33ef845c69290785810f14d66cb8"
+            "url": "https://github.com/moneyphp/money.git",
+            "reference": "f6085de6c565e98d2f9a7311a605987b54e06d5e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/omnipay-stripe/zipball/bc6afb30d84a33ef845c69290785810f14d66cb8",
-            "reference": "bc6afb30d84a33ef845c69290785810f14d66cb8",
+            "url": "https://api.github.com/repos/moneyphp/money/zipball/f6085de6c565e98d2f9a7311a605987b54e06d5e",
+            "reference": "f6085de6c565e98d2f9a7311a605987b54e06d5e",
             "shasum": ""
         },
         "require": {
+            "ext-json": "*",
+            "php": ">=5.6"
+        },
+        "require-dev": {
+            "cache/taggable-cache": "^0.4.0",
+            "doctrine/instantiator": "^1.0.5",
+            "ext-bcmath": "*",
+            "ext-gmp": "*",
+            "ext-intl": "*",
+            "florianv/exchanger": "^1.0",
+            "florianv/swap": "^3.0",
+            "leanphp/phpspec-code-coverage": "^3.0 || ^4.0",
+            "moneyphp/iso-currencies": "^3.0",
+            "php-http/message": "^1.4",
+            "php-http/mock-client": "^1.0.0",
+            "phpspec/phpspec": "^3.0",
+            "phpunit/phpunit": "^5.7 || ^6.4 || ^7.0",
+            "psr/cache": "^1.0",
+            "symfony/phpunit-bridge": "^4"
+        },
+        "suggest": {
+            "ext-bcmath": "Calculate without integer limits",
+            "ext-gmp": "Calculate without integer limits",
+            "ext-intl": "Format Money objects with intl",
+            "florianv/exchanger": "Exchange rates library for PHP",
+            "florianv/swap": "Exchange rates library for PHP",
+            "psr/cache-implementation": "Used for Currency caching"
+        },
+        "time": "2019-02-07T18:01:35+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Money\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Márk Sági-Kazár",
+                "email": "mark.sagikazar@gmail.com"
+            },
+            {
+                "name": "Mathias Verraes",
+                "email": "mathias@verraes.net",
+                "homepage": "http://verraes.net"
+            },
+            {
+                "name": "Frederik Bosch",
+                "email": "f.bosch@genkgo.nl"
+            }
+        ],
+        "description": "PHP implementation of Fowler's Money pattern",
+        "homepage": "http://moneyphp.org",
+        "keywords": [
+            "Value Object",
+            "money",
+            "vo"
+        ]
+    },
+    {
+        "name": "omnipay/stripe",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pixelandtonic/omnipay-stripe.git",
+            "reference": "d744480703bc85193b88a25ed520d1c836e647fa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pixelandtonic/omnipay-stripe/zipball/d744480703bc85193b88a25ed520d1c836e647fa",
+            "reference": "d744480703bc85193b88a25ed520d1c836e647fa",
+            "shasum": ""
+        },
+        "require": {
+            "moneyphp/money": "^3.1",
             "omnipay/common": "~2.0"
         },
         "require-dev": {
             "omnipay/tests": "~2.0"
         },
-        "time": "2018-05-14T08:46:06+00:00",
+        "time": "2019-07-23T07:39:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "2.0.x-dev"
+                "dev-master": "3.1.x-dev"
             }
         },
         "installation-source": "source",
@@ -1912,7 +2001,6 @@
                 "Omnipay\\Stripe\\": "src/"
             }
         },
-        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
         ],
@@ -1935,7 +2023,10 @@
             "pay",
             "payment",
             "stripe"
-        ]
+        ],
+        "support": {
+            "source": "https://github.com/pixelandtonic/omnipay-stripe/tree/3.0.1.1"
+        }
     },
     {
         "name": "omnipay/targetpay",

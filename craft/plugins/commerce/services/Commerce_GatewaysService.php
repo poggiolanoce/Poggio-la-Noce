@@ -99,6 +99,7 @@ class Commerce_GatewaysService extends BaseApplicationComponent
             '\Commerce\Gateways\Omnipay\SagePay_Server_GatewayAdapter',
             '\Commerce\Gateways\Omnipay\SecurePay_DirectPost_GatewayAdapter',
             '\Commerce\Gateways\Omnipay\Stripe_GatewayAdapter',
+            '\Commerce\Gateways\Omnipay\Stripe_PaymentIntentsGatewayAdapter',
             '\Commerce\Gateways\Omnipay\TargetPay_Directebanking_GatewayAdapter',
             '\Commerce\Gateways\Omnipay\TargetPay_Ideal_GatewayAdapter',
             '\Commerce\Gateways\Omnipay\TargetPay_Mrcash_GatewayAdapter',

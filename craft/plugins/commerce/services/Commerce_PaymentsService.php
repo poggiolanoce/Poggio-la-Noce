@@ -677,7 +677,14 @@ class Commerce_PaymentsService extends BaseApplicationComponent
 
         $gateway = $parent->paymentMethod->getGateway();
         $request = $gateway->$action($this->buildPaymentRequest($child));
-        $request->setTransactionReference($parent->reference);
+
+        if ($action === Commerce_TransactionRecord::TYPE_CAPTURE && $parent->getPaymentMethod()->getGatewayAdapter()->handle() === 'Stripe_PaymentIntents') {
+            if (is_array($parent->response) && !empty($parent->response['id'])) {
+                $request->setPaymentIntentReference($parent->response['id']);
+            }
+        } else {
+            $request->setTransactionReference($parent->reference);
+        }
 
         $order->returnUrl = $order->getCpEditUrl();
         craft()->commerce_orders->saveOrder($order);
@@ -798,6 +805,13 @@ class Commerce_PaymentsService extends BaseApplicationComponent
         if ($handle == 'Mollie_Ideal' || $handle == 'Mollie' || $handle == 'NetBanx_Hosted' || $handle == 'Affirm')
         {
             $params['transactionReference'] = $transaction->reference;
+        }
+
+        // Hi, 3DS 2.0
+        if ($handle == 'Stripe_PaymentIntents') {
+            if (is_array($transaction->response) && !empty($transaction->response['id'])) {
+                $params['paymentIntentReference'] = $transaction->response['id'];
+            }
         }
 
         // Don't send notifyUrl for completePurchase or completeAuthorize

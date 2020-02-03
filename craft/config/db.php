@@ -9,7 +9,7 @@
 
 return array(
   '*' => array(
-    'server' => '*',
+    'server' => '127.0.0.1',
     'user' => 'root',
     'password' => 'vAtQ4hY2aL',
     'database' => 'poggio',
